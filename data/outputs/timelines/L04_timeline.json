@@ -1,0 +1,747 @@
+{
+  "user_id": "L04",
+  "timeline_id": "L04_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 135,
+    "length_days": 135,
+    "reason": "L04 处在租房与装修持续经营期，房源比较、签约搬家、装修方案、预算和家具选择会跨数月反复变化，因此选择 135 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "租房筛选与搬家签约",
+      "domain": "租房 / 家庭事务",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "装修方案与预算控制",
+      "domain": "装修 / 预算",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "物品清单与记录格式维护",
+      "domain": "物品清单 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "家具挑选、商家信息与生活噪音",
+      "domain": "消费与娱乐 / 健康与情绪",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_home_project_record",
+      "content": "用户确立长期记录偏好，希望租房、装修、预算、物品清单和一次性想法分开归档，并保留时间、地点、对象和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["租房", "装修", "预算", "物品清单", "一次性想法"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_rent_001",
+      "content": "用户制定早期租房计划，准备先比较通勤、租金和采光，再联系中介看三套候选房。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 42,
+        "phase_order": ["通勤和租金比较", "采光筛选", "联系中介看房"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 6,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_renovation_001",
+      "content": "用户创建早期装修计划，先按全屋统一风格做预算，再逐项比较墙面、灯具和收纳方案。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 75,
+        "phase_order": ["统一风格预算", "墙面方案", "灯具方案", "收纳方案"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 9,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_item_list_format",
+      "content": "用户记录物品清单输出偏好，初期希望 agent 给详细版表格，包含物品、房间、尺寸、价格、购买链接和优先级。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_table",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 13,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_sofa_browse_001",
+      "content": "用户临时记录看中的一款浅色沙发，顺手标注尺寸、价格和是否容易清洁。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.28,
+        "topic": "家具挑选"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 17,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_rent_candidate_table",
+      "content": "用户创建候选房源对比表任务，需要按租金、押金、通勤时间、楼层、采光和可入住日期整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 29
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 21,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_budget_review",
+      "content": "用户设置每两周复盘一次预算比较，把固定支出、装修材料、家具想法和临时购物分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.74,
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 24,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_agent_message_001",
+      "content": "一个商家发来定制柜报价，用户先记录套餐名、报价有效期和是否包含安装。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "商家信息"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e009",
+      "day": 29,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_rent_candidate_table",
+      "content": "用户完成候选房源对比表，标出两套通勤更短的房源和一套价格低但采光一般的旧房源。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 29
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.86,
+        "deadline_day": 29,
+        "completed_day": 29,
+        "outputs": ["两套通勤短房源", "一套采光一般旧房源"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 35,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_budget_review",
+      "content": "用户完成第一次预算复盘，发现家具临时想法已经挤占装修材料预算，需要后续单独标记。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49,
+        "finding": "家具临时想法挤占装修材料预算"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e011",
+      "day": 40,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_viewing_schedule_old",
+      "content": "用户创建旧版看房安排任务，原计划周末集中看三套房，并按采光优先排序。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 52
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e012",
+      "day": 46,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_price_change_001",
+      "content": "用户发现一套餐桌突然降价，记录活动结束时间和是否需要量餐厅尺寸。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.26,
+        "topic": "价格变化"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e013",
+      "day": 52,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_viewing_schedule_old",
+      "content": "用户没有完成旧版看房安排，把截止日推迟到第 60 天，但仍保留为当前租房推进任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 52
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 52,
+        "deadline_day": 60,
+        "partial_progress": "已约到两套房源"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 56,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_landlord_001",
+      "content": "中介通知采光最好的一套房已被预定，用户需要从采光优先改为通勤和入住日期优先。",
+      "state_before": {
+        "related_plan": "plan_rent_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_rent_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 60,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_viewing_schedule_old",
+      "content": "用户完成旧版看房安排，但确认采光优先排序已经过时，只能作为早期筛选记录保留。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 60
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 60,
+        "completed_day": 60,
+        "limitation": "采光优先排序已过时"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e016",
+      "day": 63,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_rent_001",
+      "content": "用户将采光优先的租房计划替换为通勤和入住日期优先计划，旧计划不再作为当前筛选标准。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 42,
+        "phase_order": ["通勤和租金比较", "采光筛选", "联系中介看房"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 63,
+        "replaced_by": "plan_rent_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e017",
+      "day": 63,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_rent_002",
+      "content": "用户创建新的租房推进计划，决定先确认入住日期和合同条款，再处理搬家时间和押金预算。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 92,
+        "replaces": "plan_rent_001",
+        "phase_order": ["入住日期", "合同条款", "搬家时间", "押金预算"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e018",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_material_budget_table",
+      "content": "用户创建装修材料预算表任务，需要把墙面、灯具、窗帘和收纳四类预算拆开，并标出必须买和可延后。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 82
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e019",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_contractor_001",
+      "content": "施工师傅反馈全屋统一风格预算偏高，建议先做必要修补和收纳，再延后装饰性项目。",
+      "state_before": {
+        "related_plan": "plan_renovation_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.88,
+        "affects": "plan_renovation_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e020",
+      "day": 80,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_renovation_001",
+      "content": "用户将全屋统一风格装修计划替换为必要修补和收纳优先计划，旧方案只保留为预算对照。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 75,
+        "phase_order": ["统一风格预算", "墙面方案", "灯具方案", "收纳方案"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 80,
+        "replaced_by": "plan_renovation_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e021",
+      "day": 80,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_renovation_002",
+      "content": "用户创建新的装修计划，优先处理墙面修补、基础灯具、必要收纳和预算封顶。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 130,
+        "replaces": "plan_renovation_001",
+        "phase_order": ["墙面修补", "基础灯具", "必要收纳", "预算封顶"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e022",
+      "day": 82,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_material_budget_table",
+      "content": "用户完成装修材料预算表，确认装饰灯具和第二组边柜可以延后，墙面修补和基础灯具必须优先。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 82
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.87,
+        "deadline_day": 82,
+        "completed_day": 82,
+        "must_buy": ["墙面修补", "基础灯具"],
+        "can_delay": ["装饰灯具", "第二组边柜"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e023",
+      "day": 88,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_item_list_format",
+      "content": "用户把物品清单输出偏好从详细版表格改成搬家当天可执行的简版清单，只保留房间、物品、是否已打包和负责人。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_table",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "move_day_brief_checklist",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "搬家临近，需要更容易执行"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e024",
+      "day": 92,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_contract_check",
+      "content": "用户创建租房合同核对任务，需要确认押金、维修责任、入住日期、转租限制和提前退租条款。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.91,
+        "deadline_day": 104
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e025",
+      "day": 98,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_buy_decor_lamp_old",
+      "content": "用户创建购买装饰落地灯任务，原本想趁促销直接下单一款价格较高的落地灯。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 106
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e026",
+      "day": 104,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_contract_check",
+      "content": "用户完成租房合同核对，确认维修责任和提前退租条款需要单独截图留存。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.91,
+        "deadline_day": 104
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.91,
+        "deadline_day": 104,
+        "completed_day": 104,
+        "follow_up_items": ["维修责任截图", "提前退租条款截图"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e027",
+      "day": 106,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_buy_decor_lamp_old",
+      "content": "用户取消购买装饰落地灯任务，决定先保留基础灯具预算，不让促销信息打断当前装修优先级。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 106
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.24,
+        "cancelled_day": 106,
+        "reason": "装饰性购买低于基础装修优先级"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e028",
+      "day": 110,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_old_listing_001",
+      "content": "用户又收到一套旧房源推荐，先记录租金和位置，但没有把它放回当前候选列表。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "旧房源"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e029",
+      "day": 114,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_move_day_checklist",
+      "content": "用户创建搬家当天清单任务，需要按房间列出打包、搬运、验收、水电读数和钥匙交接。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 128
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e030",
+      "day": 118,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_storage_measurement",
+      "content": "用户创建必要收纳尺寸复核任务，需要量衣柜、玄关柜和厨房置物架的宽高深。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.83,
+        "deadline_day": 138
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e031",
+      "day": 122,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_budget_review",
+      "content": "用户完成近期预算复盘，确认当前重点是搬家当天清单、必要收纳尺寸和基础装修预算封顶。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 122,
+        "next_due_day": 136,
+        "current_focus": ["搬家当天清单", "必要收纳尺寸", "基础装修预算封顶"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e032",
+      "day": 126,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_movie_plan_001",
+      "content": "用户临时记录周末想看电影并顺路逛家居店，准备只看不买大件。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.2,
+        "topic": "临时娱乐想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e033",
+      "day": 128,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_move_day_checklist",
+      "content": "用户未完成搬家当天清单，把截止日推迟到第 140 天，但仍保留为当前搬家核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 128
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "previous_deadline_day": 128,
+        "deadline_day": 140,
+        "partial_progress": "已完成打包和水电读数部分"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e034",
+      "day": 130,
+      "storyline_id": "sl_02",
+      "event_type": "add_constraint",
+      "target_id": "constraint_budget_cap",
+      "content": "用户设置近期约束，装修和家具新增支出必须先放进预算表，超过预算封顶的项目默认延后。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "constraint_type": "budget_cap_before_purchase",
+        "valid_until_day": 160
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e035",
+      "day": 132,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_renovation_current",
+      "content": "用户确认当前装修重点不是旧的全屋统一风格，而是必要修补、基础灯具、收纳尺寸和预算封顶。",
+      "state_before": {
+        "plan": "plan_renovation_002",
+        "old_reference": "plan_renovation_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "必要修补、基础灯具、收纳尺寸和预算封顶",
+        "not_current": "全屋统一风格"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e036",
+      "day": 135,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_budget_review",
+      "content": "用户完成最近一次预算复盘，确认当前活跃事项是搬家当天清单、收纳尺寸复核和预算封顶规则执行。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 122,
+        "next_due_day": 136
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 135,
+        "next_due_day": 149,
+        "current_focus": ["搬家当天清单", "收纳尺寸复核", "预算封顶规则执行"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_rent_002", "plan_renovation_002"],
+    "stale_plans": ["plan_rent_001", "plan_renovation_001"],
+    "active_tasks": ["task_move_day_checklist", "task_storage_measurement"],
+    "completed_tasks": ["task_rent_candidate_table", "task_viewing_schedule_old", "task_material_budget_table", "task_contract_check"],
+    "cancelled_tasks": ["task_buy_decor_lamp_old"],
+    "postponed_tasks": ["task_move_day_checklist"],
+    "current_constraints": ["constraint_budget_cap"],
+    "stable_preferences": ["pref_home_project_record"],
+    "old_preferences": ["pref_item_list_format:detailed_table"],
+    "updated_preferences": ["pref_item_list_format:move_day_brief_checklist"],
+    "important_not_urgent_tasks": ["task_material_budget_table", "task_storage_measurement"],
+    "urgent_low_value_tasks": ["task_buy_decor_lamp_old"],
+    "noise_events": ["noise_sofa_browse_001", "noise_agent_message_001", "noise_price_change_001", "noise_old_listing_001", "noise_movie_plan_001"],
+    "hard_negative_sources": ["plan_rent_001", "plan_renovation_001", "task_rent_candidate_table", "task_viewing_schedule_old", "task_buy_decor_lamp_old", "pref_item_list_format:detailed_table", "noise_old_listing_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

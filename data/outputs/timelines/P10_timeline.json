@@ -1,0 +1,710 @@
+{
+  "user_id": "P10",
+  "timeline_id": "P10_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 96,
+    "length_days": 96,
+    "reason": "P10 是公司法务/律师，处在合同交付和合规协作密集期，合同版本、客户反馈、会议结论和合规材料会在跨月周期内多次替换旧计划，因此选择 96 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "合同条款审阅与交付计划",
+      "domain": "合同",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "agent_usage_style", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "合规风险清单与整改协作",
+      "domain": "合规",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "dynamic_preferences", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "客户沟通与版本差异维护",
+      "domain": "客户沟通 / 会议沟通",
+      "status": "active",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "案件进度碎片、临时问题与个人安排",
+      "domain": "客户沟通 / 家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "likely_hard_negatives"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_legal_output_style",
+      "content": "用户确立长期输出偏好，希望条款总结、风险清单、会议纪要和下一步动作都能直接复制到文档，并标明负责人、优先级和截止时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["条款总结", "风险清单", "会议纪要", "下一步动作"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_contract_001",
+      "content": "用户制定早期合同审阅计划，准备按定义条款、付款节点、违约责任、保密义务和终止条件逐段整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 38,
+        "sections": ["定义条款", "付款节点", "违约责任", "保密义务", "终止条件"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 6,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_compliance_001",
+      "content": "用户创建早期合规协作计划，准备先收集制度材料，再输出风险清单、整改建议和会议确认项。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 46,
+        "steps": ["制度材料收集", "风险清单", "整改建议", "会议确认项"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_clause_summary_format",
+      "content": "用户记录条款总结的早期偏好，希望 agent 输出详细版条款说明，包含条文位置、风险解释、建议改写和谈判理由。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_clause_memo",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "old_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 11,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_client_fragment_001",
+      "content": "客户临时发来几条零散微信截图，用户记录其中涉及付款表述、审批人名称和一个尚未确认的交付时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "客户碎片信息"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 15,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_contract_baseline_review",
+      "content": "用户创建合同基线审阅任务，需要把旧版合同的付款、验收、违约和终止条款整理成审阅表。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 29
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e007",
+      "day": 18,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_legal_review_sync",
+      "content": "用户设置每两周复盘一次合同和合规协作，重点检查旧版本合同、当前风险清单、客户反馈和会议下一步是否混在一起。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 22,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_compliance_old_checklist",
+      "content": "用户创建旧版合规风险清单任务，原计划按部门制度逐项列出所有潜在风险。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 37
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 26,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_old_contract_version_001",
+      "content": "用户发现客户群里又上传了一份旧版本合同，文件名与当前版本相似，先记录版本号和上传人以免误用。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "旧版本合同"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 29,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_contract_baseline_review",
+      "content": "用户完成合同基线审阅，确认付款节点和验收条件是主要谈判风险，旧版终止条款可以保留为参考。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 29
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.87,
+        "deadline_day": 29,
+        "completed_day": 29,
+        "finding": "付款节点和验收条件是主要谈判风险"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e011",
+      "day": 32,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_legal_review_sync",
+      "content": "用户完成第一次合同合规复盘，确认客户截图只能作为线索，不能替代正式合同版本或会议纪要。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 32,
+        "next_due_day": 46,
+        "finding": "客户截图不能替代正式合同版本或会议纪要"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 37,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_compliance_old_checklist",
+      "content": "用户未完成旧版合规风险清单，把截止日推迟到第 43 天，但仍保留为待处理合规任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 37
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 37,
+        "deadline_day": 43,
+        "partial_progress": "已整理数据留存和审批流程风险"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 40,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "event_contract_scope_change",
+      "content": "业务负责人通知交易结构变化，合同审阅重点需要从全量条款逐段审查改为付款、验收和责任限制优先。",
+      "state_before": {
+        "related_plan": "plan_contract_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.92,
+        "affects": "plan_contract_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e014",
+      "day": 43,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_compliance_old_checklist",
+      "content": "用户完成旧版合规风险清单，但确认按部门制度逐项展开过长，不适合当前会议决策节奏。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 43
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 43,
+        "completed_day": 43,
+        "limitation": "按部门制度逐项展开过长"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 47,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_contract_001",
+      "content": "用户将全量逐段审阅合同计划替换为关键风险优先计划，旧全量计划只保留为背景材料。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 38,
+        "sections": ["定义条款", "付款节点", "违约责任", "保密义务", "终止条件"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.42,
+        "stale_day": 47,
+        "replaced_by": "plan_contract_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 47,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_contract_002",
+      "content": "用户创建新的合同交付计划，优先处理付款节点、验收条件、责任限制、会议确认项和客户可接受改写。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.93,
+        "deadline_day": 82,
+        "replaces": "plan_contract_001",
+        "sections": ["付款节点", "验收条件", "责任限制", "会议确认项", "客户可接受改写"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 50,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_compliance_001",
+      "content": "用户将材料收集优先的合规计划替换为高风险事项优先计划，旧材料铺开版本不再作为当前会议输入。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 46,
+        "steps": ["制度材料收集", "风险清单", "整改建议", "会议确认项"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 50,
+        "replaced_by": "plan_compliance_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 50,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_compliance_002",
+      "content": "用户创建新的合规计划，优先输出高风险清单、整改责任人、待确认材料和会议决策项。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 88,
+        "replaces": "plan_compliance_001",
+        "steps": ["高风险清单", "整改责任人", "待确认材料", "会议决策项"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 54,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_clause_summary_format",
+      "content": "用户把条款总结输出偏好从详细版备忘录改成决策简版，只保留风险等级、建议改写、负责人和下一步确认问题。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_clause_memo",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "decision_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "会议和客户沟通节奏加快"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 58,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_temp_compliance_question_001",
+      "content": "销售同事临时询问一个客户宣传材料是否能使用绝对化表述，用户记录问题来源和需要后续统一口径。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.38,
+        "topic": "临时合规问题"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 61,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_payment_acceptance_redline",
+      "content": "用户创建付款和验收条款红线任务，需要输出客户可接受改写、内部底线和谈判理由。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 74
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 65,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_client_fragment_digest_old",
+      "content": "用户创建客户碎片信息汇总任务，原本想把所有群聊截图和口头反馈统一整理成一份长清单。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 71
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e023",
+      "day": 69,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_compliance_decision_table",
+      "content": "用户创建合规决策表任务，需要列出高风险事项、整改责任人、待确认材料和会议决策口径。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 86
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e024",
+      "day": 71,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_client_fragment_digest_old",
+      "content": "用户取消把所有客户碎片信息整理成长清单的任务，决定只保留影响合同交付和合规决策的正式信息。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 71
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.24,
+        "cancelled_day": 71,
+        "reason": "碎片长清单不利于会议决策"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e025",
+      "day": 74,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_payment_acceptance_redline",
+      "content": "用户完成付款和验收条款红线，确认三处建议改写、两项内部底线和一组客户谈判理由。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 74
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.9,
+        "deadline_day": 74,
+        "completed_day": 74,
+        "outputs": ["三处建议改写", "两项内部底线", "一组客户谈判理由"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e026",
+      "day": 78,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_legal_review_sync",
+      "content": "用户完成近期复盘，确认当前重点是合同关键风险、合规决策表和会议确认项，旧版合同与群聊截图只作参考。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 32,
+        "next_due_day": 46
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 78,
+        "next_due_day": 92,
+        "current_focus": ["合同关键风险", "合规决策表", "会议确认项"],
+        "not_current": ["旧版合同", "群聊截图长清单"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e027",
+      "day": 82,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_contract_current",
+      "content": "用户确认当前合同交付不再按旧版全量逐段审阅推进，而是围绕付款、验收、责任限制和客户可接受改写收口。",
+      "state_before": {
+        "plan": "plan_contract_002",
+        "old_reference": "plan_contract_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "付款、验收、责任限制和客户可接受改写",
+        "not_current": "旧版全量逐段审阅"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e028",
+      "day": 84,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录连续晚间改合同导致睡眠不足，准备把临时购物比较和非紧急材料整理排到交付后。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.23,
+        "topic": "健康作息"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e029",
+      "day": 86,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_compliance_decision_table",
+      "content": "用户未完成合规决策表，把截止日推迟到第 98 天，但仍保留为当前合规核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 86
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.88,
+        "previous_deadline_day": 86,
+        "deadline_day": 98,
+        "partial_progress": "高风险事项已列出，整改责任人待确认"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e030",
+      "day": 88,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_final_meeting_minutes",
+      "content": "用户创建最终会议纪要任务，需要把合同关键风险、客户确认口径、待补材料和下一步负责人整理成决策简版。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 99
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e031",
+      "day": 90,
+      "storyline_id": "sl_02",
+      "event_type": "add_constraint",
+      "target_id": "constraint_version_scope",
+      "content": "用户设置近期约束，本轮合同交付前不再吸收未确认的群聊截图、旧版本合同或非正式客户口头意见。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "constraint_type": "version_scope_lock",
+        "valid_until_day": 108
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 92,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_legal_review_sync",
+      "content": "用户完成最近一次复盘，确认当前活跃事项是合规决策表、最终会议纪要和合同版本范围锁定。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 78,
+        "next_due_day": 92
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 92,
+        "next_due_day": 106,
+        "current_focus": ["合规决策表", "最终会议纪要", "合同版本范围锁定"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 94,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_entertainment_purchase_001",
+      "content": "用户临时记录想比较一款降噪耳机和周末电影安排，准备等合同交付后再处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.18,
+        "topic": "临时购物或娱乐想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e034",
+      "day": 96,
+      "storyline_id": "sl_03",
+      "event_type": "add_status_update",
+      "target_id": "status_current_legal_focus",
+      "content": "用户确认当前检索时应优先看决策简版条款总结、合规决策表和版本范围约束，而不是旧版详细备忘录或客户碎片长清单。",
+      "state_before": {
+        "updated_preference": "pref_clause_summary_format",
+        "constraint": "constraint_version_scope"
+      },
+      "state_after": {
+        "status": "current",
+        "preferred_format": "decision_brief",
+        "current_focus": ["决策简版条款总结", "合规决策表", "版本范围约束"],
+        "not_current": ["旧版详细备忘录", "客户碎片长清单"]
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["stable_preferences", "dynamic_preferences", "likely_hard_negatives"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_contract_002", "plan_compliance_002"],
+    "stale_plans": ["plan_contract_001", "plan_compliance_001"],
+    "active_tasks": ["task_compliance_decision_table", "task_final_meeting_minutes"],
+    "completed_tasks": ["task_contract_baseline_review", "task_compliance_old_checklist", "task_payment_acceptance_redline"],
+    "cancelled_tasks": ["task_client_fragment_digest_old"],
+    "postponed_tasks": ["task_compliance_decision_table"],
+    "current_constraints": ["constraint_version_scope"],
+    "stable_preferences": ["pref_legal_output_style"],
+    "old_preferences": ["pref_clause_summary_format:detailed_clause_memo"],
+    "updated_preferences": ["pref_clause_summary_format:decision_brief"],
+    "important_not_urgent_tasks": ["task_compliance_old_checklist", "task_final_meeting_minutes"],
+    "urgent_low_value_tasks": ["task_client_fragment_digest_old"],
+    "noise_events": ["noise_client_fragment_001", "noise_old_contract_version_001", "noise_temp_compliance_question_001", "noise_personal_schedule_001", "noise_entertainment_purchase_001"],
+    "hard_negative_sources": ["plan_contract_001", "plan_compliance_001", "task_contract_baseline_review", "task_compliance_old_checklist", "task_client_fragment_digest_old", "pref_clause_summary_format:detailed_clause_memo", "noise_client_fragment_001", "noise_old_contract_version_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

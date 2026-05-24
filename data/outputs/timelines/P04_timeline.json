@@ -1,0 +1,728 @@
+{
+  "user_id": "P04",
+  "timeline_id": "P04_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 100,
+    "length_days": 100,
+    "reason": "P04 是早期 AI 工具创业者，商业计划、用户访谈、融资材料和方向选择会在 2-3 个月内频繁迭代，因此选择 100 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "商业计划与产品方向收敛",
+      "domain": "商业计划",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "用户访谈与问题验证",
+      "domain": "用户访谈",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "融资材料与决策摘要格式",
+      "domain": "融资材料 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "临时 idea、投资人反馈与个人安排噪音",
+      "domain": "会议沟通 / 家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_startup_record_style",
+      "content": "用户确立长期创业记录偏好，希望商业计划、用户访谈、融资材料、会议沟通和临时 idea 分开归档，并突出优先级、负责人和下一步动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["商业计划", "用户访谈", "融资材料", "会议沟通", "临时 idea"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_business_001",
+      "content": "用户制定早期商业计划，准备同时验证 AI 写作助手、知识库助手和客服总结工具三个方向。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 42,
+        "directions": ["AI 写作助手", "知识库助手", "客服总结工具"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_interview_001",
+      "content": "用户创建早期用户访谈计划，准备分别访谈内容运营、客服主管和知识库管理员。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 50,
+        "segments": ["内容运营", "客服主管", "知识库管理员"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_business_plan_format",
+      "content": "用户记录商业计划输出偏好，初期希望 agent 给详细版结构，包含问题、目标用户、竞品、商业模式、风险和下一步实验。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_business_plan",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 13,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_new_idea_001",
+      "content": "用户临时想到一个 AI 会议待办自动分发工具，记录目标用户和可能卖点，但没有放入当前验证计划。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.33,
+        "topic": "idea 太多"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 17,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_market_problem_table",
+      "content": "用户创建市场问题对比表任务，需要按痛点强度、付费意愿、获客渠道和交付复杂度比较三个方向。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.85,
+        "deadline_day": 29
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e007",
+      "day": 21,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_startup_review",
+      "content": "用户设置每两周复盘一次创业材料，把当前方向、旧方案、用户访谈、投资人反馈和临时 idea 分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_interview_questions_old",
+      "content": "用户创建旧版用户访谈问题任务，原计划对三个用户群体使用同一套宽泛问题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 38
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 29,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_market_problem_table",
+      "content": "用户完成市场问题对比表，发现客服总结工具的痛点更清晰，但 AI 写作助手的竞品压力更大。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.85,
+        "deadline_day": 29
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.85,
+        "deadline_day": 29,
+        "completed_day": 29,
+        "finding": "客服总结工具痛点更清晰"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 35,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_startup_review",
+      "content": "用户完成第一次创业材料复盘，确认 AI 会议待办工具和当前三方向验证语义相近，但暂不进入本轮验证。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49,
+        "finding": "会议待办工具暂不进入本轮验证"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e011",
+      "day": 38,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_interview_questions_old",
+      "content": "用户没有完成旧版访谈问题，把截止日推迟到第 45 天，但仍保留为当前访谈准备任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 38
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 38,
+        "deadline_day": 45,
+        "partial_progress": "客服主管问题已初步整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e012",
+      "day": 40,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_investor_feedback_001",
+      "content": "一位投资人临时反馈知识库助手听起来像功能而不是公司，用户记录原话和可能需要补充的客户场景。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.35,
+        "topic": "投资人反馈"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e013",
+      "day": 42,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_direction_001",
+      "content": "用户访谈后发现内容运营对 AI 写作助手兴趣一般，客服主管更愿意讨论总结质检和交接效率。",
+      "state_before": {
+        "related_plan": "plan_business_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_business_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 45,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_interview_questions_old",
+      "content": "用户完成旧版访谈问题清单，但确认同一套宽泛问题无法区分客服主管和知识库管理员的真实痛点。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 45
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 45,
+        "completed_day": 45,
+        "limitation": "宽泛问题无法区分真实痛点"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 48,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_business_001",
+      "content": "用户将三方向并行验证的商业计划替换为客服总结工具优先计划，旧方向只保留为备选假设。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 42,
+        "directions": ["AI 写作助手", "知识库助手", "客服总结工具"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 48,
+        "replaced_by": "plan_business_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 48,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_business_002",
+      "content": "用户创建新的商业计划，优先验证客服总结工具的目标客户、使用场景、付费触发和最小可行演示。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.93,
+        "deadline_day": 86,
+        "replaces": "plan_business_001",
+        "focus": ["目标客户", "使用场景", "付费触发", "最小可行演示"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 52,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_interview_001",
+      "content": "用户将三类人群均衡访谈计划替换为客服主管深访优先计划，旧访谈池只保留为后续扩展来源。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 50,
+        "segments": ["内容运营", "客服主管", "知识库管理员"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 52,
+        "replaced_by": "plan_interview_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 52,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_interview_002",
+      "content": "用户创建新的用户访谈计划，优先访谈客服主管，问题集中在总结质检、交接效率和管理报表。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 88,
+        "replaces": "plan_interview_001",
+        "focus": ["总结质检", "交接效率", "管理报表"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 56,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_business_plan_format",
+      "content": "用户把商业计划输出偏好从详细版结构改成融资沟通简版，只保留问题、证据、当前假设、风险和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_business_plan",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "fundraising_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "需要快速和投资人沟通"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 60,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_direction_anxiety_001",
+      "content": "用户记录一次方向焦虑，担心客服总结工具市场太窄，同时提醒自己先完成既定访谈再判断。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.32,
+        "topic": "焦虑记录"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 64,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_customer_interview_round",
+      "content": "用户创建客服主管深访任务，需要约 5 位受访者并记录现有工作流、交接痛点和愿意尝试的条件。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 82
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e022",
+      "day": 68,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_pitch_brief",
+      "content": "用户创建融资沟通简版材料任务，需要把问题、证据、当前假设、风险和下一步压缩到一页。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 84
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e023",
+      "day": 72,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_new_pivot_001",
+      "content": "用户临时想到把工具转向销售跟进场景，记录触发原因和可能客户，但没有替换当前客服总结方向。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "方向频繁变化"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e024",
+      "day": 78,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_sales_pivot_old",
+      "content": "用户创建销售跟进场景验证任务，原本想临时抽两天改查销售团队痛点。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 84
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e025",
+      "day": 82,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_customer_interview_round",
+      "content": "用户未完成客服主管深访任务，把截止日推迟到第 92 天，但仍保留为当前用户访谈核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 82
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "previous_deadline_day": 82,
+        "deadline_day": 92,
+        "partial_progress": "已完成 3 位客服主管访谈"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e026",
+      "day": 84,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_pitch_brief",
+      "content": "用户完成融资沟通简版材料，确认当前假设、访谈证据和下一步实验可以直接发给投资人。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 84
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.86,
+        "deadline_day": 84,
+        "completed_day": 84,
+        "outputs": ["当前假设", "访谈证据", "下一步实验"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e027",
+      "day": 84,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_sales_pivot_old",
+      "content": "用户取消临时验证销售跟进场景的任务，决定等客服总结方向访谈完成后再评估是否转向。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 84
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.24,
+        "cancelled_day": 84,
+        "reason": "避免在核心访谈未完成前频繁转向"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e028",
+      "day": 86,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_business_current",
+      "content": "用户确认当前商业计划重点不是三方向并行，也不是销售跟进临时转向，而是客服总结工具的证据、风险和最小演示。",
+      "state_before": {
+        "plan": "plan_business_002",
+        "old_reference": "plan_business_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "客服总结工具的证据、风险和最小演示",
+        "not_current": "三方向并行和销售跟进临时转向"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e029",
+      "day": 88,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_startup_review",
+      "content": "用户完成近期创业材料复盘，确认当前重点是客服主管深访、最小演示脚本和融资沟通材料。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 88,
+        "next_due_day": 102,
+        "current_focus": ["客服主管深访", "最小演示脚本", "融资沟通材料"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e030",
+      "day": 90,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录连续晚睡和家庭安排冲突，准备不要把周末默认排满临时 idea 讨论。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "家庭与个人安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 92,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_customer_interview_round",
+      "content": "用户完成客服主管深访任务，整理出总结质检、交接效率和管理报表三个高频痛点。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "deadline_day": 92
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.91,
+        "deadline_day": 92,
+        "completed_day": 92,
+        "outputs": ["总结质检", "交接效率", "管理报表"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e032",
+      "day": 94,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_no_new_direction",
+      "content": "用户设置近期约束，完成最小演示前不新增大方向，所有新 idea 只进入以后再看清单。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "constraint_type": "no_new_direction_before_demo",
+        "valid_until_day": 120
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 96,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_demo_script",
+      "content": "用户创建最小演示脚本任务，需要围绕客服总结、质检提醒和交接效率设计 3 分钟演示流程。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 112
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e034",
+      "day": 100,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_startup_review",
+      "content": "用户完成最近一次创业材料复盘，确认当前活跃事项是最小演示脚本、新方向冻结和后续访谈名单整理。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 88,
+        "next_due_day": 102
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 100,
+        "next_due_day": 114,
+        "current_focus": ["最小演示脚本", "新方向冻结", "后续访谈名单整理"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e035",
+      "day": 100,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_followup_interview_list",
+      "content": "用户创建后续访谈名单整理任务，需要补充客服主管、质检负责人和运营经理的候选联系人。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 116
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_business_002", "plan_interview_002"],
+    "stale_plans": ["plan_business_001", "plan_interview_001"],
+    "active_tasks": ["task_demo_script", "task_followup_interview_list"],
+    "completed_tasks": ["task_market_problem_table", "task_interview_questions_old", "task_pitch_brief", "task_customer_interview_round"],
+    "cancelled_tasks": ["task_sales_pivot_old"],
+    "postponed_tasks": [],
+    "current_constraints": ["constraint_no_new_direction"],
+    "stable_preferences": ["pref_startup_record_style"],
+    "old_preferences": ["pref_business_plan_format:detailed_business_plan"],
+    "updated_preferences": ["pref_business_plan_format:fundraising_brief"],
+    "important_not_urgent_tasks": ["task_interview_questions_old", "task_followup_interview_list"],
+    "urgent_low_value_tasks": ["task_sales_pivot_old"],
+    "noise_events": ["noise_new_idea_001", "noise_investor_feedback_001", "noise_direction_anxiety_001", "noise_new_pivot_001", "noise_personal_schedule_001"],
+    "hard_negative_sources": ["plan_business_001", "plan_interview_001", "task_market_problem_table", "task_interview_questions_old", "task_sales_pivot_old", "pref_business_plan_format:detailed_business_plan", "noise_new_idea_001", "noise_new_pivot_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

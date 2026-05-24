@@ -1,0 +1,1039 @@
+{
+  "user_id": "S02",
+  "source_timeline_id": "S02_latent_world_timeline_v1",
+  "dialogue_dataset_id": "S02_dialogues_v1",
+  "interactions": [
+    {
+      "interaction_id": "S02_i001",
+      "source_event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_01",
+      "event_type": "add_preference",
+      "target_id": "pref_design_workflow_001",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "碎片化但有归档意识，强调分区和依据",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我想先定个长期规则：作品集、课程作业、交换申请和生活杂事不要混在一起。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。之后我会按这四类分别整理，避免把临时购物或审美想法塞进学习主线。"
+        },
+        {
+          "speaker": "user",
+          "text": "还有，方案选择别只给结论。我需要保留为什么选这个方向，方便回头对比旧方案和新方案。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。后续我会把结论、选择依据、暂时搁置的方案分开写，方便你筛选和改写。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i002",
+      "source_event_id": "e002",
+      "day": 2,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_portfolio_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "作品集推进型，用户要求拆阶段",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "作品集我想先别乱改视觉，先筛项目，再统一视觉风格，最后补项目文案，截止大概第52天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这个顺序合理：先决定放什么，再处理它们怎么一起出现，最后再补文字。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我现在最怕一边挑项目一边被颜色和排版带跑。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那第一阶段只看主题、完成度和申请适配度；视觉细节先记录，不在筛选阶段展开。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i003",
+      "source_event_id": "e003",
+      "day": 4,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_course_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "课程作业方案记录，带审美方向",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课程作业先按复古拼贴方向走吧，海报和版式延展都用这个语言。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我先按复古拼贴整理方案：核心元素、版式规则、延展物料三部分。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，先别写太长，我只是要一个能推进草图的框架。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，先用短清单列出可执行项，后面课堂讨论后再扩展。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i004",
+      "source_event_id": "e004",
+      "day": 6,
+      "storyline_id": "sl_03",
+      "event_type": "create_plan",
+      "target_id": "plan_exchange_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "申请准备型，强调文案和材料顺序",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "交换申请也要开始了。我想先整理作品集英文说明，再写动机文案，最后补材料清单。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我会把它作为单独的申请计划处理，不和课程作业混在一起。"
+        },
+        {
+          "speaker": "user",
+          "text": "英文说明应该先做，不然动机文案也没东西支撑。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那顺序就是：英文说明、动机文案、材料清单；第70天前作为主要节点。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i005",
+      "source_event_id": "e005",
+      "day": 8,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_bag_001",
+      "retrieval_role": "urgent_low_value_task",
+      "dialogue_style": "生活购物小插曲，用户纠结颜色容量价格",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我突然想买个通勤包，能装速写本和电脑的那种。颜色、容量、价格我又开始纠结了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先把硬条件写成两条：能装电脑和速写本、背着不累。颜色和折扣可以放后面比较。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i006",
+      "source_event_id": "e006",
+      "day": 10,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_portfolio_case_audit",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "作品集筛选任务，用户要求可执行排序",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我要开始筛作品集项目了，第20天前得排出来。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以按三个维度排序：主题是否清楚、视觉完成度、和申请方向的适配度。"
+        },
+        {
+          "speaker": "user",
+          "text": "我想最后能定主项目和备选，不要只是泛泛看一遍。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那输出就做成一张表：项目名、三个评分、保留理由、需要重排的页面。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i007",
+      "source_event_id": "e007",
+      "day": 12,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_inspiration_output",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "灵感整理偏好，喜欢详细说明和新旧对比",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "最近你帮我整理灵感的时候，先给详细一点的 moodboard 说明吧。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，我会把图像气质、颜色、材质、版式感觉分别写出来。"
+        },
+        {
+          "speaker": "user",
+          "text": "重点是能对比旧方案和新方案，我经常看着看着又想改。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。每次会保留旧方案的理由，再写新方案可能解决什么问题。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i008",
+      "source_event_id": "e008",
+      "day": 14,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_course_poster_sketch",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "课程草图任务，短句清单化",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课程海报要出三版复古拼贴草图，第24天前拿去课堂讨论。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我建议三版分别拉开差异：图像密度高、中、低，方便课堂上比较。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，先不追求精修，能讨论方向就行。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那任务目标就是三版可讨论草图，不把它当最终作品集页面来做。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i009",
+      "source_event_id": "e009",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_inspiration_review",
+      "retrieval_role": "recurring_task",
+      "dialogue_style": "设置周期复盘，防止临时审美混入主线",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我想每两周整理一次灵感碎片和作品集下一步，不然临时审美想法会把主线搅乱。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，周期设为每14天一次，下一次在第30天。"
+        },
+        {
+          "speaker": "user",
+          "text": "复盘的时候要区分：真的进入作品集，还是只是先放着看看。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我会按“纳入主线”和“临时参考”分开整理。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i010",
+      "source_event_id": "e010",
+      "day": 20,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_portfolio_case_audit",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "完成汇报，保留后续缺口",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "作品集项目筛选做完了，定了三个主项目和两个备选。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，这个筛选任务已经完成。现在结果是三个主项目、两个备选。"
+        },
+        {
+          "speaker": "user",
+          "text": "我也标出来哪些页面需要重排版了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "后续要处理的是重排版页面，但项目筛选本身不用再继续推进。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i011",
+      "source_event_id": "e011",
+      "day": 23,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_aesthetic_swing_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "审美摇摆小插曲，用户想大改旧页面",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我这两天突然很迷高饱和荧光配色，甚至想把几个旧页面都改得更强烈一点。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以先截图或记下来，不急着改主文件。等下次灵感复盘再判断它适不适合进入作品集。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i012",
+      "source_event_id": "e012",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_course_poster_sketch",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "课程任务完成，明确不等同作品集主线",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "三版课程海报草图做完了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "收到，三版草图任务已完成，可以用于课堂讨论。"
+        },
+        {
+          "speaker": "user",
+          "text": "但里面两版感觉只适合课堂讨论，不太适合放进作品集主线。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那就把它们作为课程过程记录保留，不直接推进到作品集。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i013",
+      "source_event_id": "e013",
+      "day": 28,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_course_001",
+      "retrieval_role": "current_state_seed",
+      "dialogue_style": "教师反馈触发调整，用户焦虑但要收敛",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "老师今天说课程作业不能继续堆复古元素了，说信息层级太乱。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那现在重点要从装饰感转到信息层级和网格系统。"
+        },
+        {
+          "speaker": "user",
+          "text": "有点崩，因为我前面几版都是拼贴方向。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先别全盘推翻素材。可以先判断哪些内容保留，再重做网格和阅读顺序。"
+        },
+        {
+          "speaker": "user",
+          "text": "所以复古拼贴不能作为主方向继续了？"
+        },
+        {
+          "speaker": "assistant",
+          "text": "对，后面应以清晰的信息层级和网格为主，复古元素最多作为过程或局部参考。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i014",
+      "source_event_id": "e014",
+      "day": 30,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_inspiration_review",
+      "retrieval_role": "outdated_status",
+      "dialogue_style": "周期复盘完成，临时灵感被降级",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "今天做了第一次灵感碎片复盘。荧光配色那个想法我先标成临时参考。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，本次复盘完成；荧光配色不纳入当前作品集统一风格。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我还是怕它只是这几天看多了才上头。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那它保留在参考区即可。下一次复盘安排在第44天。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i015",
+      "source_event_id": "e015",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_course_001",
+      "retrieval_role": "stale_plan",
+      "dialogue_style": "替换旧方案，明确旧复古方向只作记录",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课程作业那个复古拼贴方案先不要按它推进了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，旧方案保留为过程记录，不再作为当前执行方向。"
+        },
+        {
+          "speaker": "user",
+          "text": "现在要换成网格和信息层级方案，不然老师反馈的问题解决不了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "后续课程作业以新方案为准：网格、信息层级、字体系统优先。"
+        },
+        {
+          "speaker": "user",
+          "text": "旧方案别删，我后面可能要写过程反思。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "会保留旧复古拼贴方案的依据和草图，但不把它当作下一步计划。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i016",
+      "source_event_id": "e016",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_course_002",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "新课程方案创建，优先级清晰",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "那新课程方案就定成：先重做网格，再理信息层级，最后统一字体系统。第50天前完成。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我会把它作为当前课程作业方案记录，替代之前的复古拼贴方向。"
+        },
+        {
+          "speaker": "user",
+          "text": "先别让我又去找一堆灵感图，重点是把版式逻辑做稳。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，当前阶段优先执行网格、层级、字体，不扩散到新的视觉风格探索。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i017",
+      "source_event_id": "e017",
+      "day": 35,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_course_grid_redesign",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "核心课程任务，用户要求统一版式系统",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我现在要建一个具体任务：课程作业网格重做，第46天前。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "任务目标是把主海报和延展物料统一到同一套版式系统。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，别再每张图像自己长一个样子了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "建议先定列数、边距和标题层级，再套到海报和两类延展物料上。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i018",
+      "source_event_id": "e018",
+      "day": 38,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_exchange_statement_old",
+      "retrieval_role": "important_not_urgent_task",
+      "dialogue_style": "交换申请初稿任务，重要但不抢当前主线",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "交换申请动机文案要先开个初稿，第54天前写出来。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。初稿先用课程作业和作品集经历支撑申请理由。"
+        },
+        {
+          "speaker": "user",
+          "text": "它重要，但我现在还不能让它压过课程作业修改。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那就作为重要但不抢占主要时间的任务，每次只推进一个小段落。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i019",
+      "source_event_id": "e019",
+      "day": 41,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_inspiration_output",
+      "retrieval_role": "updated_preference",
+      "dialogue_style": "输出偏好临时改为简短清单",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "这阵子灵感整理先不要给我长篇 moodboard 说明了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "之前是详细说明，方便你对比新旧方案；现在要改成更短的行动清单，对吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "对，课程作业修改压力太大，我只想看下一步做什么。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。当前阶段我会优先输出简版行动清单，少写氛围描述。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i020",
+      "source_event_id": "e020",
+      "day": 44,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_inspiration_review",
+      "retrieval_role": "status_update",
+      "dialogue_style": "第二次复盘完成，分开存放课程和作品集",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第二次灵感复盘做完了，我把课程作业的网格方案和作品集主视觉分开存了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "很好，本次复盘完成；课程作业网格方案不并入作品集主视觉。"
+        },
+        {
+          "speaker": "user",
+          "text": "这样我脑子清楚一点，不会又拿课程反馈去乱改作品集。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "下一次复盘在第58天，继续按课程作业和作品集两类分开整理。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i021",
+      "source_event_id": "e021",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_course_grid_redesign",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "延期但仍是核心任务，用户交代部分进展",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "网格重做今天没法全部完成了，主海报网格做完了，但延展物料还没统一。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那这个任务还在进行中，只是截止从第46天推到第52天。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，它还是课程作业最核心的任务，不能降级。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "后续优先把主海报的网格规则套到延展物料上，再检查标题和正文层级。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i022",
+      "source_event_id": "e022",
+      "day": 48,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_sale_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "购物打折分心，用户担心影响晚上排版",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我被打折活动吸走了，收藏了几件衣服和配饰，还担心晚上排版时间被吃掉。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先把链接放到一个待比较清单里，晚上排版前不要继续比价格。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i023",
+      "source_event_id": "e023",
+      "day": 52,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_course_grid_redesign",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "延期任务完成，明确结果",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课程作业网格重做终于完成了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，这个任务已完成。"
+        },
+        {
+          "speaker": "user",
+          "text": "主海报和两份延展物料现在统一到同一套版式系统了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "记录为：主海报和两份延展物料已经统一版式，后面不需要再把网格重做当未完成任务。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i024",
+      "source_event_id": "e024",
+      "day": 54,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_exchange_statement_old",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "申请文案初稿完成但发现局限",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "交换申请动机文案初稿写完了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "收到，初稿任务已完成。"
+        },
+        {
+          "speaker": "user",
+          "text": "但我发现它太依赖课程作业经历了，作品集主线表达不够。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这个局限可以记录下来。初稿完成了，但后面如果重写，要把作品集主线放到更核心的位置。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i025",
+      "source_event_id": "e025",
+      "day": 56,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_portfolio_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "作品集计划调整，先叙事后视觉",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "作品集计划要改一下。之前说先统一视觉，现在我觉得要先统一三个主项目的叙事顺序。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "也就是说，原来的作品集计划还在，但当前优先级变成先处理主项目叙事。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，视觉细节先往后放，不然页面漂亮但讲不清楚。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我会把新顺序记为：主项目叙事顺序、视觉细节统一、项目文案补充；新的截止节点到第76天。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i026",
+      "source_event_id": "e026",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_portfolio_sequence",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "作品集高优先级任务，关注叙事关系",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我要单独建一个作品集主项目叙事顺序任务，第70天前完成。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "任务目标是确定三个项目各自的开场、过程页和结尾页关系。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我希望别人翻的时候能看出问题、过程、结果，不是散图合集。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那每个项目都按“开场问题、关键过程、结果证明”检查一遍。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i027",
+      "source_event_id": "e027",
+      "day": 60,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_exchange_statement_rewrite",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "申请文案重写任务，强调作品集主线",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "交换申请文案要重写一版，第73天前。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这次重写要把作品集主线和学习目标重新组织进申请理由里。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，不能再像上一版那样主要靠课程作业撑起来。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我会按作品集主线、申请动机、目标课程或方向三块帮你收敛。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i028",
+      "source_event_id": "e028",
+      "day": 62,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_social_gallery_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "周末社交娱乐小插曲，轻松自然",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "周末想去看一个小型插画展，顺便和朋友吃饭。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，提前定好时间就行。看展时如果有灵感，简单拍照或记两句，不用现场展开整理。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i029",
+      "source_event_id": "e029",
+      "day": 64,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_print_sample_old",
+      "retrieval_role": "important_not_urgent_task",
+      "dialogue_style": "纸样打印任务，用户被材质和封面吸引",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我想先做一次作品集纸样打印测试，第68天前看看高饱和封面和厚纸材质。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以先记录为打印测试任务，重点是封面颜色表现和纸张手感。"
+        },
+        {
+          "speaker": "user",
+          "text": "它不是最急，但我怕最后来不及选纸。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那先作为不抢主线的准备任务保留，避免占用叙事顺序调整的主要时间。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i030",
+      "source_event_id": "e030",
+      "day": 66,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_print_sample_old",
+      "retrieval_role": "cancelled_task",
+      "dialogue_style": "取消任务，明确等叙事确定后再统一打样",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第68天那个高饱和封面纸样打印先取消吧。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，这个打印测试不再按原计划推进。"
+        },
+        {
+          "speaker": "user",
+          "text": "作品集叙事顺序还没定，现在打样太早了。等顺序确定后再统一打样。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。取消原因是叙事顺序尚未确定，后续如果需要，会按新版作品集结构重新安排打样。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i031",
+      "source_event_id": "e031",
+      "day": 68,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_shopping_001",
+      "retrieval_role": "current_constraint",
+      "dialogue_style": "自我约束，限制晚间购物分心",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "给我加个近期约束：晚上做作品集的时候不要打开购物 app。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，晚上作品集时段不打开购物 app。"
+        },
+        {
+          "speaker": "user",
+          "text": "如果突然想到想买什么，就先记到第二天再处理。这个约束先到第80天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。第80天前，购物想法只记录，第二天再比较，不占用晚上作品集时间。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i032",
+      "source_event_id": "e032",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_portfolio_sequence",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "作品集最高优先级任务延期，交代部分完成",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "主项目叙事顺序今天没全部完成，只确定了第一个主项目。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那任务仍然是当前最高优先级，只是截止从第70天推到第78天。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，不能因为延期就被交换申请挤掉。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "后续先补第二、第三个主项目的开场、过程页和结尾页关系，再进入文案细化。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i033",
+      "source_event_id": "e033",
+      "day": 72,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_course_001",
+      "retrieval_role": "status_update",
+      "dialogue_style": "课程当前状态更新，说明阻塞已转移",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课程作业现在主要版式调整已经完成了，网格不再是卡点。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，当前状态更新为：主要版式调整完成，网格重做已解决。"
+        },
+        {
+          "speaker": "user",
+          "text": "剩下的是终稿说明文字和导出规范。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那后续课程作业的重点就是说明文字、尺寸导出和提交规范检查。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i034",
+      "source_event_id": "e034",
+      "day": 74,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_exchange_statement_rewrite",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "申请文案延期，保留部分成果",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "交换申请文案重写要推迟到第82天了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，这个任务仍然保留，只是截止从第73天调整到第82天。"
+        },
+        {
+          "speaker": "user",
+          "text": "最近先保留作品集主线句子和申请材料清单，我已经写出一些主线句子了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。当前已完成的部分是作品集主线句子，完整文案重写延后处理。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i035",
+      "source_event_id": "e035",
+      "day": 76,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_course_final_export",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "课程终稿导出任务，清单化检查",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课程作业要建终稿导出任务，第83天前检查完。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "检查项包括尺寸、字体嵌入、说明文字和提交命名。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，这个别写成灵感整理，直接给我可勾选清单。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，我会按导出前检查清单整理，逐项标注是否完成。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i036",
+      "source_event_id": "e036",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_portfolio_sequence",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "高优先级任务完成，留下短文案缺口",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "作品集三个主项目的叙事顺序调整完成了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，主项目叙事顺序任务已完成。"
+        },
+        {
+          "speaker": "user",
+          "text": "但还有几页短文案需要补，不是顺序问题了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。叙事顺序不再作为未完成任务，剩余缺口是若干页面短文案。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S02_i037",
+      "source_event_id": "e037",
+      "day": 80,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_portfolio_microcopy",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "作品集短文案润色任务，要求问题过程结果清晰",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "接下来建一个作品集页面短文案润色任务，第86天前。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "任务目标是让每个项目都写清问题、过程和结果。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，不要写得像空泛的设计宣言，我要能直接放页面上的短句。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我会按项目逐页整理短句，控制长度，并保留每句对应的页面位置。"
+        }
+      ]
+    }
+  ],
+  "quality_check": {
+    "all_events_covered": true,
+    "interaction_count": 37,
+    "dialogues_are_not_memory_units": true,
+    "dialogues_follow_user_profile": true,
+    "metadata_not_leaked_in_dialogue": true,
+    "noise_dialogues_are_natural": true,
+    "dialogues_preserve_event_state": true,
+    "no_query_generated": true,
+    "no_gold_generated": true,
+    "no_mu_extracted": true
+  }
+}

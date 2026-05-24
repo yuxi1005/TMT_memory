@@ -1,0 +1,773 @@
+{
+  "user_id": "L03",
+  "timeline_id": "L03_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 150,
+    "length_days": 150,
+    "reason": "L03 是慢性病自我管理用户，饮食、运动、检查指标、家庭事务和短期不适会跨数月反复变化，因此选择 150 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "饮食控制与检查指标跟踪",
+      "domain": "饮食 / 检查指标",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "运动计划拆分与反馈调整",
+      "domain": "运动",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "健康日志格式与复盘习惯",
+      "domain": "健康与情绪 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "家庭事务、短期不适与生活噪音",
+      "domain": "家庭事务 / 消费与娱乐 / 健康与情绪",
+      "status": "mixed",
+      "derived_from_profile": ["main_life_domains", "typical_noise_sources", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_health_record_style",
+      "content": "用户确立长期健康记录偏好，希望饮食、运动、检查指标和一次性想法分开记录，并保留时间、地点、对象和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["饮食", "运动", "检查指标", "一次性想法"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_diet_001",
+      "content": "用户制定早期饮食控制计划，准备按低碳水早餐、午餐外食替换和晚餐少油三类推进。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 45,
+        "phase_order": ["低碳水早餐", "午餐外食替换", "晚餐少油"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_exercise_001",
+      "content": "用户创建早期运动计划，决定每周三次晚间快走，每次四十分钟，并在健康日志里记录心率和疲劳感。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.78,
+        "deadline_day": 60,
+        "frequency": "每周三次",
+        "activity": "晚间快走"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_log_format_001",
+      "content": "用户记录健康日志输出偏好，初期希望 agent 生成详细版记录，包含餐次、运动、情绪、睡眠和异常感受。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_daily_log",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 14,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_stomach_discomfort_001",
+      "content": "用户晚上出现短期胃部不适，记录发生时间、晚餐内容和是否需要第二天观察。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.36,
+        "topic": "短期不适"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_breakfast_baseline",
+      "content": "用户创建早餐基线整理任务，需要记录一周早餐、空腹感受和上午精力变化。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 30
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e007",
+      "day": 21,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_health_log_review",
+      "content": "用户设置每两周复盘一次健康日志，把重复事项、一次性想法、短期不适和情绪波动分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.74,
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 25,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_walk_route_old",
+      "content": "用户创建晚间快走路线筛选任务，原计划只比较家附近两条户外路线的距离和照明情况。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.68,
+        "deadline_day": 38
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e009",
+      "day": 30,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_breakfast_baseline",
+      "content": "用户完成早餐基线整理，确认燕麦加鸡蛋的组合比面包甜饮更稳定，上午饥饿感更少。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 30
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 30,
+        "completed_day": 30,
+        "finding": "燕麦加鸡蛋更稳定"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 35,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_health_log_review",
+      "content": "用户完成第一次健康日志复盘，发现短期胃部不适记录和饮食任务混在一起，需要后续分开归档。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49,
+        "finding": "短期不适记录需要和饮食任务分开"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e011",
+      "day": 38,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_walk_route_old",
+      "content": "用户完成晚间快走路线筛选，但后来确认其中一条路线夜间车流较多，不适合作为长期运动路线。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.68,
+        "deadline_day": 38
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.68,
+        "deadline_day": 38,
+        "completed_day": 38,
+        "limitation": "一条路线夜间车流较多"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e012",
+      "day": 42,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_health_article_001",
+      "content": "用户看到一篇关于断食的网络健康文章，临时记录几个说法，准备之后再判断是否适合自己。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.24,
+        "topic": "网上健康信息"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e013",
+      "day": 48,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_lab_marker_table",
+      "content": "用户创建检查指标表格整理任务，需要把最近两次空腹血糖、血脂和体重变化放到同一张表里。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 65
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e014",
+      "day": 55,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_dietitian_001",
+      "content": "营养师提醒用户不要把碳水降得过低，当前更适合先稳定餐次和总热量，再观察检查指标。",
+      "state_before": {
+        "related_plan": "plan_diet_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_diet_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 60,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_exercise_001",
+      "content": "用户因膝盖轻微不适没有完成每周三次快走计划，把阶段复盘截止日顺延到第 78 天，但仍保留运动为当前目标。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.78,
+        "deadline_day": 60
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.76,
+        "previous_deadline_day": 60,
+        "deadline_day": 78,
+        "reason": "膝盖轻微不适"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e016",
+      "day": 65,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_lab_marker_table",
+      "content": "用户未完成检查指标表格，把截止日推迟到第 72 天，原因是缺少一份近期体检报告截图。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 65
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "previous_deadline_day": 65,
+        "deadline_day": 72,
+        "partial_progress": "空腹血糖和体重已录入"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "main_life_domains"]
+    },
+    {
+      "event_id": "e017",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_diet_001",
+      "content": "用户将低碳水优先的饮食计划替换为稳定餐次和总热量优先计划，旧计划只保留为早期尝试记录。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 45,
+        "phase_order": ["低碳水早餐", "午餐外食替换", "晚餐少油"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.45,
+        "stale_day": 70,
+        "replaced_by": "plan_diet_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_diet_002",
+      "content": "用户创建新的饮食执行计划，决定先固定三餐时间、记录总热量区间，再根据检查指标调整碳水比例。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 135,
+        "replaces": "plan_diet_001",
+        "phase_order": ["固定三餐时间", "记录总热量区间", "根据指标调整碳水比例"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 72,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_lab_marker_table",
+      "content": "用户完成检查指标表格整理，标出空腹血糖、血脂和体重变化需要在下次复查前继续观察。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "deadline_day": 72
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.89,
+        "deadline_day": 72,
+        "completed_day": 72,
+        "follow_up_items": ["空腹血糖", "血脂", "体重变化"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e020",
+      "day": 78,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_exercise_001",
+      "content": "用户将每周三次晚间快走计划替换为低冲击运动计划，旧快走计划不再作为当前运动安排。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.76,
+        "deadline_day": 78
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.42,
+        "stale_day": 78,
+        "replaced_by": "plan_exercise_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e021",
+      "day": 78,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_exercise_002",
+      "content": "用户创建低冲击运动计划，改为每周两次椭圆机加一次拉伸，并在运动后记录膝盖反馈。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 145,
+        "replaces": "plan_exercise_001",
+        "activities": ["椭圆机", "拉伸", "膝盖反馈记录"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e022",
+      "day": 84,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_log_format_001",
+      "content": "用户把健康日志输出偏好从详细版改成简版表格，只保留餐次、运动、指标、异常感受和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_daily_log",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_table",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "近期复盘压力较大，需要更容易执行"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e023",
+      "day": 90,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_family_dinner_001",
+      "content": "家里临时安排聚餐，用户记录可选择的菜品和当天是否需要提前调整午餐分量。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.32,
+        "topic": "家庭聚餐"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e024",
+      "day": 96,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_buy_scale_old",
+      "content": "用户创建购买体脂秤任务，原本想尽快下单一款带很多指标的智能体脂秤。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.5,
+        "deadline_day": 105
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e025",
+      "day": 104,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_buy_scale_old",
+      "content": "用户取消购买智能体脂秤任务，决定先用现有体重秤稳定记录，不让购物想法打断饮食和运动主线。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.5,
+        "deadline_day": 105
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.25,
+        "cancelled_day": 104,
+        "reason": "购物优先级低于当前健康执行"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e026",
+      "day": 108,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_health_log_review",
+      "content": "用户完成近期健康日志复盘，确认当前重点是稳定三餐时间、低冲击运动和下次复查指标准备。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 108,
+        "next_due_day": 122,
+        "current_focus": ["稳定三餐时间", "低冲击运动", "复查指标准备"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 112,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_meal_time_tracker",
+      "content": "用户创建三餐时间追踪任务，需要连续两周记录进餐时间、饥饿感和是否出现夜间加餐。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 126
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e028",
+      "day": 118,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_gym_feedback_log",
+      "content": "用户创建低冲击运动反馈记录任务，需要记录椭圆机强度、拉伸时长、膝盖反馈和第二天疲劳感。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 142
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e029",
+      "day": 122,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_mood_snack_001",
+      "content": "用户因情绪波动临时想吃甜食，记录当晚情绪、替代零食和第二天是否需要调整早餐。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "情绪波动和饮食破戒"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e030",
+      "day": 126,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_meal_time_tracker",
+      "content": "用户未完成三餐时间追踪，把截止日推迟到第 140 天，但仍将它作为当前饮食计划的核心待办。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 126
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "previous_deadline_day": 126,
+        "deadline_day": 140,
+        "partial_progress": "已记录 8 天三餐时间"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e031",
+      "day": 130,
+      "storyline_id": "sl_03",
+      "event_type": "add_constraint",
+      "target_id": "constraint_evening_health_search",
+      "content": "用户设置近期约束，晚上不再连续搜索健康文章，只把疑问放入次日上午的复盘清单。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.79,
+        "constraint_type": "limit_evening_health_search",
+        "valid_until_day": 150
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 136,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_entertainment_001",
+      "content": "用户临时记录周末想看一场电影并和朋友吃饭，顺手标注如果外食就提前查看菜单。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.21,
+        "topic": "临时娱乐想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e033",
+      "day": 140,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_meal_time_tracker",
+      "content": "用户完成三餐时间追踪，确认晚餐过晚会增加夜间加餐风险，决定把晚餐提醒固定在工作日傍晚。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "deadline_day": 140
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.89,
+        "deadline_day": 140,
+        "completed_day": 140,
+        "finding": "晚餐过晚会增加夜间加餐风险"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e034",
+      "day": 142,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_gym_feedback_log",
+      "content": "用户未完成低冲击运动反馈记录，把截止日推迟到第 154 天，仍保留为当前运动计划的活跃任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 142
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.83,
+        "previous_deadline_day": 142,
+        "deadline_day": 154,
+        "partial_progress": "已记录 3 次椭圆机反馈"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e035",
+      "day": 145,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_exercise_current",
+      "content": "用户确认当前运动重点不是恢复旧快走路线，而是继续低冲击运动并观察膝盖反馈。",
+      "state_before": {
+        "plan": "plan_exercise_002",
+        "old_reference": "plan_exercise_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "低冲击运动和膝盖反馈",
+        "not_current": "旧快走路线"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e036",
+      "day": 150,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_health_log_review",
+      "content": "用户完成最近一次健康日志复盘，确认当前活跃事项是低冲击运动反馈记录、复查问题整理和简版健康日志维护。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 108,
+        "next_due_day": 122
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 150,
+        "next_due_day": 164,
+        "current_focus": ["低冲击运动反馈记录", "复查问题整理", "简版健康日志维护"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e037",
+      "day": 150,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_followup_questions",
+      "content": "用户创建复查问题整理任务，需要把饮食执行、运动反馈和检查指标变化整理成下次复查要问的三组问题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 165
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_diet_002", "plan_exercise_002"],
+    "stale_plans": ["plan_diet_001", "plan_exercise_001"],
+    "active_tasks": ["task_gym_feedback_log", "task_followup_questions"],
+    "completed_tasks": ["task_breakfast_baseline", "task_walk_route_old", "task_lab_marker_table", "task_meal_time_tracker"],
+    "cancelled_tasks": ["task_buy_scale_old"],
+    "postponed_tasks": ["task_gym_feedback_log"],
+    "current_constraints": ["constraint_evening_health_search"],
+    "stable_preferences": ["pref_health_record_style"],
+    "old_preferences": ["pref_log_format_001:detailed_daily_log"],
+    "updated_preferences": ["pref_log_format_001:brief_table"],
+    "important_not_urgent_tasks": ["task_walk_route_old"],
+    "urgent_low_value_tasks": ["task_buy_scale_old"],
+    "noise_events": ["noise_stomach_discomfort_001", "noise_health_article_001", "noise_family_dinner_001", "noise_mood_snack_001", "noise_entertainment_001"],
+    "hard_negative_sources": ["plan_diet_001", "plan_exercise_001", "task_breakfast_baseline", "task_walk_route_old", "task_buy_scale_old", "pref_log_format_001:detailed_daily_log", "noise_health_article_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

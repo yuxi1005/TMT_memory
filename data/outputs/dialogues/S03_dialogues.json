@@ -1,0 +1,651 @@
+{
+  "user_id": "S03",
+  "source_timeline_id": "S03_latent_world_timeline_v1",
+  "dialogue_dataset_id": "S03_dialogues_v1",
+  "interactions": [
+    {
+      "interaction_id": "S03_i001",
+      "source_event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_workflow_001",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "任务导向短句，强调分区归档和可执行清单",
+      "dialogue": [
+        {"speaker": "user", "text": "以后你帮我整理事情时，最好按学习、求职、生活分开。每条都写清楚人名、截止时间和优先级。"},
+        {"speaker": "assistant", "text": "明白。之后我会先按这三类归档，再给每项标出负责人或相关人、截止时间、当前状态和优先级。"},
+        {"speaker": "user", "text": "对，我不想混在一起，不然小组作业和简历的事情很容易串。"},
+        {"speaker": "assistant", "text": "可以。你发碎片信息时，我会帮你拆成不同栏目，保持短句和可执行格式。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i002",
+      "source_event_id": "e002",
+      "day": 2,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_group_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "小组作业计划，简洁列阶段和截止时间",
+      "dialogue": [
+        {"speaker": "user", "text": "小组作业要开始排计划了，截止大概第40天。我想先定框架，再分市场分析，最后做展示内容。"},
+        {"speaker": "assistant", "text": "可以分三段：先确认整体结构，再完成市场分析，再整理展示稿和材料。"},
+        {"speaker": "user", "text": "优先级挺高的，别让我到最后一周才发现大家内容接不上。"},
+        {"speaker": "assistant", "text": "那建议每段都留一个检查点，特别是市场分析完成后要确认它能接到后面的展示逻辑。"},
+        {"speaker": "user", "text": "嗯，先按这个作为当前小组作业计划。"},
+        {"speaker": "assistant", "text": "已按第40天截止来整理，当前重点是先搭框架，再推进市场分析。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i003",
+      "source_event_id": "e003",
+      "day": 4,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_case_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "案例分析计划，使用商科框架表达",
+      "dialogue": [
+        {"speaker": "user", "text": "案例分析这边我先想用 SWOT 做主框架，截止第34天。"},
+        {"speaker": "assistant", "text": "可以。先按优势、劣势、机会、威胁四块收材料，再把结论和建议分开写。"},
+        {"speaker": "user", "text": "我怕写成空话，所以每块最好都要有证据。"},
+        {"speaker": "assistant", "text": "那计划里可以加一条：每个 SWOT 点至少配一个案例事实或数据来源。"},
+        {"speaker": "user", "text": "先这样，我后面再看老师有没有新要求。"},
+        {"speaker": "assistant", "text": "好的，当前案例分析按 SWOT 框架推进。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i004",
+      "source_event_id": "e004",
+      "day": 6,
+      "storyline_id": "sl_03",
+      "event_type": "create_plan",
+      "target_id": "plan_job_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "求职准备计划，短句列阶段",
+      "dialogue": [
+        {"speaker": "user", "text": "求职这块也要有个计划，截止先放到第62天。先改简历，再准备面试，再看要不要补投。"},
+        {"speaker": "assistant", "text": "可以。顺序是：简历修改、面试准备、补投判断。每一步都可以单独拆待办。"},
+        {"speaker": "user", "text": "简历别只润色，我需要能直接改的版本。"},
+        {"speaker": "assistant", "text": "明白，简历部分我会给具体改法和替换句，不只给泛泛建议。"},
+        {"speaker": "user", "text": "求职先排在学业后面，但不能完全丢。"},
+        {"speaker": "assistant", "text": "好的，求职计划保持推进，但优先级低于近期小组作业和案例分析。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i005",
+      "source_event_id": "e005",
+      "day": 8,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_social_dinner_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "生活社交小插曲，轻松口吻",
+      "dialogue": [
+        {"speaker": "user", "text": "周末同学约饭，我有点想去，但又怕回来就不想写作业。"},
+        {"speaker": "assistant", "text": "可以去放松一下，但时间别拖太晚。你可以把饭局前后留出一小段固定学习时间。"},
+        {"speaker": "user", "text": "嗯，我先别把一整天都让出去。"},
+        {"speaker": "assistant", "text": "这样比较稳，社交安排和主要任务不互相挤掉。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i006",
+      "source_event_id": "e006",
+      "day": 10,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_group_market_part",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "具体小组任务，带截止时间和优先级",
+      "dialogue": [
+        {"speaker": "user", "text": "小组作业里市场分析这块我来做，截止第20天，优先级高。"},
+        {"speaker": "assistant", "text": "记下。建议先列市场规模、用户需求、竞争情况三块，再补数据来源。"},
+        {"speaker": "user", "text": "对，别太长，最后要能放进展示里。"},
+        {"speaker": "assistant", "text": "那输出控制成展示可用的版本：要点短、证据清楚、每页能直接转成 slide。"},
+        {"speaker": "user", "text": "先把这个当成当前待办。"},
+        {"speaker": "assistant", "text": "好的，市场分析任务当前有效，截止第20天。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i007",
+      "source_event_id": "e007",
+      "day": 12,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_resume_output",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "简历修改偏好，要求详细修订说明",
+      "dialogue": [
+        {"speaker": "user", "text": "我改简历的时候，希望你给详细一点的修改说明。不要只说改得更专业。"},
+        {"speaker": "assistant", "text": "可以。我会写清楚原句问题、建议改法、为什么这样改，以及适合投什么岗位。"},
+        {"speaker": "user", "text": "最好还能指出哪些经历该强化，哪些可以删。"},
+        {"speaker": "assistant", "text": "明白，简历修改先按详细修订说明来做，方便你自己筛选和改写。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i008",
+      "source_event_id": "e008",
+      "day": 14,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_case_swot_draft",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "案例 SWOT 草稿任务，焦虑但清单化",
+      "dialogue": [
+        {"speaker": "user", "text": "案例分析的 SWOT 草稿要在第24天前写出来。先别追求完美，但要有初版。"},
+        {"speaker": "assistant", "text": "可以。先写四象限要点，每个要点后面补一句证据或出处。"},
+        {"speaker": "user", "text": "我容易卡在措辞上，你帮我提醒先把内容放上去。"},
+        {"speaker": "assistant", "text": "这次目标是完成草稿，不是最终润色。先保证结构完整和证据位置明确。"},
+        {"speaker": "user", "text": "好，截止第24天。"},
+        {"speaker": "assistant", "text": "已记录，SWOT 草稿是当前案例分析待办。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i009",
+      "source_event_id": "e009",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_group_sync",
+      "retrieval_role": "recurring_task",
+      "dialogue_style": "重复性小组同步，明确周期",
+      "dialogue": [
+        {"speaker": "user", "text": "给小组作业设个每7天同步一次的提醒吧，下一次放第23天。"},
+        {"speaker": "assistant", "text": "好的，每7天做一次小组同步，下一次是第23天。"},
+        {"speaker": "user", "text": "同步时主要看谁卡住、材料有没有接上。"},
+        {"speaker": "assistant", "text": "明白，同步重点是进度、阻塞点和材料衔接。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i010",
+      "source_event_id": "e010",
+      "day": 20,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_group_market_part",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "完成汇报，保留剩余缺口",
+      "dialogue": [
+        {"speaker": "user", "text": "市场分析这块今天做完了，按第20天截止交上去了。"},
+        {"speaker": "assistant", "text": "好的，市场分析已完成。"},
+        {"speaker": "user", "text": "还有一点是数据解释不够顺，但任务本身算完成了。"},
+        {"speaker": "assistant", "text": "明白，状态记为已完成；后面如果需要整合展示，再单独处理数据解释的衔接。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i011",
+      "source_event_id": "e011",
+      "day": 22,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_part_time_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "兼职干扰，简短减压",
+      "dialogue": [
+        {"speaker": "user", "text": "兼职临时排班又变了，我今天心态有点乱。"},
+        {"speaker": "assistant", "text": "先把变动时间记下来，别急着重排所有任务。今天可以只处理最必要的一两件事。"},
+        {"speaker": "user", "text": "嗯，主要是不想被这个打断一整天。"},
+        {"speaker": "assistant", "text": "可以先留一个缓冲段，剩下的等排班确定后再看。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i012",
+      "source_event_id": "e012",
+      "day": 23,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_group_sync",
+      "retrieval_role": "status_update",
+      "dialogue_style": "周期同步完成，记录下次时间",
+      "dialogue": [
+        {"speaker": "user", "text": "第23天的小组同步做完了，大家进度能对上。"},
+        {"speaker": "assistant", "text": "好的，本次小组同步已完成。下一次按7天后，也就是第30天。"},
+        {"speaker": "user", "text": "这次发现主要问题是展示逻辑还不够顺。"},
+        {"speaker": "assistant", "text": "记下：当前发现是展示逻辑需要再理顺。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i013",
+      "source_event_id": "e013",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_case_swot_draft",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "案例草稿完成，注明局限",
+      "dialogue": [
+        {"speaker": "user", "text": "SWOT 草稿今天写完了，赶在第24天前完成。"},
+        {"speaker": "assistant", "text": "好的，SWOT 草稿已完成。"},
+        {"speaker": "user", "text": "但现在还是有点模板感，证据也不够细。"},
+        {"speaker": "assistant", "text": "明白，任务状态是完成；局限是内容偏模板化、证据深度还不够。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i014",
+      "source_event_id": "e014",
+      "day": 28,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_case_001",
+      "retrieval_role": "current_state_seed",
+      "dialogue_style": "收到反馈后的计划压力，要求重新排序",
+      "dialogue": [
+        {"speaker": "user", "text": "老师反馈说案例分析不能只停在 SWOT，要更像管理建议，不然会很浅。"},
+        {"speaker": "assistant", "text": "这会影响原来的案例分析计划。现在需要把重点从四象限描述转到问题判断和建议论证。"},
+        {"speaker": "user", "text": "对，我有点慌，因为之前的草稿基本都是 SWOT。"},
+        {"speaker": "assistant", "text": "先别全推倒。可以保留能用的事实材料，把框架改成“问题、证据、建议、风险”。"},
+        {"speaker": "user", "text": "那我后面要按新方向重排。"},
+        {"speaker": "assistant", "text": "好的，当前需要处理的是案例分析方向调整，旧草稿只能作为材料来源。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i015",
+      "source_event_id": "e015",
+      "day": 30,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_group_sync",
+      "retrieval_role": "outdated_status",
+      "dialogue_style": "周期同步完成，但引用了旧阶段信息",
+      "dialogue": [
+        {"speaker": "user", "text": "第30天的小组同步也做了。我们还按最早那个阶段表在看，有点发现它不太贴合现在进度。"},
+        {"speaker": "assistant", "text": "记录本次同步已完成，下一次是第37天。"},
+        {"speaker": "user", "text": "嗯，早期阶段表里有些说法可能已经不准了。"},
+        {"speaker": "assistant", "text": "明白，这次同步里提到的早期阶段表只保留作参考，后面要看更新后的安排。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i016",
+      "source_event_id": "e016",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_case_001",
+      "retrieval_role": "stale_plan",
+      "dialogue_style": "替换旧案例计划，明确旧方案不再作为当前依据",
+      "dialogue": [
+        {"speaker": "user", "text": "案例分析原来那个 SWOT 方案先别按了。老师反馈后，它已经不适合作为主线。"},
+        {"speaker": "assistant", "text": "明白，原来的 SWOT 方案不再作为当前推进依据。"},
+        {"speaker": "user", "text": "里面有些材料还能用，但结构要换。"},
+        {"speaker": "assistant", "text": "可以保留事实和数据，框架本身需要由新方案接管。"},
+        {"speaker": "user", "text": "对，别再提醒我按四象限写完。"},
+        {"speaker": "assistant", "text": "好的，后续不会再把 SWOT 四象限当作当前主计划。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i017",
+      "source_event_id": "e017",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_case_002",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "新版案例计划，管理建议导向",
+      "dialogue": [
+        {"speaker": "user", "text": "新版案例分析计划改成管理建议导向，截止第55天。先确认核心问题，再整理证据，最后写建议和风险。"},
+        {"speaker": "assistant", "text": "可以。新版顺序是：核心问题、证据链、建议方案、风险和取舍。"},
+        {"speaker": "user", "text": "这版要比原来更像商科分析，不要只是列点。"},
+        {"speaker": "assistant", "text": "明白，后续以新版计划为准，重点放在论证关系和建议可执行性。"},
+        {"speaker": "user", "text": "优先级提高一点，案例这边得赶紧救回来。"},
+        {"speaker": "assistant", "text": "已记录，新版案例分析计划当前有效，截止第55天。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i018",
+      "source_event_id": "e018",
+      "day": 35,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_resume_draft",
+      "retrieval_role": "important_not_urgent_task",
+      "dialogue_style": "求职任务，重要但不抢主线",
+      "dialogue": [
+        {"speaker": "user", "text": "我得在第48天前做一版简历初稿，不算最急，但不能拖。"},
+        {"speaker": "assistant", "text": "可以先做初稿，不追求一次定稿。建议先整理教育经历、项目经历、实习或兼职经历。"},
+        {"speaker": "user", "text": "项目经历里可能要把案例分析和小组作业写进去。"},
+        {"speaker": "assistant", "text": "可以，但先写成经历素材，等后面再根据岗位调整表述。"},
+        {"speaker": "user", "text": "先记为第48天前完成初稿。"},
+        {"speaker": "assistant", "text": "好的，简历初稿任务已记录，当前重要但不比学业任务更急。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i019",
+      "source_event_id": "e019",
+      "day": 38,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_resume_output",
+      "retrieval_role": "updated_preference",
+      "dialogue_style": "临时偏好变化，从详细说明改为短行动清单",
+      "dialogue": [
+        {"speaker": "user", "text": "简历修改这几天先别给我长篇解释了，我看不进去。之前要详细说明没错，但现在时间紧。"},
+        {"speaker": "assistant", "text": "明白。之前是详细修订说明；当前阶段先改成简短行动清单。"},
+        {"speaker": "user", "text": "对，直接告诉我删什么、改什么、补什么。"},
+        {"speaker": "assistant", "text": "好的，接下来简历相关输出用“删除、改写、补充、优先级”这种短清单。"},
+        {"speaker": "user", "text": "等这阵过去再恢复详细也行。"},
+        {"speaker": "assistant", "text": "记下，这是当前阶段的临时格式偏好。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i020",
+      "source_event_id": "e020",
+      "day": 40,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_group_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "小组计划延期并重排优先级",
+      "dialogue": [
+        {"speaker": "user", "text": "小组作业原来第40天收尾不现实了，改到第58天。现在重点要先把展示结构理顺。"},
+        {"speaker": "assistant", "text": "明白，旧的第40天收尾安排需要更新。当前计划改成第58天截止，优先处理展示结构。"},
+        {"speaker": "user", "text": "市场分析已经做完了，不要再把它当主要待办。"},
+        {"speaker": "assistant", "text": "好的，市场分析作为已完成材料；当前重点是展示结构、材料衔接和后续讲稿。"},
+        {"speaker": "user", "text": "对，先救结构，不然大家的部分拼不起来。"},
+        {"speaker": "assistant", "text": "已更新，小组作业当前计划以第58天和展示结构优先为准。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i021",
+      "source_event_id": "e021",
+      "day": 42,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_group_slides",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "高优先级 slide 任务，明确截止",
+      "dialogue": [
+        {"speaker": "user", "text": "我要开始做小组展示 slides，截止先放第54天，优先级很高。"},
+        {"speaker": "assistant", "text": "可以。建议先确定总结构，再把已完成的市场分析压缩进合适页面。"},
+        {"speaker": "user", "text": "重点是结构和过渡，不是把字堆上去。"},
+        {"speaker": "assistant", "text": "明白，slides 目标是展示清楚：标题、关键结论、证据和过渡都要短。"},
+        {"speaker": "user", "text": "这个先排到小组作业最前面。"},
+        {"speaker": "assistant", "text": "好的，展示 slides 是当前高优先级待办，截止第54天。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i022",
+      "source_event_id": "e022",
+      "day": 44,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_movie_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "娱乐插曲，带一点拖延感",
+      "dialogue": [
+        {"speaker": "user", "text": "我突然很想去看电影，感觉最近一直在赶作业，有点烦。"},
+        {"speaker": "assistant", "text": "可以安排一场放松，但别让它占掉整天。选一个固定时段就好。"},
+        {"speaker": "user", "text": "嗯，我怕自己看完又开始刷手机。"},
+        {"speaker": "assistant", "text": "那可以把电影当成一个结束点，看完就不继续加娱乐项目。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i023",
+      "source_event_id": "e023",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_case_data_evidence",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "案例证据任务，强调数据和论证",
+      "dialogue": [
+        {"speaker": "user", "text": "新版案例分析里，证据和数据这块我得单独做，截止第57天。"},
+        {"speaker": "assistant", "text": "可以。先列核心问题需要哪些证据，再找数据、案例事实和引用来源。"},
+        {"speaker": "user", "text": "这块很关键，不然建议会像拍脑袋。"},
+        {"speaker": "assistant", "text": "明白，证据任务优先服务于管理建议的可信度。"},
+        {"speaker": "user", "text": "第57天前要有能放进报告的版本。"},
+        {"speaker": "assistant", "text": "已记录，案例证据任务当前有效，截止第57天。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i024",
+      "source_event_id": "e024",
+      "day": 48,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_resume_draft",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "简历初稿完成，保留不足",
+      "dialogue": [
+        {"speaker": "user", "text": "简历初稿第48天完成了，先有一版了。"},
+        {"speaker": "assistant", "text": "好的，简历初稿已完成。"},
+        {"speaker": "user", "text": "不过案例分析那段还写得很粗，后面可能要再改。"},
+        {"speaker": "assistant", "text": "明白，初稿状态是完成；不足是案例分析经历还需要后续优化。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i025",
+      "source_event_id": "e025",
+      "day": 50,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_mock_interview",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "面试准备任务，简洁行动清单",
+      "dialogue": [
+        {"speaker": "user", "text": "我想在第64天前做一轮模拟面试，主要练自我介绍和项目经历。"},
+        {"speaker": "assistant", "text": "可以。准备清单：自我介绍、案例分析经历、小组协作经历、常见追问。"},
+        {"speaker": "user", "text": "先别搞太复杂，我怕拖。"},
+        {"speaker": "assistant", "text": "那先做一轮基础模拟，重点是能完整说出来，不追求完美答案。"},
+        {"speaker": "user", "text": "好，记成当前求职待办。"},
+        {"speaker": "assistant", "text": "已记录，模拟面试任务当前有效，截止第64天。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i026",
+      "source_event_id": "e026",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_old_networking_event",
+      "retrieval_role": "important_not_urgent_task",
+      "dialogue_style": "社交求职活动，价值一般但先记录",
+      "dialogue": [
+        {"speaker": "user", "text": "有个求职 networking 活动，第56天前要不要报名我还在犹豫。先记一下吧。"},
+        {"speaker": "assistant", "text": "好的，先记录为待判断任务。它和求职相关，但优先级可以低于当前小组和案例任务。"},
+        {"speaker": "user", "text": "对，我怕只是去社交一下，实际帮助不大。"},
+        {"speaker": "assistant", "text": "可以先看它是否有目标岗位或有效联系人，再决定要不要投入时间。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i027",
+      "source_event_id": "e027",
+      "day": 54,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_group_slides",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "延期但仍当前有效，带部分进展",
+      "dialogue": [
+        {"speaker": "user", "text": "slides 今天做不完了，原来第54天截止得改到第59天。"},
+        {"speaker": "assistant", "text": "明白，展示 slides 没完成，但仍是当前任务；截止从第54天改到第59天。"},
+        {"speaker": "user", "text": "结构大概有了，但内容和排版还要补。"},
+        {"speaker": "assistant", "text": "好的，已有部分进展是结构初步完成；接下来补内容和排版。"},
+        {"speaker": "user", "text": "这个还是很重要，别降级。"},
+        {"speaker": "assistant", "text": "已记录，延期后优先级仍然高。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i028",
+      "source_event_id": "e028",
+      "day": 55,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_old_networking_event",
+      "retrieval_role": "cancelled_task",
+      "dialogue_style": "取消低价值活动，明确不再推进",
+      "dialogue": [
+        {"speaker": "user", "text": "那个 networking 活动不去了，取消吧。现在 slides 和案例证据更重要。"},
+        {"speaker": "assistant", "text": "明白，networking 活动取消，不再作为待办推进。"},
+        {"speaker": "user", "text": "对，不要再提醒我报名。"},
+        {"speaker": "assistant", "text": "好的，后续不再按报名任务提醒，只保留取消记录。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i029",
+      "source_event_id": "e029",
+      "day": 57,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_case_data_evidence",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "案例证据延期，任务仍有效",
+      "dialogue": [
+        {"speaker": "user", "text": "案例证据第57天也没完全做完，改到第63天吧。"},
+        {"speaker": "assistant", "text": "明白，证据任务延期到第63天，状态仍是当前待办。"},
+        {"speaker": "user", "text": "我已经找了一部分数据，但还没整理成报告能用的论证。"},
+        {"speaker": "assistant", "text": "记下，已有进展是找到部分数据；剩余工作是把数据接到建议论证里。"},
+        {"speaker": "user", "text": "这个不能丢，案例新版计划靠它。"},
+        {"speaker": "assistant", "text": "好的，延期后仍保持较高优先级。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i030",
+      "source_event_id": "e030",
+      "day": 59,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_group_slides",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "延期任务完成，注明后续小缺口",
+      "dialogue": [
+        {"speaker": "user", "text": "slides 第59天终于做完了。"},
+        {"speaker": "assistant", "text": "好的，小组展示 slides 已完成。"},
+        {"speaker": "user", "text": "还剩一点讲稿衔接，但 slides 本身完成了。"},
+        {"speaker": "assistant", "text": "明白，slides 状态记为完成；讲稿衔接如果需要，后面单独列任务。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i031",
+      "source_event_id": "e031",
+      "day": 60,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_social_001",
+      "retrieval_role": "current_constraint",
+      "dialogue_style": "临近截止的社交限制，直接约束安排",
+      "dialogue": [
+        {"speaker": "user", "text": "到第72天之前，我要限制社交活动。小组作业和案例都太挤了。"},
+        {"speaker": "assistant", "text": "明白，第72天前社交活动要压缩，优先给小组作业和案例分析留时间。"},
+        {"speaker": "user", "text": "不是完全不见人，但临时饭局和娱乐少接。"},
+        {"speaker": "assistant", "text": "好的，当前约束是减少临时社交和娱乐安排，直到第72天。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i032",
+      "source_event_id": "e032",
+      "day": 62,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_group_chat_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "小组聊天噪声，真实吐槽",
+      "dialogue": [
+        {"speaker": "user", "text": "小组群今天消息太多了，大家在里面来回说案例证据，我看得头大。"},
+        {"speaker": "assistant", "text": "可以先别逐条跟，等讨论稳定后再抓结论。"},
+        {"speaker": "user", "text": "嗯，我现在越看越焦虑。"},
+        {"speaker": "assistant", "text": "先暂停一下，晚点只整理明确决定和你需要做的部分就好。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i033",
+      "source_event_id": "e033",
+      "day": 63,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_case_data_evidence",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "案例证据完成，输出可用材料",
+      "dialogue": [
+        {"speaker": "user", "text": "案例证据这块第63天完成了，数据和论证都整理出来了。"},
+        {"speaker": "assistant", "text": "好的，案例证据任务已完成。"},
+        {"speaker": "user", "text": "现在有一组数据表，也有能接到建议部分的说明。"},
+        {"speaker": "assistant", "text": "明白，输出包括数据材料和建议论证说明，可用于新版案例分析。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i034",
+      "source_event_id": "e034",
+      "day": 65,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_case_001",
+      "retrieval_role": "status_update",
+      "dialogue_style": "当前状态更新，阻塞点转移",
+      "dialogue": [
+        {"speaker": "user", "text": "案例分析现在证据问题基本解决了，新的卡点变成建议页怎么写得有说服力。"},
+        {"speaker": "assistant", "text": "明白，证据不再是主要阻塞点；当前重点变成建议页的逻辑和表达。"},
+        {"speaker": "user", "text": "对，尤其是建议不能像口号。"},
+        {"speaker": "assistant", "text": "那下一步可以围绕每条建议写“依据、执行方式、预期效果、风险”。"},
+        {"speaker": "user", "text": "先按这个状态记。"},
+        {"speaker": "assistant", "text": "已记录，当前案例分析的主要阻塞点是建议页。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i035",
+      "source_event_id": "e035",
+      "day": 67,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_mock_interview",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "求职任务延期，已有部分准备",
+      "dialogue": [
+        {"speaker": "user", "text": "模拟面试没在第64天做完，往后改到第74天。"},
+        {"speaker": "assistant", "text": "明白，模拟面试延期到第74天，任务仍然有效。"},
+        {"speaker": "user", "text": "自我介绍我写了一版，项目经历的追问还没练。"},
+        {"speaker": "assistant", "text": "记下，已有自我介绍初版；剩余重点是项目经历追问和现场表达。"},
+        {"speaker": "user", "text": "最近学业优先，所以这个先往后放。"},
+        {"speaker": "assistant", "text": "好的，当前模拟面试优先级略低于案例和小组收尾。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i036",
+      "source_event_id": "e036",
+      "day": 70,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_case_recommendation_slide",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "案例建议页任务，高优先级",
+      "dialogue": [
+        {"speaker": "user", "text": "案例分析还要做建议页，截止第78天，优先级很高。"},
+        {"speaker": "assistant", "text": "可以。建议页要把核心问题、证据和建议连起来，不要只写结论。"},
+        {"speaker": "user", "text": "对，要能放进最终展示里。"},
+        {"speaker": "assistant", "text": "那输出格式可以按“建议、依据、执行动作、风险”四列整理。"},
+        {"speaker": "user", "text": "这个是当前最重要的案例任务。"},
+        {"speaker": "assistant", "text": "已记录，案例建议页任务当前有效，截止第78天。"}
+      ]
+    },
+    {
+      "interaction_id": "S03_i037",
+      "source_event_id": "e037",
+      "day": 72,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_group_speaker_notes",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "小组讲稿任务，面向展示收尾",
+      "dialogue": [
+        {"speaker": "user", "text": "小组展示还要补 speaker notes，截止第79天。"},
+        {"speaker": "assistant", "text": "好的，讲稿备注是新的当前待办，截止第79天。"},
+        {"speaker": "user", "text": "slides 已经完成了，这次主要是把每页该怎么讲写清楚。"},
+        {"speaker": "assistant", "text": "明白，slides 不再作为未完成任务；这次重点是每页讲述顺序和过渡句。"},
+        {"speaker": "user", "text": "最好短一点，别写成背诵稿。"},
+        {"speaker": "assistant", "text": "可以，speaker notes 按短句提示写，方便现场表达。"}
+      ]
+    }
+  ],
+  "quality_check": {
+    "all_events_covered": true,
+    "interaction_count": 37,
+    "dialogues_are_not_memory_units": true,
+    "dialogues_follow_user_profile": true,
+    "metadata_not_leaked_in_dialogue": true,
+    "noise_dialogues_are_natural": true,
+    "dialogues_preserve_event_state": true,
+    "no_query_generated": true,
+    "no_gold_generated": true,
+    "no_mu_extracted": true
+  }
+}

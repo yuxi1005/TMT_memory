@@ -1,0 +1,689 @@
+{
+  "user_id": "P06",
+  "timeline_id": "P06_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 96,
+    "length_days": 96,
+    "reason": "P06 是管理咨询顾问，处在 deck 结构交付和行业研究协作密集期，客户催促、出差、会议临时结论和旧版方案会在 2-3 个月内反复改变优先级，因此选择 96 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "Deck 结构交付与版本收敛",
+      "domain": "deck 结构",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "行业研究与访谈整理",
+      "domain": "行业研究 / 访谈整理",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "客户沟通与总结格式维护",
+      "domain": "会议沟通 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "出差、客户催促和旧版方案噪音",
+      "domain": "家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_consulting_record_style",
+      "content": "用户确立长期咨询项目记录偏好，希望 deck 结构、行业研究、访谈整理、会议沟通和出差安排分开归档，并突出优先级、负责人和下一步动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["deck 结构", "行业研究", "访谈整理", "会议沟通", "出差安排"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_deck_001",
+      "content": "用户制定早期 deck 结构计划，准备按市场规模、竞争格局、客户痛点和机会建议四章展开。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 38,
+        "chapters": ["市场规模", "竞争格局", "客户痛点", "机会建议"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_research_001",
+      "content": "用户创建早期行业研究计划，准备先整理公开报告、竞品材料、专家访谈和客户内部数据。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 48,
+        "sources": ["公开报告", "竞品材料", "专家访谈", "客户内部数据"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_deck_output_format",
+      "content": "用户记录 deck 结构输出偏好，初期希望 agent 给详细版结构，包含假设、证据、图表建议、客户问题和下一步材料。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_deck_structure",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "memory_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 13,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_travel_001",
+      "content": "用户记录下周出差行程变化，标注航班时间、客户会议地点和可能压缩的材料整理窗口。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "出差"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_deck_storyline_old",
+      "content": "用户创建旧版 deck 主线梳理任务，原计划用市场规模先行、再推导机会空间的叙事方式。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 28
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e007",
+      "day": 20,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_deck_research_review",
+      "content": "用户设置每两周复盘一次 deck 和行业研究材料，把当前结构、旧版方案、客户催促、访谈材料和出差记录分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 34
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_research_summary_old",
+      "content": "用户创建旧版行业研究摘要任务，原计划把公开报告和竞品材料都压缩成同一套 PEST 框架。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 28,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_deck_storyline_old",
+      "content": "用户完成旧版 deck 主线梳理，但确认市场规模先行会让客户痛点不够突出。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 28
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 28,
+        "completed_day": 28,
+        "limitation": "客户痛点不够突出"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 31,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_client_urge_001",
+      "content": "客户临时催促要一页高层摘要，用户记录对方关注点和截止时间，暂未替换完整 deck 交付计划。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.36,
+        "topic": "客户催促"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e011",
+      "day": 34,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_deck_research_review",
+      "content": "用户完成第一次材料复盘，确认客户催促的一页摘要和完整 deck 结构相关，但不能直接替代当前主线。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 34
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 34,
+        "next_due_day": 48,
+        "finding": "一页摘要不能替代完整 deck 主线"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_research_summary_old",
+      "content": "用户没有完成旧版行业研究摘要，把截止日推迟到第 44 天，但仍保留为当前研究整理任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 36,
+        "deadline_day": 44,
+        "partial_progress": "公开报告摘要已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 39,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_partner_001",
+      "content": "项目合伙人反馈客户更关心痛点诊断和行动路线，而不是市场规模铺垫。",
+      "state_before": {
+        "related_plan": "plan_deck_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_deck_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 44,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_research_summary_old",
+      "content": "用户完成旧版行业研究摘要，但确认 PEST 框架太宽，不能直接服务当前客户痛点诊断。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 44
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 44,
+        "completed_day": 44,
+        "limitation": "PEST 框架太宽"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 47,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_deck_001",
+      "content": "用户将市场规模先行的 deck 结构替换为客户痛点诊断和行动路线优先结构，旧结构只保留为备选页素材。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 38,
+        "chapters": ["市场规模", "竞争格局", "客户痛点", "机会建议"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 47,
+        "replaced_by": "plan_deck_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 47,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_deck_002",
+      "content": "用户创建新的 deck 结构计划，优先呈现客户痛点、根因诊断、行动路线和高层摘要。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.93,
+        "deadline_day": 84,
+        "replaces": "plan_deck_001",
+        "chapters": ["客户痛点", "根因诊断", "行动路线", "高层摘要"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 50,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_research_001",
+      "content": "用户将公开材料优先的行业研究计划替换为访谈证据和客户内部数据优先计划，旧研究方案保留为背景附录来源。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 48,
+        "sources": ["公开报告", "竞品材料", "专家访谈", "客户内部数据"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 50,
+        "replaced_by": "plan_research_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 50,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_research_002",
+      "content": "用户创建新的研究计划，优先整理访谈证据、客户内部数据和能支撑行动路线的行业事实。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 86,
+        "replaces": "plan_research_001",
+        "sources": ["访谈证据", "客户内部数据", "行动路线相关行业事实"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 54,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_deck_output_format",
+      "content": "用户把 deck 结构输出偏好从详细版结构改成客户汇报简版，只保留结论、证据、建议、负责人和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_deck_structure",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "client_brief_structure",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "客户汇报临近，需要直接复制到文档"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 58,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_old_version_001",
+      "content": "用户翻到旧版市场规模页，记录其中一个图表可能以后可用，但没有放回当前主线。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.26,
+        "topic": "旧版方案"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e021",
+      "day": 62,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_executive_summary",
+      "content": "用户创建高层摘要页任务，需要把痛点、证据、建议和下一步压缩成一页客户可读版本。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 76
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 66,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_meeting_conclusion_001",
+      "content": "一次临时会议里客户提出想增加组织能力评估，用户记录结论和提出人，先放入待评估池。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.32,
+        "topic": "会议临时结论"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 70,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_interview_synthesis",
+      "content": "用户创建访谈证据归纳任务，需要按痛点、根因、客户原话和可落地行动整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 88
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e024",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_executive_summary",
+      "content": "用户完成高层摘要页，确认客户痛点、两条关键证据和三步行动建议已经可放入汇报 deck。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 76
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.88,
+        "deadline_day": 76,
+        "completed_day": 76,
+        "outputs": ["客户痛点", "两条关键证据", "三步行动建议"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e025",
+      "day": 80,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_org_assessment_old",
+      "content": "用户创建组织能力评估补充页任务，原本想顺手加进当前汇报 deck。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.45,
+        "deadline_day": 84
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e026",
+      "day": 84,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_org_assessment_old",
+      "content": "用户取消把组织能力评估补充页放进当前 deck 的任务，决定留到下一阶段讨论。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.45,
+        "deadline_day": 84
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.22,
+        "cancelled_day": 84,
+        "reason": "不属于当前痛点诊断和行动路线主线"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e027",
+      "day": 86,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_deck_current",
+      "content": "用户确认当前 deck 重点不是旧的市场规模铺垫，也不是组织能力补充页，而是客户痛点、根因诊断和行动路线。",
+      "state_before": {
+        "plan": "plan_deck_002",
+        "old_reference": "plan_deck_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "客户痛点、根因诊断和行动路线",
+        "not_current": "市场规模铺垫和组织能力补充页"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e028",
+      "day": 88,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_interview_synthesis",
+      "content": "用户未完成访谈证据归纳，把截止日推迟到第 100 天，但仍保留为当前研究整理核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 88
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 88,
+        "deadline_day": 100,
+        "partial_progress": "痛点和客户原话已初步整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e029",
+      "day": 90,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_deck_research_review",
+      "content": "用户完成近期材料复盘，确认当前重点是访谈证据归纳、客户汇报简版和行动路线页。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 34,
+        "next_due_day": 48
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 90,
+        "next_due_day": 104,
+        "current_focus": ["访谈证据归纳", "客户汇报简版", "行动路线页"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e030",
+      "day": 92,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录返程后睡眠不足和家庭安排冲突，准备不把周末默认排满补页工作。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "家庭与个人安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 94,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_deck_scope_lock",
+      "content": "用户设置近期约束，汇报前不再新增非痛点诊断主线页面，客户新想法先进入下一阶段池。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "constraint_type": "deck_scope_lock_before_client_meeting",
+        "valid_until_day": 112
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 96,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_action_roadmap_page",
+      "content": "用户创建行动路线页任务，需要把三步建议、负责人、时间线和风险前提整理成客户汇报版本。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 108
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 96,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_deck_research_review",
+      "content": "用户完成最近一次 deck 复盘，确认当前活跃事项是访谈证据归纳、行动路线页和汇报前范围锁定。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 90,
+        "next_due_day": 104
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 96,
+        "next_due_day": 110,
+        "current_focus": ["访谈证据归纳", "行动路线页", "汇报前范围锁定"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_deck_002", "plan_research_002"],
+    "stale_plans": ["plan_deck_001", "plan_research_001"],
+    "active_tasks": ["task_interview_synthesis", "task_action_roadmap_page"],
+    "completed_tasks": ["task_deck_storyline_old", "task_research_summary_old", "task_executive_summary"],
+    "cancelled_tasks": ["task_org_assessment_old"],
+    "postponed_tasks": ["task_interview_synthesis"],
+    "current_constraints": ["constraint_deck_scope_lock"],
+    "stable_preferences": ["pref_consulting_record_style"],
+    "old_preferences": ["pref_deck_output_format:detailed_deck_structure"],
+    "updated_preferences": ["pref_deck_output_format:client_brief_structure"],
+    "important_not_urgent_tasks": ["task_research_summary_old", "task_action_roadmap_page"],
+    "urgent_low_value_tasks": ["noise_client_urge_001", "task_org_assessment_old"],
+    "noise_events": ["noise_travel_001", "noise_client_urge_001", "noise_old_version_001", "noise_meeting_conclusion_001", "noise_personal_schedule_001"],
+    "hard_negative_sources": ["plan_deck_001", "plan_research_001", "task_deck_storyline_old", "task_research_summary_old", "task_org_assessment_old", "pref_deck_output_format:detailed_deck_structure", "noise_old_version_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

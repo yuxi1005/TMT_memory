@@ -1,38 +1,87 @@
+import math
+
 from scorers import (
-    TMT_score,
+    accessibility,
+    bounded_similarity_score,
+    clamp01,
     dependency_score,
     forgetting_decay,
-    parse_time,
+    memory_role,
     recency_score,
     similarity_score,
+    tmt_q,
     tokenize,
 )
 
-QUERY_GATES = {
-    "task_due": {"semantic": 0.28, "access": 0.36, "compat": 0.18, "domain": 0.10, "base": 0.08},
-    "task_priority": {"semantic": 0.28, "access": 0.26, "compat": 0.22, "domain": 0.14, "base": 0.10},
-    "task_status": {"semantic": 0.32, "access": 0.16, "compat": 0.28, "domain": 0.14, "base": 0.10},
-    "task_context": {"semantic": 0.40, "access": 0.10, "compat": 0.24, "domain": 0.18, "base": 0.08},
-    "task_dependency": {"semantic": 0.34, "access": 0.14, "compat": 0.30, "domain": 0.14, "base": 0.08},
-    "chat_preference": {"semantic": 0.34, "access": 0.20, "compat": 0.30, "domain": 0.08, "base": 0.08},
-    "chat_profile": {"semantic": 0.34, "access": 0.18, "compat": 0.32, "domain": 0.08, "base": 0.08},
-    "chat_history": {"semantic": 0.42, "access": 0.16, "compat": 0.20, "domain": 0.14, "base": 0.08},
-    "mixed": {"semantic": 0.30, "access": 0.26, "compat": 0.24, "domain": 0.12, "base": 0.08},
-    "negative": {"semantic": 0.45, "access": 0.05, "compat": 0.20, "domain": 0.20, "base": 0.10},
+
+ROLE_INTENT_MATRIX = {
+    "task_due": {
+        "active_todo": 1.0,
+        "completed_todo": 0.1,
+        "fact_context": 0.2,
+        "preference": 0.1,
+    },
+    "task_priority": {
+        "active_todo": 1.0,
+        "completed_todo": 0.1,
+        "fact_context": 0.3,
+        "preference": 0.1,
+    },
+    "task_status": {
+        "active_todo": 0.8,
+        "completed_todo": 0.8,
+        "fact_context": 0.8,
+        "preference": 0.2,
+    },
+    "task_context": {
+        "active_todo": 0.4,
+        "completed_todo": 0.8,
+        "fact_context": 1.0,
+        "preference": 0.3,
+    },
+    "task_dependency": {
+        "active_todo": 0.8,
+        "completed_todo": 0.6,
+        "fact_context": 1.0,
+        "preference": 0.2,
+    },
+    "chat_preference": {
+        "active_todo": 0.1,
+        "completed_todo": 0.4,
+        "fact_context": 0.5,
+        "preference": 1.0,
+    },
+    "chat_profile": {
+        "active_todo": 0.1,
+        "completed_todo": 0.5,
+        "fact_context": 0.7,
+        "preference": 1.0,
+    },
+    "chat_history": {
+        "active_todo": 0.8,
+        "completed_todo": 0.9,
+        "fact_context": 1.0,
+        "preference": 1.0,
+    },
+    "mixed": {
+        "active_todo": 0.8,
+        "completed_todo": 0.8,
+        "fact_context": 0.9,
+        "preference": 0.9,
+    },
+    "negative": {
+        "active_todo": 0.0,
+        "completed_todo": 0.0,
+        "fact_context": 0.0,
+        "preference": 0.0,
+    },
 }
 
-TYPE_COMPATIBILITY = {
-    "task_due": {"todo": 1.0, "status_update": 0.65, "dependency": 0.55, "constraint": 0.45, "fact": 0.25},
-    "task_priority": {"todo": 0.95, "status_update": 0.55, "dependency": 0.45, "constraint": 0.45, "fact": 0.25},
-    "task_status": {"status_update": 1.0, "todo": 0.85, "fact": 0.45, "constraint": 0.35, "dependency": 0.35},
-    "task_context": {"fact": 0.9, "dependency": 0.85, "constraint": 0.75, "status_update": 0.65, "todo": 0.45, "preference": 0.35},
-    "task_dependency": {"dependency": 1.0, "constraint": 0.85, "todo": 0.55, "status_update": 0.5, "fact": 0.4},
-    "chat_preference": {"preference": 1.0, "habit": 0.85, "profile": 0.45, "fact": 0.35, "status_update": 0.35},
-    "chat_profile": {"profile": 1.0, "fact": 0.65, "habit": 0.55, "preference": 0.35},
-    "chat_history": {"fact": 0.75, "preference": 0.65, "habit": 0.6, "profile": 0.55, "status_update": 0.55, "todo": 0.35},
-    "mixed": {"todo": 0.8, "preference": 0.85, "habit": 0.75, "dependency": 0.75, "constraint": 0.7, "status_update": 0.7, "fact": 0.6, "profile": 0.55},
-    "negative": {"todo": 0.0, "preference": 0.0, "profile": 0.0, "fact": 0.0, "habit": 0.0, "dependency": 0.0, "constraint": 0.0, "status_update": 0.0},
-}
+TMT_QUERY_SUBTYPES = {"task_due", "task_priority", "task_status"}
+
+
+def query_subtype(query):
+    return query.get("query_subtype") or query.get("query_mode", "chat")
 
 
 def event_text(event, memories_by_id=None):
@@ -51,7 +100,82 @@ def smooth_max(values, tau=0.15):
     m = max(values)
     if tau <= 0:
         return m
-    return tau * __import__("math").log(sum(__import__("math").exp((v - m) / tau) for v in values)) + m
+    mean_exp = sum(math.exp((value - m) / tau) for value in values) / len(values)
+    return m + tau * math.log(mean_exp)
+
+
+def intent_gate(query, memory, disabled=False):
+    if disabled:
+        return 1.0
+    matrix = ROLE_INTENT_MATRIX.get(query_subtype(query), ROLE_INTENT_MATRIX["chat_history"])
+    return matrix.get(memory_role(memory), 0.4)
+
+
+def domain_gate(query, memory, event, disabled=False):
+    if disabled:
+        return 1.0
+
+    explicit_domain = memory.get("domain")
+    query_entities = query.get("constraints", {}).get("entities", [])
+    subtype = query_subtype(query)
+    if explicit_domain and query_entities:
+        if explicit_domain in query_entities:
+            return 1.2
+        if explicit_domain == "profile" and subtype in {"chat_preference", "chat_profile", "chat_history", "mixed"}:
+            return 1.2
+        return 0.05
+
+    query_tokens = tokenize(query.get("query", ""))
+    if not query_tokens:
+        return 1.0
+    text = " ".join([memory.get("content", ""), event.get("title", ""), event.get("event_text", "")])
+    text_tokens = tokenize(text)
+    if not text_tokens:
+        return 1.0
+    overlap = query_tokens & text_tokens
+    return 1.2 if any("_" in token or len(token) >= 6 for token in overlap) else 1.0
+
+
+def memory_accessibility(
+    memory,
+    query,
+    now,
+    ablation="full_core",
+    disable_role_transition=False,
+):
+    role = memory_role(memory)
+
+    if disable_role_transition and memory.get("memory_type") == "todo":
+        role = "active_todo"
+
+    if role == "active_todo":
+        if ablation != "wo_tmt_condition" and query_subtype(query) not in TMT_QUERY_SUBTYPES:
+            return forgetting_decay(memory, now)
+        if ablation == "wo_tmt":
+            return clamp01(memory.get("accessible_score", 0.5))
+        tmt_memory = {**memory, "is_done": False} if disable_role_transition else memory
+        return tmt_q(tmt_memory, now, use_eisenhower=ablation != "wo_eisenhower")
+
+    if ablation == "wo_decay":
+        return clamp01(memory.get("accessible_score", 0.5))
+    return accessibility(memory, now)
+
+
+def score_memory_core(memory, query, event, now, ablation="full_core"):
+    semantic = bounded_similarity_score(query, memory, use_embedding=ablation != "wo_embedding")
+    gate = intent_gate(query, memory, disabled=ablation == "wo_role_matrix")
+    domain = domain_gate(query, memory, event, disabled=ablation == "wo_domain_gate")
+    disable_role_transition = ablation == "wo_role_transition"
+    access = memory_accessibility(
+        memory,
+        query,
+        now,
+        ablation=ablation,
+        disable_role_transition=disable_role_transition,
+    )
+    score = semantic * gate * domain * access
+
+    return clamp01(score)
 
 
 def rank_events(case, method, top_k=3):
@@ -61,7 +185,7 @@ def rank_events(case, method, top_k=3):
         return similarity_only(case, top_k)
     if method == "recency_similarity_hybrid":
         return recency_similarity_hybrid(case, top_k)
-    if method == "proposed_TMT_decay_event_memory":
+    if method in {"proposed_TMT_decay_event_memory", "proposed_theory_core"}:
         return proposed_TMT_decay_event_memory(case, top_k)
     raise ValueError(f"Unknown selector method: {method}")
 
@@ -73,7 +197,7 @@ def rank_memories(case, method, top_k=10):
         rows = similarity_memory_rows(case)
     elif method == "recency_similarity_hybrid":
         rows = recency_similarity_memory_rows(case)
-    elif method == "proposed_TMT_decay_event_memory":
+    elif method in {"proposed_TMT_decay_event_memory", "proposed_theory_core"}:
         rows = proposed_memory_rows(case)
     else:
         raise ValueError(f"Unknown selector method: {method}")
@@ -82,11 +206,7 @@ def rank_memories(case, method, top_k=10):
 
 def recency_only(case, top_k=3):
     now = case["now"]
-    rows = []
-    for event in case["events"]:
-        score = recency_score(event.get("time_range"), now)
-        rows.append((event, score))
-    return _format_rows(rows, top_k)
+    return _format_rows([(event, recency_score(event.get("time_range"), now)) for event in case["events"]], top_k)
 
 
 def similarity_only(case, top_k=3):
@@ -94,8 +214,7 @@ def similarity_only(case, top_k=3):
     memories_by_id = case["memories_by_id"]
     rows = []
     for event in case["events"]:
-        score = similarity_score(query_text, event_text(event, memories_by_id))
-        rows.append((event, score))
+        rows.append((event, similarity_score(query_text, event_text(event, memories_by_id))))
     return _format_rows(rows, top_k)
 
 
@@ -111,25 +230,23 @@ def recency_similarity_hybrid(case, top_k=3):
     return _format_rows(rows, top_k)
 
 
-def proposed_TMT_decay_event_memory(case, top_k=3):
+def proposed_TMT_decay_event_memory(case, top_k=3, ablation="full_core"):
     query = case["query"]
-    query_text = query["query"]
-    subtype = query.get("query_subtype") or query.get("query_mode", "chat")
-    gate = QUERY_GATES.get(subtype, QUERY_GATES.get(query.get("query_mode", "chat"), QUERY_GATES["chat_history"]))
     now = case["now"]
     memories_by_id = case["memories_by_id"]
-    decay_lambda = estimate_decay_lambda(case["memories"], now)
     rows = []
 
     for event in case["events"]:
         mu_scores = []
         for memory_id in event.get("memory_ids", []):
-            memory = memories_by_id[memory_id]
-            score = score_memory_qca(memory, query, event, now, gate, subtype, decay_lambda=decay_lambda)
+            memory = memories_by_id.get(memory_id)
+            if not memory:
+                continue
+            score = score_memory_core(memory, query, event, now, ablation=ablation)
+            mu_scores.append(score)
 
-            mu_scores.append(max(0.0, min(1.0, score)))
-
-        rows.append((event, max(0.0, min(1.0, smooth_max(mu_scores)))))
+        aggregate = max(mu_scores) if ablation == "wo_smoothmax" else smooth_max(mu_scores)
+        rows.append((event, clamp01(aggregate)))
 
     return _format_rows(rows, top_k)
 
@@ -155,89 +272,33 @@ def recency_similarity_memory_rows(case):
     return rows
 
 
-def proposed_memory_rows(case):
+def proposed_memory_rows(case, ablation="full_core"):
     query = case["query"]
-    subtype = query.get("query_subtype") or query.get("query_mode", "chat")
-    gate = QUERY_GATES.get(subtype, QUERY_GATES.get(query.get("query_mode", "chat"), QUERY_GATES["chat_history"]))
     now = case["now"]
-    decay_lambda = estimate_decay_lambda(case["memories"], now)
     rows = []
     for memory in case["memories"]:
-        event = case["events_by_id"][memory["event_id"]]
-        rows.append((memory, score_memory_qca(memory, query, event, now, gate, subtype, decay_lambda=decay_lambda)))
+        event = case["events_by_id"].get(memory.get("event_id"), {})
+        rows.append((memory, score_memory_core(memory, query, event, now, ablation=ablation)))
     return rows
 
 
-def score_memory_qca(memory, query, event, now, gate, subtype, ablation="full_qca", decay_lambda=None):
-    query_text = query["query"]
-    semantic = similarity_score(query_text, memory.get("content", ""))
-    importance = float(memory.get("importance", 0.5))
-    accessible = float(memory.get("accessible_score", 0.5))
-    access = memory_accessibility(memory, query, now, decay_lambda=decay_lambda)
-    compat = type_compatibility(memory, subtype)
-    domain = domain_match_score(query, memory, event)
-    base = 0.5 * importance + 0.5 * accessible
-    penalty = intent_penalty(query, memory, domain, ablation=ablation)
-
-    return max(
-        0.0,
-        min(
-            1.0,
-            gate["semantic"] * semantic
-            + gate["access"] * access
-            + gate["compat"] * compat
-            + gate["domain"] * domain
-            + gate["base"] * base
-            - penalty,
-        ),
-    )
-
-
-def estimate_decay_lambda(memories, now, min_lambda=0.12, max_lambda=0.5):
-    now_dt = parse_time(now)
-    if not now_dt:
-        return min_lambda
-
-    ages = []
-    for memory in memories:
-        if memory.get("memory_type") == "todo":
-            continue
-        ts = parse_time(memory.get("timestamp"))
-        if ts:
-            ages.append(max((now_dt - ts).total_seconds() / 86400.0, 0.0))
-    if not ages:
-        return min_lambda
-
-    span_days = max(max(ages), 1.0)
-    half_life_days = max(span_days / 3.0, 1.0)
-    decay_lambda = __import__("math").log(2.0) / half_life_days
-    return max(min_lambda, min(max_lambda, decay_lambda))
-
-
-def memory_accessibility(memory, query, now, decay_lambda=None):
-    subtype = query.get("query_subtype", "")
-    memory_type = memory.get("memory_type")
-    if memory_type == "todo":
-        return TMT_score(memory, now)
-    return forgetting_decay(memory, now, lambda_per_day=decay_lambda or 0.12)
-
-
 def type_compatibility(memory, subtype):
-    table = TYPE_COMPATIBILITY.get(subtype, {})
-    compat = table.get(memory.get("memory_type"), 0.15)
-    content = (memory.get("content") or "").lower()
-
-    if subtype == "chat_preference" and any(term in content for term in ["newer", "updated", "now", "recently", "新", "更新", "现在", "覆盖"]):
-        compat = min(1.0, compat + 0.12)
-    if subtype in {"task_dependency", "mixed"}:
-        compat = min(1.0, compat + dependency_score(memory, []))
-    return compat
+    role = memory_role(memory)
+    if subtype in {"task_due", "task_priority"}:
+        return 1.0 if role == "active_todo" else 0.2
+    if subtype in {"chat_preference", "chat_profile", "chat_history"}:
+        return 0.1 if role == "active_todo" else 1.0
+    if subtype == "task_dependency":
+        return 1.0 if role == "dependency" or dependency_score(memory, []) else 0.5
+    if subtype == "negative":
+        return 0.0
+    return 0.8
 
 
 def domain_match_score(query, memory, event):
     explicit_domain = memory.get("domain")
     query_entities = query.get("constraints", {}).get("entities", [])
-    subtype = query.get("query_subtype", "")
+    subtype = query_subtype(query)
     if explicit_domain and query_entities:
         if explicit_domain in query_entities:
             return 1.0
@@ -260,28 +321,22 @@ def domain_match_score(query, memory, event):
     return min(1.0, len(overlap) / max(1.0, min(len(query_tokens), 6)))
 
 
-def intent_penalty(query, memory, domain, ablation="full_qca"):
-    subtype = query.get("query_subtype", "")
+def intent_penalty(query, memory, domain, ablation="full_core"):
+    subtype = query_subtype(query)
     penalty = 0.0
-
-    if subtype in {"task_due", "task_priority"} and memory.get("is_done") is True:
+    if subtype in {"task_due", "task_priority"} and memory_role(memory) == "completed_todo":
         penalty += 0.22
-    if subtype in {"task_due", "task_priority", "task_status", "task_context", "task_dependency"}:
-        if (
-            ablation != "wo_tmt"
-            and memory.get("memory_type") == "todo"
-            and TMT_score(memory, query.get("now")) > 0.7
-            and domain < 0.05
-        ):
-            penalty += 0.18
-    if subtype in {"chat_preference", "chat_profile"} and memory.get("memory_type") == "todo":
+    if subtype in {"chat_preference", "chat_profile"} and memory_role(memory) == "active_todo":
         penalty += 0.20
 
     content = (memory.get("content") or "").lower()
-    if subtype == "chat_preference" and any(term in content for term in ["old preference", "older preference", "旧偏好", "过去"]):
+    if subtype == "chat_preference" and any(term in content for term in ["old preference", "older preference"]):
         penalty += 0.12
-
     return penalty
+
+
+def score_memory_qca(memory, query, event, now, gate=None, subtype=None, ablation="full_core", decay_lambda=None):
+    return score_memory_core(memory, query, event, now, ablation=ablation)
 
 
 def _format_rows(rows, top_k):
@@ -304,6 +359,7 @@ def _format_memory_rows(rows, top_k):
             "event_id": memory["event_id"],
             "score": round(float(score), 6),
             "memory_type": memory.get("memory_type", ""),
+            "memory_role": memory_role(memory),
             "is_done": memory.get("is_done"),
             "ddl": memory.get("ddl"),
             "content": memory.get("content", ""),

@@ -15,6 +15,10 @@ METRICS = [
     "wrong_domain_intrusion_rate",
     "stale_memory_intrusion_rate",
     "completed_task_intrusion_rate",
+    "completed_todo_retro_recall",
+    "active_todo_precision",
+    "wrong_domain_urgent_intrusion_rate",
+    "stale_preference_intrusion_rate",
     "far_deadline_before_near_rate",
     "deadline_ranking_accuracy",
     "memory_token_cost",
@@ -29,16 +33,20 @@ CORE_METRICS = [
     "todo_intrusion_rate",
     "wrong_domain_intrusion_rate",
     "stale_memory_intrusion_rate",
+    "active_todo_precision",
+    "wrong_domain_urgent_intrusion_rate",
+    "stale_preference_intrusion_rate",
     "memory_token_cost",
 ]
 
 ABLATION_ORDER = [
-    "full_qca",
-    "wo_tmt",
+    "full_core_v2",
+    "wo_embedding",
     "wo_decay",
-    "wo_compatibility",
-    "wo_domain",
-    "wo_penalty",
+    "wo_role_matrix",
+    "wo_domain_gate",
+    "wo_tmt_condition",
+    "wo_eisenhower",
 ]
 
 
@@ -109,8 +117,8 @@ def table_by_ablation(overall, top_k, metrics):
 
 
 def delta_table(overall, top_k, metrics):
-    full = overall[(str(top_k), "full_qca")]
-    available = {key[1] for key in overall if key[0] == str(top_k) and key[1] != "full_qca"}
+    full = overall[(str(top_k), "full_core_v2")]
+    available = {key[1] for key in overall if key[0] == str(top_k) and key[1] != "full_core_v2"}
     rows = []
     for ablation in ordered_ablations(available):
         item = overall[(str(top_k), ablation)]
@@ -150,11 +158,11 @@ def subtype_delta_table(subtype_agg, top_k):
     metrics = ["memory_recall", "memory_NDCG", "memory_top1_accuracy"]
     subtypes = sorted({key[1] for key in subtype_agg if key[0] == str(top_k)})
     for subtype in subtypes:
-        full = subtype_agg.get((str(top_k), subtype, "full_qca"))
+        full = subtype_agg.get((str(top_k), subtype, "full_core_v2"))
         if not full:
             continue
         for ablation in ordered_ablations(
-            {key[2] for key in subtype_agg if key[0] == str(top_k) and key[1] == subtype and key[2] != "full_qca"}
+            {key[2] for key in subtype_agg if key[0] == str(top_k) and key[1] == subtype and key[2] != "full_core_v2"}
         ):
             item = subtype_agg[(str(top_k), subtype, ablation)]
             rows.append(
@@ -211,40 +219,41 @@ def hard_case_table(hard_agg, top_k):
 
 
 def component_notes(overall, subtype_agg):
-    full = overall[("5", "full_qca")]
+    full = overall[("5", "full_core_v2")]
 
     def delta(ablation, metric):
-        item = overall[("5", ablation)]
+        item = overall.get(("5", ablation))
+        if not item:
+            return None
         if item.get(metric) is None or full.get(metric) is None:
             return None
         return item[metric] - full[metric]
 
     def subtype_delta(subtype, ablation, metric):
-        base = subtype_agg.get(("5", subtype, "full_qca"))
+        base = subtype_agg.get(("5", subtype, "full_core_v2"))
         item = subtype_agg.get(("5", subtype, ablation))
         if not base or not item or base.get(metric) is None or item.get(metric) is None:
             return None
         return item[metric] - base[metric]
 
     lines = [
-        "- `wo_tmt`: top_k=5 下 todo_recall 变化为 "
-        f"{signed(delta('wo_tmt', 'todo_recall'))}；task_due recall 变化为 "
-        f"{signed(subtype_delta('task_due', 'wo_tmt', 'memory_recall'))}，task_priority recall 变化为 "
-        f"{signed(subtype_delta('task_priority', 'wo_tmt', 'memory_recall'))}。这说明当前 Pilot v2 中 TMT 的贡献没有按预期显现，可能是 accessible_score 已经覆盖了部分 deadline/task salience，或当前 TMT 权重/函数仍需校准。",
+        "- `wo_embedding`: top_k=5 下 memory_recall 变化为 "
+        f"{signed(delta('wo_embedding', 'memory_recall'))}，memory_NDCG 变化为 "
+        f"{signed(delta('wo_embedding', 'memory_NDCG'))}。",
         "- `wo_decay`: top_k=5 下 non_todo_recall 变化为 "
         f"{signed(delta('wo_decay', 'non_todo_recall'))}；chat_history recall 变化为 "
         f"{signed(subtype_delta('chat_history', 'wo_decay', 'memory_recall'))}，chat_preference recall 变化为 "
         f"{signed(subtype_delta('chat_preference', 'wo_decay', 'memory_recall'))}。",
-        "- `wo_compatibility`: top_k=5 下 memory_NDCG 变化为 "
-        f"{signed(delta('wo_compatibility', 'memory_NDCG'))}，todo_intrusion_rate 变化为 "
-        f"{signed(delta('wo_compatibility', 'todo_intrusion_rate'))}。",
-        "- `wo_domain`: top_k=5 下 task_context recall 变化为 "
-        f"{signed(subtype_delta('task_context', 'wo_domain', 'memory_recall'))}，task_dependency recall 变化为 "
-        f"{signed(subtype_delta('task_dependency', 'wo_domain', 'memory_recall'))}，mixed recall 变化为 "
-        f"{signed(subtype_delta('mixed', 'wo_domain', 'memory_recall'))}。",
-        "- `wo_penalty`: top_k=5 下 completed_task_error_rate 变化为 "
-        f"{signed(delta('wo_penalty', 'completed_task_error_rate'))}，todo_intrusion_rate 变化为 "
-        f"{signed(delta('wo_penalty', 'todo_intrusion_rate'))}。",
+        "- `wo_role_matrix`: top_k=5 下 todo_intrusion_rate 变化为 "
+        f"{signed(delta('wo_role_matrix', 'todo_intrusion_rate'))}，active_todo_precision 变化为 "
+        f"{signed(delta('wo_role_matrix', 'active_todo_precision'))}。",
+        "- `wo_domain_gate`: top_k=5 下 wrong_domain_urgent_intrusion_rate 变化为 "
+        f"{signed(delta('wo_domain_gate', 'wrong_domain_urgent_intrusion_rate'))}。",
+        "- `wo_tmt_condition`: top_k=5 下 task_context recall 变化为 "
+        f"{signed(subtype_delta('task_context', 'wo_tmt_condition', 'memory_recall'))}。",
+        "- `wo_eisenhower`: top_k=5 下 deadline_ranking_accuracy 变化为 "
+        f"{signed(delta('wo_eisenhower', 'deadline_ranking_accuracy'))}，far_deadline_before_near_rate 变化为 "
+        f"{signed(delta('wo_eisenhower', 'far_deadline_before_near_rate'))}。",
     ]
     return "\n".join(lines)
 
@@ -257,29 +266,30 @@ def build_report(rows):
 
     return "\n\n".join(
         [
-            "# Pilot v2 MU-Level Ablation 实验报告",
-            "## 1. 实验目标\n\n本实验在 Pilot v2 的 MU-level retrieval 上验证 QCA 公式内部组件的贡献。消融对象包括 TMT、forgetting decay、intent-memory type compatibility、domain match 和 penalty。主表使用 top_k=5，top_k=10 作为补充。",
+            "# MU-Level Theory-Core v2 Ablation 实验报告",
+            "## 1. 实验目标\n\n本实验在 MU-level retrieval 上验证 Theory-Core v2 连乘公式的组件贡献：bounded similarity、role-level intent matrix、soft-hard domain gate、conditional TMT/Eisenhower accessibility 与 retrospective decay。主表使用 top_k=5，top_k=10 作为补充。",
             "## 2. Ablation Variants\n\n"
             + markdown_table(
                 ["ablation", "含义"],
                 [
-                    ["full_qca", "完整 QCA 公式"],
-                    ["wo_tmt", "todo 的 accessibility 不使用 TMT，改用 accessible_score"],
+                    ["full_core_v2", "完整 v2 连乘公式：Sim × IntentGate × DomainGate × Accessibility"],
+                    ["wo_embedding", "Sim 强制回退为纯 Token 匹配"],
                     ["wo_decay", "non-todo 的 accessibility 不使用 forgetting decay，改用 accessible_score"],
-                    ["wo_compatibility", "移除 intent-memory type compatibility"],
-                    ["wo_domain", "移除 query 与任务域/实体的 domain match"],
-                    ["wo_penalty", "移除 completed task、domain mismatch、old preference 等惩罚项"],
+                    ["wo_role_matrix", "IntentGate 强制设为 1"],
+                    ["wo_domain_gate", "DomainGate 强制设为 1"],
+                    ["wo_tmt_condition", "TMT 在所有 query_subtype 下均生效"],
+                    ["wo_eisenhower", "移除四象限调制，退化为纯 Deadline TMT"],
                 ],
             ),
             "## 3. Overall Results: top_k=5\n\n" + table_by_ablation(overall, 5, CORE_METRICS),
             "## 4. Overall Results: top_k=10\n\n" + table_by_ablation(overall, 10, CORE_METRICS),
-            "## 5. Component Delta: top_k=5\n\n下表为各消融相对 `full_qca` 的变化，负值表示移除该组件后指标下降。\n\n"
-            + delta_table(overall, 5, ["memory_recall", "memory_NDCG", "memory_top1_accuracy", "todo_recall", "non_todo_recall", "todo_intrusion_rate"]),
+            "## 5. Component Delta: top_k=5\n\n下表为各消融相对 `full_core_v2` 的变化，负值表示移除该组件后指标下降。\n\n"
+            + delta_table(overall, 5, ["memory_recall", "memory_NDCG", "memory_top1_accuracy", "todo_recall", "non_todo_recall", "todo_intrusion_rate", "active_todo_precision"]),
             "## 6. By Query Mode: top_k=5\n\n" + mode_table(mode_agg, 5),
             "## 7. By Query Subtype Delta: top_k=5\n\n" + subtype_delta_table(subtype_agg, 5),
             "## 8. Hard Case Results: top_k=5\n\n" + hard_case_table(hard_agg, 5),
             "## 9. Component Contribution Analysis\n\n" + component_notes(overall, subtype_agg),
-            "## 10. 结论\n\n本报告应优先按两层阅读：overall 用来观察全局平均性能，hard_case_tag 分组用来判断组件是否在对应困难场景中产生独立贡献。由于 TMT、decay、compatibility、domain 和 penalty 的作用域不同，单一 overall 均值可能会稀释特定组件的贡献。\n\n修复后的消融已经阻断 `wo_tmt` 中的隐式 TMT penalty 调用，并将 `access` 与 `base` 解耦：`base` 只表示静态 importance/accessibility，non-todo `access` 只表示时间衰减系数。因此，`wo_tmt` 和 `wo_decay` 的结果比旧报告更接近纯粹消融。\n\n如果 hard_case_tag 表中某个组件对应的困难样本显著下降，即使 overall 变化不大，也可以解释为该组件在目标场景中有效；如果 hard case 仍不下降，再考虑继续调权重、改函数形状或补更强的诊断样本。"
+            "## 10. 结论\n\n本报告应优先按两层阅读：overall 用来观察全局平均性能，hard_case_tag 分组用来判断组件是否在对应困难场景中产生独立贡献。由于 bounded similarity、role matrix、domain gate、conditional TMT 和 Eisenhower 的作用域不同，单一 overall 均值可能会稀释特定组件的贡献。\n\n当前版本已将主方法改为 `Sim × IntentGate × DomainGate × Accessibility`。其中 Sim 有 embedding/floor 兜底，IntentGate 是角色级矩阵，DomainGate 负责软硬结合的跨域隔离，TMT 只在任务调度型 query 下生效。"
         ]
     )
 

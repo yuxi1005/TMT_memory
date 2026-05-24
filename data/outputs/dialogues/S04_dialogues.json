@@ -1,0 +1,623 @@
+{
+  "user_id": "S04",
+  "source_timeline_id": "S04_latent_world_timeline_v1",
+  "dialogue_dataset_id": "S04_dialogues_v1",
+  "interactions": [
+    {
+      "interaction_id": "S04_i001",
+      "source_event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_archive_001",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "正式总结式，强调归档规则和依据保留",
+      "dialogue": [
+        {"speaker": "user", "text": "我想先定一个长期规则：论文、实验、申请、生活事项分开记录，不要混在一个待办池里。"},
+        {"speaker": "assistant", "text": "可以。之后我会按这四类分别整理，避免论文任务和生活插曲互相干扰。"},
+        {"speaker": "user", "text": "还有，建议里请保留关键依据，不要只给结论。我后面写论文时要能追溯为什么这么做。"},
+        {"speaker": "assistant", "text": "明白。每条建议会尽量写清依据、适用场景和下一步，尤其是论文和实验相关内容。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i002",
+      "source_event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_paper_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "结构化论文推进计划，带阶段顺序和截止感",
+      "dialogue": [
+        {"speaker": "user", "text": "论文这边我想先按一个早期计划走：第45天前尽量搭出主体。顺序先相关工作综述，再方法章节，最后整理实验结果。"},
+        {"speaker": "assistant", "text": "可以，当前论文计划可以分成三段：相关工作综述、方法章节、实验结果整理。"},
+        {"speaker": "user", "text": "我怕一开始就写方法会缺背景，所以先把相关工作矩阵做出来。"},
+        {"speaker": "assistant", "text": "这个顺序合理。先用相关工作确定问题边界，再让方法章节有依据，最后把实验结果对应回方法假设。"},
+        {"speaker": "user", "text": "你后面提醒我时按这个顺序来。"},
+        {"speaker": "assistant", "text": "好，论文推进暂时以这个阶段顺序为准，并以第45天作为早期节点。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i003",
+      "source_event_id": "e003",
+      "day": 5,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_exp_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "实验设计讨论，偏执行清单",
+      "dialogue": [
+        {"speaker": "user", "text": "实验先做一个初版方案吧。第32天前先比较两个检索 baseline，看结果够不够支撑扩展 benchmark 维度。"},
+        {"speaker": "assistant", "text": "我先记成实验初版计划：两个检索 baseline 对比，目标是在第32天前拿到可判断的初步结果。"},
+        {"speaker": "user", "text": "现在别铺太大，我怕 benchmark 维度一展开就收不住。"},
+        {"speaker": "assistant", "text": "那这版先控制范围，只回答两个问题：baseline 差异是否明显，以及是否值得继续扩展维度。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i004",
+      "source_event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_related_work_matrix",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "论文任务拆解，正式但带焦虑收敛",
+      "dialogue": [
+        {"speaker": "user", "text": "我今天新建一个相关工作矩阵任务，截止第18天。不要让我泛读太久，按模型类型、任务场景、可复用论点三列拆。"},
+        {"speaker": "assistant", "text": "可以。这个矩阵就按三列整理：模型类型、任务场景、可复用论点。"},
+        {"speaker": "user", "text": "每篇论文不用写很长，先能服务后面综述就行。"},
+        {"speaker": "assistant", "text": "建议每篇只保留一句核心贡献、一句与你论文的关系，再标注是否需要精读。"},
+        {"speaker": "user", "text": "对，我主要是怕返工。"},
+        {"speaker": "assistant", "text": "那优先保证结构统一，后续补细节时会更容易。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i005",
+      "source_event_id": "e005",
+      "day": 10,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_headache_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "健康小插曲，简短关照不过度任务化",
+      "dialogue": [
+        {"speaker": "user", "text": "这几天偏头痛有点明显，晚上长时间跑实验可能要少一点。"},
+        {"speaker": "assistant", "text": "先把晚上的实验强度降下来比较稳。可以只记录第二天要跑什么，别硬撑。"},
+        {"speaker": "user", "text": "嗯，今天晚上不想再盯日志了。"},
+        {"speaker": "assistant", "text": "那今晚就收住，保留必要记录即可。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i006",
+      "source_event_id": "e006",
+      "day": 13,
+      "storyline_id": "sl_02",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_exp_review",
+      "retrieval_role": "recurring_task",
+      "dialogue_style": "周期复盘设置，强调实验和论文分流",
+      "dialogue": [
+        {"speaker": "user", "text": "帮我设一个实验复盘节奏：每两周整理一次实验材料和下一步。"},
+        {"speaker": "assistant", "text": "好的，周期是每14天一次，下一次先放在第27天。"},
+        {"speaker": "user", "text": "重点是避免实验任务和论文写作互相挤占，我经常两个都想推进然后都乱。"},
+        {"speaker": "assistant", "text": "复盘时我会分开列：实验材料、实验下一步、对论文写作的影响。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i007",
+      "source_event_id": "e007",
+      "day": 16,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_cv_nlp_version",
+      "retrieval_role": "important_not_urgent_task",
+      "dialogue_style": "申请材料任务，清单化但优先级不抢论文",
+      "dialogue": [
+        {"speaker": "user", "text": "申请那边也记一下：我要做一版 NLP 项目版简历，截止第35天。"},
+        {"speaker": "assistant", "text": "已按申请材料记录。这个任务先整理实验经历和论文相关贡献。"},
+        {"speaker": "user", "text": "它重要但现在没论文那么急，别让我每天都被它打断。"},
+        {"speaker": "assistant", "text": "明白。它先作为重要但不抢主线的任务，只在整理申请材料时重点提醒。"},
+        {"speaker": "user", "text": "输出别太花，先把项目贡献说清楚。"},
+        {"speaker": "assistant", "text": "可以，先突出实验设计、benchmark 构建和论文贡献三块。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i008",
+      "source_event_id": "e008",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_related_work_matrix",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "完成汇报，区分已完成和后续精读缺口",
+      "dialogue": [
+        {"speaker": "user", "text": "相关工作矩阵第一版完成了，按三列都填了一遍。"},
+        {"speaker": "assistant", "text": "好的，这个矩阵任务可以记为已完成。"},
+        {"speaker": "user", "text": "不过里面有三篇论文后面还要精读，先别当成矩阵没做完。"},
+        {"speaker": "assistant", "text": "明白。矩阵第一版已完成，剩下的是三篇论文的后续精读缺口。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i009",
+      "source_event_id": "e009",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_baseline_run_001",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "实验运行任务，目标明确",
+      "dialogue": [
+        {"speaker": "user", "text": "我现在要开两个检索 baseline 的初版运行任务，截止第31天。"},
+        {"speaker": "assistant", "text": "已记录。目标是生成两个 baseline 的对照结果，用来判断初版实验方案是否够用。"},
+        {"speaker": "user", "text": "先别加复杂分析，跑通和对比表优先。"},
+        {"speaker": "assistant", "text": "那步骤是：确认输入样例、分别运行两个 baseline、整理对照表、写一段初步观察。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i010",
+      "source_event_id": "e010",
+      "day": 27,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_exp_review",
+      "retrieval_role": "status_update",
+      "dialogue_style": "双周复盘，指出记录状态混淆",
+      "dialogue": [
+        {"speaker": "user", "text": "第一个双周实验复盘做完了。我发现现在记录里很难区分已完成任务和还要继续执行的任务。"},
+        {"speaker": "assistant", "text": "这次复盘完成。下一次复盘按14天后，也就是第41天。"},
+        {"speaker": "user", "text": "问题先记下来：状态区分不够，后面 benchmark 可能会被这个影响。"},
+        {"speaker": "assistant", "text": "已记录为实验复盘发现：需要更清楚地区分已完成事项和仍需推进的事项。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i011",
+      "source_event_id": "e011",
+      "day": 30,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "retrieval_role": "urgent_low_value_task",
+      "dialogue_style": "临时购物比较，口语化且不过度延展",
+      "dialogue": [
+        {"speaker": "user", "text": "我突然想买一副降噪耳机，刚刚在比价格、续航和佩戴舒适度。"},
+        {"speaker": "assistant", "text": "可以先只看这三个标准，不用马上扩展太多型号。"},
+        {"speaker": "user", "text": "对，主要是最近实验日志看久了有点烦。"},
+        {"speaker": "assistant", "text": "那先简单记下偏好的指标，等有空再决定是否购买。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i012",
+      "source_event_id": "e012",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_baseline_run_001",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "实验完成但指出局限，保留延期事实",
+      "dialogue": [
+        {"speaker": "user", "text": "两个检索 baseline 初版跑完了，虽然比第31天晚了一天。"},
+        {"speaker": "assistant", "text": "好的，这个 baseline 运行任务记为第32天完成，带一点延期。"},
+        {"speaker": "user", "text": "结果有用，但主要只能说明语义相似度，撑不起任务状态判断。"},
+        {"speaker": "assistant", "text": "明白。结论是：baseline 对语义相似有参考价值，但不足以解释任务是否仍应被取出。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i013",
+      "source_event_id": "e013",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_exp_001",
+      "retrieval_role": "current_state_seed",
+      "dialogue_style": "导师反馈触发调整，焦虑但收敛",
+      "dialogue": [
+        {"speaker": "user", "text": "导师今天反馈说，我这个初版实验太依赖语义相似度了。"},
+        {"speaker": "assistant", "text": "这会影响原来的 baseline 对比方案，需要把实验目标重新收窄和补强。"},
+        {"speaker": "user", "text": "他说至少要加入当前任务、已完成任务、过期计划这些状态对照，不然 benchmark 的点不够清楚。"},
+        {"speaker": "assistant", "text": "那下一步应从单纯比较检索结果，转成比较不同状态下是否应该被取出。"},
+        {"speaker": "user", "text": "对，我现在有点慌，感觉旧方案不够了。"},
+        {"speaker": "assistant", "text": "先不要扩散。把导师反馈记成必须处理的实验调整，再决定是否替换原方案。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i014",
+      "source_event_id": "e014",
+      "day": 38,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_exp_001",
+      "retrieval_role": "stale_plan",
+      "dialogue_style": "替换旧实验计划，明确旧方案仅作参考",
+      "dialogue": [
+        {"speaker": "user", "text": "我决定把第5天那个两个 baseline 对比方案换掉。"},
+        {"speaker": "assistant", "text": "明白，原来的方案不再作为当前实验主线。"},
+        {"speaker": "user", "text": "它还可以作为语义相似 baseline 的参考，但不要再按它推进 benchmark。"},
+        {"speaker": "assistant", "text": "好的。后续实验主线不再按旧方案走，旧 baseline 结果只保留为参考材料。"},
+        {"speaker": "user", "text": "我怕之后查记录又被它带偏。"},
+        {"speaker": "assistant", "text": "我会在后续整理里明确区分：旧方案是参考，不是当前计划。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i015",
+      "source_event_id": "e015",
+      "day": 38,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_exp_002",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "新 benchmark 方案，正式结构化",
+      "dialogue": [
+        {"speaker": "user", "text": "新实验方案就做状态敏感的 benchmark，第72天前拿完整结果。"},
+        {"speaker": "assistant", "text": "已记录为新的当前实验计划，替代原来的 baseline 对比方案。"},
+        {"speaker": "user", "text": "它要同时覆盖当前任务、已完成任务、过期计划和生活插曲。"},
+        {"speaker": "assistant", "text": "可以。核心对照是：当前和已完成、当前和过期、任务信号和生活插曲。"},
+        {"speaker": "user", "text": "这次不要只看语义相关，要看该不该在当下被取出。"},
+        {"speaker": "assistant", "text": "明白，新方案的重点是时间、状态和任务有效性，而不只是文本相似。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i016",
+      "source_event_id": "e016",
+      "day": 41,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_exp_review",
+      "retrieval_role": "outdated_status",
+      "dialogue_style": "第二次复盘，标明旧记录不代表当前主线",
+      "dialogue": [
+        {"speaker": "user", "text": "第二次实验复盘完成了。"},
+        {"speaker": "assistant", "text": "好的，本次复盘完成，下一次按周期放到第55天。"},
+        {"speaker": "user", "text": "这次我把旧 baseline 运行记录标清楚了：它是已完成记录，但不代表当前实验主线。"},
+        {"speaker": "assistant", "text": "明白。旧运行结果保留为完成过的参考，当前主线以状态敏感 benchmark 方案为准。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i017",
+      "source_event_id": "e017",
+      "day": 44,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_paper_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "论文计划修订，体现旧顺序被调整",
+      "dialogue": [
+        {"speaker": "user", "text": "论文推进顺序要改。之前是相关工作先行，但现在不能再等相关工作慢慢补了。"},
+        {"speaker": "assistant", "text": "明白，原来的顺序还保留为历史记录，但当前推进顺序需要更新。"},
+        {"speaker": "user", "text": "从现在到第78天，先写方法章节和实验设定，然后结果分析，相关工作只做必要修订。"},
+        {"speaker": "assistant", "text": "新的论文顺序是：方法章节、实验设定、结果分析、相关工作修订。"},
+        {"speaker": "user", "text": "对，相关工作不是不做，是不要再卡住主线。"},
+        {"speaker": "assistant", "text": "我会把相关工作降为必要修订，不再作为当前主要阻塞点。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i018",
+      "source_event_id": "e018",
+      "day": 46,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_method_section",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "方法章节写作任务，要求可直接改写",
+      "dialogue": [
+        {"speaker": "user", "text": "我要开方法章节草稿任务，截止第58天。你给我结构化步骤、关键依据和能直接改写的段落框架。"},
+        {"speaker": "assistant", "text": "可以。这个任务先按问题定义、方法动机、状态对照设计、实验流程四块搭框架。"},
+        {"speaker": "user", "text": "不要只给标题，我需要每一块知道为什么要写。"},
+        {"speaker": "assistant", "text": "每一块我会附一句写作依据，比如它服务哪个假设、连接哪个实验设定。"},
+        {"speaker": "user", "text": "好，先让我能开始写，不要太散。"},
+        {"speaker": "assistant", "text": "那先产出可改写骨架，再补细节和引用。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i019",
+      "source_event_id": "e019",
+      "day": 49,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_cv_nlp_version",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "申请任务完成，并降低申请优先级",
+      "dialogue": [
+        {"speaker": "user", "text": "NLP 项目版简历改完了，虽然比原来的第35天晚了很多。"},
+        {"speaker": "assistant", "text": "好的，简历修改任务记为第49天完成，带延期记录。"},
+        {"speaker": "user", "text": "申请材料这块先降级，论文结果分析之后再推进。"},
+        {"speaker": "assistant", "text": "明白。申请材料暂时不作为当前主线，后续等论文结果分析稳定后再处理。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i020",
+      "source_event_id": "e020",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_exp_output_format",
+      "retrieval_role": "updated_preference",
+      "dialogue_style": "临时输出偏好调整，明确旧偏好仍用于写作场景",
+      "dialogue": [
+        {"speaker": "user", "text": "实验设计这块的输出格式先改一下。以前我想要详细解释，现在先给简版执行清单。"},
+        {"speaker": "assistant", "text": "明白。当前实验重跑压力比较近，所以实验相关回复先用简短可执行清单。"},
+        {"speaker": "user", "text": "但这不是说论文写作也不要依据。写作时还是要保留关键解释。"},
+        {"speaker": "assistant", "text": "好的。实验执行阶段临时偏简版清单，论文写作仍保留依据和解释。"},
+        {"speaker": "user", "text": "对，我现在只是没精力看长解释。"},
+        {"speaker": "assistant", "text": "后续涉及重跑、检查、排错时，我会优先给短步骤。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i021",
+      "source_event_id": "e021",
+      "day": 55,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_state_labels",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "标注核查任务，研究语境清晰",
+      "dialogue": [
+        {"speaker": "user", "text": "我需要开一个状态标签核查任务，截止第66天。"},
+        {"speaker": "assistant", "text": "好的，任务目标是逐条检查样例的状态标签是否准确。"},
+        {"speaker": "user", "text": "要区分当前任务、已完成任务、过期计划和生活插曲，不能都因为语义相关就混在一起。"},
+        {"speaker": "assistant", "text": "可以。检查时先看当前是否仍有效，再看完成或替换状态，最后判断是否只是生活记录。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i022",
+      "source_event_id": "e022",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_method_section",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "延期处理，保留部分进展和当前性",
+      "dialogue": [
+        {"speaker": "user", "text": "方法章节今天没法完整写完了，原本第58天截止要推到第64天。"},
+        {"speaker": "assistant", "text": "明白，方法章节草稿任务延期到第64天。"},
+        {"speaker": "user", "text": "但不是没进展，小节框架已经搭好了。"},
+        {"speaker": "assistant", "text": "好的，记录为小节框架已完成，完整草稿仍需继续推进。"},
+        {"speaker": "user", "text": "优先级还是高的，只是今天写不完。"},
+        {"speaker": "assistant", "text": "我会保留它为当前写作任务，只更新截止时间和已有进展。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i023",
+      "source_event_id": "e023",
+      "day": 61,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_movie_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "周末娱乐安排，轻松简短",
+      "dialogue": [
+        {"speaker": "user", "text": "周末想去看一部新上映的电影，顺便约朋友吃饭。"},
+        {"speaker": "assistant", "text": "可以，放松一下也好。把时间放在周末固定一段就行。"},
+        {"speaker": "user", "text": "嗯，不想把整个周末都弄成论文日。"},
+        {"speaker": "assistant", "text": "那就留出一段完整休息时间，别安排得太碎。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i024",
+      "source_event_id": "e024",
+      "day": 64,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_method_section",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "写作任务完成，整理后续修订点",
+      "dialogue": [
+        {"speaker": "user", "text": "方法章节草稿完成了，赶在第64天补上了。"},
+        {"speaker": "assistant", "text": "好的，方法章节草稿任务记为完成。"},
+        {"speaker": "user", "text": "里面保留了实验假设、关键依据和下一步修订点。"},
+        {"speaker": "assistant", "text": "明白。后续不再把方法草稿当作未完成任务，只需要根据修订点继续打磨。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i025",
+      "source_event_id": "e025",
+      "day": 66,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_state_labels",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "核查完成，明确旧计划和已完成运行的干扰属性",
+      "dialogue": [
+        {"speaker": "user", "text": "状态标签核查完成了。"},
+        {"speaker": "assistant", "text": "好的，这个核查任务记为第66天完成。"},
+        {"speaker": "user", "text": "我确认旧实验计划和已经完成的 baseline 运行不能被当成当前任务，只能作为容易混淆的对照来源。"},
+        {"speaker": "assistant", "text": "明白。当前实验推进时，不再把旧计划或已完成运行当成待执行事项。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i026",
+      "source_event_id": "e026",
+      "day": 69,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_statement_expand",
+      "retrieval_role": "cancelled_task",
+      "dialogue_style": "取消申请陈述任务，明确不再推进",
+      "dialogue": [
+        {"speaker": "user", "text": "本轮扩写申请陈述的任务取消吧。"},
+        {"speaker": "assistant", "text": "好的，本轮申请陈述扩写不再推进。"},
+        {"speaker": "user", "text": "原因是论文和实验优先级上来了，申请准备等论文结果分析之后再处理。"},
+        {"speaker": "assistant", "text": "明白。申请陈述不是延期到本轮后面，而是这轮取消，后续再重新安排。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i027",
+      "source_event_id": "e027",
+      "day": 72,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_exp_002",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "当前计划顺延，说明新增要求",
+      "dialogue": [
+        {"speaker": "user", "text": "状态敏感 benchmark 的完整结果今天交不出来了，截止从第72天顺延到第84天。"},
+        {"speaker": "assistant", "text": "明白，当前实验计划仍有效，完整结果截止更新为第84天。"},
+        {"speaker": "user", "text": "主要是还要补生活插曲样例对照，不然信号和插曲的边界不够清楚。"},
+        {"speaker": "assistant", "text": "好的，新增要求是补充生活插曲样例对照，计划本身不替换，只顺延截止时间。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i028",
+      "source_event_id": "e028",
+      "day": 74,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_sleep_001",
+      "retrieval_role": "current_constraint",
+      "dialogue_style": "作息约束，清楚可执行",
+      "dialogue": [
+        {"speaker": "user", "text": "从现在到第90天，我要加一个作息约束：晚上11点半后不再启动新实验。"},
+        {"speaker": "assistant", "text": "好的，近期约束是晚上11点半后不启动新实验。"},
+        {"speaker": "user", "text": "如果想到什么，只记录第二天待办，不要继续开跑。"},
+        {"speaker": "assistant", "text": "明白。11点半后只做记录和排明日任务，不安排新的实验运行。"},
+        {"speaker": "user", "text": "不然第二天状态太差。"},
+        {"speaker": "assistant", "text": "我会在近期计划里优先遵守这个作息限制。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i029",
+      "source_event_id": "e029",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_result_analysis",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "结果分析任务，高优先级且论文导向",
+      "dialogue": [
+        {"speaker": "user", "text": "新建结果分析补充任务，截止第88天，优先级很高。"},
+        {"speaker": "assistant", "text": "已记录为当前论文高优先级任务。"},
+        {"speaker": "user", "text": "我要解释当前任务、已完成任务和过期计划三类样例的检索差异。"},
+        {"speaker": "assistant", "text": "可以。分析结构建议按三类样例分别写现象、原因和对 benchmark 的意义。"},
+        {"speaker": "user", "text": "要能直接放进结果分析章节。"},
+        {"speaker": "assistant", "text": "那输出会按论文段落组织，而不是只列实验日志。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i030",
+      "source_event_id": "e030",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_paper_001",
+      "retrieval_role": "status_update",
+      "dialogue_style": "论文状态更新，明确阻塞点转移",
+      "dialogue": [
+        {"speaker": "user", "text": "论文当前主要缺口已经不是方法章节了。"},
+        {"speaker": "assistant", "text": "明白，方法章节不再是主要阻塞点。"},
+        {"speaker": "user", "text": "现在卡在结果分析和图表说明，尤其是怎么解释几类样例的差异。"},
+        {"speaker": "assistant", "text": "当前论文重点更新为结果分析和图表说明。后续提醒会优先围绕这两块。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i031",
+      "source_event_id": "e031",
+      "day": 80,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_noise_contrast_set",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "生活插曲对照样例整理，强调分开标注",
+      "dialogue": [
+        {"speaker": "user", "text": "我需要整理生活插曲对照样例，截止第86天。"},
+        {"speaker": "assistant", "text": "好的，任务是把健康、购物、娱乐记录和论文实验记录分开标注。"},
+        {"speaker": "user", "text": "这些样例不能被写成论文任务，但要能用来测试边界。"},
+        {"speaker": "assistant", "text": "明白。它们作为对照样例保留，标注时会和真实论文、实验任务分开。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i032",
+      "source_event_id": "e032",
+      "day": 82,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_anxiety_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "deadline 焦虑记录，轻度安抚和收束",
+      "dialogue": [
+        {"speaker": "user", "text": "论文截止越来越近，我晚上一直反复翻旧实验记录，注意力被打断得很厉害。"},
+        {"speaker": "assistant", "text": "先把今晚要查的范围收窄，不要无限回看旧记录。"},
+        {"speaker": "user", "text": "我知道，但总觉得会漏掉什么。"},
+        {"speaker": "assistant", "text": "可以只记下你担心遗漏的点，明天再按清单查。今晚不要重新启动新实验。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i033",
+      "source_event_id": "e033",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "update_priority",
+      "target_id": "task_noise_contrast_set",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "优先级更新，解释研究必要性",
+      "dialogue": [
+        {"speaker": "user", "text": "生活插曲对照样例整理要提到高优先级。"},
+        {"speaker": "assistant", "text": "明白，这个任务仍在第86天截止，优先级提升。"},
+        {"speaker": "user", "text": "因为它会影响 benchmark 能不能区分真实任务信号和生活插曲。"},
+        {"speaker": "assistant", "text": "好的。后续第86天前优先处理这组样例，确保边界说明清楚。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i034",
+      "source_event_id": "e034",
+      "day": 86,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_noise_contrast_set",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "对照样例完成，明确低优先级干扰来源",
+      "dialogue": [
+        {"speaker": "user", "text": "生活插曲对照样例整理完成了。"},
+        {"speaker": "assistant", "text": "好的，这个任务记为第86天完成。"},
+        {"speaker": "user", "text": "健康、购物、娱乐这几类记录都标清楚了，只作为低优先级干扰来源。"},
+        {"speaker": "assistant", "text": "明白。后续不会把这些记录当成论文或实验的当前任务。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i035",
+      "source_event_id": "e035",
+      "day": 88,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_result_analysis",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "结果分析延期但仍为最高优先级",
+      "dialogue": [
+        {"speaker": "user", "text": "完整结果分析没能在第88天写完，部分图表解释要推到第94天。"},
+        {"speaker": "assistant", "text": "明白，结果分析任务仍然有效，截止更新到第94天。"},
+        {"speaker": "user", "text": "但三类样例差异已经写了一半，这个还是最高优先级。"},
+        {"speaker": "assistant", "text": "好的，记录为已有部分进展：三类样例差异写了一半；当前差异分析仍保持最高优先级。"},
+        {"speaker": "user", "text": "别把它当成已经完成。"},
+        {"speaker": "assistant", "text": "不会。它是延期中的当前任务，不是完成项。"}
+      ]
+    },
+    {
+      "interaction_id": "S04_i036",
+      "source_event_id": "e036",
+      "day": 90,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_figure_caption_cleanup",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "图表说明清理任务，要求分项写清楚",
+      "dialogue": [
+        {"speaker": "user", "text": "新建一个图表说明清理任务，截止第96天。"},
+        {"speaker": "assistant", "text": "好的，图表说明清理任务已记录为当前任务。"},
+        {"speaker": "user", "text": "每个图表要把实验条件、主要结论和限制分开写清楚。"},
+        {"speaker": "assistant", "text": "可以。说明结构就固定为三部分：实验条件、主要结论、限制。"},
+        {"speaker": "user", "text": "不要写成一整段糊在一起，我后面改起来会很痛苦。"},
+        {"speaker": "assistant", "text": "明白，后续会按分项说明整理，方便你直接修订。"}
+      ]
+    }
+  ],
+  "quality_check": {
+    "all_events_covered": true,
+    "interaction_count": 36,
+    "dialogues_are_not_memory_units": true,
+    "dialogues_follow_user_profile": true,
+    "metadata_not_leaked_in_dialogue": true,
+    "noise_dialogues_are_natural": true,
+    "dialogues_preserve_event_state": true,
+    "no_query_generated": true,
+    "no_gold_generated": true,
+    "no_mu_extracted": true
+  }
+}

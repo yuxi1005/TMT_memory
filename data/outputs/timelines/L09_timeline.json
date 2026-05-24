@@ -1,0 +1,736 @@
+{
+  "user_id": "L09",
+  "timeline_id": "L09_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 130,
+    "length_days": 130,
+    "reason": "L09 是英语/日语与考试持续经营期的语言学习用户，学习计划、错题复盘、口语练习和兴趣变化会跨数月反复调整，因此选择 130 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "英语/日语学习主线与优先级调整",
+      "domain": "英语/日语",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "考试准备与错题复盘",
+      "domain": "考试",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "agent_usage_style", "dynamic_preferences", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "口语练习与学习计划格式",
+      "domain": "口语练习 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "兴趣变化、拖延和学习材料噪音",
+      "domain": "消费与娱乐 / 健康与情绪",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_language_record_style",
+      "content": "用户确立长期语言学习记录偏好，希望英语、日语、考试、口语练习和一次性兴趣想法分开归档，并保留时间、对象、截止日和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["英语", "日语", "考试", "口语练习", "一次性兴趣想法"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_language_001",
+      "content": "用户制定早期双语学习计划，准备每天英语阅读四十分钟、日语单词三十分钟，并周末整理语法笔记。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 50,
+        "daily_blocks": ["英语阅读", "日语单词"],
+        "weekend_task": "语法笔记"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_exam_001",
+      "content": "用户创建早期考试准备计划，先按听力、阅读、语法和作文四个模块拆分复习。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 70,
+        "modules": ["听力", "阅读", "语法", "作文"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_study_plan_format",
+      "content": "用户记录学习计划输出偏好，初期希望 agent 给详细版计划，包含每日任务、复习材料、错题整理和复盘问题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_study_plan",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 14,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_interest_shift_001",
+      "content": "用户临时对一套日语影视台词课程产生兴趣，记录课程名和价格，但没有加入当前考试计划。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.28,
+        "topic": "兴趣变化"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_vocab_baseline",
+      "content": "用户创建单词基线整理任务，需要统计英语阅读生词、日语高频词和已经掌握的旧词表。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 30
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e007",
+      "day": 21,
+      "storyline_id": "sl_02",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_error_review",
+      "content": "用户设置每两周复盘一次错题总结，把英语阅读、日语语法、考试错题和临时兴趣材料分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 25,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_speaking_partner_old",
+      "content": "用户创建旧版口语练习安排任务，原计划每周三次和固定语伴练习，每次覆盖英语和日语两个主题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.72,
+        "deadline_day": 42
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e009",
+      "day": 30,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_vocab_baseline",
+      "content": "用户完成单词基线整理，发现日语高频词掌握不稳定，英语阅读生词反而可以通过上下文猜测。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 30
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 30,
+        "completed_day": 30,
+        "finding": "日语高频词掌握不稳定"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 35,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_error_review",
+      "content": "用户完成第一次错题复盘，确认临时收藏的影视台词课程和当前考试错题不能混在同一个复习清单里。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49,
+        "finding": "兴趣材料需要和考试错题分开"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e011",
+      "day": 42,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_speaking_partner_old",
+      "content": "用户完成旧版口语练习安排，但确认每次同时覆盖英语和日语会导致准备压力过高。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.72,
+        "deadline_day": 42
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.72,
+        "deadline_day": 42,
+        "completed_day": 42,
+        "limitation": "英语和日语同场练习压力过高"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e012",
+      "day": 46,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_procrastination_001",
+      "content": "用户晚上拖延了听力练习，转去刷娱乐内容，记录拖延触发时间和第二天补做安排。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "拖延"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e013",
+      "day": 52,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_exam_deadline_001",
+      "content": "用户发现考试报名截止日比预期更近，需要把学习重点从双语均衡推进改为考试模块优先。",
+      "state_before": {
+        "related_plan": "plan_language_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_language_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_language_001",
+      "content": "用户将英语和日语均衡推进计划替换为考试模块优先计划，旧双语均衡计划只保留为早期尝试。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 50,
+        "daily_blocks": ["英语阅读", "日语单词"],
+        "weekend_task": "语法笔记"
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.43,
+        "stale_day": 58,
+        "replaced_by": "plan_language_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e015",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_language_002",
+      "content": "用户创建新的考试模块优先计划，决定工作日优先做听力和阅读，周末集中整理日语语法错题。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 115,
+        "replaces": "plan_language_001",
+        "priority_blocks": ["听力", "阅读", "日语语法错题"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e016",
+      "day": 64,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_mock_exam_errors",
+      "content": "用户创建模考错题整理任务，需要按听力定位失败、阅读长句误读和语法选项混淆三类归档。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 78
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e017",
+      "day": 70,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_exam_001",
+      "content": "用户将早期考试准备计划的阶段复盘截止日顺延到第 84 天，因为新的报名时间要求改变了复习顺序。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "previous_deadline_day": 70,
+        "deadline_day": 84,
+        "blocking_items": ["报名时间要求", "复习顺序调整"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e018",
+      "day": 74,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_material_collect_001",
+      "content": "用户临时收藏一批口语表达材料，记录链接和主题，但暂时不加入当前考试错题复盘。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.27,
+        "topic": "学习材料收藏"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e019",
+      "day": 78,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_mock_exam_errors",
+      "content": "用户未完成模考错题整理，把截止日推迟到第 88 天，但仍保留为当前考试准备核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 78
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "previous_deadline_day": 78,
+        "deadline_day": 88,
+        "partial_progress": "听力定位失败已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e020",
+      "day": 82,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_study_plan_format",
+      "content": "用户把学习计划输出偏好从详细版计划改成简版每日行动清单，只保留当天任务、截止日、完成状态和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_study_plan",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_daily_action_list",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "考试临近，需要更容易执行"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e021",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_exam_001",
+      "content": "用户将按四模块平均复习的考试计划替换为错题驱动计划，旧方案不再作为当前复习方式。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 84,
+        "modules": ["听力", "阅读", "语法", "作文"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.45,
+        "stale_day": 84,
+        "replaced_by": "plan_exam_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e022",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_exam_002",
+      "content": "用户创建新的错题驱动考试计划，优先处理高频错题、模考薄弱项和临近截止的报名材料。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 125,
+        "replaces": "plan_exam_001",
+        "priority_blocks": ["高频错题", "模考薄弱项", "报名材料"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e023",
+      "day": 88,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_mock_exam_errors",
+      "content": "用户完成模考错题整理，确认阅读长句误读和语法选项混淆是接下来要优先处理的薄弱项。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "deadline_day": 88
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.89,
+        "deadline_day": 88,
+        "completed_day": 88,
+        "priority_items": ["阅读长句误读", "语法选项混淆"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e024",
+      "day": 94,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_buy_course_old",
+      "content": "用户创建购买口语课程任务，原本想趁折扣直接购买一门偏娱乐化的口语课程。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 101
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e025",
+      "day": 101,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_buy_course_old",
+      "content": "用户取消购买口语课程任务，决定先执行错题驱动计划，不让兴趣变化打断考试优先级。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 101
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.24,
+        "cancelled_day": 101,
+        "reason": "兴趣课程低于考试准备优先级"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e026",
+      "day": 106,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_speaking_brief_current",
+      "content": "用户创建当前口语练习简表任务，需要按英语和日语分开列出每周两次短练主题和完成状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 126
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e027",
+      "day": 110,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_entertainment_001",
+      "content": "用户临时记录想看一部外语剧作为放松，并标注只看一集不替代当天听力练习。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "娱乐内容"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e028",
+      "day": 114,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_exam_registration_docs",
+      "content": "用户创建考试报名材料确认任务，需要核对证件、报名信息、缴费状态和准考证提醒。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 128
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e029",
+      "day": 118,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_error_review",
+      "content": "用户完成近期错题复盘，确认当前重点是阅读长句、语法选项、报名材料和分语言口语短练。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 118,
+        "next_due_day": 132,
+        "current_focus": ["阅读长句", "语法选项", "报名材料", "分语言口语短练"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e030",
+      "day": 122,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_language_current",
+      "content": "用户确认当前学习重点不是双语均衡推进，而是考试模块优先、错题驱动和分语言口语短练。",
+      "state_before": {
+        "plan": "plan_language_002",
+        "old_reference": "plan_language_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "考试模块优先、错题驱动和分语言口语短练",
+        "not_current": "双语均衡推进"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e031",
+      "day": 124,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "content": "用户临时记录想买一套学习文具，准备先看是否能复用现有笔记本。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.2,
+        "topic": "临时购物想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e032",
+      "day": 126,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_speaking_brief_current",
+      "content": "用户未完成当前口语练习简表，把截止日推迟到第 138 天，但仍保留为当前口语练习活跃任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 126
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.79,
+        "previous_deadline_day": 126,
+        "deadline_day": 138,
+        "partial_progress": "英语短练主题已列出"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e033",
+      "day": 128,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_exam_registration_docs",
+      "content": "用户未完成考试报名材料确认，把截止日推迟到第 136 天，但仍保留为当前考试准备核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 128
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "previous_deadline_day": 128,
+        "deadline_day": 136,
+        "partial_progress": "证件和报名信息已核对"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e034",
+      "day": 130,
+      "storyline_id": "sl_02",
+      "event_type": "add_constraint",
+      "target_id": "constraint_interest_material",
+      "content": "用户设置近期约束，新收藏的兴趣材料必须先进入以后再看清单，不能替代本周错题和报名材料任务。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "constraint_type": "limit_interest_material_switch",
+        "valid_until_day": 155
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e035",
+      "day": 130,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_error_review",
+      "content": "用户完成最近一次错题复盘，确认当前活跃事项是考试报名材料、口语练习简表和兴趣材料切换约束。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 118,
+        "next_due_day": 132
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 130,
+        "next_due_day": 144,
+        "current_focus": ["考试报名材料", "口语练习简表", "兴趣材料切换约束"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_language_002", "plan_exam_002"],
+    "stale_plans": ["plan_language_001", "plan_exam_001"],
+    "active_tasks": ["task_speaking_brief_current", "task_exam_registration_docs"],
+    "completed_tasks": ["task_vocab_baseline", "task_speaking_partner_old", "task_mock_exam_errors"],
+    "cancelled_tasks": ["task_buy_course_old"],
+    "postponed_tasks": ["task_speaking_brief_current", "task_exam_registration_docs"],
+    "current_constraints": ["constraint_interest_material"],
+    "stable_preferences": ["pref_language_record_style"],
+    "old_preferences": ["pref_study_plan_format:detailed_study_plan"],
+    "updated_preferences": ["pref_study_plan_format:brief_daily_action_list"],
+    "important_not_urgent_tasks": ["task_speaking_partner_old", "task_speaking_brief_current"],
+    "urgent_low_value_tasks": ["task_buy_course_old"],
+    "noise_events": ["noise_interest_shift_001", "noise_procrastination_001", "noise_material_collect_001", "noise_entertainment_001", "noise_shopping_001"],
+    "hard_negative_sources": ["plan_language_001", "plan_exam_001", "task_vocab_baseline", "task_speaking_partner_old", "task_buy_course_old", "pref_study_plan_format:detailed_study_plan", "noise_interest_shift_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

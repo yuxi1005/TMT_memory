@@ -1,0 +1,747 @@
+{
+  "user_id": "L05",
+  "timeline_id": "L05_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 120,
+    "length_days": 120,
+    "reason": "L05 是旅行规划重度用户，行程、预算、酒店比较、签证材料和天气变动会跨数月持续变化，因此选择 120 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "行程路线规划与替换",
+      "domain": "行程",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "预算与酒店比较",
+      "domain": "预算 / 酒店",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "agent_usage_style", "dynamic_preferences", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "签证材料与出行文件",
+      "domain": "签证 / 家庭事务",
+      "status": "mixed",
+      "derived_from_profile": ["main_life_domains", "primary_goals", "stable_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "旧行程、天气和临时娱乐噪音",
+      "domain": "消费与娱乐 / 健康与情绪",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_01",
+      "event_type": "add_preference",
+      "target_id": "pref_travel_record_style",
+      "content": "用户确立长期旅行记录偏好，希望行程、预算、签证、酒店比较和一次性想法分开记录，并保留时间、地点、对象和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["行程", "预算", "签证", "酒店比较", "一次性想法"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_route_001",
+      "content": "用户制定早期路线计划，准备采用城市 A 三晚、城市 B 两晚、城市 C 一晚的紧凑行程。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 45,
+        "route_order": ["城市A", "城市B", "城市C"],
+        "style": "紧凑多城市"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_budget_001",
+      "content": "用户创建早期预算计划，先按机票、酒店、城际交通和景点门票四类估算总支出。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.83,
+        "deadline_day": 55,
+        "categories": ["机票", "酒店", "城际交通", "景点门票"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_01",
+      "event_type": "add_preference",
+      "target_id": "pref_route_output_format",
+      "content": "用户记录路线规划输出偏好，初期希望 agent 给详细版日程，包含每天交通、景点顺序、用餐区域和备选路线。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_day_by_day_route",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 14,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_old_itinerary_001",
+      "content": "用户翻到去年的旧行程截图，临时记录其中一个餐厅名字，但没有把它加入当前路线。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.24,
+        "topic": "旧行程"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_attraction_table_old",
+      "content": "用户创建景点优先级表任务，原计划按网红景点、博物馆和夜景三类列出每天安排。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 31
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e007",
+      "day": 22,
+      "storyline_id": "sl_02",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_hotel_budget_review",
+      "content": "用户设置每两周复盘一次酒店和预算比较，把当前候选、旧酒店、价格变化和临时收藏分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 25,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_visa_material_check",
+      "content": "用户创建签证材料核对任务，需要检查护照有效期、照片、在职证明、流水和酒店预订单。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 44
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "stable_preferences"]
+    },
+    {
+      "event_id": "e009",
+      "day": 31,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_attraction_table_old",
+      "content": "用户完成旧版景点优先级表，但发现网红景点过多，会让城市 B 的交通时间过长。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 31
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.78,
+        "deadline_day": 31,
+        "completed_day": 31,
+        "limitation": "城市B交通时间过长"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e010",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_hotel_budget_review",
+      "content": "用户完成第一次酒店预算复盘，确认旧酒店收藏和当前候选酒店混在一起，需要后续分开标记。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50,
+        "finding": "旧酒店收藏需要和当前候选分开"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e011",
+      "day": 41,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_weather_001",
+      "content": "用户看到目的地连续降雨预报，临时记录雨具、室内景点和是否需要调整鞋子。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.35,
+        "topic": "天气"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e012",
+      "day": 44,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_visa_material_check",
+      "content": "用户没有完成签证材料核对，把截止日推迟到第 52 天，但仍保留为当前出行准备核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 44
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "previous_deadline_day": 44,
+        "deadline_day": 52,
+        "partial_progress": "护照和照片已确认"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "main_life_domains"]
+    },
+    {
+      "event_id": "e013",
+      "day": 48,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_family_route_001",
+      "content": "同行家人反馈不想每天换城市，希望减少城市 C，把行程改得更轻松。",
+      "state_before": {
+        "related_plan": "plan_route_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_route_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "main_life_domains"]
+    },
+    {
+      "event_id": "e014",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_visa_material_check",
+      "content": "用户完成签证材料核对，确认流水和酒店预订单还需要按最终酒店方案更新。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "deadline_day": 52
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.91,
+        "deadline_day": 52,
+        "completed_day": 52,
+        "follow_up_items": ["流水", "酒店预订单"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e015",
+      "day": 55,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_budget_001",
+      "content": "用户将预算方案复盘截止日顺延到第 72 天，因为酒店候选还没有最终确定。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.83,
+        "deadline_day": 55
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.82,
+        "previous_deadline_day": 55,
+        "deadline_day": 72,
+        "blocking_items": ["最终酒店候选"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e016",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_route_001",
+      "content": "用户将三城紧凑路线替换为两城深度游路线，旧路线只保留为早期草案。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 45,
+        "route_order": ["城市A", "城市B", "城市C"],
+        "style": "紧凑多城市"
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 58,
+        "replaced_by": "plan_route_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e017",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_route_002",
+      "content": "用户创建新的两城深度游路线，决定城市 A 四晚、城市 B 三晚，并减少跨城交通。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 105,
+        "replaces": "plan_route_001",
+        "route_order": ["城市A", "城市B"],
+        "style": "两城深度游"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e018",
+      "day": 64,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_hotel_shortlist_old",
+      "content": "用户创建旧版酒店候选清单任务，原计划优先选择景点附近、可取消、评分高的酒店。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 76
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "primary_goals"]
+    },
+    {
+      "event_id": "e019",
+      "day": 70,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_ticket_change_001",
+      "content": "用户看到一班返程航班降价，临时记录改签费用和是否会影响请假时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.38,
+        "topic": "临时改票"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e020",
+      "day": 76,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_hotel_shortlist_old",
+      "content": "用户完成旧版酒店候选清单，但确认景点附近酒店预算过高，不能作为当前首选。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 76
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 76,
+        "completed_day": 76,
+        "limitation": "景点附近酒店预算过高"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e021",
+      "day": 80,
+      "storyline_id": "sl_01",
+      "event_type": "revise_preference",
+      "target_id": "pref_route_output_format",
+      "content": "用户把路线规划输出偏好从详细版日程改成简版每日行动清单，只保留交通、必须预约事项和当天备选。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_day_by_day_route",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_daily_action_list",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "行程临近，需要更容易执行"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e022",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_budget_001",
+      "content": "用户将按总支出粗估的预算方案替换为每日预算封顶方案，旧方案只保留为早期估算。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 72,
+        "categories": ["机票", "酒店", "城际交通", "景点门票"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 84,
+        "replaced_by": "plan_budget_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e023",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_budget_002",
+      "content": "用户创建新的每日预算封顶方案，决定分别设置住宿、交通、餐饮和临时娱乐的日均上限。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 118,
+        "replaces": "plan_budget_001",
+        "caps": ["住宿", "交通", "餐饮", "临时娱乐"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e024",
+      "day": 88,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_book_food_tour_old",
+      "content": "用户创建预订美食体验任务，原本想马上订一场价格较高的夜间美食团。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 95
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e025",
+      "day": 95,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_book_food_tour_old",
+      "content": "用户取消预订夜间美食团任务，决定先确认每日预算封顶和同行家人的休息安排。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 95
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.25,
+        "cancelled_day": 95,
+        "reason": "优先级低于预算和同行安排"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e026",
+      "day": 98,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_final_booking_docs",
+      "content": "用户创建最终预订文件整理任务，需要汇总机票、酒店、签证材料、保险和紧急联系人。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 112
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "stable_preferences"]
+    },
+    {
+      "event_id": "e027",
+      "day": 102,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_saved_attraction_001",
+      "content": "用户临时收藏一个小众展览，记录开放时间和是否适合雨天作为备选。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "景点收藏"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e028",
+      "day": 106,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_daily_route_brief",
+      "content": "用户创建每日路线简表任务，需要把两城深度游路线压缩成每天交通、预约事项和雨天备选。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 119
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e029",
+      "day": 110,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_hotel_booking_update",
+      "content": "用户创建酒店预订单更新任务，需要按最终两城路线重新确认酒店日期、取消政策和签证用途订单。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 124
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e030",
+      "day": 112,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_final_booking_docs",
+      "content": "用户完成最终预订文件整理，确认保险和紧急联系人已经归档，酒店预订单仍需等最终酒店更新。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 112
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.89,
+        "deadline_day": 112,
+        "completed_day": 112,
+        "remaining_gap": "最终酒店预订单待更新"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 115,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "content": "用户临时记录想买一只轻便斜挎包，准备先看尺寸和重量，不马上下单。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "临时购物想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e032",
+      "day": 116,
+      "storyline_id": "sl_02",
+      "event_type": "add_constraint",
+      "target_id": "constraint_daily_budget_cap",
+      "content": "用户设置近期约束，新增景点、购物和餐饮体验必须先放入每日预算封顶表，超出上限默认延后。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "constraint_type": "daily_budget_cap_before_booking",
+        "valid_until_day": 140
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 118,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_hotel_budget_review",
+      "content": "用户完成近期酒店预算复盘，确认当前重点是酒店预订单更新、每日预算封顶和雨天备选路线。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 118,
+        "next_due_day": 132,
+        "current_focus": ["酒店预订单更新", "每日预算封顶", "雨天备选路线"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e034",
+      "day": 119,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_daily_route_brief",
+      "content": "用户未完成每日路线简表，把截止日推迟到第 128 天，但仍保留为当前行程核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 119
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.88,
+        "previous_deadline_day": 119,
+        "deadline_day": 128,
+        "partial_progress": "城市A部分已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e035",
+      "day": 120,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_route_current",
+      "content": "用户确认当前行程重点不是旧的三城紧凑路线，而是两城深度游、每日路线简表和雨天备选。",
+      "state_before": {
+        "plan": "plan_route_002",
+        "old_reference": "plan_route_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "两城深度游、每日路线简表和雨天备选",
+        "not_current": "三城紧凑路线"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e036",
+      "day": 120,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_family_emergency_card",
+      "content": "用户创建同行家人紧急联系卡任务，需要整理航班、酒店地址、保险电话和当地紧急联系人。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 130
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["main_life_domains", "primary_goals", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_route_002", "plan_budget_002"],
+    "stale_plans": ["plan_route_001", "plan_budget_001"],
+    "active_tasks": ["task_daily_route_brief", "task_hotel_booking_update", "task_family_emergency_card"],
+    "completed_tasks": ["task_attraction_table_old", "task_visa_material_check", "task_hotel_shortlist_old", "task_final_booking_docs"],
+    "cancelled_tasks": ["task_book_food_tour_old"],
+    "postponed_tasks": ["task_daily_route_brief"],
+    "current_constraints": ["constraint_daily_budget_cap"],
+    "stable_preferences": ["pref_travel_record_style"],
+    "old_preferences": ["pref_route_output_format:detailed_day_by_day_route"],
+    "updated_preferences": ["pref_route_output_format:brief_daily_action_list"],
+    "important_not_urgent_tasks": ["task_final_booking_docs", "task_family_emergency_card"],
+    "urgent_low_value_tasks": ["task_book_food_tour_old"],
+    "noise_events": ["noise_old_itinerary_001", "noise_weather_001", "noise_ticket_change_001", "noise_saved_attraction_001", "noise_shopping_001"],
+    "hard_negative_sources": ["plan_route_001", "plan_budget_001", "task_attraction_table_old", "task_hotel_shortlist_old", "task_book_food_tour_old", "pref_route_output_format:detailed_day_by_day_route", "noise_old_itinerary_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

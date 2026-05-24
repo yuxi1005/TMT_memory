@@ -5,69 +5,58 @@ from pathlib import Path
 from data_loader import flatten_cases
 from evaluator import evaluate_memory_case
 from run_experiment import parse_top_k_values
-from selectors import (
-    QUERY_GATES,
-    domain_match_score,
-    estimate_decay_lambda,
-    intent_penalty,
-    memory_accessibility,
-    type_compatibility,
-)
-from scorers import similarity_score
+from scorers import memory_role
+from selectors import proposed_memory_rows
 
 
 ABLATIONS = [
-    "full_qca",
-    "wo_tmt",
+    "full_core_v2",
+    "wo_embedding",
     "wo_decay",
-    "wo_compatibility",
-    "wo_domain",
-    "wo_penalty",
+    "wo_role_matrix",
+    "wo_domain_gate",
+    "wo_tmt_condition",
+    "wo_eisenhower",
+]
+
+FIELDNAMES = [
+    "top_k",
+    "ablation",
+    "user_id",
+    "query_id",
+    "query_mode",
+    "query_subtype",
+    "hard_case_tag",
+    "query",
+    "selected_memory_ids",
+    "selected_event_ids",
+    "selected_memory_types",
+    "selected_memory_roles",
+    "selected_memory_scores",
+    "gold_memory_ids",
+    "gold_event_ids",
+    "memory_recall",
+    "memory_NDCG",
+    "memory_top1_accuracy",
+    "todo_recall",
+    "non_todo_recall",
+    "completed_task_error_rate",
+    "todo_intrusion_rate",
+    "wrong_domain_intrusion_rate",
+    "stale_memory_intrusion_rate",
+    "completed_task_intrusion_rate",
+    "completed_todo_retro_recall",
+    "active_todo_precision",
+    "wrong_domain_urgent_intrusion_rate",
+    "stale_preference_intrusion_rate",
+    "far_deadline_before_near_rate",
+    "deadline_ranking_accuracy",
+    "memory_token_cost",
 ]
 
 
-def clamp01(value):
-    return max(0.0, min(1.0, float(value)))
-
-
-def score_memory_ablation(memory, query, event, now, ablation, decay_lambda=None):
-    subtype = query.get("query_subtype") or query.get("query_mode", "chat")
-    gate = QUERY_GATES.get(subtype, QUERY_GATES.get(query.get("query_mode", "chat"), QUERY_GATES["chat_history"]))
-
-    semantic = similarity_score(query["query"], memory.get("content", ""))
-    importance = float(memory.get("importance", 0.5))
-    accessible = float(memory.get("accessible_score", 0.5))
-
-    if ablation == "wo_tmt" and memory.get("memory_type") == "todo":
-        access = accessible
-    elif ablation == "wo_decay" and memory.get("memory_type") != "todo":
-        access = accessible
-    else:
-        access = memory_accessibility(memory, query, now, decay_lambda=decay_lambda)
-
-    compat = 0.0 if ablation == "wo_compatibility" else type_compatibility(memory, subtype)
-    domain = 0.0 if ablation == "wo_domain" else domain_match_score(query, memory, event)
-    base = 0.5 * importance + 0.5 * accessible
-    penalty = 0.0 if ablation == "wo_penalty" else intent_penalty(query, memory, domain, ablation=ablation)
-
-    return clamp01(
-        gate["semantic"] * semantic
-        + gate["access"] * access
-        + gate["compat"] * compat
-        + gate["domain"] * domain
-        + gate["base"] * base
-        - penalty
-    )
-
-
 def rank_memories_ablation(case, ablation, top_k):
-    rows = []
-    decay_lambda = estimate_decay_lambda(case["memories"], case["now"])
-    for memory in case["memories"]:
-        event = case["events_by_id"][memory["event_id"]]
-        score = score_memory_ablation(memory, case["query"], event, case["now"], ablation, decay_lambda=decay_lambda)
-        rows.append((memory, score))
-
+    rows = proposed_memory_rows(case, ablation=ablation)
     ranked = sorted(rows, key=lambda item: item[1], reverse=True)
     return [
         {
@@ -75,6 +64,7 @@ def rank_memories_ablation(case, ablation, top_k):
             "event_id": memory["event_id"],
             "score": round(float(score), 6),
             "memory_type": memory.get("memory_type", ""),
+            "memory_role": memory_role(memory),
             "is_done": memory.get("is_done"),
             "ddl": memory.get("ddl"),
             "content": memory.get("content", ""),
@@ -106,6 +96,7 @@ def run(input_path, output_csv, top_k_values=(5, 10), ablations=ABLATIONS):
                         "selected_memory_ids": "|".join(item["memory_id"] for item in selected_memories),
                         "selected_event_ids": "|".join(item["event_id"] for item in selected_memories),
                         "selected_memory_types": "|".join(item["memory_type"] for item in selected_memories),
+                        "selected_memory_roles": "|".join(item["memory_role"] for item in selected_memories),
                         "selected_memory_scores": "|".join(str(item["score"]) for item in selected_memories),
                         "gold_memory_ids": "|".join(case["gold_memory_ids"]),
                         "gold_event_ids": "|".join(case["gold_event_ids"]),
@@ -116,7 +107,7 @@ def run(input_path, output_csv, top_k_values=(5, 10), ablations=ABLATIONS):
     output_csv = Path(output_csv)
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     with output_csv.open("w", newline="", encoding="utf-8-sig") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0].keys()))
+        writer = csv.DictWriter(handle, fieldnames=FIELDNAMES)
         writer.writeheader()
         writer.writerows(rows)
     return rows

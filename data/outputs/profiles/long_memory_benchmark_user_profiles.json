@@ -1,0 +1,880 @@
+{
+  "benchmark_context": {
+    "purpose": "长期个人记忆检索 benchmark 的用户画像种子层",
+    "core_hypothesis": "memory 召回不只由语义相关性决定，还由当前时间、任务状态、完成状态和认知可访问性共同决定。",
+    "note": "此文件只包含用户画像种子，不包含事件时间线、memory units、queries 或 gold labels。"
+  },
+  "user_profile_seeds": [
+    {
+      "user_id": "S01",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "本科计算机学生",
+      "level_or_role": "本科生",
+      "domain_or_industry": "计算机 / 软件",
+      "main_domains": [
+        "课程项目",
+        "实习准备",
+        "算法学习"
+      ],
+      "agent_use_cases": [
+        "debug",
+        "写课程报告",
+        "刷题计划",
+        "实习简历修改"
+      ],
+      "common_noise_sources": [
+        "熬夜",
+        "游戏",
+        "实习焦虑",
+        "临时课程吐槽"
+      ],
+      "benchmark_focus": [
+        "active todo vs completed todo",
+        "课程/实习任务混杂",
+        "临时噪音干扰"
+      ]
+    },
+    {
+      "user_id": "S02",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "本科设计学生",
+      "level_or_role": "本科生",
+      "domain_or_industry": "设计 / 视觉传达",
+      "main_domains": [
+        "作品集",
+        "课程作业",
+        "交换申请"
+      ],
+      "agent_use_cases": [
+        "灵感整理",
+        "文案润色",
+        "排版建议",
+        "申请材料草稿"
+      ],
+      "common_noise_sources": [
+        "购物",
+        "审美摇摆",
+        "情绪抱怨",
+        "临时灵感碎片"
+      ],
+      "benchmark_focus": [
+        "稳定偏好 vs 临时灵感",
+        "旧版本方案干扰",
+        "计划变化"
+      ]
+    },
+    {
+      "user_id": "S03",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "本科商科学生",
+      "level_or_role": "本科生",
+      "domain_or_industry": "商科 / 管理",
+      "main_domains": [
+        "小组作业",
+        "案例分析",
+        "求职"
+      ],
+      "agent_use_cases": [
+        "简历修改",
+        "面试准备",
+        "presentation 大纲",
+        "案例分析"
+      ],
+      "common_noise_sources": [
+        "社交活动",
+        "拖延",
+        "兼职",
+        "小组沟通噪音"
+      ],
+      "benchmark_focus": [
+        "多任务优先级",
+        "团队项目状态变化",
+        "低价值紧急事项"
+      ]
+    },
+    {
+      "user_id": "S04",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "硕士 NLP 学生",
+      "level_or_role": "硕士生",
+      "domain_or_industry": "人工智能 / NLP",
+      "main_domains": [
+        "论文",
+        "实验",
+        "benchmark"
+      ],
+      "agent_use_cases": [
+        "实验设计",
+        "论文写作",
+        "idea 收敛",
+        "公式解释"
+      ],
+      "common_noise_sources": [
+        "deadline 焦虑",
+        "健康",
+        "旧方案",
+        "临时论文想法"
+      ],
+      "benchmark_focus": [
+        "active/completed todo 转换",
+        "current plan vs stale plan",
+        "语义相似干扰"
+      ]
+    },
+    {
+      "user_id": "S05",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "硕士心理学学生",
+      "level_or_role": "硕士生",
+      "domain_or_industry": "心理学",
+      "main_domains": [
+        "实验设计",
+        "问卷",
+        "统计分析"
+      ],
+      "agent_use_cases": [
+        "文献总结",
+        "变量设计",
+        "SPSS/R 思路",
+        "问卷题项润色"
+      ],
+      "common_noise_sources": [
+        "情绪记录",
+        "人际关系",
+        "实验招募焦虑",
+        "临时反思"
+      ],
+      "benchmark_focus": [
+        "研究任务与个人情绪混杂",
+        "动态偏好变化",
+        "状态更新"
+      ]
+    },
+    {
+      "user_id": "S06",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "硕士教育学学生",
+      "level_or_role": "硕士生",
+      "domain_or_industry": "教育学",
+      "main_domains": [
+        "课堂观察",
+        "毕业论文",
+        "实习"
+      ],
+      "agent_use_cases": [
+        "访谈提纲",
+        "论文框架",
+        "反思日志",
+        "课堂观察整理"
+      ],
+      "common_noise_sources": [
+        "实习琐事",
+        "导师反馈",
+        "课堂临时记录",
+        "生活安排"
+      ],
+      "benchmark_focus": [
+        "观察记录噪音",
+        "论文计划变化",
+        "完成事项回忆"
+      ]
+    },
+    {
+      "user_id": "S07",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "博士生物学生",
+      "level_or_role": "博士生",
+      "domain_or_industry": "生物学 / 实验科学",
+      "main_domains": [
+        "实验记录",
+        "论文投稿",
+        "组会"
+      ],
+      "agent_use_cases": [
+        "实验计划",
+        "结果解释",
+        "投稿回复",
+        "组会汇报"
+      ],
+      "common_noise_sources": [
+        "实验失败",
+        "作息",
+        "设备预约",
+        "试剂采购"
+      ],
+      "benchmark_focus": [
+        "失败实验旧记录干扰",
+        "实验计划更新",
+        "长期项目任务"
+      ]
+    },
+    {
+      "user_id": "S08",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "博士社会科学学生",
+      "level_or_role": "博士生",
+      "domain_or_industry": "社会科学",
+      "main_domains": [
+        "田野调查",
+        "理论写作",
+        "基金申请"
+      ],
+      "agent_use_cases": [
+        "访谈编码",
+        "理论梳理",
+        "写作修改",
+        "基金文本草稿"
+      ],
+      "common_noise_sources": [
+        "田野变动",
+        "家庭",
+        "经费",
+        "受访者临时取消"
+      ],
+      "benchmark_focus": [
+        "计划替换",
+        "跨域家庭噪音",
+        "旧理论框架干扰"
+      ]
+    },
+    {
+      "user_id": "S09",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "医学生 / 规培生",
+      "level_or_role": "医学生 / 规培生",
+      "domain_or_industry": "医学 / 临床",
+      "main_domains": [
+        "考试",
+        "临床轮转",
+        "病例学习"
+      ],
+      "agent_use_cases": [
+        "复习计划",
+        "病例总结",
+        "值班安排",
+        "知识点整理"
+      ],
+      "common_noise_sources": [
+        "疲劳",
+        "健康焦虑",
+        "生活碎片",
+        "排班变动"
+      ],
+      "benchmark_focus": [
+        "deadline 任务",
+        "健康噪音",
+        "任务优先级切换"
+      ]
+    },
+    {
+      "user_id": "S10",
+      "macro_archetype": "学生 / 研究型用户",
+      "specific_identity": "艺术类研究生",
+      "level_or_role": "研究生",
+      "domain_or_industry": "艺术 / 创作",
+      "main_domains": [
+        "创作项目",
+        "展览",
+        "论文"
+      ],
+      "agent_use_cases": [
+        "创作阐释",
+        "展览计划",
+        "文本润色",
+        "灵感整理"
+      ],
+      "common_noise_sources": [
+        "灵感碎片",
+        "情绪",
+        "临时展讯",
+        "材料购买"
+      ],
+      "benchmark_focus": [
+        "灵感噪音 vs 当前计划",
+        "稳定创作偏好",
+        "展览任务状态"
+      ]
+    },
+    {
+      "user_id": "P01",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "产品经理",
+      "level_or_role": "中级 PM",
+      "domain_or_industry": "SaaS",
+      "main_domains": [
+        "PRD",
+        "需求优先级",
+        "会议总结"
+      ],
+      "agent_use_cases": [
+        "PRD 草稿",
+        "需求拆解",
+        "会议纪要",
+        "优先级判断"
+      ],
+      "common_noise_sources": [
+        "需求变更",
+        "老板临时想法",
+        "会议碎片",
+        "低优先级小需求"
+      ],
+      "benchmark_focus": [
+        "多项目混杂",
+        "低价值紧急事项",
+        "current plan vs stale plan"
+      ]
+    },
+    {
+      "user_id": "P02",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "软件工程师",
+      "level_or_role": "后端开发",
+      "domain_or_industry": "互联网 / 软件",
+      "main_domains": [
+        "debug",
+        "技术方案",
+        "代码 review"
+      ],
+      "agent_use_cases": [
+        "debug 辅助",
+        "技术方案比较",
+        "代码解释",
+        "review checklist"
+      ],
+      "common_noise_sources": [
+        "技术债",
+        "加班",
+        "开源收藏",
+        "临时 bug"
+      ],
+      "benchmark_focus": [
+        "紧急 bug vs 长期重构",
+        "完成任务状态",
+        "技术方案旧版本"
+      ]
+    },
+    {
+      "user_id": "P03",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "数据分析师",
+      "level_or_role": "业务数据分析",
+      "domain_or_industry": "电商",
+      "main_domains": [
+        "SQL",
+        "报表解释",
+        "业务复盘"
+      ],
+      "agent_use_cases": [
+        "SQL 生成",
+        "指标解释",
+        "复盘框架",
+        "报表口径整理"
+      ],
+      "common_noise_sources": [
+        "临时口径变化",
+        "低优先级报表",
+        "业务方催促",
+        "数据异常"
+      ],
+      "benchmark_focus": [
+        "口径变更",
+        "旧结论干扰",
+        "紧急但低价值任务"
+      ]
+    },
+    {
+      "user_id": "P04",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "创业者",
+      "level_or_role": "早期创业者",
+      "domain_or_industry": "AI 工具创业",
+      "main_domains": [
+        "商业计划",
+        "用户访谈",
+        "融资材料"
+      ],
+      "agent_use_cases": [
+        "商业计划",
+        "用户访谈问题",
+        "融资 deck",
+        "竞品分析"
+      ],
+      "common_noise_sources": [
+        "idea 太多",
+        "方向频繁变化",
+        "投资人反馈",
+        "焦虑记录"
+      ],
+      "benchmark_focus": [
+        "计划频繁替换",
+        "stale idea 干扰",
+        "高价值长期任务"
+      ]
+    },
+    {
+      "user_id": "P05",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "自由撰稿人",
+      "level_or_role": "自由职业者",
+      "domain_or_industry": "内容行业",
+      "main_domains": [
+        "选题",
+        "文章大纲",
+        "客户稿件"
+      ],
+      "agent_use_cases": [
+        "选题发散",
+        "大纲生成",
+        "客户稿件修改",
+        "标题优化"
+      ],
+      "common_noise_sources": [
+        "灵感碎片",
+        "客户改需求",
+        "临时热点",
+        "收入焦虑"
+      ],
+      "benchmark_focus": [
+        "客户需求变化",
+        "灵感噪音",
+        "active/completed 稿件任务"
+      ]
+    },
+    {
+      "user_id": "P06",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "咨询顾问",
+      "level_or_role": "管理咨询顾问",
+      "domain_or_industry": "咨询 / 企业服务",
+      "main_domains": [
+        "deck 结构",
+        "行业研究",
+        "访谈整理"
+      ],
+      "agent_use_cases": [
+        "deck 结构",
+        "行业研究摘要",
+        "访谈纪要",
+        "方案改写"
+      ],
+      "common_noise_sources": [
+        "出差",
+        "客户催促",
+        "旧版方案",
+        "会议临时结论"
+      ],
+      "benchmark_focus": [
+        "旧版方案干扰",
+        "deadline 压力",
+        "跨项目相似信息"
+      ]
+    },
+    {
+      "user_id": "P07",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "HR / 招聘",
+      "level_or_role": "招聘负责人",
+      "domain_or_industry": "科技公司",
+      "main_domains": [
+        "JD",
+        "面试题",
+        "候选人评估"
+      ],
+      "agent_use_cases": [
+        "JD 改写",
+        "面试题生成",
+        "候选人评估",
+        "沟通邮件"
+      ],
+      "common_noise_sources": [
+        "临时岗位变化",
+        "内部沟通",
+        "候选人爽约",
+        "招聘优先级调整"
+      ],
+      "benchmark_focus": [
+        "岗位需求变化",
+        "当前职位 vs 旧职位",
+        "状态确认"
+      ]
+    },
+    {
+      "user_id": "P08",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "市场运营",
+      "level_or_role": "活动运营",
+      "domain_or_industry": "消费品",
+      "main_domains": [
+        "活动策划",
+        "文案",
+        "数据复盘"
+      ],
+      "agent_use_cases": [
+        "活动方案",
+        "营销文案",
+        "复盘报告",
+        "热点判断"
+      ],
+      "common_noise_sources": [
+        "热点追逐",
+        "活动取消",
+        "素材变更",
+        "老板临时要求"
+      ],
+      "benchmark_focus": [
+        "取消任务",
+        "热点噪音",
+        "低价值紧急任务"
+      ]
+    },
+    {
+      "user_id": "P09",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "教师 / 培训师",
+      "level_or_role": "课程负责人",
+      "domain_or_industry": "K12 / 成人教育",
+      "main_domains": [
+        "教案",
+        "课件",
+        "学生反馈"
+      ],
+      "agent_use_cases": [
+        "教案设计",
+        "课件大纲",
+        "学生反馈整理",
+        "作业设计"
+      ],
+      "common_noise_sources": [
+        "家长沟通",
+        "课程临时调整",
+        "学生个案",
+        "行政通知"
+      ],
+      "benchmark_focus": [
+        "教学计划变化",
+        "重复任务",
+        "家庭/学生噪音"
+      ]
+    },
+    {
+      "user_id": "P10",
+      "macro_archetype": "职业 / 项目推进型用户",
+      "specific_identity": "律师 / 法务",
+      "level_or_role": "公司法务 / 律师",
+      "domain_or_industry": "合同 / 合规",
+      "main_domains": [
+        "合同",
+        "合规",
+        "客户沟通"
+      ],
+      "agent_use_cases": [
+        "条款总结",
+        "风险清单",
+        "邮件草稿",
+        "案件材料整理"
+      ],
+      "common_noise_sources": [
+        "案件进度变化",
+        "客户碎片信息",
+        "旧版本合同",
+        "临时合规问题"
+      ],
+      "benchmark_focus": [
+        "旧版本文档干扰",
+        "状态更新",
+        "任务完成确认"
+      ]
+    },
+    {
+      "user_id": "L01",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "新手妈妈 / 爸爸",
+      "level_or_role": "家庭照护者",
+      "domain_or_industry": "育儿 / 家庭",
+      "main_domains": [
+        "育儿",
+        "睡眠",
+        "家庭安排"
+      ],
+      "agent_use_cases": [
+        "育儿记录",
+        "购物比较",
+        "日程规划",
+        "睡眠复盘"
+      ],
+      "common_noise_sources": [
+        "宝宝作息变化",
+        "焦虑搜索",
+        "用品购物",
+        "家庭沟通"
+      ],
+      "benchmark_focus": [
+        "生活噪音",
+        "稳定偏好 vs 临时症状",
+        "重复任务提醒"
+      ]
+    },
+    {
+      "user_id": "L02",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "照顾老人者",
+      "level_or_role": "家庭照护者",
+      "domain_or_industry": "医疗 / 家庭照护",
+      "main_domains": [
+        "医疗",
+        "家庭",
+        "保险"
+      ],
+      "agent_use_cases": [
+        "就诊问题整理",
+        "药物记录",
+        "护理计划",
+        "保险材料整理"
+      ],
+      "common_noise_sources": [
+        "临时症状",
+        "医院安排",
+        "亲属沟通",
+        "检查报告焦虑"
+      ],
+      "benchmark_focus": [
+        "健康状态变化",
+        "旧医嘱干扰",
+        "重要任务提醒"
+      ]
+    },
+    {
+      "user_id": "L03",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "慢性病管理者",
+      "level_or_role": "健康管理用户",
+      "domain_or_industry": "健康 / 医疗",
+      "main_domains": [
+        "饮食",
+        "运动",
+        "检查指标"
+      ],
+      "agent_use_cases": [
+        "健康日志",
+        "饮食计划",
+        "复诊提醒",
+        "指标复盘"
+      ],
+      "common_noise_sources": [
+        "短期不适",
+        "情绪波动",
+        "饮食破戒",
+        "网上健康信息"
+      ],
+      "benchmark_focus": [
+        "短期症状 vs 长期状态",
+        "复诊 todo",
+        "稳定约束"
+      ]
+    },
+    {
+      "user_id": "L04",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "搬家 / 装修用户",
+      "level_or_role": "生活项目管理者",
+      "domain_or_industry": "租房 / 装修",
+      "main_domains": [
+        "租房",
+        "装修",
+        "预算"
+      ],
+      "agent_use_cases": [
+        "物品清单",
+        "预算比较",
+        "进度安排",
+        "商家信息整理"
+      ],
+      "common_noise_sources": [
+        "家具挑选",
+        "商家信息",
+        "价格变化",
+        "旧房源"
+      ],
+      "benchmark_focus": [
+        "旧计划/旧房源干扰",
+        "预算约束",
+        "active task 管理"
+      ]
+    },
+    {
+      "user_id": "L05",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "旅行规划重度用户",
+      "level_or_role": "高频旅行规划者",
+      "domain_or_industry": "旅行 / 休闲",
+      "main_domains": [
+        "行程",
+        "预算",
+        "签证"
+      ],
+      "agent_use_cases": [
+        "路线规划",
+        "酒店比较",
+        "打包清单",
+        "签证材料准备"
+      ],
+      "common_noise_sources": [
+        "旧行程",
+        "天气",
+        "临时改票",
+        "景点收藏"
+      ],
+      "benchmark_focus": [
+        "旧行程干扰",
+        "计划替换",
+        "时间敏感任务"
+      ]
+    },
+    {
+      "user_id": "L06",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "宠物主人",
+      "level_or_role": "宠物照护者",
+      "domain_or_industry": "宠物 / 家庭",
+      "main_domains": [
+        "宠物健康",
+        "用品",
+        "训练"
+      ],
+      "agent_use_cases": [
+        "喂养记录",
+        "看诊准备",
+        "用品比较",
+        "行为训练计划"
+      ],
+      "common_noise_sources": [
+        "宠物异常",
+        "购物噪音",
+        "临时担心",
+        "用品推荐"
+      ],
+      "benchmark_focus": [
+        "短期异常 vs 长期习惯",
+        "看诊任务",
+        "购物噪音"
+      ]
+    },
+    {
+      "user_id": "L07",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "健身减脂用户",
+      "level_or_role": "自我管理用户",
+      "domain_or_industry": "健身 / 饮食",
+      "main_domains": [
+        "饮食",
+        "训练",
+        "体重"
+      ],
+      "agent_use_cases": [
+        "训练计划",
+        "饮食记录",
+        "体重复盘",
+        "习惯追踪"
+      ],
+      "common_noise_sources": [
+        "临时暴食",
+        "体重焦虑",
+        "装备购物",
+        "社交聚餐"
+      ],
+      "benchmark_focus": [
+        "稳定目标 vs 临时波动",
+        "习惯记忆",
+        "过期计划"
+      ]
+    },
+    {
+      "user_id": "L08",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "理财入门用户",
+      "level_or_role": "个人预算管理者",
+      "domain_or_industry": "个人财务 / 消费",
+      "main_domains": [
+        "预算",
+        "账单",
+        "消费控制"
+      ],
+      "agent_use_cases": [
+        "月度预算",
+        "消费复盘",
+        "账单提醒",
+        "购买决策"
+      ],
+      "common_noise_sources": [
+        "冲动消费",
+        "购物比较",
+        "优惠信息",
+        "临时账单"
+      ],
+      "benchmark_focus": [
+        "消费噪音",
+        "长期约束",
+        "定期任务提醒"
+      ]
+    },
+    {
+      "user_id": "L09",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "语言学习者",
+      "level_or_role": "自学者 / 考试准备者",
+      "domain_or_industry": "语言学习",
+      "main_domains": [
+        "英语/日语",
+        "考试",
+        "口语练习"
+      ],
+      "agent_use_cases": [
+        "学习计划",
+        "错题总结",
+        "口语练习",
+        "词汇复习"
+      ],
+      "common_noise_sources": [
+        "兴趣变化",
+        "拖延",
+        "娱乐内容",
+        "学习材料收藏"
+      ],
+      "benchmark_focus": [
+        "学习计划变化",
+        "重复任务",
+        "兴趣噪音"
+      ]
+    },
+    {
+      "user_id": "L10",
+      "macro_archetype": "生活管理 / 复杂个人事务型用户",
+      "specific_identity": "多兴趣爱好者",
+      "level_or_role": "兴趣项目用户",
+      "domain_or_industry": "摄影 / 烘焙 / 手工 / 游戏",
+      "main_domains": [
+        "摄影",
+        "烘焙",
+        "手工",
+        "游戏"
+      ],
+      "agent_use_cases": [
+        "教程整理",
+        "购买建议",
+        "项目计划",
+        "灵感记录"
+      ],
+      "common_noise_sources": [
+        "灵感太多",
+        "半途而废",
+        "购物收藏",
+        "短期兴趣切换"
+      ],
+      "benchmark_focus": [
+        "生活噪音高",
+        "current interest vs stale interest",
+        "低稳定性记忆"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,772 @@
+{
+  "user_id": "L02",
+  "timeline_id": "L02_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 180,
+    "length_days": 180,
+    "reason": "L02 是照顾老人者，处在医疗与家庭持续经营期，复诊、药物记录、检查报告、亲属沟通和保险材料会跨数月反复变化，因此选择 180 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "复诊准备与医疗记录推进",
+      "domain": "医疗",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "药物记录与症状观察调整",
+      "domain": "医疗 / 健康与情绪",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "家庭分工与保险材料",
+      "domain": "家庭 / 保险",
+      "status": "mixed",
+      "derived_from_profile": ["main_life_domains", "agent_usage_style", "stable_preferences", "dynamic_preferences"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "临时症状、医院安排和生活噪音",
+      "domain": "家庭事务 / 消费与娱乐 / 健康与情绪",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_01",
+      "event_type": "add_preference",
+      "target_id": "pref_care_record_001",
+      "content": "用户确立长期照护记录偏好，希望医疗、家庭、保险和一次性想法分开记录，并突出时间、地点、对象和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["医疗", "家庭", "保险", "一次性想法"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_visit_001",
+      "content": "用户制定早期复诊准备计划，准备先整理近三个月检查报告，再列就诊问题，最后确认陪诊和交通安排。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 45,
+        "phase_order": ["检查报告", "就诊问题", "陪诊和交通"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_medication_001",
+      "content": "用户创建早期药物记录计划，决定按早晚服药、剂量变化和不适反应三类整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 60,
+        "fields": ["早晚服药", "剂量变化", "不适反应"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_visit_question_output",
+      "content": "用户记录就诊问题整理偏好，初期希望 agent 给详细版问题清单，包含症状时间、检查名称和要问医生的重点。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_question_list",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 14,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_temp_symptom_001",
+      "content": "老人晚上临时说头晕，用户记录发生时间和持续多久，并准备第二天观察是否重复出现。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.38,
+        "topic": "临时症状"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_report_folder",
+      "content": "用户创建检查报告归档任务，需要按医院、日期、检查项目和异常指标整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 34
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 22,
+      "storyline_id": "sl_02",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_med_review",
+      "content": "用户设置每两周复盘一次药物记录和症状观察，把固定事项和临时症状分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.75,
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 26,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_insurance_policy_old",
+      "content": "用户创建旧保险条款整理任务，准备先核对门诊报销比例和既往检查能否补交。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 52
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["main_life_domains", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 31,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_hospital_schedule_001",
+      "content": "医院临时调整了门诊时间，用户记录新的取号时间和家里谁能陪同。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "医院安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e010",
+      "day": 34,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_report_folder",
+      "content": "用户完成检查报告归档，标出两项指标需要在复诊时重点询问。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 34
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 34,
+        "completed_day": 34,
+        "follow_up_items": ["两项异常指标"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e011",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_med_review",
+      "content": "用户完成第一次药物复盘，确认药物记录格式可用，但临时头晕记录仍没有和用药时间对应起来。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50,
+        "finding": "临时症状和用药时间未完全对应"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_visit_questions_old",
+      "content": "用户创建复诊问题清单任务，原计划按检查报告、药物副反应和日常照护三类提问。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 62
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_insurance_policy_old",
+      "content": "用户完成旧保险条款整理，但发现它只覆盖门诊报销，不能处理近期住院检查材料。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 52
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.62,
+        "deadline_day": 52,
+        "completed_day": 52,
+        "limitation": "不覆盖近期住院检查材料"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "main_life_domains"]
+    },
+    {
+      "event_id": "e014",
+      "day": 58,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_report_anxiety_001",
+      "content": "用户等检查报告时反复刷新医院小程序，担心指标变化会影响下次复诊。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.37,
+        "topic": "检查报告焦虑"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e015",
+      "day": 62,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_visit_questions_old",
+      "content": "用户没有完成复诊问题清单，把截止日推迟到第 70 天，但仍保留为当前医疗准备核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 62
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 62,
+        "deadline_day": 70,
+        "partial_progress": "检查报告问题已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e016",
+      "day": 68,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_visit_001",
+      "content": "医生助理提醒下次就诊重点要按症状时间线和药物变化整理，而不是只按检查报告提问。",
+      "state_before": {
+        "related_plan": "plan_visit_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_visit_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e017",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_visit_questions_old",
+      "content": "用户完成旧版复诊问题清单，但确认它需要按症状时间线重排后才能用于下次就诊。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.87,
+        "deadline_day": 70,
+        "completed_day": 70,
+        "limitation": "需要按症状时间线重排"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e018",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_visit_001",
+      "content": "用户将检查报告优先的复诊准备计划替换为症状时间线优先计划，旧计划只保留为报告索引参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 45,
+        "phase_order": ["检查报告", "就诊问题", "陪诊和交通"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.48,
+        "stale_day": 76,
+        "replaced_by": "plan_visit_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e019",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_visit_002",
+      "content": "用户创建新的复诊准备计划，决定先整理症状时间线，再对应药物记录和检查报告。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 128,
+        "replaces": "plan_visit_001",
+        "phase_order": ["症状时间线", "药物记录", "检查报告"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e020",
+      "day": 82,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_visit_question_output",
+      "content": "用户把就诊问题整理偏好从详细版清单临时改成一页纸简版，以便家人陪诊时快速查看。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_question_list",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "one_page_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "陪诊时需要快速查看"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e021",
+      "day": 88,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_med_review",
+      "content": "用户完成药物复盘，把旧版复诊问题清单标为已完成但不再作为当前就诊主线。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 88,
+        "next_due_day": 102,
+        "outdated_reference": "旧版复诊问题清单"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e022",
+      "day": 94,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_symptom_timeline",
+      "content": "用户创建症状时间线整理任务，需要把头晕、乏力、血压波动和用药时间对应起来。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 112
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "stable_preferences"]
+    },
+    {
+      "event_id": "e023",
+      "day": 100,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_family_care_roster_old",
+      "content": "用户创建家庭陪诊分工任务，原计划让固定一位亲属负责所有复诊和取药。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.58,
+        "deadline_day": 118
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["main_life_domains", "recurring_tasks"]
+    },
+    {
+      "event_id": "e024",
+      "day": 106,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_relative_chat_001",
+      "content": "亲属群里对陪诊时间有不同意见，用户先记录各自可用时间，准备晚点统一确认。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "亲属沟通"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e025",
+      "day": 112,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_symptom_timeline",
+      "content": "用户未完成症状时间线整理，把截止日推迟到第 124 天，但仍保留为当前医疗准备核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 112
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "previous_deadline_day": 112,
+        "deadline_day": 124,
+        "partial_progress": "头晕和血压波动已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e026",
+      "day": 118,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_family_care_roster_old",
+      "content": "用户取消由固定亲属负责全部复诊的分工任务，改为按门诊时间轮流安排。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.58,
+        "deadline_day": 118
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.36,
+        "cancelled_day": 118,
+        "reason": "亲属时间无法固定"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e027",
+      "day": 122,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_anxiety_report_001",
+      "content": "用户设置近期约束，晚上不反复刷新检查报告，只在上午固定时间查看并记录变化。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "limit_report_refresh",
+        "valid_until_day": 180
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e028",
+      "day": 124,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_symptom_timeline",
+      "content": "用户完成症状时间线整理，明确头晕、乏力和血压波动分别对应的日期和用药时间。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "deadline_day": 124
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.91,
+        "deadline_day": 124,
+        "completed_day": 124,
+        "outputs": ["头晕日期", "乏力日期", "血压波动和用药时间"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e029",
+      "day": 128,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_visit_001",
+      "content": "用户确认复诊准备当前缺口从报告归档转为症状时间线、用药变化和陪诊分工。",
+      "state_before": {
+        "plan": "plan_visit_002",
+        "main_blocker": "报告归档"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "症状时间线、用药变化和陪诊分工",
+        "resolved_blocker": "报告归档"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e030",
+      "day": 134,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_insurance_claim_current",
+      "content": "用户创建保险理赔材料整理任务，需要准备住院检查单、发票、诊断证明和身份证件复印件。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 158
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["main_life_domains", "primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e031",
+      "day": 140,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "content": "用户临时记录想买一个分格药盒和便携血压记录本，准备周末比较价格和尺寸。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "临时购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e032",
+      "day": 146,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_one_page_visit_brief",
+      "content": "用户创建一页纸复诊摘要任务，需要把症状时间线、用药变化和三条核心问题压缩到一页。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 168
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "stable_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 152,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_rotating_care_roster",
+      "content": "用户创建轮流陪诊分工任务，需要按门诊日期、亲属可用时间和交通方式安排责任人。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 174
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["main_life_domains", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e034",
+      "day": 158,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_insurance_claim_current",
+      "content": "用户未完成保险理赔材料整理，把截止日推迟到第 172 天，但仍保留为当前保险任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 158
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.8,
+        "previous_deadline_day": 158,
+        "deadline_day": 172,
+        "partial_progress": "发票和检查单已准备"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "main_life_domains"]
+    },
+    {
+      "event_id": "e035",
+      "day": 166,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_medication_001",
+      "content": "用户将药物记录阶段复盘日顺延到第 188 天，因为还需要补齐近期症状时间线后的用药变化。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 60
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.82,
+        "previous_deadline_day": 60,
+        "deadline_day": 188,
+        "blocking_items": ["近期用药变化补齐"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e036",
+      "day": 172,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_insurance_claim_current",
+      "content": "用户完成保险理赔材料整理，确认还需要线下补盖一个诊断证明章。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.8,
+        "deadline_day": 172
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 172,
+        "completed_day": 172,
+        "remaining_gap": "诊断证明章待补"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["main_life_domains", "primary_goals"]
+    },
+    {
+      "event_id": "e037",
+      "day": 180,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_med_review",
+      "content": "用户完成近期医疗复盘，确认当前重点是复诊一页纸、轮流陪诊分工和药物变化补齐。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 88,
+        "next_due_day": 102
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 180,
+        "next_due_day": 194,
+        "current_focus": ["复诊一页纸", "轮流陪诊分工", "药物变化补齐"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_visit_002", "plan_medication_001"],
+    "stale_plans": ["plan_visit_001"],
+    "active_tasks": ["task_one_page_visit_brief", "task_rotating_care_roster"],
+    "completed_tasks": ["task_report_folder", "task_insurance_policy_old", "task_visit_questions_old", "task_symptom_timeline", "task_insurance_claim_current"],
+    "cancelled_tasks": ["task_family_care_roster_old"],
+    "postponed_tasks": [],
+    "current_constraints": ["constraint_anxiety_report_001"],
+    "stable_preferences": ["pref_care_record_001"],
+    "old_preferences": ["pref_visit_question_output:detailed_question_list"],
+    "updated_preferences": ["pref_visit_question_output:one_page_brief"],
+    "important_not_urgent_tasks": ["task_insurance_policy_old", "task_family_care_roster_old"],
+    "urgent_low_value_tasks": ["noise_shopping_001"],
+    "noise_events": ["noise_temp_symptom_001", "noise_hospital_schedule_001", "noise_report_anxiety_001", "noise_relative_chat_001", "noise_shopping_001"],
+    "hard_negative_sources": ["plan_visit_001", "task_visit_questions_old", "task_insurance_policy_old", "task_family_care_roster_old", "pref_visit_question_output:detailed_question_list", "noise_shopping_001", "recur_med_review:day88_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

@@ -1,0 +1,768 @@
+{
+  "user_id": "S06",
+  "timeline_id": "S06_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 100,
+    "length_days": 100,
+    "reason": "S06 是课堂观察和毕业论文并行推进的硕士教育学学生，适合用 100 天稀疏时间跨度覆盖早期课堂观察计划和稳定偏好、中期导师反馈导致的论文方案替换、近期访谈提纲和论文框架任务，同时保留实习琐事、课堂临时记录和生活安排等噪音。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "课堂观察设计与资料整理",
+      "domain": "课堂观察",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "毕业论文框架与研究问题迭代",
+      "domain": "毕业论文",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "访谈提纲与材料编码准备",
+      "domain": "访谈提纲 / 论文材料",
+      "status": "mixed",
+      "derived_from_profile": ["agent_usage_style", "main_life_domains", "stable_preferences", "dynamic_preferences"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "实习琐事、导师反馈与生活噪音",
+      "domain": "实习 / 情绪压力 / 社交与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_research_archive_001",
+      "content": "用户确立长期归档偏好，希望课堂观察、毕业论文、实习和生活事项分开记录，并保留每项建议的依据和截止时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["课堂观察", "毕业论文", "实习", "生活事项"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_observation_001",
+      "content": "用户制定早期课堂观察计划，准备先确定观察维度，再安排课堂记录表，最后整理观察反思。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 52,
+        "phase_order": ["观察维度", "课堂记录表", "观察反思"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["life_stage", "primary_goals"]
+    },
+    {
+      "event_id": "e003",
+      "day": 5,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_thesis_001",
+      "content": "用户创建毕业论文早期方案，计划先写理论框架，再补课堂观察资料和访谈材料。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 60,
+        "phase_order": ["理论框架", "课堂观察资料", "访谈材料"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_interview_outline_output",
+      "content": "用户记录访谈提纲输出偏好，初期希望 agent 给详细版提纲说明，包含问题目的、追问方式和适用对象。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_outline_notes",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 10,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_intern_admin_001",
+      "content": "用户记录实习单位临时要求补交考勤表和指导记录，压缩了晚上整理课堂观察资料的时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.33,
+        "topic": "实习琐事"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 14,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_observation_dimensions",
+      "content": "用户创建课堂观察维度整理任务，需要把师生互动、课堂提问和学生参与度分开定义。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 26
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 16,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_thesis_review",
+      "content": "用户设置每两周复盘一次论文框架和课堂观察下一步，避免实习临时记录混进研究任务。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.72,
+        "interval_days": 14,
+        "next_due_day": 30
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 18,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_theory_framework_old",
+      "content": "用户创建毕业论文理论框架初稿任务，准备先按教学互动理论和课堂参与研究搭建结构。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 33
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 22,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_class_note_001",
+      "content": "用户临时记录一节实习课堂里的突发插曲，担心它会影响对正式观察对象的判断。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.28,
+        "topic": "课堂临时记录"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e010",
+      "day": 26,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_observation_dimensions",
+      "content": "用户完成课堂观察维度整理，确认三类核心维度和两项需要试观察验证的指标。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 26
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.86,
+        "deadline_day": 26,
+        "completed_day": 26,
+        "remaining_gap": "两项指标需试观察验证"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e011",
+      "day": 30,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_thesis_review",
+      "content": "用户完成第一次论文复盘，确认观察维度已完成，但论文理论框架仍缺少与课堂资料的连接。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 30
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 30,
+        "next_due_day": 44,
+        "finding": "理论框架与课堂资料连接不足"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e012",
+      "day": 33,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_theory_framework_old",
+      "content": "用户完成理论框架初稿，但发现它偏概念综述，不能直接支撑后续课堂观察分析。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 33
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 33,
+        "completed_day": 33,
+        "limitation": "偏概念综述，缺少观察分析支撑"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 38,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_supervisor_feedback_001",
+      "content": "用户记录导师临时发来一段反馈，要求重新说明课堂观察对象的选择理由。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.39,
+        "topic": "导师反馈"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e014",
+      "day": 40,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_thesis_001",
+      "content": "导师正式反馈毕业论文不能只按理论综述展开，需要围绕课堂观察证据重写研究问题。",
+      "state_before": {
+        "related_plan": "plan_thesis_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.92,
+        "affects": "plan_thesis_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 44,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_thesis_review",
+      "content": "用户完成第二次论文复盘，把早期理论框架初稿标为旧参考，不再作为当前论文主线。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 30,
+        "next_due_day": 44
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 44,
+        "next_due_day": 58,
+        "outdated_reference": "理论框架初稿"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_thesis_001",
+      "content": "用户将理论综述优先的论文方案替换为课堂观察证据导向方案，旧方案只保留为文献背景参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 60,
+        "phase_order": ["理论框架", "课堂观察资料", "访谈材料"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.47,
+        "stale_day": 46,
+        "replaced_by": "plan_thesis_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e017",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_thesis_002",
+      "content": "用户创建新的毕业论文方案，决定先重写研究问题，再整合课堂观察资料和访谈提纲。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.94,
+        "deadline_day": 86,
+        "replaces": "plan_thesis_001",
+        "phase_order": ["研究问题重写", "课堂观察资料整合", "访谈提纲"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e018",
+      "day": 50,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_observation_001",
+      "content": "用户把课堂观察计划拆小，决定先完成观察记录表修订，再补试观察和反思编码。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 52,
+        "phase_order": ["观察维度", "课堂记录表", "观察反思"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 82,
+        "priority_order": ["观察记录表修订", "试观察", "反思编码"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences", "primary_goals"]
+    },
+    {
+      "event_id": "e019",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_interview_outline_output",
+      "content": "用户把访谈提纲输出偏好从详细说明临时改成简版执行清单，以便先处理导师要求的研究问题重写。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_outline_notes",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_action_list",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "研究问题重写优先"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e020",
+      "day": 55,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_research_question_rewrite",
+      "content": "用户创建研究问题重写任务，需要把课堂观察对象、核心现象和论文问题重新对应起来。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.93,
+        "deadline_day": 68
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes", "stable_preferences"]
+    },
+    {
+      "event_id": "e021",
+      "day": 58,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_thesis_review",
+      "content": "用户完成第三次论文复盘，确认简版执行清单适合当前赶进度，但后续定稿仍需要补回详细依据。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 44,
+        "next_due_day": 58
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 58,
+        "next_due_day": 72,
+        "finding": "简版清单适合短期推进"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 60,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_life_schedule_001",
+      "content": "用户记录周末需要处理租房维修和生活采购，担心占用论文重写时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.27,
+        "topic": "生活安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 62,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_interview_outline_old",
+      "content": "用户创建访谈提纲初版任务，原计划围绕教师教学策略和学生课堂反应设计问题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.74,
+        "deadline_day": 76
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["agent_usage_style", "recurring_tasks"]
+    },
+    {
+      "event_id": "e024",
+      "day": 66,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_observation_form_revision",
+      "content": "用户创建课堂观察记录表修订任务，需要把观察维度、记录对象和时间段统一到同一张表。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 80
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e025",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_research_question_rewrite",
+      "content": "用户未完成研究问题重写，把截止日推迟到第 74 天，但仍保留为当前论文最高优先级任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.93,
+        "deadline_day": 68
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.94,
+        "previous_deadline_day": 68,
+        "deadline_day": 74,
+        "partial_progress": "课堂观察对象和核心现象已改写"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e026",
+      "day": 70,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "content": "用户临时记录想买一个录音笔收纳包和新的笔记本，准备晚点比较价格。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "临时购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e027",
+      "day": 72,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_thesis_review",
+      "content": "用户完成第四次论文复盘，确认旧访谈提纲方向过宽，不能直接支撑新的研究问题。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 58,
+        "next_due_day": 72
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 72,
+        "next_due_day": 86,
+        "outdated_reference": "旧访谈提纲方向"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e028",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_research_question_rewrite",
+      "content": "用户完成研究问题重写，明确课堂观察对象、核心现象和毕业论文主问题之间的关系。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.94,
+        "deadline_day": 74
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.94,
+        "deadline_day": 74,
+        "completed_day": 74
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e029",
+      "day": 76,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_interview_outline_old",
+      "content": "用户取消旧访谈提纲初版任务，决定等新研究问题稳定后再重写访谈问题。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.74,
+        "deadline_day": 76
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.4,
+        "cancelled_day": 76,
+        "reason": "研究问题已重写，旧提纲方向过宽"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e030",
+      "day": 78,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_intern_admin_001",
+      "content": "用户设置近期约束，晚上写论文时不处理实习行政表格，只把实习琐事集中到第二天下午。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.79,
+        "constraint_type": "separate_intern_admin_from_thesis_work",
+        "valid_until_day": 100
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 80,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_observation_form_revision",
+      "content": "用户未完成课堂观察记录表修订，把截止日推迟到第 88 天，但仍作为当前课堂观察核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 80
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 80,
+        "deadline_day": 88,
+        "partial_progress": "观察维度和记录对象已统一"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 84,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_interview_outline_current",
+      "content": "用户创建新版访谈提纲任务，需要围绕新研究问题设计主问题、追问和适用对象。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 98
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 86,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_thesis_001",
+      "content": "用户确认毕业论文当前缺口从研究问题转为课堂观察资料整合和新版访谈提纲。",
+      "state_before": {
+        "plan": "plan_thesis_002",
+        "main_blocker": "研究问题重写"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "课堂观察资料整合和新版访谈提纲",
+        "resolved_blocker": "研究问题重写"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e034",
+      "day": 88,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_observation_form_revision",
+      "content": "用户完成课堂观察记录表修订，确认观察维度、记录对象和时间段可以用于下一轮试观察。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "deadline_day": 88
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.87,
+        "deadline_day": 88,
+        "completed_day": 88
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e035",
+      "day": 92,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_trial_observation",
+      "content": "用户创建试观察安排任务，需要确认课堂时间、观察对象和记录表试用方式。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 104
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e036",
+      "day": 96,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_interview_outline_current",
+      "content": "用户把新版访谈提纲推迟到第 106 天，近期先保留主问题和两个关键追问。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 98
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.84,
+        "previous_deadline_day": 98,
+        "deadline_day": 106,
+        "partial_progress": "主问题和两个关键追问已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e037",
+      "day": 100,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_thesis_outline_update",
+      "content": "用户创建毕业论文框架更新任务，需要把新研究问题、观察资料和访谈提纲位置重新排入章节结构。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 110
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences", "agent_usage_style"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_observation_001", "plan_thesis_002"],
+    "stale_plans": ["plan_thesis_001"],
+    "active_tasks": ["task_interview_outline_current", "task_trial_observation", "task_thesis_outline_update"],
+    "completed_tasks": ["task_observation_dimensions", "task_theory_framework_old", "task_research_question_rewrite", "task_observation_form_revision"],
+    "cancelled_tasks": ["task_interview_outline_old"],
+    "postponed_tasks": ["task_interview_outline_current"],
+    "current_constraints": ["constraint_intern_admin_001"],
+    "stable_preferences": ["pref_research_archive_001"],
+    "old_preferences": ["pref_interview_outline_output:detailed_outline_notes"],
+    "updated_preferences": ["pref_interview_outline_output:brief_action_list"],
+    "important_not_urgent_tasks": ["task_interview_outline_old"],
+    "urgent_low_value_tasks": ["noise_shopping_001"],
+    "noise_events": ["noise_intern_admin_001", "noise_class_note_001", "noise_supervisor_feedback_001", "noise_life_schedule_001", "noise_shopping_001"],
+    "hard_negative_sources": ["plan_thesis_001", "task_theory_framework_old", "task_interview_outline_old", "pref_interview_outline_output:detailed_outline_notes", "noise_shopping_001", "recur_thesis_review:day44_outdated_status", "recur_thesis_review:day72_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

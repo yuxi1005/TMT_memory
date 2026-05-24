@@ -1,0 +1,1087 @@
+{
+  "user_id": "S05",
+  "source_timeline_id": "S05_latent_world_timeline_v1",
+  "dialogue_dataset_id": "S05_dialogues_v1",
+  "interactions": [
+    {
+      "interaction_id": "S05_i001",
+      "source_event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_research_workflow_001",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "反思型但要求结构化归档，强调依据和截止时间",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我想先定一个长期习惯：实验设计、问卷、统计分析和生活事项不要混在一起。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。之后我会按这四类分开整理，并在建议里保留关键依据和截止时间。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我最近情绪记录也很多，容易把研究任务冲散。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。生活记录会单独放，不和实验设计或问卷待办混成一类。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i002",
+      "source_event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_experiment_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "焦虑但有条理，要求把实验设计拆成阶段",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我想把早期实验设计计划搭起来，先明确研究假设，再定义变量，最后再写实验流程。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，当前顺序就是：研究假设、变量定义、实验流程。这个计划先按第50天前完成来安排。"
+        },
+        {
+          "speaker": "user",
+          "text": "我怕一开始就写流程会乱，变量还没稳。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那前半段先压在假设和变量上，流程只保留占位，不急着展开细节。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i003",
+      "source_event_id": "e003",
+      "day": 5,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_survey_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "务实清单式，先复用旧材料再少量补充",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "问卷这边我先做一个早期方案：复用旧量表条目，再补一点自编题项。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的。问卷方案先记录为旧量表条目加少量自编题项，截止点按第42天。"
+        },
+        {
+          "speaker": "user",
+          "text": "我不是很想从零写，怕题项质量不稳。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以先筛旧量表，再标出哪些变量缺口需要自编补足。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i004",
+      "source_event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_lit_summary_output",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "研究型偏好记录，要求详细理论依据",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "文献总结先给我详细版吧，我需要理论依据、变量定义和能引用的结论都分开。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。文献总结会按理论依据、变量定义、可引用结论三块输出。"
+        },
+        {
+          "speaker": "user",
+          "text": "现在还在早期，我宁愿慢一点，也别只给我结论。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，现阶段会保留推理依据，方便你之后接变量设计。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i005",
+      "source_event_id": "e005",
+      "day": 10,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_emotion_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "情绪化口语记录，轻量安抚不过度任务化",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "刚和同学沟通完有点低落，晚上可能很难集中整理变量定义。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先把情绪放一放也可以。今晚如果状态差，就只留一个很小的整理入口。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，我现在脑子里一直回放刚才的对话。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那先别逼自己深度推进，简单记下影响状态的原因就够了。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i006",
+      "source_event_id": "e006",
+      "day": 13,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_hypothesis_matrix",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "清单化研究任务，强调变量关系分栏",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我要新建一个研究假设矩阵任务，截止第25天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的。这个任务需要把自变量、中介变量、因变量和预期方向分开列。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我想看清楚每个关系是不是有依据。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那表格可以加一列文献依据，先空着也行，后面逐步补。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i007",
+      "source_event_id": "e007",
+      "day": 16,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_lit_review",
+      "retrieval_role": "recurring_task",
+      "dialogue_style": "周期性复盘设置，强调研究和情绪条目分开",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "帮我设一个每两周复盘一次文献总结和变量设计待办。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记为每14天一次，下一次是第30天。复盘内容只放文献和变量设计。"
+        },
+        {
+          "speaker": "user",
+          "text": "情绪记录不要混进去，我最近太容易写着写着跑偏。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，情绪条目单独留存，不进入这项研究复盘。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i008",
+      "source_event_id": "e008",
+      "day": 18,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_old_scale_items",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "任务导向，围绕旧量表筛选和来源记录",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "问卷这边加一个任务：整理旧量表条目，筛出适合当前研究主题的题项。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，任务截止第31天。整理时需要同时记录每个条目的来源。"
+        },
+        {
+          "speaker": "user",
+          "text": "来源一定要留，不然之后写方法部分会很痛苦。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，条目、对应变量、来源三列先固定下来。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i009",
+      "source_event_id": "e009",
+      "day": 21,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_relationship_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "人际误会后的反思记录，简短承接",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "今天和朋友之间有个误会，我反复整理情绪，结果问卷题项检查被拖后了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先记下这次影响就好。等情绪缓一点，再回到题项检查。"
+        },
+        {
+          "speaker": "user",
+          "text": "我不想把这件事也扩成一堆待办。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，只保留为今天的状态记录，不额外展开。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i010",
+      "source_event_id": "e010",
+      "day": 25,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_hypothesis_matrix",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "完成汇报，保留剩余证据缺口",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "研究假设矩阵第一版完成了，今天刚好第25天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录完成。矩阵任务本身结束了，后续只剩证据补充。"
+        },
+        {
+          "speaker": "user",
+          "text": "里面有两个变量关系还缺文献依据。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，我会把这两个关系标为文献依据缺口，而不是把矩阵继续当成未完成任务。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i011",
+      "source_event_id": "e011",
+      "day": 30,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_lit_review",
+      "retrieval_role": "status_update",
+      "dialogue_style": "周期复盘，区分已完成矩阵和待补说明",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第30天这次文献复盘做完了。假设矩阵确认已经完成。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录第一次复盘完成，下一次复盘在第44天。"
+        },
+        {
+          "speaker": "user",
+          "text": "但变量操作化说明还不够，尤其是测量方式那块。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，当前发现是变量操作化说明不足，矩阵不再作为待完成项。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i012",
+      "source_event_id": "e012",
+      "day": 31,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_old_scale_items",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "完成任务但指出适配限制",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "旧量表条目整理完了，来源也都记了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录为第31天完成。这个整理任务已经结束。"
+        },
+        {
+          "speaker": "user",
+          "text": "不过我发现有些题项和当前变量不是完全匹配。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，整理结果可以保留，但要标出部分题项适配不足。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i013",
+      "source_event_id": "e013",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_survey_001",
+      "retrieval_role": "current_state_seed",
+      "dialogue_style": "导师反馈后的紧张调整，重新排序问卷工作",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "导师反馈说问卷不能只是简单复用旧量表。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这会影响原来的问卷方案。现在需要根据变量操作化重新调整题项和分量表结构。"
+        },
+        {
+          "speaker": "user",
+          "text": "我有点慌，因为前面整理了很多旧条目。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "旧条目还可以当来源池，但主线要转向变量对应关系和结构调整。"
+        },
+        {
+          "speaker": "user",
+          "text": "那我先别继续按原方案扩题了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "对，先停下原来的扩题方式，下一步重新定义每个变量需要测什么。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i014",
+      "source_event_id": "e014",
+      "day": 39,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_survey_001",
+      "retrieval_role": "stale_plan",
+      "dialogue_style": "明确替换旧方案，旧材料仅作参考",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我决定把之前复用旧量表的问卷方案换掉。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。之后不再按旧量表复用作为主方案推进。"
+        },
+        {
+          "speaker": "user",
+          "text": "旧方案里的条目只能作为来源参考，不能直接当现在的问卷框架。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，旧条目保留为参考材料，当前问卷框架需要另建。"
+        },
+        {
+          "speaker": "user",
+          "text": "我怕之后又混回去，所以帮我区分清楚。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "会区分：旧方案只提供候选题项来源，不作为后续主流程。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i015",
+      "source_event_id": "e015",
+      "day": 39,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_survey_002",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "新版问卷计划，按变量操作化推进",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "新问卷方案就按变量操作化来：先重写题项，再做预测试，最后检查信度。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录为当前问卷方案，顺序是题项重写、预测试、信度检查。"
+        },
+        {
+          "speaker": "user",
+          "text": "截止我先放到第75天，不然前面太紧。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，当前方案截止第75天，并替代之前的旧量表复用方案。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i016",
+      "source_event_id": "e016",
+      "day": 42,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_experiment_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "计划拆小，延期并重排优先级",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "实验设计计划要拆小一点，原来第50天太赶了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。原计划还在，但当前安排需要更新。"
+        },
+        {
+          "speaker": "user",
+          "text": "先完成变量操作化说明，再细化实验流程和招募标准。截止改到第82天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已更新：变量操作化说明优先，其次实验流程，最后招募标准；新截止为第82天。"
+        },
+        {
+          "speaker": "user",
+          "text": "之前那个假设、变量、流程的大顺序只能当早期框架了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，后面执行以拆小后的优先顺序为准。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i017",
+      "source_event_id": "e017",
+      "day": 44,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_lit_review",
+      "retrieval_role": "outdated_status",
+      "dialogue_style": "复盘旧结果，明确只作为参考材料",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第44天这次文献复盘完成了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录第二次复盘完成，下一次是第58天。"
+        },
+        {
+          "speaker": "user",
+          "text": "早期旧量表整理结果现在只作为参考材料，不再是问卷主方案。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，旧量表整理结果会放在参考材料里，当前问卷主线以变量操作化方案为准。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i018",
+      "source_event_id": "e018",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_survey_item_rewrite",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "当前问卷主任务，强调题项和理论依据对应",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我要创建问卷题项重写任务，截止第61天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的。每个题项都要对应具体变量和理论依据。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，这次不能只是看起来像旧量表。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那重写时先按变量分组，再给每个题项补对应依据。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i019",
+      "source_event_id": "e019",
+      "day": 49,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_lit_summary_output",
+      "retrieval_role": "updated_preference",
+      "dialogue_style": "临时偏好调整，从详细说明改为简版证据清单",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "文献总结格式先改一下，之前详细理论说明太慢了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的。之前的详细版偏好先暂停，当前改成更短的证据清单。"
+        },
+        {
+          "speaker": "user",
+          "text": "主要是问卷重写截止时间近，我先要能快速用的依据。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。近期输出会以简版证据清单为主，方便你赶问卷题项。"
+        },
+        {
+          "speaker": "user",
+          "text": "等后面写论文时可能还要恢复详细版。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，这次调整先按当前阶段处理，不把详细版彻底删除。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i020",
+      "source_event_id": "e020",
+      "day": 52,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_reflection_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "临时自我反思，轻量整理不扩展",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我发现最近老是把研究压力和人际情绪混在一起处理。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这个观察可以先单独记下，不需要马上展开成研究任务。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我只是想留个提醒，别又写成一长串。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，就保留为一次临时反思。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i021",
+      "source_event_id": "e021",
+      "day": 55,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_operational_definition",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "实验设计核心任务，要求定义、测量和排除标准清楚",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "实验设计这边新建变量操作化说明任务，截止第70天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的。每个变量需要写清定义、测量方式和排除标准。"
+        },
+        {
+          "speaker": "user",
+          "text": "这块如果不清楚，后面的实验流程也写不稳。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那这个任务优先级较高，先把每个变量的三项说明补齐。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i022",
+      "source_event_id": "e022",
+      "day": 58,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_lit_review",
+      "retrieval_role": "status_update",
+      "dialogue_style": "周期复盘，确认短期简版有效但后续仍需详细依据",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第58天文献复盘完成了。简版证据清单确实适合现在赶进度。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录第三次复盘完成，下一次复盘在第72天。"
+        },
+        {
+          "speaker": "user",
+          "text": "但后面写论文还是得恢复详细依据，不然论证会薄。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，当前阶段用简版推进，论文写作阶段再补回详细依据。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i023",
+      "source_event_id": "e023",
+      "day": 61,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_survey_item_rewrite",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "延期但仍保持为当前主任务",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "问卷题项重写今天没全做完，核心变量题项已经完成了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，记录为部分完成。这个任务仍然是当前问卷主任务。"
+        },
+        {
+          "speaker": "user",
+          "text": "截止从第61天推到第68天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已更新截止到第68天，重点是补完剩余题项和对应依据。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i024",
+      "source_event_id": "e024",
+      "day": 63,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_recruitment_anxiety_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "招募焦虑记录，承接但不转成正式计划",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我有点担心实验招募人数不够，一直在看群发文案和同学回复。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先记录这份焦虑就好。反复检查回复会消耗很多注意力。"
+        },
+        {
+          "speaker": "user",
+          "text": "是的，我今天好几次都被这个打断。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以给自己留一个固定查看时间，其他时候先不反复刷新。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i025",
+      "source_event_id": "e025",
+      "day": 66,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_stats_plan_old",
+      "retrieval_role": "important_not_urgent_task",
+      "dialogue_style": "统计分析早期想法，重要但暂不紧急",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我先建一个早期统计分析计划任务，原本想先做描述统计和简单相关分析。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，先记为统计分析准备任务，截止第74天，当前优先级不高于问卷重写。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，它重要，但现在还不是最急。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，先保留这个分析思路，等问卷和数据更稳定后再细化。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i026",
+      "source_event_id": "e026",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_survey_item_rewrite",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "延期任务完成，输出物明确",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "问卷题项重写完成了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录第68天完成，这个重写任务不再是待办。"
+        },
+        {
+          "speaker": "user",
+          "text": "现在有按变量分组的题项表，也有需要预测试验证的条目清单。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，输出物记录为变量分组题项表和预测试条目清单。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i027",
+      "source_event_id": "e027",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_operational_definition",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "实验任务延期，保留已完成草稿",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "变量操作化说明今天没法完整收尾，要推到第78天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已更新截止为第78天。这个任务仍然有效。"
+        },
+        {
+          "speaker": "user",
+          "text": "不过核心变量和排除标准草稿已经写出来了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，当前进展是核心变量和排除标准草稿已完成，剩下补全说明。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i028",
+      "source_event_id": "e028",
+      "day": 72,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_emotion_log_001",
+      "retrieval_role": "current_constraint",
+      "dialogue_style": "自我管理约束，研究任务和情绪记录分时处理",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我想设个近期约束：晚上处理研究任务时，不再连续整理情绪记录。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。这个约束先记录到第96天有效。"
+        },
+        {
+          "speaker": "user",
+          "text": "如果晚上冒出情绪条目，就先移到第二天单独处理。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，晚上研究时只做研究任务，情绪条目第二天单独整理。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i029",
+      "source_event_id": "e029",
+      "day": 74,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_stats_plan_old",
+      "retrieval_role": "cancelled_task",
+      "dialogue_style": "取消早期统计计划，等待预测试数据后重做",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第66天那个简单相关分析计划先取消。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录取消。后面不再按描述统计加简单相关这个旧计划推进。"
+        },
+        {
+          "speaker": "user",
+          "text": "原因是预测试数据还没回来，现在定分析方案太早。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，等预测试数据回来后，再按变量结构重新制定统计方案。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i030",
+      "source_event_id": "e030",
+      "day": 76,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_survey_pilot",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "问卷预测试任务，关注理解度和答题时长",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "问卷预测试任务要建起来，截止第88天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的。任务目标是招募少量被试，检查题项理解度和答题时长。"
+        },
+        {
+          "speaker": "user",
+          "text": "我想先看题目有没有读不懂的地方。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那预测试记录里保留两项：理解反馈和完成时间。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i031",
+      "source_event_id": "e031",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_operational_definition",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "实验设计任务完成，确认定义、测量和排除标准",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "变量操作化说明完成了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录第78天完成，这个任务已收尾。"
+        },
+        {
+          "speaker": "user",
+          "text": "每个变量的定义、测量方式和排除标准都写清楚了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，后续实验设计可以基于这版说明继续推进。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i032",
+      "source_event_id": "e032",
+      "day": 82,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_experiment_001",
+      "retrieval_role": "status_update",
+      "dialogue_style": "当前状态更新，阻塞点从变量定义转向流程和招募",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "实验设计现在的缺口变了，不再是变量定义。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，变量操作化说明已经完成。"
+        },
+        {
+          "speaker": "user",
+          "text": "现在主要卡在实验流程细节和招募标准。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已更新当前状态：后续重点是流程细节和招募标准。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i033",
+      "source_event_id": "e033",
+      "day": 84,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_stats_plan_current",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "新版统计准备任务，依赖预测试结果",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "现在可以新建统计分析准备任务了，但要根据预测试结果来规划。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，截止第98天。任务包括信度、效度和回归分析步骤规划。"
+        },
+        {
+          "speaker": "user",
+          "text": "这次不要沿用之前那个简单相关的思路。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，这次以预测试结果和变量结构为依据重新制定。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i034",
+      "source_event_id": "e034",
+      "day": 86,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "retrieval_role": "urgent_low_value_task",
+      "dialogue_style": "临时购物想法，轻量记录不升级",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我临时想买一本研究方法工具书，还有一盏台灯，周末再比较价格。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以先记下，不急着今天决定。周末比较价格时看需求和预算就行。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，今天只是突然想到。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那就作为临时购物记录保留。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i035",
+      "source_event_id": "e035",
+      "day": 88,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_survey_pilot",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "预测试招募延期，仍是当前问卷主任务",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "问卷预测试招募没按第88天完成，已经有部分被试回复，但人数还不够。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录部分进展。这个任务仍然是当前问卷主任务。"
+        },
+        {
+          "speaker": "user",
+          "text": "截止推到第94天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，预测试招募截止更新为第94天，继续补足被试回复。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i036",
+      "source_event_id": "e036",
+      "day": 92,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_recruitment_criteria",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "实验招募标准细化，要求标准和渠道明确",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我要创建实验招募标准细化任务，截止第100天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的。任务内容是写清纳入标准、排除标准和招募渠道。"
+        },
+        {
+          "speaker": "user",
+          "text": "这个要和实验流程细节一起对上。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，招募标准会和当前实验流程保持一致。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S05_i037",
+      "source_event_id": "e037",
+      "day": 96,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_lit_gap_summary",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "阶段性文献缺口总结，连接变量、预测试和统计计划",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我想新建一个文献缺口总结任务，截止第104天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的。这个任务要把变量操作化、问卷预测试和统计分析计划之间的关系写清楚。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我不想最后写论文时发现这些线索断掉。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那总结可以按三段整理：变量为什么这样定义，预测试验证什么，统计分析怎么承接。"
+        }
+      ]
+    }
+  ],
+  "quality_check": {
+    "all_events_covered": true,
+    "interaction_count": 37,
+    "dialogues_are_not_memory_units": true,
+    "dialogues_follow_user_profile": true,
+    "metadata_not_leaked_in_dialogue": true,
+    "noise_dialogues_are_natural": true,
+    "dialogues_preserve_event_state": true,
+    "no_query_generated": true,
+    "no_gold_generated": true,
+    "no_mu_extracted": true
+  }
+}

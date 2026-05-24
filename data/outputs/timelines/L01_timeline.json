@@ -1,0 +1,779 @@
+{
+  "user_id": "L01",
+  "timeline_id": "L01_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 150,
+    "length_days": 150,
+    "reason": "L01 是育儿与睡眠持续经营期的家庭照护者，育儿记录、宝宝睡眠变化、家庭安排和用品购物会跨较长时间反复变化，因此选择 150 天稀疏时间跨度，覆盖早期作息方案、中期睡眠计划替换和近期仍 active 的育儿任务。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "育儿记录与日常照护推进",
+      "domain": "育儿",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "宝宝睡眠计划与作息调整",
+      "domain": "睡眠",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "家庭用品购物与家庭安排",
+      "domain": "家庭安排 / 消费与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["agent_usage_style", "main_life_domains", "stable_preferences", "dynamic_preferences"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "宝宝作息变化、焦虑搜索与家庭沟通噪音",
+      "domain": "健康与情绪 / 家庭事务",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_01",
+      "event_type": "add_preference",
+      "target_id": "pref_parenting_record_001",
+      "content": "用户确立长期记录偏好，希望育儿、睡眠、家庭安排和一次性想法分开记录，并突出时间、对象和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["育儿", "睡眠", "家庭安排", "一次性想法"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_sleep_001",
+      "content": "用户制定早期宝宝睡眠计划，准备固定晚间洗澡、喂奶和哄睡顺序，先观察两周效果。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 24,
+        "routine": ["洗澡", "喂奶", "哄睡"],
+        "trial_days": 14
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 5,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_parenting_001",
+      "content": "用户创建育儿记录计划，决定每天记录喂奶、睡眠、排便和情绪状态，并每周复盘一次。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 60,
+        "fields": ["喂奶", "睡眠", "排便", "情绪状态"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_shopping_compare_001",
+      "content": "用户记录购物比较偏好，初期希望 agent 给详细对比表，包含价格、适用月龄、清洗难度和家里空间占用。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_comparison_table",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 11,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_nap_shift_001",
+      "content": "宝宝白天小睡突然变短，用户临时查了很多关于小睡倒退和哄睡方式的资料。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.35,
+        "topic": "宝宝作息变化"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 15,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_feeding_sleep_log",
+      "content": "用户创建喂奶和睡眠日志整理任务，需要把最近两周的时间点、对象和异常情况补齐。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 28
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_parenting_review",
+      "content": "用户设置每两周复盘一次育儿记录，把重复照护事项和临时焦虑想法分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.72,
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 22,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_stroller_compare_old",
+      "content": "用户创建婴儿车详细比较任务，准备比较高景观车、轻便车和二手车三个方案。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.65,
+        "deadline_day": 42
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["agent_usage_style", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e009",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_parenting_review",
+      "content": "用户提前完成一次育儿复盘，发现早期固定哄睡顺序只在晚上有效，白天小睡仍不稳定。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 24,
+        "next_due_day": 38,
+        "finding": "晚间有效，白天小睡不稳定"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e010",
+      "day": 28,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_feeding_sleep_log",
+      "content": "用户完成两周喂奶和睡眠日志整理，标出三次夜醒和两次喂奶间隔异常。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 28
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.82,
+        "deadline_day": 28,
+        "completed_day": 28,
+        "noted_patterns": ["三次夜醒", "两次喂奶间隔异常"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e011",
+      "day": 35,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_family_comment_001",
+      "content": "家里人建议早点加辅食，用户把这条建议先记下，但还没决定是否调整当前照护安排。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "家庭沟通"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e012",
+      "day": 42,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_stroller_compare_old",
+      "content": "用户完成婴儿车详细比较，但发现高景观车方案价格高且家里收纳空间不够。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.65,
+        "deadline_day": 42
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.65,
+        "deadline_day": 42,
+        "completed_day": 42,
+        "limitation": "高景观车价格高且占空间"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e013",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_sleep_001",
+      "content": "儿保咨询后用户发现早期睡眠计划太依赖固定流程，需要改成根据白天小睡和夜醒情况动态调整。",
+      "state_before": {
+        "related_plan": "plan_sleep_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.88,
+        "affects": "plan_sleep_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 52,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_sleep_001",
+      "content": "用户将固定哄睡顺序计划替换为动态睡眠观察计划，旧方案只作为夜间流程参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 24,
+        "routine": ["洗澡", "喂奶", "哄睡"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 52,
+        "replaced_by": "plan_sleep_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e015",
+      "day": 52,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_sleep_002",
+      "content": "用户创建动态睡眠观察计划，决定按白天小睡、夜醒次数和喂奶间隔调整当日哄睡策略。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 105,
+        "replaces": "plan_sleep_001",
+        "tracking_fields": ["白天小睡", "夜醒次数", "喂奶间隔"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e016",
+      "day": 56,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_shopping_compare_001",
+      "content": "用户把购物比较输出偏好从详细表格临时改成简版三选一建议，以便快速处理当周用品采购。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_comparison_table",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_top3_recommendation",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "当周用品采购时间紧"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e017",
+      "day": 60,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_parenting_001",
+      "content": "用户把育儿记录计划拆小，决定先稳定睡眠和喂奶记录，再补家庭安排和用品库存记录。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 60,
+        "fields": ["喂奶", "睡眠", "排便", "情绪状态"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 120,
+        "priority_order": ["睡眠记录", "喂奶记录", "家庭安排", "用品库存"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences", "primary_goals"]
+    },
+    {
+      "event_id": "e018",
+      "day": 66,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_anxiety_search_001",
+      "content": "用户因为连续两晚夜醒增加，临时搜索了睡眠倒退、出牙和喂奶间隔相关内容。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.36,
+        "topic": "焦虑搜索"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e019",
+      "day": 72,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_sleep_window_log",
+      "content": "用户创建睡眠窗口记录任务，需要连续两周记录醒来到下一次入睡的间隔和夜醒次数。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 92
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 78,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_baby_monitor_old",
+      "content": "用户创建婴儿监视器购买任务，原计划买功能最全的带摄像头款式。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.58,
+        "deadline_day": 94
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["typical_noise_sources", "agent_usage_style"]
+    },
+    {
+      "event_id": "e021",
+      "day": 84,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_parenting_review",
+      "content": "用户完成一次育儿复盘，确认旧高景观车比较和固定哄睡顺序都不再代表当前优先级。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 24,
+        "next_due_day": 38
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 84,
+        "next_due_day": 98,
+        "outdated_reference": "高景观车比较和固定哄睡顺序"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e022",
+      "day": 90,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_baby_monitor_old",
+      "content": "用户取消购买功能最全婴儿监视器的任务，决定先用现有设备观察一周再判断是否需要新增。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.58,
+        "deadline_day": 94
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.34,
+        "cancelled_day": 90,
+        "reason": "先用现有设备观察"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e023",
+      "day": 92,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_sleep_window_log",
+      "content": "用户未完成两周睡眠窗口记录，把截止日推迟到第 105 天，但仍保留为当前睡眠主任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 92
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "previous_deadline_day": 92,
+        "deadline_day": 105,
+        "partial_progress": "已记录 9 天"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e024",
+      "day": 98,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_diaper_sale_001",
+      "content": "用户临时记录纸尿裤有活动价，想比较不同尺码囤货数量和家里存放空间。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.24,
+        "topic": "用品购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e025",
+      "day": 105,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_sleep_window_log",
+      "content": "用户完成睡眠窗口记录，发现午后小睡过晚时夜醒概率更高。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "deadline_day": 105
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.9,
+        "deadline_day": 105,
+        "completed_day": 105,
+        "finding": "午后小睡过晚时夜醒概率更高"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e026",
+      "day": 110,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_anxiety_search_001",
+      "content": "用户设置近期约束，晚上宝宝醒后不立即连续搜索育儿信息，只记录现象并第二天固定时间查看。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "limit_night_anxiety_search",
+        "valid_until_day": 150
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e027",
+      "day": 116,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_parenting_001",
+      "content": "用户确认当前育儿记录重点从喂奶睡眠总表转为睡眠窗口、用品库存和家庭分工。",
+      "state_before": {
+        "plan": "plan_parenting_001",
+        "main_blocker": "喂奶睡眠总表"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "睡眠窗口、用品库存和家庭分工",
+        "resolved_blocker": "喂奶睡眠总表"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e028",
+      "day": 120,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_supplies_inventory",
+      "content": "用户创建宝宝用品库存整理任务，需要检查纸尿裤、湿巾、奶瓶配件和常用药品的剩余量。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 136
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "stable_preferences"]
+    },
+    {
+      "event_id": "e029",
+      "day": 126,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_evening_routine_adjust",
+      "content": "用户创建晚间流程微调任务，准备把午后小睡结束时间和晚上哄睡间隔联动记录。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 145
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e030",
+      "day": 130,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_family_duty_plan",
+      "content": "用户创建家庭分工安排任务，需要明确夜间安抚、用品补货和周末外出准备分别由谁负责。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 148
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["main_life_domains", "stable_preferences"]
+    },
+    {
+      "event_id": "e031",
+      "day": 134,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_movie_001",
+      "content": "用户记录周末想在宝宝睡后看一部电影，顺便点一份夜宵放松一下。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.2,
+        "topic": "临时娱乐想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e032",
+      "day": 136,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_supplies_inventory",
+      "content": "用户未完成全部用品库存整理，把截止日推迟到第 146 天，但仍保留为当前家庭安排任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 136
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.8,
+        "previous_deadline_day": 136,
+        "deadline_day": 146,
+        "partial_progress": "纸尿裤和湿巾已检查"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e033",
+      "day": 140,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_sleep_002",
+      "content": "用户将动态睡眠观察计划的阶段复盘日从第 105 天顺延到第 155 天，因为还需要观察晚间流程微调效果。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 105
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "previous_deadline_day": 105,
+        "deadline_day": 155,
+        "blocking_items": ["晚间流程微调效果"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e034",
+      "day": 145,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_evening_routine_adjust",
+      "content": "用户把晚间流程微调任务推迟到第 158 天，近期先保留午后小睡结束时间和夜醒记录。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 145
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 145,
+        "deadline_day": 158,
+        "partial_progress": "午后小睡结束时间和夜醒记录已开始"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e035",
+      "day": 146,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_supplies_inventory",
+      "content": "用户完成宝宝用品库存整理，确认纸尿裤需要补货，湿巾和奶瓶配件暂时够用。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.8,
+        "deadline_day": 146
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 146,
+        "completed_day": 146,
+        "restock_needed": ["纸尿裤"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e036",
+      "day": 148,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_family_duty_plan",
+      "content": "用户把家庭分工安排推迟到第 160 天，近期先确定夜间安抚和用品补货两件事。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 148
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.78,
+        "previous_deadline_day": 148,
+        "deadline_day": 160,
+        "partial_progress": "夜间安抚和用品补货已初步分工"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "main_life_domains"]
+    },
+    {
+      "event_id": "e037",
+      "day": 150,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_parenting_review",
+      "content": "用户完成近期育儿复盘，确认当前仍要继续跟踪晚间流程、家庭分工和纸尿裤补货。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 84,
+        "next_due_day": 98
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 150,
+        "next_due_day": 164,
+        "current_focus": ["晚间流程", "家庭分工", "纸尿裤补货"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_parenting_001", "plan_sleep_002"],
+    "stale_plans": ["plan_sleep_001"],
+    "active_tasks": ["task_evening_routine_adjust", "task_family_duty_plan"],
+    "completed_tasks": ["task_feeding_sleep_log", "task_stroller_compare_old", "task_sleep_window_log", "task_supplies_inventory"],
+    "cancelled_tasks": ["task_baby_monitor_old"],
+    "postponed_tasks": ["task_evening_routine_adjust", "task_family_duty_plan"],
+    "current_constraints": ["constraint_anxiety_search_001"],
+    "stable_preferences": ["pref_parenting_record_001"],
+    "old_preferences": ["pref_shopping_compare_001:detailed_comparison_table"],
+    "updated_preferences": ["pref_shopping_compare_001:brief_top3_recommendation"],
+    "important_not_urgent_tasks": ["task_stroller_compare_old", "task_baby_monitor_old"],
+    "urgent_low_value_tasks": ["noise_diaper_sale_001"],
+    "noise_events": ["noise_nap_shift_001", "noise_family_comment_001", "noise_anxiety_search_001", "noise_diaper_sale_001", "noise_movie_001"],
+    "hard_negative_sources": ["plan_sleep_001", "task_stroller_compare_old", "task_baby_monitor_old", "pref_shopping_compare_001:detailed_comparison_table", "noise_diaper_sale_001", "recur_parenting_review:day84_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

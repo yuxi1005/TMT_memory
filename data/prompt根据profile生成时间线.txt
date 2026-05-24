@@ -1,0 +1,542 @@
+你正在为一个“长期个人记忆检索 benchmark”生成 latent world timeline。
+
+请务必先理解这个 benchmark 的目标：
+
+这个 benchmark 不是测试普通语义相似度，而是测试：
+一条 memory 是否应该被召回，不只取决于它和 query 是否语义相关，还取决于它在当前时间、任务状态、完成状态、计划新旧、偏好稳定性和认知可访问性下，是否仍然应该被取出。这个 benchmark 需要长期时间跨度，不是为了模拟完整生活日记，而是为了制造“旧记忆仍然语义相关，但在当前状态下不该被召回”的检索场景。
+
+核心设定：
+1. memory unit 是未来检索的基本单位。
+2. active todo 是 prospective memory，用于未来任务提醒和计划。
+3. completed todo 会转化成 retrospective/status memory，用于回答“是否做过”“完成了吗”。
+4. stale plan / old preference / cancelled task 不能被当成当前状态。
+5. current plan / active task / stable preference / current constraint 应该更容易被召回。
+6. benchmark 需要故意产生语义相似但当前不该召回的 hard negatives。
+7. 用户是高频 AI agent 用户，不只用 agent 工作学习，也会处理生活、情绪、购物、健康、家庭、临时想法等事情。
+
+你的任务：
+
+根据输入的 enriched user profile，生成这个用户的一条结构化 latent world timeline。
+
+注意：
+你不是在写聊天记录。
+你不是在写 memory。
+你不是在写 query。
+你不是在写 gold。
+你是在生成“隐藏世界状态变化日志”。
+
+这个 timeline 未来会用于：
+1. 生成 memory units；
+2. 生成 user queries；
+3. 从隐藏状态自动推导 gold memories；
+4. 测试 retrieval system 是否能区分 active / completed / stale / current / noisy memories。
+
+====================
+输入
+====================
+
+你会收到一个 enriched user profile，格式大致如下：
+
+{
+  "user_id": "...",
+  "macro_archetype": "...",
+  "user_archetype": "...",
+  "concrete_identity": "...",
+  "life_stage": "...",
+  "agent_usage_level": "...",
+  "agent_usage_style": [...],
+  "main_life_domains": [...],
+  "primary_goals": [...],
+  "stable_preferences": [...],
+  "dynamic_preferences": [...],
+  "recurring_tasks": [...],
+  "typical_noise_sources": [...],
+  "memory_style": "...",
+  "likely_task_states": [...],
+  "likely_plan_changes": [...],
+  "likely_hard_negatives": [...]
+}
+
+你必须充分利用这些字段生成 timeline。
+
+字段使用规则：
+
+1. life_stage
+决定这个用户当前处于什么阶段，以及时间线的主要压力来源。
+
+2. primary_goals
+生成主要 storylines、current plans 和 important tasks。
+
+3. recurring_tasks
+生成重复出现的任务或周期性状态更新。
+
+4. dynamic_preferences
+生成 preference revision、old preference、updated preference。
+
+5. stable_preferences
+生成稳定偏好，后续应作为长期可访问 memory 的来源。
+
+6. typical_noise_sources
+生成生活噪音、小插曲、临时情绪、购物、健康、家庭等事件。
+
+7. likely_plan_changes
+生成计划变化，例如 plan revision、replace plan、priority shift。
+
+8. likely_hard_negatives
+生成 hard negative，例如旧计划、已完成 todo、取消任务、语义相似但状态不同的事件。
+
+9. main_life_domains
+确保事件不要只集中在工作/学习，也要包含真实高频 agent 用户会产生的生活域事件。
+
+====================
+时间跨度要求
+====================
+
+请根据用户画像动态决定 memory_horizon，不要所有用户一样。
+
+注意：
+这里的时间跨度不是连续日记长度，而是该用户在 agent 中留下记忆的历史跨度。
+时间线可以是稀疏的，不需要每天都有事件。
+
+每个 timeline 应该包含：
+1. 长期背景阶段：产生 stable preferences、早期计划、旧任务、旧噪音；
+2. 中期变化阶段：产生 plan revision、preference revision、任务完成/延期/取消；
+3. 近期活跃阶段：产生 current plans、active tasks、current constraints 和当前 query 相关状态。
+
+参考范围：
+
+1. 学生 / 研究型用户：
+   通常 45-150 天。
+   本科课程/实习型可以 45-90 天；
+   硕士论文/实验型可以 60-120 天；
+   博士投稿/长期实验型可以 90-180 天。
+
+2. 职业 / 项目推进型用户：
+   通常 30-120 天。
+   短期交付/上线项目可以 30-60 天；
+   跨季度项目、创业、咨询、法务案件可以 60-120 天。
+
+3. 生活管理 / 复杂个人事务型用户：
+   通常 60-240 天。
+   旅行/搬家可以 45-120 天；
+   育儿、慢病、健身、理财、宠物健康可以 90-240 天。
+
+不要为了拉长时间跨度而生成流水账。
+事件应该是稀疏但有状态意义的。
+
+时间跨度越长，越应该包含：
+- 更早的 stable preference；
+- 更早的 old plan；
+- 被后来替代的 stale plan；
+- 已完成或取消的旧 todo；
+- 近期仍然 active 的 current task；
+- 长期噪音和近期噪音的区别。
+
+====================
+Storyline 要求
+====================
+
+每个用户生成 2-4 条 storylines。
+
+storyline 不是单个事件，而是一条连续主线。
+
+每条 storyline 应该来自 profile 中的：
+- primary_goals
+- main_life_domains
+- recurring_tasks
+- typical_noise_sources
+- dynamic_preferences
+
+每条 storyline 必须有前后对应，不能是随机事件集合。
+
+好的 storyline 例子：
+
+1. 论文 benchmark 设计
+   create_plan → revise_plan → create_task → complete_task / postpone_task → current constraint
+
+2. 产品上线准备
+   create_plan → update_priority → unexpected requirement change → complete meeting summary → active launch task
+
+3. 慢性病复诊管理
+   add_status_update → create_task → unexpected symptom → revise_plan → completed appointment
+
+4. 装修预算控制
+   create_plan → shopping comparison → revise_budget → cancel_low_priority_purchase → current constraint
+
+每条 storyline 至少包含 4 个事件。
+
+====================
+事件数量要求
+====================
+
+每个 timeline 通常生成 24-42 个 events。
+要求：
+1. 早期阶段至少 5-8 个 events，用来建立长期偏好、旧计划、早期任务和旧噪音；
+2. 中期阶段至少 8-14 个 events，用来产生计划变化、任务完成、延期、取消、偏好修正；
+3. 近期阶段至少 8-16 个 events，用来建立当前 active tasks、current plans、current constraints；
+4. 事件之间可以相隔多天或数周；
+5. 不要把长时间跨度写成每天流水账。
+
+比例大致如下：
+
+1. 核心任务 / 计划 / 状态事件：约 60%
+2. 生活噪音 / 小插曲：约 20-30%
+3. 意外 / 冲突 / hard negative 相关事件：约 10-20%
+
+不要让噪音超过 30%。
+不要生成大量无意义装饰事件。
+每个事件都必须服务于未来的 memory retrieval 测试：
+- 建立当前状态；
+- 改变旧状态；
+- 产生完成/未完成状态；
+- 制造 stale/current 冲突；
+- 制造语义相似干扰项；
+- 体现稳定偏好或临时偏好；
+- 产生真实生活噪音。
+
+
+====================
+必须包含的内容
+====================
+
+每个 timeline 至少包含：
+
+1. 至少 2 个 active tasks
+2. 至少 2 个 completed tasks
+3. 至少 1 个 current plan
+4. 至少 1 个 stale plan
+5. 至少 1 次 plan revision 或 replace_plan
+6. 至少 1 条 current constraint
+7. 至少 1 条 stable preference 相关事件
+8. 至少 1 条 dynamic preference revision
+9. 至少 3 条 noise events
+10. 至少 3 类 hard negatives
+
+hard negatives 可以包括：
+- stale plan
+- completed todo
+- cancelled task
+- old preference
+- temporary preference
+- outdated status update
+- semantically similar task from another project
+- urgent but low-value task
+- old health/shopping/travel note
+
+====================
+Event 类型
+====================
+
+event_type 必须从以下类型中选择：
+
+- create_task
+- complete_task
+- postpone_task
+- cancel_task
+- update_priority
+- revise_deadline
+- create_plan
+- revise_plan
+- replace_plan
+- add_preference
+- revise_preference
+- add_constraint
+- add_status_update
+- introduce_noise
+- unexpected_event
+- create_recurring_task
+- complete_recurring_task_instance
+- switch_primary_focus
+
+不要创造太多新 event_type。
+
+====================
+Postponed task 状态规则
+====================
+
+postpone_task 表示任务延期，但延期后任务可能仍然需要继续做。
+
+如果任务延期后仍然是当前待办，请使用：
+
+"state_after": {
+  "status": "active",
+  "task_state": "postponed_active",
+  "previous_deadline_day": 原截止日,
+  "deadline_day": 新截止日
+},
+"retrieval_role": "postponed_task"
+
+不要只写 status = "postponed"，否则后续系统可能误以为它不再是 active task。
+
+final_state_summary 中：
+1. 这个任务应同时出现在 active_tasks；
+2. 也可以出现在 postponed_tasks；
+3. 不应出现在 completed_tasks。
+
+
+====================
+Retrieval role 类型
+====================
+
+每个 event 必须有 retrieval_role。
+
+retrieval_role 必须从以下类型中选择：
+
+- active_todo
+- completed_todo
+- current_plan
+- stale_plan
+- current_constraint
+- stable_preference
+- old_preference
+- updated_preference
+- status_update
+- outdated_status
+- recurring_task
+- noise
+- hard_negative
+- urgent_low_value_task
+- important_not_urgent_task
+- cancelled_task
+- postponed_task
+- current_state_seed
+
+retrieval_role 的作用是帮助后续生成 memory 和 query，不是给最终模型看的。
+
+====================
+Event 字段要求
+====================
+
+每个 event 必须包含：
+
+{
+  "event_id": "e001",
+  "day": 1,
+  "storyline_id": "sl_01",
+  "event_type": "create_task",
+  "target_id": "task_001",
+  "content": "用户需要设计 benchmark 的用户画像层。",
+  "state_before": null,
+  "state_after": {
+    "status": "active",
+    "importance": 0.85,
+    "deadline_day": 7
+  },
+  "retrieval_role": "active_todo",
+  "derived_from_profile": ["primary_goals", "life_stage"]
+}
+
+字段说明：
+
+1. event_id
+事件唯一编号，从 e001 开始。
+
+2. day
+事件发生在第几天，必须在 time_span 范围内。
+
+3. storyline_id
+该事件属于哪条 storyline。
+
+4. event_type
+事件类型。
+
+5. target_id
+事件作用对象。
+同一件事的前后变化必须使用同一个 target_id。
+例如：
+Day 2 create_task task_001
+Day 6 complete_task task_001
+
+6. content
+用简洁自然的中文描述隐藏世界里发生了什么。
+不要写成用户原话。
+不要写成 memory 文本。
+
+7. state_before
+事件发生前的状态。
+如果是新建对象，可以为 null。
+
+8. state_after
+事件发生后的状态。
+必须包含 status。
+如果是 task，应尽量包含 importance、deadline_day、completed_day 等。
+如果是 plan，应包含 status、replaced_by 等。
+如果是 preference，应包含 stability、currentness 等。
+
+9. retrieval_role
+该事件未来在检索测试中的角色。
+
+10. derived_from_profile
+说明这个事件来自 profile 的哪些字段。
+例如：
+["primary_goals"]
+["typical_noise_sources"]
+["dynamic_preferences"]
+["likely_hard_negatives"]
+
+====================
+状态前后对应要求
+====================
+
+事件不能彼此孤立。
+
+必须满足：
+
+1. create_task 后，可以出现 complete_task / postpone_task / cancel_task / update_priority / revise_deadline。
+2. complete_task 必须对应之前存在的 active task。
+3. replace_plan 必须让旧 plan 变成 stale，同时创建新 current plan。
+4. revise_preference 必须保留 old preference，同时生成 updated preference。
+5. cancel_task 后，该 task 不能再作为 active task。
+6. completed task 不能再作为 active todo，但可以作为 retrospective/status memory。
+7. stale plan 不能再作为 current plan，但可以作为 hard negative。
+8. noise event 可以不形成长链，但不能过多。
+
+
+====================
+对象生命周期规则
+====================
+
+每个 target_id 必须有清晰生命周期，不能凭空被完成、取消、延期或修改。
+
+必须满足：
+
+1. complete_task / postpone_task / cancel_task / update_priority / revise_deadline
+   必须对应之前已经 create_task 的 target_id。
+2. revise_plan / replace_plan
+   必须对应之前已经 create_plan 的 target_id。
+3. revise_preference
+   必须对应之前已经 add_preference 的 target_id。
+4. complete_recurring_task_instance
+   必须对应之前已经 create_recurring_task 的 target_id。
+5. 如果某个任务会在后面被 cancel_task，那么前面必须先出现 create_task。
+6. 如果某个 preference 会在后面被 revise_preference，那么前面必须先出现 add_preference，用来记录旧偏好。
+7. 不允许出现 state_before 中引用了一个从未在前文创建过的 target_id。
+8. final_state_summary 里的每个对象 id，都必须能在 events 中找到来源。
+
+
+====================
+输出 JSON 格式
+====================
+
+请输出一个合法 JSON object，格式如下：
+
+{
+  "user_id": "...",
+  "timeline_id": "...",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 21,
+    "length_days": 21,
+    "reason": "根据用户 life_stage 和主要目标选择该时间跨度"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "...",
+      "domain": "...",
+      "status": "active / completed / mixed",
+      "derived_from_profile": [...]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_01",
+      "event_type": "...",
+      "target_id": "...",
+      "content": "...",
+      "state_before": null,
+      "state_after": {},
+      "retrieval_role": "...",
+      "derived_from_profile": [...]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": [],
+    "stale_plans": [],
+    "active_tasks": [],
+    "completed_tasks": [],
+    "cancelled_tasks": [],
+    "postponed_tasks": [],
+    "current_constraints": [],
+    "stable_preferences": [],
+    "old_preferences": [],
+    "updated_preferences": [],
+    "important_not_urgent_tasks": [],
+    "urgent_low_value_tasks": [],
+    "noise_events": [],
+    "hard_negative_sources": []
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}
+
+噪音事件规则：
+
+introduce_noise 类型的事件必须像真实用户生活中自然出现的小插曲，
+不要在 content 里写“这与当前论文/工作/主线无关”这类标注性说明。
+
+错误示例：
+"用户记录想看一部新电影作为放松安排，但它与当前论文计划无直接关系。"
+
+正确示例：
+"用户记录周末想去看一部新上映的电影，顺便约朋友吃饭。"
+
+如果需要表达它是噪音，只能通过：
+- retrieval_role = "noise"
+- state_after.status = "noise"
+- state_after.importance 较低
+- derived_from_profile 包含 typical_noise_sources 或 main_life_domains
+
+不要把 benchmark 标注逻辑写进 content。
+
+====================
+重要限制
+====================
+
+1. 只输出 JSON。
+2. 不要输出解释。
+3. 不要生成 memory unit。
+4. 不要生成 query。
+5. 不要生成 gold memories。
+6. 不要生成自然语言聊天记录。
+7. 不要写成日记。
+8. 不要让事件像随机列表。
+9. 不要让所有用户的时间跨度一样。
+10. 不要让生活噪音消失。
+11. 不要让噪音压过核心任务。
+12. 不要让同类用户高度同质化。
+13. 不要新增和 user profile 完全无关的大主题。
+14. 不要把 stale plan 写成 current plan。
+15. 不要把 completed todo 写成 active todo。
+16. content 必须符合该用户自己的真实生活/工作语境。
+
+====================
+最终目标
+====================
+
+生成的 timeline 应该能支持后续构造这些检索测试：
+
+1. active todo vs completed todo
+2. current plan vs stale plan
+3. stable preference vs temporary preference
+4. important but not urgent vs urgent but low-value
+5. current constraint vs old plan
+6. real signal vs life noise
+7. semantically similar but currently irrelevant hard negatives
+
+请现在根据给定 user profile 生成 timeline JSON。

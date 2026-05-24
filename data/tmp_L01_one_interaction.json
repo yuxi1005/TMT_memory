@@ -1,0 +1,47 @@
+{
+  "user_id": "L01",
+  "source_timeline_id": "L01_latent_world_timeline_v1",
+  "dialogue_dataset_id": "L01_dialogues_v1",
+  "interactions": [
+    {
+      "interaction_id": "L01_i001",
+      "source_event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_01",
+      "event_type": "add_preference",
+      "target_id": "pref_parenting_record_001",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "口语化设置长期记录规则，强调时间、对象和状态",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "以后我想把育儿、睡眠、家庭安排和临时想到的东西分开记，不然混在一起我会找不到重点。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。后面我会按这几类帮你分开整理。"
+        },
+        {
+          "speaker": "user",
+          "text": "每条最好都带时间、对象和当前状态，比如是宝宝的事、家里人的事，还是只是一个想法。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。我会优先保留时间、涉及对象和当前状态，重复事项和一次性想法也分开放。"
+        }
+      ]
+    }
+  ],
+  "quality_check": {
+    "all_events_covered": true,
+    "interaction_count": 37,
+    "dialogues_are_not_memory_units": true,
+    "dialogues_follow_user_profile": true,
+    "metadata_not_leaked_in_dialogue": true,
+    "noise_dialogues_are_natural": true,
+    "dialogues_preserve_event_state": true,
+    "no_query_generated": true,
+    "no_gold_generated": true,
+    "no_mu_extracted": true
+  }
+}

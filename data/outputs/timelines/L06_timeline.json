@@ -1,0 +1,744 @@
+{
+  "user_id": "L06",
+  "timeline_id": "L06_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 160,
+    "length_days": 160,
+    "reason": "L06 是宠物照护者，宠物健康、喂养记录、看诊准备、用品采购和训练安排会跨数月持续变化，因此选择 160 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "宠物健康与看诊准备",
+      "domain": "宠物健康",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "喂养记录与饮食调整",
+      "domain": "宠物健康 / 喂养记录",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "dynamic_preferences", "recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "用品采购与预算筛选",
+      "domain": "用品 / 消费与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "likely_plan_changes", "typical_noise_sources"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "训练安排、家庭分工与临时异常",
+      "domain": "训练 / 家庭事务 / 健康与情绪",
+      "status": "mixed",
+      "derived_from_profile": ["main_life_domains", "typical_noise_sources", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_01",
+      "event_type": "add_preference",
+      "target_id": "pref_pet_record_style",
+      "content": "用户确立长期宠物照护记录偏好，希望健康、喂养、用品、训练和一次性担心分开归档，并保留时间、地点、对象和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["宠物健康", "喂养", "用品", "训练", "一次性担心"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_health_001",
+      "content": "用户制定早期宠物健康计划，准备先记录食欲、精神状态和排便情况，再决定是否预约门诊。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 50,
+        "phase_order": ["食欲记录", "精神状态记录", "排便情况记录", "门诊判断"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_03",
+      "event_type": "create_plan",
+      "target_id": "plan_supplies_001",
+      "content": "用户创建早期用品计划，先集中比较自动喂食器、猫砂盆和清洁用品，并按价格和实用性排序。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.76,
+        "deadline_day": 70,
+        "categories": ["自动喂食器", "猫砂盆", "清洁用品"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_02",
+      "event_type": "add_preference",
+      "target_id": "pref_feeding_log_format",
+      "content": "用户记录喂养记录输出偏好，初期希望 agent 给详细版表格，包含时间、食物、克数、饮水、排便和异常表现。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_feeding_table",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 14,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_minor_vomit_001",
+      "content": "用户晚上记录一次轻微呕吐，标注发生时间、当天食物和是否需要第二天继续观察。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.38,
+        "topic": "宠物异常"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 18,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_feeding_baseline",
+      "content": "用户创建喂养基线整理任务，需要连续一周记录进食量、饮水量和排便时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 31
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "recurring_tasks"]
+    },
+    {
+      "event_id": "e007",
+      "day": 22,
+      "storyline_id": "sl_01",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_pet_health_review",
+      "content": "用户设置每两周复盘一次宠物健康记录，把固定喂养、异常表现、用品想法和看诊准备分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 27,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_auto_feeder_old",
+      "content": "用户创建自动喂食器筛选任务，原计划优先选择容量最大、功能最多的一款。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 45
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e009",
+      "day": 31,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_feeding_baseline",
+      "content": "用户完成喂养基线整理，发现晚饭克数偏多时第二天早上食欲会下降。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 31
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.82,
+        "deadline_day": 31,
+        "completed_day": 31,
+        "finding": "晚饭克数偏多会影响第二天早上食欲"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 36,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_pet_health_review",
+      "content": "用户完成第一次健康记录复盘，确认轻微呕吐暂时只作为观察记录，不直接替代当前喂养调整任务。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50,
+        "finding": "异常记录需要和喂养调整分开"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e011",
+      "day": 42,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_product_recommend_001",
+      "content": "用户看到一条宠物饮水机推荐，临时记录容量、清洗难度和是否有滤芯耗材。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.25,
+        "topic": "用品推荐"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e012",
+      "day": 45,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_auto_feeder_old",
+      "content": "用户完成自动喂食器筛选，但确认容量最大的一款清洗复杂，不适合作为当前首选。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 45
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.62,
+        "deadline_day": 45,
+        "completed_day": 45,
+        "limitation": "容量最大款清洗复杂"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 50,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_vet_001",
+      "content": "兽医助理提醒看诊前要按症状时间线和喂养变化整理，而不是只带零散异常记录。",
+      "state_before": {
+        "related_plan": "plan_health_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_health_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 56,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_vet_questions_old",
+      "content": "用户创建旧版看诊问题清单任务，原计划按食欲、呕吐、用品和训练四类提问。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 70
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 64,
+      "storyline_id": "sl_02",
+      "event_type": "revise_preference",
+      "target_id": "pref_feeding_log_format",
+      "content": "用户把喂养记录输出偏好从详细表格改成简版每日摘要，只保留进食量、饮水、排便、异常和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_feeding_table",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_daily_summary",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "近期记录过多，需要更容易执行"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e016",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_vet_questions_old",
+      "content": "用户没有完成看诊问题清单，把截止日推迟到第 78 天，但仍保留为当前看诊准备核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 70,
+        "deadline_day": 78,
+        "partial_progress": "食欲和呕吐问题已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e017",
+      "day": 76,
+      "storyline_id": "sl_03",
+      "event_type": "replace_plan",
+      "target_id": "plan_supplies_001",
+      "content": "用户将功能最多优先的用品计划替换为易清洗和耗材稳定优先计划，旧计划只保留为早期比较记录。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.76,
+        "deadline_day": 70,
+        "categories": ["自动喂食器", "猫砂盆", "清洁用品"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.42,
+        "stale_day": 76,
+        "replaced_by": "plan_supplies_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 76,
+      "storyline_id": "sl_03",
+      "event_type": "create_plan",
+      "target_id": "plan_supplies_002",
+      "content": "用户创建新的用品计划，优先比较易清洗喂食器、稳定耗材和低噪音清洁工具。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 135,
+        "replaces": "plan_supplies_001",
+        "priorities": ["易清洗喂食器", "稳定耗材", "低噪音清洁工具"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_vet_questions_old",
+      "content": "用户完成旧版看诊问题清单，但确认用品和训练问题会稀释当前健康主线，需要重新按症状时间线整理。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "deadline_day": 78
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.87,
+        "deadline_day": 78,
+        "completed_day": 78,
+        "limitation": "用品和训练问题稀释健康主线"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e020",
+      "day": 84,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_health_001",
+      "content": "用户将零散异常观察计划替换为症状时间线优先计划，旧计划不再作为当前看诊准备方式。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 50,
+        "phase_order": ["食欲记录", "精神状态记录", "排便情况记录", "门诊判断"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 84,
+        "replaced_by": "plan_health_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e021",
+      "day": 84,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_health_002",
+      "content": "用户创建新的看诊准备计划，决定先整理症状时间线，再对应喂养变化和用品更换记录。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 150,
+        "replaces": "plan_health_001",
+        "phase_order": ["症状时间线", "喂养变化", "用品更换记录"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e022",
+      "day": 90,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_training_worry_001",
+      "content": "用户临时担心训练进度倒退，记录一次指令反应变慢和当天家里访客较多。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.31,
+        "topic": "临时担心"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 96,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_symptom_timeline",
+      "content": "用户创建症状时间线整理任务，需要把呕吐、食欲下降、排便变化和喂养调整按日期对应起来。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 118
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e024",
+      "day": 102,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_buy_toy_old",
+      "content": "用户创建购买互动玩具任务，原本想趁促销直接下单一组价格较高的玩具。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 110
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e025",
+      "day": 110,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_buy_toy_old",
+      "content": "用户取消购买互动玩具任务，决定先把预算留给看诊和必要用品，不让促销信息打断当前优先级。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 110
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.22,
+        "cancelled_day": 110,
+        "reason": "促销玩具低于看诊和必要用品优先级"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e026",
+      "day": 118,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_symptom_timeline",
+      "content": "用户未完成症状时间线整理，把截止日推迟到第 130 天，但仍保留为当前看诊准备核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 118
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "previous_deadline_day": 118,
+        "deadline_day": 130,
+        "partial_progress": "呕吐和食欲下降已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 122,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_cart_001",
+      "content": "用户临时把几款宠物垫加入购物车，记录尺寸和是否容易清洗，准备晚点再比较。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.23,
+        "topic": "购物噪音"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e028",
+      "day": 130,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_symptom_timeline",
+      "content": "用户完成症状时间线整理，明确呕吐、食欲下降和排便变化分别对应的日期和喂养调整。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "deadline_day": 130
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.91,
+        "deadline_day": 130,
+        "completed_day": 130,
+        "outputs": ["呕吐日期", "食欲下降日期", "排便变化和喂养调整"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e029",
+      "day": 134,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_health_current",
+      "content": "用户确认当前看诊准备重点不是零散异常记录，而是症状时间线、喂养变化和用品更换记录。",
+      "state_before": {
+        "plan": "plan_health_002",
+        "old_reference": "plan_health_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "症状时间线、喂养变化和用品更换记录",
+        "not_current": "零散异常记录"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e030",
+      "day": 138,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_clean_supply_shortlist",
+      "content": "用户创建清洁用品候选清单任务，需要比较除味喷雾、湿巾和可替换垫材的耗材成本。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 158
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e031",
+      "day": 142,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_training_short_session",
+      "content": "用户创建短时训练安排任务，需要把每天五分钟指令练习和奖励记录分开写入清单。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.74,
+        "deadline_day": 166
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e032",
+      "day": 146,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_entertainment_001",
+      "content": "用户临时记录周末想去逛一家宠物友好咖啡店，顺手标注是否需要提前预约。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.2,
+        "topic": "临时娱乐想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e033",
+      "day": 150,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_pet_health_review",
+      "content": "用户完成近期健康复盘，确认当前重点是看诊摘要、清洁用品候选和短时训练安排。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 150,
+        "next_due_day": 164,
+        "current_focus": ["看诊摘要", "清洁用品候选", "短时训练安排"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e034",
+      "day": 154,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_vet_one_page_summary",
+      "content": "用户创建一页纸看诊摘要任务，需要把症状时间线、喂养变化、用品更换和三条核心问题压缩到一页。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 168
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "stable_preferences"]
+    },
+    {
+      "event_id": "e035",
+      "day": 156,
+      "storyline_id": "sl_03",
+      "event_type": "add_constraint",
+      "target_id": "constraint_supplies_budget",
+      "content": "用户设置近期约束，新增宠物用品必须先检查是否服务于看诊、清洁或喂养稳定，促销玩具默认延后。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "supplies_priority_before_purchase",
+        "valid_until_day": 180
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e036",
+      "day": 160,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_pet_health_review",
+      "content": "用户完成最近一次健康记录复盘，确认当前活跃事项是看诊一页纸、清洁用品候选和短时训练安排。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 150,
+        "next_due_day": 164
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 160,
+        "next_due_day": 174,
+        "current_focus": ["看诊一页纸", "清洁用品候选", "短时训练安排"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_health_002", "plan_supplies_002"],
+    "stale_plans": ["plan_health_001", "plan_supplies_001"],
+    "active_tasks": ["task_clean_supply_shortlist", "task_training_short_session", "task_vet_one_page_summary"],
+    "completed_tasks": ["task_feeding_baseline", "task_auto_feeder_old", "task_vet_questions_old", "task_symptom_timeline"],
+    "cancelled_tasks": ["task_buy_toy_old"],
+    "postponed_tasks": [],
+    "current_constraints": ["constraint_supplies_budget"],
+    "stable_preferences": ["pref_pet_record_style"],
+    "old_preferences": ["pref_feeding_log_format:detailed_feeding_table"],
+    "updated_preferences": ["pref_feeding_log_format:brief_daily_summary"],
+    "important_not_urgent_tasks": ["task_auto_feeder_old", "task_training_short_session"],
+    "urgent_low_value_tasks": ["task_buy_toy_old"],
+    "noise_events": ["noise_minor_vomit_001", "noise_product_recommend_001", "noise_training_worry_001", "noise_shopping_cart_001", "noise_entertainment_001"],
+    "hard_negative_sources": ["plan_health_001", "plan_supplies_001", "task_auto_feeder_old", "task_vet_questions_old", "task_buy_toy_old", "pref_feeding_log_format:detailed_feeding_table", "noise_minor_vomit_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

@@ -1,0 +1,666 @@
+{
+  "user_id": "P05",
+  "timeline_id": "P05_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 86,
+    "length_days": 86,
+    "reason": "P05 是自由撰稿人，处在选题交付和文章大纲协作密集期，客户改需求、临时热点和灵感碎片会在 1-3 个月内反复改变优先级，因此选择 86 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "选题交付与方向收敛",
+      "domain": "选题",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "文章大纲与客户稿件协作",
+      "domain": "文章大纲 / 客户稿件",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "大纲生成格式与复盘维护",
+      "domain": "会议沟通 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "灵感碎片、热点与个人安排噪音",
+      "domain": "家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_writer_record_style",
+      "content": "用户确立长期写作项目记录偏好，希望选题、文章大纲、客户稿件、会议沟通和灵感碎片分开归档，并突出负责人、截止时间和下一步动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["选题", "文章大纲", "客户稿件", "会议沟通", "灵感碎片"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_topic_001",
+      "content": "用户制定早期选题计划，准备同时推进职场效率、AI 工具体验和消费趋势三个方向。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 34,
+        "directions": ["职场效率", "AI 工具体验", "消费趋势"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 6,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_outline_001",
+      "content": "用户创建早期文章大纲计划，准备先生成背景、核心观点、案例段落和结尾行动建议四部分。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 44,
+        "sections": ["背景", "核心观点", "案例段落", "结尾行动建议"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 9,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_outline_format",
+      "content": "用户记录选题发散输出偏好，初期希望 agent 给详细版内容，包含标题方向、目标读者、论点、案例和可删减段落。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_outline_options",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 12,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_inspiration_001",
+      "content": "用户临时记录一个关于远程办公仪式感的灵感片段，标注可能标题和一句开头。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.25,
+        "topic": "灵感碎片"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_topic_pool",
+      "content": "用户创建选题池整理任务，需要把三个方向按客户匹配度、资料可得性和交付风险排序。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 27
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e007",
+      "day": 20,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_outline_review",
+      "content": "用户设置每两周复盘一次大纲生成结果，把当前选题、旧选题、客户改需求、临时热点和灵感碎片分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 34
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 23,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_outline_old",
+      "content": "用户创建旧版文章大纲任务，原计划把职场效率和 AI 工具体验合成一篇长文。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 27,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_topic_pool",
+      "content": "用户完成选题池整理，确认 AI 工具体验最贴近客户近期栏目，但消费趋势资料准备不足。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 27
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 27,
+        "completed_day": 27,
+        "finding": "AI 工具体验最贴近客户近期栏目"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 31,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_hot_topic_001",
+      "content": "用户看到一个临时热点，记录相关标题和可能切入角度，但没有把它加入当前客户稿件。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "临时热点"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e011",
+      "day": 34,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_outline_review",
+      "content": "用户完成第一次大纲复盘，确认远程办公灵感和临时热点都不能替代当前客户指定栏目方向。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 34
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 34,
+        "next_due_day": 48,
+        "finding": "灵感碎片不能替代当前客户栏目方向"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_outline_old",
+      "content": "用户没有完成旧版文章大纲，把截止日推迟到第 42 天，但仍保留为当前大纲协作任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 36,
+        "deadline_day": 42,
+        "partial_progress": "AI 工具体验部分已初步展开"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 39,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_client_change_001",
+      "content": "客户临时说不想要过多工具清单，希望文章更偏使用场景和决策建议，用户记录了改需求。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.38,
+        "topic": "客户改需求"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["typical_noise_sources", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e014",
+      "day": 42,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_outline_old",
+      "content": "用户完成旧版文章大纲，但确认职场效率和 AI 工具体验合并后主题过散，不能作为当前交付稿。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 42
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 42,
+        "completed_day": 42,
+        "limitation": "合并主题过散"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_topic_001",
+      "content": "用户将三个方向并行推进的选题计划替换为 AI 工具使用场景单主题计划，旧选题只保留为后续备选。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 34,
+        "directions": ["职场效率", "AI 工具体验", "消费趋势"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 45,
+        "replaced_by": "plan_topic_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_topic_002",
+      "content": "用户创建新的选题计划，围绕 AI 工具在内容团队中的使用场景、决策建议和避坑点展开。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 78,
+        "replaces": "plan_topic_001",
+        "focus": ["使用场景", "决策建议", "避坑点"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 48,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_outline_001",
+      "content": "用户将四段式通用大纲计划替换为场景驱动大纲计划，旧大纲结构不再作为当前交付格式。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 44,
+        "sections": ["背景", "核心观点", "案例段落", "结尾行动建议"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 48,
+        "replaced_by": "plan_outline_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 48,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_outline_002",
+      "content": "用户创建新的文章大纲计划，优先写清三个内容团队场景、每个场景的工具选择逻辑和客户可执行建议。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 82,
+        "replaces": "plan_outline_001",
+        "sections": ["三个使用场景", "工具选择逻辑", "可执行建议"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_outline_format",
+      "content": "用户把选题发散输出偏好从详细选项改成客户交付简版，只保留标题、目标读者、三段结构、负责人和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_outline_options",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "client_delivery_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "客户改需求后需要更快确认交付方向"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 56,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_income_anxiety_001",
+      "content": "用户记录一次收入焦虑，担心客户改需求导致返工时间增加，准备先确认追加修改边界。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.33,
+        "topic": "收入焦虑"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 60,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_scene_outline",
+      "content": "用户创建场景驱动大纲任务，需要写出三个内容团队使用场景、对应工具建议和客户修改边界。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 74
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 64,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "content": "用户临时想买一套写作课程，记录价格和课程标题，暂时不放入本周工作计划。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.2,
+        "topic": "临时购物想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 68,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_hot_topic_old",
+      "content": "用户创建临时热点跟进任务，原本想把热点切入角度插入当前客户稿件。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 73
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e024",
+      "day": 73,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_hot_topic_old",
+      "content": "用户取消把临时热点插入当前客户稿件的任务，决定避免偏离 AI 工具使用场景主线。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 73
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.22,
+        "cancelled_day": 73,
+        "reason": "热点会偏离客户指定主题"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e025",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_scene_outline",
+      "content": "用户未完成场景驱动大纲，把截止日推迟到第 82 天，但仍保留为当前客户稿件核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 74
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "previous_deadline_day": 74,
+        "deadline_day": 82,
+        "partial_progress": "两个使用场景已写出"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e026",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_topic_current",
+      "content": "用户确认当前选题重点不是旧的三方向并行，也不是临时热点，而是 AI 工具在内容团队中的使用场景和决策建议。",
+      "state_before": {
+        "plan": "plan_topic_002",
+        "old_reference": "plan_topic_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "AI 工具在内容团队中的使用场景和决策建议",
+        "not_current": "三方向并行和临时热点"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 80,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_outline_review",
+      "content": "用户完成近期大纲复盘，确认当前重点是场景驱动大纲、客户修改边界和交付简版格式。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 34,
+        "next_due_day": 48
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 80,
+        "next_due_day": 94,
+        "current_focus": ["场景驱动大纲", "客户修改边界", "交付简版格式"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e028",
+      "day": 82,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_scene_outline",
+      "content": "用户完成场景驱动大纲，确认三个内容团队使用场景、工具选择逻辑和客户修改边界已经可交付。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "deadline_day": 82
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.89,
+        "deadline_day": 82,
+        "completed_day": 82,
+        "outputs": ["三个使用场景", "工具选择逻辑", "客户修改边界"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e029",
+      "day": 84,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_scope_lock",
+      "content": "用户设置近期约束，交稿前不再新增临时热点或灵感段落，所有新想法进入以后再看清单。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "constraint_type": "draft_scope_lock",
+        "valid_until_day": 104
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e030",
+      "day": 85,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录周末家庭安排和睡眠不足，准备不再把交稿前的晚上排满额外资料搜索。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "家庭与个人安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 86,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_final_draft_check",
+      "content": "用户创建最终稿检查任务，需要核对标题、三段结构、客户修改边界和交付文件格式。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 96
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 86,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_client_revision_boundary",
+      "content": "用户创建客户修改边界确认任务，需要向客户确认免费修改次数、可调整范围和最终交付时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 94
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_topic_002", "plan_outline_002"],
+    "stale_plans": ["plan_topic_001", "plan_outline_001"],
+    "active_tasks": ["task_final_draft_check", "task_client_revision_boundary"],
+    "completed_tasks": ["task_topic_pool", "task_outline_old", "task_scene_outline"],
+    "cancelled_tasks": ["task_hot_topic_old"],
+    "postponed_tasks": [],
+    "current_constraints": ["constraint_scope_lock"],
+    "stable_preferences": ["pref_writer_record_style"],
+    "old_preferences": ["pref_outline_format:detailed_outline_options"],
+    "updated_preferences": ["pref_outline_format:client_delivery_brief"],
+    "important_not_urgent_tasks": ["task_outline_old", "task_client_revision_boundary"],
+    "urgent_low_value_tasks": ["task_hot_topic_old"],
+    "noise_events": ["noise_inspiration_001", "noise_hot_topic_001", "noise_client_change_001", "noise_income_anxiety_001", "noise_shopping_001", "noise_personal_schedule_001"],
+    "hard_negative_sources": ["plan_topic_001", "plan_outline_001", "task_topic_pool", "task_outline_old", "task_hot_topic_old", "pref_outline_format:detailed_outline_options", "noise_inspiration_001", "noise_hot_topic_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

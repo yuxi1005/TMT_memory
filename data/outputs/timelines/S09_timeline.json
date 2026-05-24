@@ -1,0 +1,768 @@
+{
+  "user_id": "S09",
+  "timeline_id": "S09_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 90,
+    "length_days": 90,
+    "reason": "S09 是考试和临床轮转并行推进的医学生/规培生，90 天跨度可以覆盖早期复习计划和轮转安排、中期排班变动与病例总结修正、近期考试冲刺和临床材料整理，同时保留疲劳、健康焦虑和生活碎片噪音。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "考试复习计划与冲刺安排",
+      "domain": "考试",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "临床轮转任务与排班调整",
+      "domain": "临床轮转",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "病例学习与病例总结输出偏好",
+      "domain": "病例学习",
+      "status": "mixed",
+      "derived_from_profile": ["agent_usage_style", "main_life_domains", "stable_preferences", "dynamic_preferences"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "疲劳、健康焦虑与生活噪音",
+      "domain": "作息与健康 / 情绪压力 / 社交与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_med_workflow_001",
+      "content": "用户确立长期学习偏好，希望考试、临床轮转、病例学习和生活事项分开归档，并让建议保留依据、状态和截止时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["考试", "临床轮转", "病例学习", "生活事项"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 2,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_exam_001",
+      "content": "用户制定早期考试复习计划，准备先复习内科重点，再补外科病例题，最后做错题回顾。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 55,
+        "phase_order": ["内科重点", "外科病例题", "错题回顾"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 4,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_rotation_001",
+      "content": "用户创建早期临床轮转计划，打算先完成病区交接熟悉，再整理常见病种和出科材料。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 45,
+        "phase_order": ["病区交接", "常见病种", "出科材料"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e004",
+      "day": 6,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_case_summary_output",
+      "content": "用户记录病例总结输出偏好，初期希望 agent 给详细版病史、诊断依据、鉴别诊断和处理原则。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_case_reasoning",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 8,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_fatigue_001",
+      "content": "用户记录连续几天早班后明显疲劳，晚上复习内科重点时注意力下降。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.35,
+        "topic": "疲劳"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 10,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_internal_medicine_review",
+      "content": "用户创建内科重点复习任务，需要按呼吸、循环、消化三个系统整理高频考点。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 22
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 13,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_case_review",
+      "content": "用户设置每两周复盘一次病例总结和复习待办，把已做、待做和先不管的内容分开记录。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.72,
+        "interval_days": 14,
+        "next_due_day": 27
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 16,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_rotation_common_cases",
+      "content": "用户创建轮转常见病种整理任务，需要把诊断要点、医嘱习惯和带教老师提醒分开写。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 30
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 19,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_health_anxiety_001",
+      "content": "用户记录因为持续疲劳而担心自己状态不好，临时查了睡眠和心率相关指标。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.32,
+        "topic": "健康焦虑"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e010",
+      "day": 22,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_internal_medicine_review",
+      "content": "用户完成内科三个系统的高频考点整理，并标出循环系统错题需要二次复盘。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 22
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.86,
+        "deadline_day": 22,
+        "completed_day": 22,
+        "remaining_gap": "循环系统错题二次复盘"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e011",
+      "day": 27,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_case_review",
+      "content": "用户完成第一次病例复盘，确认内科重点已整理，但轮转常见病种仍缺少带教老师提醒。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 27
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 27,
+        "next_due_day": 41,
+        "finding": "轮转常见病种缺少带教老师提醒"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e012",
+      "day": 30,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_rotation_common_cases",
+      "content": "用户完成轮转常见病种整理，但发现部分内容更适合出科材料，不适合当前考试复习。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 30
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 30,
+        "completed_day": 30,
+        "limitation": "部分内容更适合出科材料"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 34,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_schedule_change_001",
+      "content": "用户记录科室临时调整排班，原本计划的外科病例题复习被挤到周末。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.36,
+        "topic": "排班变动"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e014",
+      "day": 38,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_rotation_001",
+      "content": "带教老师反馈轮转准备不能只整理常见病种，需要增加出科病例汇报和病程记录练习。",
+      "state_before": {
+        "related_plan": "plan_rotation_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.88,
+        "affects": "plan_rotation_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 41,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_case_review",
+      "content": "用户完成第二次病例复盘，把早期常见病种清单标为旧参考，不再作为当前轮转主任务。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 27,
+        "next_due_day": 41
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 41,
+        "next_due_day": 55,
+        "outdated_reference": "早期常见病种清单"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 43,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_rotation_001",
+      "content": "用户将常见病种优先的轮转方案替换为病例汇报和病程记录优先方案，旧方案只保留为参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 45,
+        "phase_order": ["病区交接", "常见病种", "出科材料"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.45,
+        "stale_day": 43,
+        "replaced_by": "plan_rotation_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e017",
+      "day": 43,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_rotation_002",
+      "content": "用户创建新的临床轮转方案，决定先准备病例汇报，再补病程记录和出科材料。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 72,
+        "replaces": "plan_rotation_001",
+        "phase_order": ["病例汇报", "病程记录", "出科材料"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e018",
+      "day": 46,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_exam_001",
+      "content": "用户把考试复习计划拆小，决定先完成错题回顾，再安排病例题和模拟卷。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 55,
+        "phase_order": ["内科重点", "外科病例题", "错题回顾"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 82,
+        "priority_order": ["错题回顾", "病例题", "模拟卷"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences", "primary_goals"]
+    },
+    {
+      "event_id": "e019",
+      "day": 49,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_case_summary_output",
+      "content": "用户把病例总结输出偏好从详细推理临时改成简版要点清单，以便先处理临近的病例汇报和考试复习。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_case_reasoning",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_key_points",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "病例汇报和考试复习时间紧"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e020",
+      "day": 52,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_wrong_question_review",
+      "content": "用户创建错题回顾任务，需要把循环系统、感染病和急诊处理相关错题分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 66
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e021",
+      "day": 55,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_case_review",
+      "content": "用户完成第三次病例复盘，确认简版要点清单适合当前赶进度，但考后仍需恢复详细诊断依据。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 41,
+        "next_due_day": 55
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 55,
+        "next_due_day": 69,
+        "finding": "简版要点清单适合短期赶进度"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 58,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_life_fragment_001",
+      "content": "用户记录宿舍水电维修和取快递占用了休息时间，晚上复习被切成几段。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.24,
+        "topic": "生活碎片"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 60,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_case_presentation",
+      "content": "用户创建病例汇报准备任务，需要整理主诉、现病史、诊断依据和治疗经过。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 74
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e024",
+      "day": 64,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_old_mock_exam",
+      "content": "用户创建早期模拟卷练习任务，原计划先完整做一套综合模拟题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 70
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e025",
+      "day": 66,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_wrong_question_review",
+      "content": "用户未完成全部错题回顾，把截止日推迟到第 76 天，但仍保留为当前考试复习核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 66
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "previous_deadline_day": 66,
+        "deadline_day": 76,
+        "partial_progress": "循环系统错题已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e026",
+      "day": 68,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_old_mock_exam",
+      "content": "用户取消完整模拟卷练习任务，决定先完成错题回顾和病例汇报，再安排分模块练习。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.38,
+        "cancelled_day": 68,
+        "reason": "错题回顾和病例汇报优先"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e027",
+      "day": 70,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_fatigue_001",
+      "content": "用户设置近期约束，下夜班当天不安排新模拟卷，只做轻量错题标记和病例汇报材料检查。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "post_night_shift_study_limit",
+        "valid_until_day": 90
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e028",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_case_presentation",
+      "content": "用户未完成病例汇报准备，把截止日推迟到第 80 天，但仍作为当前临床轮转重点任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 74
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "previous_deadline_day": 74,
+        "deadline_day": 80,
+        "partial_progress": "主诉和现病史已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e029",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_wrong_question_review",
+      "content": "用户完成错题回顾，整理出三个高频薄弱点和需要考前重看的处理流程。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "deadline_day": 76
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.91,
+        "deadline_day": 76,
+        "completed_day": 76,
+        "outputs": ["三个高频薄弱点", "考前重看流程"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e030",
+      "day": 78,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "content": "用户临时记录想买护眼台灯和新的听诊器收纳袋，准备周末再比较价格。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "临时购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 80,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_case_presentation",
+      "content": "用户完成病例汇报准备，形成诊断依据、治疗经过和带教老师可能追问的问题清单。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "deadline_day": 80
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.89,
+        "deadline_day": 80,
+        "completed_day": 80,
+        "outputs": ["诊断依据", "治疗经过", "追问清单"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e032",
+      "day": 82,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_exam_001",
+      "content": "用户确认考试当前缺口从错题回顾转为考前模拟和重点流程复诵。",
+      "state_before": {
+        "plan": "plan_exam_001",
+        "main_blocker": "错题回顾"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "考前模拟和重点流程复诵",
+        "resolved_blocker": "错题回顾"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e033",
+      "day": 84,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_final_simulation_blocks",
+      "content": "用户创建考前分模块模拟任务，需要按急诊处理、抗菌药选择和病例题阅读顺序练习。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.93,
+        "deadline_day": 92
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e034",
+      "day": 86,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_discharge_summary",
+      "content": "用户创建出科材料整理任务，需要补齐病例汇报、病程记录和轮转小结。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 96
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e035",
+      "day": 88,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_case_review",
+      "content": "用户完成第四次病例复盘，确认旧完整模拟卷计划已取消，当前应以分模块模拟为主。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 55,
+        "next_due_day": 69
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 88,
+        "next_due_day": 102,
+        "outdated_reference": "旧完整模拟卷计划"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e036",
+      "day": 89,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_case_summary_polish",
+      "content": "用户创建病例总结润色任务，需要把诊断依据、鉴别诊断和复盘问题改成简洁版。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 98
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e037",
+      "day": 90,
+      "storyline_id": "sl_01",
+      "event_type": "update_priority",
+      "target_id": "task_final_simulation_blocks",
+      "content": "用户把考前分模块模拟提升为最高优先级，因为考试前只剩最后一轮可控复习时间。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.93,
+        "deadline_day": 92
+      },
+      "state_after": {
+        "status": "active",
+        "importance": 0.98,
+        "deadline_day": 92,
+        "priority": "highest"
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["dynamic_preferences", "primary_goals"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_exam_001", "plan_rotation_002"],
+    "stale_plans": ["plan_rotation_001"],
+    "active_tasks": ["task_final_simulation_blocks", "task_discharge_summary", "task_case_summary_polish"],
+    "completed_tasks": ["task_internal_medicine_review", "task_rotation_common_cases", "task_wrong_question_review", "task_case_presentation"],
+    "cancelled_tasks": ["task_old_mock_exam"],
+    "postponed_tasks": [],
+    "current_constraints": ["constraint_fatigue_001"],
+    "stable_preferences": ["pref_med_workflow_001"],
+    "old_preferences": ["pref_case_summary_output:detailed_case_reasoning"],
+    "updated_preferences": ["pref_case_summary_output:brief_key_points"],
+    "important_not_urgent_tasks": ["task_old_mock_exam"],
+    "urgent_low_value_tasks": ["noise_shopping_001"],
+    "noise_events": ["noise_fatigue_001", "noise_health_anxiety_001", "noise_schedule_change_001", "noise_life_fragment_001", "noise_shopping_001"],
+    "hard_negative_sources": ["plan_rotation_001", "task_rotation_common_cases", "task_old_mock_exam", "pref_case_summary_output:detailed_case_reasoning", "noise_shopping_001", "recur_case_review:day41_outdated_status", "recur_case_review:day88_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

@@ -1,0 +1,673 @@
+{
+  "user_id": "P08",
+  "timeline_id": "P08_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 86,
+    "length_days": 86,
+    "reason": "P08 是消费品活动运营，处在活动策划交付和文案协作密集期，活动版本、素材变更、热点追逐和活动取消会在数周到数月内反复改变优先级，因此选择 86 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "活动策划与执行范围调整",
+      "domain": "活动策划",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "营销文案与素材协作",
+      "domain": "文案",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "数据复盘与方案输出格式",
+      "domain": "数据复盘 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "热点追逐、活动取消和个人安排噪音",
+      "domain": "会议沟通 / 家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_campaign_record_style",
+      "content": "用户确立长期活动运营记录偏好，希望活动策划、营销文案、数据复盘、会议沟通和临时热点分开归档，并突出优先级、负责人和下一步动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["活动策划", "营销文案", "数据复盘", "会议沟通", "临时热点"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_campaign_001",
+      "content": "用户制定早期活动策划计划，准备同时推进线上直播、社群抽奖和线下快闪三类活动。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 36,
+        "channels": ["线上直播", "社群抽奖", "线下快闪"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 6,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_copy_001",
+      "content": "用户创建早期营销文案计划，准备按预热海报、直播口播、社群话术和收尾复盘四类生成文案。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.85,
+        "deadline_day": 44,
+        "copy_types": ["预热海报", "直播口播", "社群话术", "收尾复盘"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 9,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_campaign_output_format",
+      "content": "用户记录活动方案输出偏好，初期希望 agent 给详细版方案，包含目标、机制、渠道、素材、节奏、风险和复盘指标。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_campaign_plan",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 12,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_trending_topic_001",
+      "content": "用户临时记录一个社媒热点，标注可借势标题和可能关联的产品卖点，但没有加入当前活动方案。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "热点追逐"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_campaign_scope_old",
+      "content": "用户创建旧版活动范围表任务，需要把直播、社群抽奖和线下快闪的预算、负责人和素材需求列清楚。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 28
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e007",
+      "day": 20,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_campaign_review",
+      "content": "用户设置每两周复盘一次活动方案和文案，把当前活动、旧版方案、热点、素材变更和数据复盘分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 34
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_copy_batch_old",
+      "content": "用户创建旧版文案批量生成任务，原计划一次性输出所有渠道的预热、转化和收尾文案。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 28,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_campaign_scope_old",
+      "content": "用户完成旧版活动范围表，发现线下快闪预算和审批风险最高，社群抽奖执行成本最低。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 28
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 28,
+        "completed_day": 28,
+        "finding": "线下快闪预算和审批风险最高"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 31,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_material_change_001",
+      "content": "设计同事临时说主视觉素材要换色，用户记录影响的海报和社群图尺寸，暂未改变活动主线。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "素材变更"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e011",
+      "day": 34,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_campaign_review",
+      "content": "用户完成第一次活动方案复盘，确认社媒热点和当前活动主题语义相关，但不能替代既定转化目标。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 34
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 34,
+        "next_due_day": 48,
+        "finding": "热点不能替代既定转化目标"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_copy_batch_old",
+      "content": "用户没有完成旧版文案批量生成，把截止日推迟到第 42 天，但仍保留为当前文案协作任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 36,
+        "deadline_day": 42,
+        "partial_progress": "预热海报文案已初步生成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 38,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_cancel_popup_001",
+      "content": "渠道负责人通知线下快闪审批来不及，建议本轮活动改为直播加社群抽奖组合。",
+      "state_before": {
+        "related_plan": "plan_campaign_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_campaign_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e014",
+      "day": 42,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_copy_batch_old",
+      "content": "用户完成旧版文案批量生成，但确认线下快闪相关文案已经不适合当前活动。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 42
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 42,
+        "completed_day": 42,
+        "limitation": "线下快闪文案已不适合当前活动"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_campaign_001",
+      "content": "用户将直播、社群抽奖和线下快闪并行计划替换为直播加社群抽奖计划，旧线下快闪方案只保留为复盘材料。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 36,
+        "channels": ["线上直播", "社群抽奖", "线下快闪"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.43,
+        "stale_day": 45,
+        "replaced_by": "plan_campaign_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_campaign_002",
+      "content": "用户创建新的活动策划计划，优先推进直播机制、社群抽奖规则、素材替换和数据复盘指标。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 78,
+        "replaces": "plan_campaign_001",
+        "scope": ["直播机制", "社群抽奖规则", "素材替换", "数据复盘指标"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 48,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_copy_001",
+      "content": "用户将全渠道文案计划替换为直播口播和社群话术优先计划，旧快闪和收尾文案暂不作为当前交付。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.85,
+        "deadline_day": 44,
+        "copy_types": ["预热海报", "直播口播", "社群话术", "收尾复盘"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.45,
+        "stale_day": 48,
+        "replaced_by": "plan_copy_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 48,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_copy_002",
+      "content": "用户创建新的文案计划，优先产出直播口播、社群抽奖话术、素材替换说明和活动提醒。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 82,
+        "replaces": "plan_copy_001",
+        "copy_types": ["直播口播", "社群抽奖话术", "素材替换说明", "活动提醒"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_campaign_output_format",
+      "content": "用户把活动方案输出偏好从详细版方案改成执行简版，只保留目标、机制、负责人、素材状态、风险和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_campaign_plan",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "execution_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "活动范围变化后需要快速同步执行团队"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 56,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_boss_request_001",
+      "content": "老板临时要求加一个联名品牌露出点，用户记录位置和风险，先放入待评估清单。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.35,
+        "topic": "老板临时要求"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 60,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_live_campaign_brief",
+      "content": "用户创建直播活动执行简版任务，需要明确直播机制、抽奖规则、素材状态、负责人和复盘指标。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 72
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 64,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_social_copy_current",
+      "content": "用户创建社群抽奖话术任务，需要生成预热、参与提醒、中奖公布和客服答疑四类话术。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 80
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e023",
+      "day": 68,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_hot_topic_old",
+      "content": "用户创建热点借势文案任务，原本想把社媒热点强行加入直播预热。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.44,
+        "deadline_day": 74
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e024",
+      "day": 72,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_live_campaign_brief",
+      "content": "用户完成直播活动执行简版，确认直播机制、抽奖规则和复盘指标可以同步给执行团队。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 72
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.89,
+        "deadline_day": 72,
+        "completed_day": 72,
+        "outputs": ["直播机制", "抽奖规则", "复盘指标"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e025",
+      "day": 74,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_hot_topic_old",
+      "content": "用户取消把热点强行加入直播预热的任务，决定不让热点追逐稀释当前活动主卖点。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.44,
+        "deadline_day": 74
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.22,
+        "cancelled_day": 74,
+        "reason": "热点与活动主卖点不匹配"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e026",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_campaign_current",
+      "content": "用户确认当前活动重点不是旧的线下快闪，也不是热点借势，而是直播机制、社群抽奖和素材替换。",
+      "state_before": {
+        "plan": "plan_campaign_002",
+        "old_reference": "plan_campaign_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "直播机制、社群抽奖和素材替换",
+        "not_current": "线下快闪和热点借势"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 80,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_social_copy_current",
+      "content": "用户未完成社群抽奖话术，把截止日推迟到第 90 天，但仍保留为当前文案核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 80
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 80,
+        "deadline_day": 90,
+        "partial_progress": "预热和参与提醒已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e028",
+      "day": 82,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_campaign_review",
+      "content": "用户完成近期活动复盘，确认当前重点是社群抽奖话术、素材替换说明和活动复盘指标。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 34,
+        "next_due_day": 48
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 82,
+        "next_due_day": 96,
+        "current_focus": ["社群抽奖话术", "素材替换说明", "活动复盘指标"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e029",
+      "day": 84,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录连续晚间改文案导致作息变乱，准备不把低优先级热点讨论排到周末。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "家庭与个人安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e030",
+      "day": 86,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_campaign_scope",
+      "content": "用户设置近期约束，活动上线前不再新增热点借势或线下玩法，所有新想法进入后续复盘池。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "constraint_type": "campaign_scope_lock",
+        "valid_until_day": 104
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e031",
+      "day": 86,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_campaign_review",
+      "content": "用户完成最近一次活动方案复盘，确认当前活跃事项是社群话术、素材替换说明和上线前范围锁定。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 82,
+        "next_due_day": 96
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 86,
+        "next_due_day": 100,
+        "current_focus": ["社群话术", "素材替换说明", "上线前范围锁定"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 86,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_material_change_note",
+      "content": "用户创建素材替换说明任务，需要列出受影响海报、社群图、负责人和最终确认时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 96
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_campaign_002", "plan_copy_002"],
+    "stale_plans": ["plan_campaign_001", "plan_copy_001"],
+    "active_tasks": ["task_social_copy_current", "task_material_change_note"],
+    "completed_tasks": ["task_campaign_scope_old", "task_copy_batch_old", "task_live_campaign_brief"],
+    "cancelled_tasks": ["task_hot_topic_old"],
+    "postponed_tasks": ["task_social_copy_current"],
+    "current_constraints": ["constraint_campaign_scope"],
+    "stable_preferences": ["pref_campaign_record_style"],
+    "old_preferences": ["pref_campaign_output_format:detailed_campaign_plan"],
+    "updated_preferences": ["pref_campaign_output_format:execution_brief"],
+    "important_not_urgent_tasks": ["task_copy_batch_old", "task_material_change_note"],
+    "urgent_low_value_tasks": ["noise_boss_request_001", "task_hot_topic_old"],
+    "noise_events": ["noise_trending_topic_001", "noise_material_change_001", "noise_boss_request_001", "noise_personal_schedule_001"],
+    "hard_negative_sources": ["plan_campaign_001", "plan_copy_001", "task_campaign_scope_old", "task_copy_batch_old", "task_hot_topic_old", "pref_campaign_output_format:detailed_campaign_plan", "noise_trending_topic_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

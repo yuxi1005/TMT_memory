@@ -1,6 +1,8 @@
 import math
 from datetime import datetime
 
+from scorers import memory_role
+
 
 def supporting_event_recall(pred_event_ids, gold_event_ids):
     if not gold_event_ids:
@@ -161,6 +163,57 @@ def completed_task_intrusion_rate(selected_memories, query):
     return len(completed) / len(selected_memories)
 
 
+def completed_todo_retro_recall(pred_memory_ids, case):
+    gold = []
+    for memory_id in case["gold_memory_ids"]:
+        memory = case["memories_by_id"].get(memory_id)
+        if memory and memory_role(memory) == "completed_todo":
+            gold.append(memory_id)
+    if not gold:
+        return None
+    return len(set(pred_memory_ids) & set(gold)) / len(set(gold))
+
+
+def active_todo_precision(selected_memories, query):
+    subtype = query.get("query_subtype", "")
+    if subtype not in {"task_due", "task_priority"}:
+        return None
+    selected_todos = [memory for memory in selected_memories if memory.get("memory_type") == "todo"]
+    if not selected_todos:
+        return 0.0
+    active = [memory for memory in selected_todos if memory_role(memory) == "active_todo"]
+    return len(active) / len(selected_todos)
+
+
+def wrong_domain_urgent_intrusion_rate(selected_memories, query):
+    tag = query.get("hard_case_tag") or query.get("constraints", {}).get("hard_case_tag", "")
+    if "domain" not in tag and query.get("query_mode") != "task":
+        return None
+    if not selected_memories:
+        return 0.0
+    intrusions = [
+        memory
+        for memory in selected_memories
+        if memory.get("distractor_role") == "wrong_domain" and memory_role(memory) == "active_todo"
+    ]
+    return len(intrusions) / len(selected_memories)
+
+
+def stale_preference_intrusion_rate(selected_memories, query):
+    subtype = query.get("query_subtype", "")
+    if subtype not in {"chat_preference", "chat_profile", "chat_history", "mixed"}:
+        return None
+    if not selected_memories:
+        return 0.0
+    stale = [
+        memory
+        for memory in selected_memories
+        if memory.get("memory_type") in {"preference", "habit", "profile"}
+        and memory.get("distractor_role") in {"old_preference", "stale_memory"}
+    ]
+    return len(stale) / len(selected_memories)
+
+
 def parse_time(value):
     if value is None:
         return None
@@ -181,7 +234,7 @@ def deadline_ranking_accuracy(selected_memories, case):
         return None
 
     earliest_gold = min(gold_todos, key=lambda memory: parse_time(memory.get("ddl")))["memory_id"]
-    selected_todos = [memory for memory in selected_memories if memory.get("memory_type") == "todo"]
+    selected_todos = [memory for memory in selected_memories if memory_role(memory) == "active_todo"]
     if not selected_todos:
         return 0.0
     return 1.0 if selected_todos[0]["memory_id"] == earliest_gold else 0.0
@@ -195,7 +248,7 @@ def far_deadline_before_near_rate(selected_memories, case):
     seen_near_gold = False
     gold_ids = set(case["gold_memory_ids"])
     for memory in selected_memories:
-        if memory.get("memory_type") != "todo":
+        if memory_role(memory) != "active_todo":
             continue
         if memory.get("memory_id") in gold_ids and memory.get("distractor_role") in {"near_deadline", None, ""}:
             seen_near_gold = True
@@ -224,6 +277,10 @@ def evaluate_memory_case(case, selected_memories):
         "wrong_domain_intrusion_rate": wrong_domain_intrusion_rate(full_memories, case["query"]),
         "stale_memory_intrusion_rate": stale_memory_intrusion_rate(full_memories, case["query"]),
         "completed_task_intrusion_rate": completed_task_intrusion_rate(full_memories, case["query"]),
+        "completed_todo_retro_recall": completed_todo_retro_recall(pred_memory_ids, case),
+        "active_todo_precision": active_todo_precision(full_memories, case["query"]),
+        "wrong_domain_urgent_intrusion_rate": wrong_domain_urgent_intrusion_rate(full_memories, case["query"]),
+        "stale_preference_intrusion_rate": stale_preference_intrusion_rate(full_memories, case["query"]),
         "far_deadline_before_near_rate": far_deadline_before_near_rate(full_memories, case),
         "deadline_ranking_accuracy": deadline_ranking_accuracy(full_memories, case),
         "memory_token_cost": memory_token_cost(full_memories),

@@ -1,0 +1,689 @@
+{
+  "user_id": "P01",
+  "timeline_id": "P01_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 90,
+    "length_days": 90,
+    "reason": "P01 是 SaaS 产品经理，处在 PRD 交付和需求优先级协作密集期，版本节奏、会议沟通和需求变更通常跨 1-3 个月反复调整，因此选择 90 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "PRD 交付与版本范围调整",
+      "domain": "PRD",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "需求优先级与跨团队协作",
+      "domain": "需求优先级",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "会议总结与决策记录格式",
+      "domain": "会议总结 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "临时需求、老板想法与个人安排噪音",
+      "domain": "会议沟通 / 家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_pm_record_style",
+      "content": "用户确立长期产品工作记录偏好，希望 PRD、需求优先级、会议纪要、临时沟通和个人安排分开归档，并突出负责人、下一步和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["PRD", "需求优先级", "会议纪要", "临时沟通", "个人安排"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_prd_001",
+      "content": "用户制定早期 PRD 交付计划，准备先完成全量需求背景、用户故事、流程图和验收标准。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 35,
+        "sections": ["需求背景", "用户故事", "流程图", "验收标准"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 5,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_priority_001",
+      "content": "用户创建早期需求优先级计划，按收入影响、客户反馈、研发成本和上线风险四个维度排序。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 42,
+        "criteria": ["收入影响", "客户反馈", "研发成本", "上线风险"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_prd_draft_format",
+      "content": "用户记录 PRD 草稿输出偏好，初期希望 agent 给详细版结构，包含背景、目标、用户路径、边界条件和开放问题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_prd_structure",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 10,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_boss_idea_001",
+      "content": "老板临时提出一个看板小组件想法，用户先记录目标用户和可能指标，暂时没有加入当前版本范围。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "老板临时想法"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 14,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_prd_background",
+      "content": "用户创建 PRD 背景和目标整理任务，需要把客户反馈、业务目标和当前版本约束合并成可复制到文档的段落。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.85,
+        "deadline_day": 24
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 18,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_requirement_review",
+      "content": "用户设置每两周复盘一次需求拆解，把当前 PRD、旧需求、会议碎片和临时想法分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 20,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_priority_matrix_old",
+      "content": "用户创建旧版需求优先级矩阵任务，原计划把所有候选需求一次性排完并提交评审。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 33
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 24,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_prd_background",
+      "content": "用户完成 PRD 背景和目标整理，确认核心目标是降低重复配置和减少客服转人工。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.85,
+        "deadline_day": 24
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.85,
+        "deadline_day": 24,
+        "completed_day": 24,
+        "outputs": ["降低重复配置", "减少客服转人工"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 28,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_meeting_fragment_001",
+      "content": "一次临时会议里有人提到报表导出按钮文案，用户记录了建议和提出人，但未作为当前版本核心需求。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.29,
+        "topic": "会议碎片"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e011",
+      "day": 32,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_requirement_review",
+      "content": "用户完成第一次需求拆解复盘，确认老板临时看板小组件和当前 PRD 版本目标暂时不一致。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 32,
+        "next_due_day": 46,
+        "finding": "看板小组件暂不进入当前 PRD"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 33,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_priority_matrix_old",
+      "content": "用户没有完成旧版需求优先级矩阵，把截止日推迟到第 40 天，但仍保留为当前需求协作任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 33
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 33,
+        "deadline_day": 40,
+        "partial_progress": "收入影响和客户反馈已初步标注"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 36,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_scope_change_001",
+      "content": "研发负责人反馈全量流程图会拖慢评审，建议本轮只锁定核心配置流程和异常状态。",
+      "state_before": {
+        "related_plan": "plan_prd_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_prd_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 40,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_priority_matrix_old",
+      "content": "用户完成旧版需求优先级矩阵，但确认一次性排完整个候选池不适合当前版本节奏。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 40
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 40,
+        "completed_day": 40,
+        "limitation": "一次性排完整个候选池不适合当前版本节奏"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 42,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_priority_001",
+      "content": "用户将四维度全量排序计划替换为版本范围优先计划，旧排序方案只保留为候选池参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 42,
+        "criteria": ["收入影响", "客户反馈", "研发成本", "上线风险"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 42,
+        "replaced_by": "plan_priority_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 42,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_priority_002",
+      "content": "用户创建新的需求优先级计划，只排序本次版本范围内需求，并把负责人、依赖和下一步动作写入表格。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 82,
+        "replaces": "plan_priority_001",
+        "fields": ["版本范围", "负责人", "依赖", "下一步动作"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "stable_preferences", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_prd_001",
+      "content": "用户将全量 PRD 交付计划替换为核心配置流程优先计划，旧全量计划不再作为当前交付范围。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 35,
+        "sections": ["需求背景", "用户故事", "流程图", "验收标准"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 45,
+        "replaced_by": "plan_prd_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_prd_002",
+      "content": "用户创建新的 PRD 交付计划，优先完成核心配置流程、异常状态、验收标准和评审问题清单。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.93,
+        "deadline_day": 78,
+        "replaces": "plan_prd_001",
+        "sections": ["核心配置流程", "异常状态", "验收标准", "评审问题清单"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 50,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_prd_draft_format",
+      "content": "用户把 PRD 草稿输出偏好从详细版结构改成决策简版，只保留目标、范围变化、负责人、风险和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_prd_structure",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "decision_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "评审临近，需要面向决策"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 54,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_low_priority_request_001",
+      "content": "客服同事转来一个低优先级筛选条件小需求，用户记录提出人和场景，暂时放入以后评估池。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.31,
+        "topic": "低优先级小需求"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_acceptance_criteria",
+      "content": "用户创建验收标准细化任务，需要按核心配置成功、异常提示、权限边界和数据回滚四类写清楚。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 70
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 62,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录周末家庭安排和睡眠不足情况，准备避免把周末时间默认留给 PRD 返工。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.27,
+        "topic": "家庭与个人安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 66,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_dependency_owner_table",
+      "content": "用户创建版本范围依赖负责人表任务，需要列出研发、设计、数据和客服反馈的负责人及下一步动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 84
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e024",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_acceptance_criteria",
+      "content": "用户完成验收标准细化，确认权限边界和数据回滚需要在评审会上重点确认。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.88,
+        "deadline_day": 70,
+        "completed_day": 70,
+        "follow_up_items": ["权限边界", "数据回滚"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e025",
+      "day": 74,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_add_export_button_old",
+      "content": "用户创建报表导出按钮文案调整任务，原本想顺手放进当前版本一起处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.42,
+        "deadline_day": 80
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e026",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_prd_current",
+      "content": "用户确认当前 PRD 重点不是旧的全量流程图，而是核心配置流程、异常状态、验收标准和评审问题清单。",
+      "state_before": {
+        "plan": "plan_prd_002",
+        "old_reference": "plan_prd_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "核心配置流程、异常状态、验收标准和评审问题清单",
+        "not_current": "全量流程图"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 80,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_add_export_button_old",
+      "content": "用户取消把报表导出按钮文案放进当前版本的任务，决定把它留到后续体验优化池。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.42,
+        "deadline_day": 80
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.2,
+        "cancelled_day": 80,
+        "reason": "不属于当前版本核心配置流程"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e028",
+      "day": 82,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_requirement_review",
+      "content": "用户完成近期需求拆解复盘，确认当前重点是版本范围内依赖负责人、评审问题和权限边界。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 32,
+        "next_due_day": 46
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 82,
+        "next_due_day": 96,
+        "current_focus": ["依赖负责人", "评审问题", "权限边界"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e029",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_dependency_owner_table",
+      "content": "用户未完成版本范围依赖负责人表，把截止日推迟到第 92 天，但仍保留为当前需求优先级协作的活跃任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 84
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.85,
+        "previous_deadline_day": 84,
+        "deadline_day": 92,
+        "partial_progress": "研发和设计负责人已确认"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e030",
+      "day": 86,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_entertainment_001",
+      "content": "用户临时记录晚上想看一集剧放松，并标注不要占用第二天评审准备时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.18,
+        "topic": "临时娱乐想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 88,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_scope_freeze",
+      "content": "用户设置近期约束，评审前不再接收未进入版本范围的新需求，只记录到后续评估池。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "constraint_type": "scope_freeze_before_review",
+        "valid_until_day": 105
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 90,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_requirement_review",
+      "content": "用户完成最近一次需求拆解复盘，确认当前活跃事项是依赖负责人表、评审问题清单和评审前范围冻结。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 82,
+        "next_due_day": 96
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 90,
+        "next_due_day": 104,
+        "current_focus": ["依赖负责人表", "评审问题清单", "评审前范围冻结"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 90,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_review_question_list",
+      "content": "用户创建 PRD 评审问题清单任务，需要整理权限边界、数据回滚、异常状态和上线风险的待确认项。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 102
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_prd_002", "plan_priority_002"],
+    "stale_plans": ["plan_prd_001", "plan_priority_001"],
+    "active_tasks": ["task_dependency_owner_table", "task_review_question_list"],
+    "completed_tasks": ["task_prd_background", "task_priority_matrix_old", "task_acceptance_criteria"],
+    "cancelled_tasks": ["task_add_export_button_old"],
+    "postponed_tasks": ["task_dependency_owner_table"],
+    "current_constraints": ["constraint_scope_freeze"],
+    "stable_preferences": ["pref_pm_record_style"],
+    "old_preferences": ["pref_prd_draft_format:detailed_prd_structure"],
+    "updated_preferences": ["pref_prd_draft_format:decision_brief"],
+    "important_not_urgent_tasks": ["task_priority_matrix_old", "task_review_question_list"],
+    "urgent_low_value_tasks": ["noise_low_priority_request_001", "task_add_export_button_old"],
+    "noise_events": ["noise_boss_idea_001", "noise_meeting_fragment_001", "noise_low_priority_request_001", "noise_personal_schedule_001", "noise_entertainment_001"],
+    "hard_negative_sources": ["plan_prd_001", "plan_priority_001", "task_prd_background", "task_priority_matrix_old", "task_add_export_button_old", "pref_prd_draft_format:detailed_prd_structure", "noise_boss_idea_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

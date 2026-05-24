@@ -1,0 +1,708 @@
+{
+  "user_id": "L10",
+  "timeline_id": "L10_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 145,
+    "length_days": 145,
+    "reason": "L10 是摄影与烘焙持续经营期的多兴趣爱好者，教程整理、购买建议、灵感切换和半途而废会跨数月反复变化，因此选择 145 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "摄影项目推进与主题收敛",
+      "domain": "摄影",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "烘焙计划与配方替换",
+      "domain": "烘焙",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "教程整理与购买建议维护",
+      "domain": "教程整理 / 购买建议",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "手工游戏灵感、购物收藏与半途而废",
+      "domain": "手工 / 游戏 / 消费与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_hobby_record_style",
+      "content": "用户确立长期兴趣项目记录偏好，希望摄影、烘焙、手工、游戏和一次性灵感分开归档，并保留时间、地点、对象和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["摄影", "烘焙", "手工", "游戏", "一次性灵感"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_photo_001",
+      "content": "用户制定早期摄影计划，准备同时推进街拍、人像和静物三个主题，并用 agent 整理教程步骤。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 52,
+        "themes": ["街拍", "人像", "静物"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_baking_001",
+      "content": "用户创建早期烘焙计划，准备先练习吐司、曲奇和戚风蛋糕三类基础配方。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 70,
+        "recipes": ["吐司", "曲奇", "戚风蛋糕"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_tutorial_format",
+      "content": "用户记录教程整理输出偏好，初期希望 agent 给详细版教程，包含材料、工具、步骤、常见错误和购买建议。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_tutorial",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 14,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_craft_idea_001",
+      "content": "用户临时记录一个手工摆件灵感，标注材料、颜色和可能用到的旧工具。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.26,
+        "topic": "灵感太多"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_photo_theme_table",
+      "content": "用户创建摄影主题对比表任务，需要按拍摄地点、器材、后期难度和可完成时间整理三个主题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 32
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e007",
+      "day": 22,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_hobby_review",
+      "content": "用户设置每两周复盘一次兴趣项目，把摄影、烘焙、购买建议、临时灵感和半途而废记录分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.74,
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 27,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_baking_tools_old",
+      "content": "用户创建旧版烘焙工具清单任务，原计划优先购买厨师机、烤盘和一整套模具。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.66,
+        "deadline_day": 44
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e009",
+      "day": 32,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_photo_theme_table",
+      "content": "用户完成摄影主题对比表，发现同时推进三个主题会让后期返工明显增加。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 32
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 32,
+        "completed_day": 32,
+        "finding": "三个主题并行会增加后期返工"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 36,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_hobby_review",
+      "content": "用户完成第一次兴趣项目复盘，确认手工摆件灵感需要和摄影主线分开，不能直接加入当前拍摄计划。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50,
+        "finding": "手工灵感需要和摄影主线分开"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e011",
+      "day": 42,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_lens_bookmark_001",
+      "content": "用户临时收藏一支镜头，记录焦段、价格和是否适合街拍。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "购物收藏"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e012",
+      "day": 44,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_baking_tools_old",
+      "content": "用户完成旧版烘焙工具清单，但确认一整套模具超出当前练习阶段，只适合作为以后参考。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.66,
+        "deadline_day": 44
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.66,
+        "deadline_day": 44,
+        "completed_day": 44,
+        "limitation": "整套模具超出当前练习阶段"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 52,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_photo_deadline_001",
+      "content": "用户发现近期只有一个周末能外拍，需要把摄影计划从多主题并行改成单主题完成。",
+      "state_before": {
+        "related_plan": "plan_photo_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.88,
+        "affects": "plan_photo_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_photo_001",
+      "content": "用户将街拍、人像和静物并行的摄影计划替换为街拍单主题计划，旧多主题计划只保留为早期灵感记录。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 52,
+        "themes": ["街拍", "人像", "静物"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.42,
+        "stale_day": 58,
+        "replaced_by": "plan_photo_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e015",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_photo_002",
+      "content": "用户创建新的街拍单主题计划，决定先完成一个路线、十张候选照片和一版后期风格。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 122,
+        "replaces": "plan_photo_001",
+        "outputs": ["一条街拍路线", "十张候选照片", "一版后期风格"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e016",
+      "day": 64,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_tutorial_format",
+      "content": "用户把教程整理输出偏好从详细版教程改成简版执行清单，只保留材料、关键步骤、当天要做和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_tutorial",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_execution_checklist",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "灵感太多，需要降低执行阻力"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e017",
+      "day": 70,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_baking_001",
+      "content": "用户发现同时练吐司、曲奇和戚风会导致材料浪费，需要把烘焙重点收敛到一个基础配方。",
+      "state_before": {
+        "related_plan": "plan_baking_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.86,
+        "affects": "plan_baking_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e018",
+      "day": 76,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_baking_001",
+      "content": "用户将三类基础配方并行计划替换为吐司单配方稳定计划，旧配方清单不再作为当前烘焙任务。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 70,
+        "recipes": ["吐司", "曲奇", "戚风蛋糕"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 76,
+        "replaced_by": "plan_baking_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e019",
+      "day": 76,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_baking_002",
+      "content": "用户创建新的吐司单配方稳定计划，决定先固定面粉、酵母、发酵时间和烘烤温度。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 132,
+        "replaces": "plan_baking_001",
+        "controls": ["面粉", "酵母", "发酵时间", "烘烤温度"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e020",
+      "day": 82,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_street_route",
+      "content": "用户创建街拍路线踩点任务，需要确认时间、光线、路口、备选机位和安全返回路线。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 98
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e021",
+      "day": 88,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_game_idea_001",
+      "content": "用户临时记录一个游戏地图设计灵感，标注关卡主题和可能参考的截图。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.24,
+        "topic": "短期兴趣切换"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e022",
+      "day": 96,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_buy_lens_old",
+      "content": "用户创建购买新镜头任务，原本想趁促销直接下单一支价格较高的街拍镜头。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 104
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 98,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_street_route",
+      "content": "用户未完成街拍路线踩点，把截止日推迟到第 110 天，但仍保留为当前摄影项目核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 98
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.85,
+        "previous_deadline_day": 98,
+        "deadline_day": 110,
+        "partial_progress": "已确认两个路口和一个备选机位"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e024",
+      "day": 104,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_buy_lens_old",
+      "content": "用户取消购买新镜头任务，决定先用现有器材完成街拍单主题项目，不让购物收藏打断主线。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.48,
+        "deadline_day": 104
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.24,
+        "cancelled_day": 104,
+        "reason": "新镜头购买低于当前项目完成优先级"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e025",
+      "day": 110,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_street_route",
+      "content": "用户完成街拍路线踩点，确认一条主路线、两个备选机位和傍晚光线窗口。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.85,
+        "deadline_day": 110
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.85,
+        "deadline_day": 110,
+        "completed_day": 110,
+        "outputs": ["一条主路线", "两个备选机位", "傍晚光线窗口"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e026",
+      "day": 114,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_toast_trial_log",
+      "content": "用户创建吐司试做记录任务，需要记录配方比例、发酵时间、烘烤温度和失败原因。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 136
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e027",
+      "day": 118,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_hobby_review",
+      "content": "用户完成近期兴趣项目复盘，确认当前重点是街拍单主题、吐司单配方和购物收藏延后。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 118,
+        "next_due_day": 132,
+        "current_focus": ["街拍单主题", "吐司单配方", "购物收藏延后"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e028",
+      "day": 122,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_photo_current",
+      "content": "用户确认当前摄影重点不是旧的三主题并行，而是街拍路线、候选照片和一版后期风格。",
+      "state_before": {
+        "plan": "plan_photo_002",
+        "old_reference": "plan_photo_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "街拍路线、候选照片和一版后期风格",
+        "not_current": "三主题并行"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e029",
+      "day": 126,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_half_done_001",
+      "content": "用户发现一个旧手工项目做到一半就停了，记录剩余材料和是否以后再处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "半途而废"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e030",
+      "day": 132,
+      "storyline_id": "sl_03",
+      "event_type": "add_constraint",
+      "target_id": "constraint_no_new_hobby",
+      "content": "用户设置近期约束，新灵感先进入以后再看清单，在街拍照片和吐司试做完成前不新增大项目。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "constraint_type": "no_new_large_hobby_project",
+        "valid_until_day": 165
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e031",
+      "day": 136,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_toast_trial_log",
+      "content": "用户未完成吐司试做记录，把截止日推迟到第 150 天，但仍保留为当前烘焙计划的活跃任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 136
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.83,
+        "previous_deadline_day": 136,
+        "deadline_day": 150,
+        "partial_progress": "已记录两次发酵时间"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e032",
+      "day": 138,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_entertainment_001",
+      "content": "用户临时记录想周末玩一款新游戏，标注只试玩一小时，不替代街拍照片整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "临时娱乐想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e033",
+      "day": 142,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_photo_selection",
+      "content": "用户创建街拍候选照片筛选任务，需要从原片中选出十张候选，并标注后期方向。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 158
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e034",
+      "day": 145,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_hobby_review",
+      "content": "用户完成最近一次兴趣项目复盘，确认当前活跃事项是街拍候选照片筛选、吐司试做记录和新灵感延后约束。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 118,
+        "next_due_day": 132
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 145,
+        "next_due_day": 159,
+        "current_focus": ["街拍候选照片筛选", "吐司试做记录", "新灵感延后约束"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_photo_002", "plan_baking_002"],
+    "stale_plans": ["plan_photo_001", "plan_baking_001"],
+    "active_tasks": ["task_toast_trial_log", "task_photo_selection"],
+    "completed_tasks": ["task_photo_theme_table", "task_baking_tools_old", "task_street_route"],
+    "cancelled_tasks": ["task_buy_lens_old"],
+    "postponed_tasks": ["task_toast_trial_log"],
+    "current_constraints": ["constraint_no_new_hobby"],
+    "stable_preferences": ["pref_hobby_record_style"],
+    "old_preferences": ["pref_tutorial_format:detailed_tutorial"],
+    "updated_preferences": ["pref_tutorial_format:brief_execution_checklist"],
+    "important_not_urgent_tasks": ["task_baking_tools_old", "task_photo_selection"],
+    "urgent_low_value_tasks": ["task_buy_lens_old"],
+    "noise_events": ["noise_craft_idea_001", "noise_lens_bookmark_001", "noise_game_idea_001", "noise_half_done_001", "noise_entertainment_001"],
+    "hard_negative_sources": ["plan_photo_001", "plan_baking_001", "task_photo_theme_table", "task_baking_tools_old", "task_buy_lens_old", "pref_tutorial_format:detailed_tutorial", "noise_craft_idea_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

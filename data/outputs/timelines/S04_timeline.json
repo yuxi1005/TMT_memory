@@ -1,0 +1,755 @@
+{
+  "user_id": "S04",
+  "timeline_id": "S04_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 90,
+    "length_days": 90,
+    "reason": "S04 是处在论文和实验并行推进期的 NLP 硕士生，适合用 90 天稀疏时间跨度覆盖早期稳定偏好和旧方案、中期实验计划替换与任务完成、近期论文结果分析和健康约束。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "论文写作与返工控制",
+      "domain": "论文",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "实验设计与 benchmark 迭代",
+      "domain": "实验 / benchmark",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "agent_usage_style", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "申请准备与输出偏好调整",
+      "domain": "申请准备",
+      "status": "mixed",
+      "derived_from_profile": ["main_life_domains", "stable_preferences", "dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "作息健康、压力与生活噪音",
+      "domain": "作息与健康 / 情绪压力 / 社交与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["main_life_domains", "typical_noise_sources", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_archive_001",
+      "content": "用户确立长期归档偏好，要求把论文、实验、申请和生活事项分开记录，并保留建议的关键依据。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["论文", "实验", "申请", "生活事项"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_paper_001",
+      "content": "用户制定早期论文推进计划，准备先完成相关工作综述，再写方法章节，最后整理实验结果。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.87,
+        "deadline_day": 45,
+        "phase_order": ["相关工作综述", "方法章节", "实验结果"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["life_stage", "primary_goals"]
+    },
+    {
+      "event_id": "e003",
+      "day": 5,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_exp_001",
+      "content": "用户创建初版实验方案，计划先比较两个检索基线，再决定是否扩展 benchmark 维度。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 32,
+        "scope": "两个检索基线对比"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_related_work_matrix",
+      "content": "用户创建相关工作矩阵整理任务，要求按模型类型、任务场景和可复用论点拆分。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 18
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e005",
+      "day": 10,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_headache_001",
+      "content": "用户记录连续几天偏头痛，计划减少晚间长时间跑实验。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "健康"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 13,
+      "storyline_id": "sl_02",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_exp_review",
+      "content": "用户设置每两周复盘一次实验材料和下一步，避免实验任务与论文写作互相挤占。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.73,
+        "interval_days": 14,
+        "next_due_day": 27
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e007",
+      "day": 16,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_cv_nlp_version",
+      "content": "用户创建 NLP 项目版简历修改任务，先整理实验经历和论文相关贡献。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 35
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["main_life_domains", "agent_usage_style"]
+    },
+    {
+      "event_id": "e008",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_related_work_matrix",
+      "content": "用户完成相关工作矩阵第一版，并标出三篇需要后续精读的论文。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 18
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.78,
+        "deadline_day": 18,
+        "completed_day": 18,
+        "remaining_gap": "三篇论文待精读"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_baseline_run_001",
+      "content": "用户创建初版基线运行任务，准备生成两个检索基线的对照结果。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 31
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e010",
+      "day": 27,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_exp_review",
+      "content": "用户完成第一次双周实验复盘，发现现有记录难以区分已完成任务和仍需继续执行的任务。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 27
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 27,
+        "next_due_day": 41,
+        "finding": "任务状态区分不足"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e011",
+      "day": 30,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "content": "用户记录想买一副降噪耳机，并临时比较了价格、续航和佩戴舒适度。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.24,
+        "topic": "临时购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e012",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_baseline_run_001",
+      "content": "用户完成两个检索基线的初版运行，但发现结果只能说明语义相似度，无法支撑任务状态判断。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 31
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.82,
+        "deadline_day": 31,
+        "completed_day": 32,
+        "late": true,
+        "limitation": "缺少任务状态判断"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e013",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_exp_001",
+      "content": "导师反馈初版实验方案过于依赖语义相似度，需要加入 active、completed 和 stale 状态对照。",
+      "state_before": {
+        "related_plan": "plan_exp_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.91,
+        "affects": "plan_exp_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 38,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_exp_001",
+      "content": "用户将初版基线对比方案替换为状态敏感 benchmark 方案，旧方案只作为语义相似基线参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 32,
+        "scope": "两个检索基线对比"
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.48,
+        "stale_day": 38,
+        "replaced_by": "plan_exp_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e015",
+      "day": 38,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_exp_002",
+      "content": "用户创建状态敏感 benchmark 方案，要求同时覆盖当前任务、已完成任务、过期计划和生活噪音。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.94,
+        "deadline_day": 72,
+        "replaces": "plan_exp_001",
+        "required_contrasts": ["active_vs_completed", "current_vs_stale", "signal_vs_noise"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e016",
+      "day": 41,
+      "storyline_id": "sl_02",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_exp_review",
+      "content": "用户完成第二次实验复盘，把旧基线运行记录标为已完成但不再代表当前实验主线。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 27,
+        "next_due_day": 41
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 41,
+        "next_due_day": 55,
+        "outdated_reference": "task_baseline_run_001"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e017",
+      "day": 44,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_paper_001",
+      "content": "用户调整论文推进计划，决定先写方法章节和实验设定，相关工作只保留必要修订。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.87,
+        "deadline_day": 45,
+        "phase_order": ["相关工作综述", "方法章节", "实验结果"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 78,
+        "priority_order": ["方法章节", "实验设定", "结果分析", "相关工作修订"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences", "primary_goals"]
+    },
+    {
+      "event_id": "e018",
+      "day": 46,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_method_section",
+      "content": "用户创建方法章节草稿任务，要求 agent 给出结构化步骤、关键依据和可直接改写的段落框架。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 58
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e019",
+      "day": 49,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_cv_nlp_version",
+      "content": "用户完成 NLP 项目版简历修改，并把申请材料暂时降为论文之后再推进。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 35
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.62,
+        "deadline_day": 35,
+        "completed_day": 49,
+        "late": true
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["main_life_domains", "likely_task_states"]
+    },
+    {
+      "event_id": "e020",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_exp_output_format",
+      "content": "用户把实验设计输出偏好从详细解释临时改成简版执行清单，以便先处理迫近的实验重跑。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_explanation",
+        "currentness": "old",
+        "stability": "stable_for_writing"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_action_list",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "实验重跑压力"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e021",
+      "day": 55,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_state_labels",
+      "content": "用户创建状态标签核查任务，需要逐条检查样例是否应标为当前任务、已完成任务、过期计划或生活噪音。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.91,
+        "deadline_day": 66
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e022",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_method_section",
+      "content": "用户未能按期完成方法章节完整草稿，将截止日推迟到第 64 天，并先保留小节框架。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 58
+      },
+      "state_after": {
+        "status": "postponed",
+        "importance": 0.88,
+        "previous_deadline_day": 58,
+        "deadline_day": 64,
+        "partial_progress": "小节框架已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e023",
+      "day": 61,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_movie_001",
+      "content": "用户记录周末想看一部新上映电影，并顺便约朋友吃饭。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.21,
+        "topic": "社交与娱乐"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e024",
+      "day": 64,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_method_section",
+      "content": "用户完成方法章节草稿，保留实验假设、关键依据和下一步修订点。",
+      "state_before": {
+        "status": "postponed",
+        "importance": 0.88,
+        "deadline_day": 64
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.88,
+        "deadline_day": 64,
+        "completed_day": 64
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e025",
+      "day": 66,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_state_labels",
+      "content": "用户完成状态标签核查，确认旧实验计划和已完成基线运行应作为干扰来源，而非当前任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.91,
+        "deadline_day": 66
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.91,
+        "deadline_day": 66,
+        "completed_day": 66,
+        "hard_negative_confirmed": true
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e026",
+      "day": 69,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_statement_expand",
+      "content": "用户取消本轮扩写申请陈述的任务，把申请准备推迟到论文结果分析之后再处理。",
+      "state_before": {
+        "status": "planned",
+        "importance": 0.56,
+        "deadline_day": 72
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.36,
+        "cancelled_day": 69,
+        "reason": "论文和实验优先级上升"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["dynamic_preferences", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e027",
+      "day": 72,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_exp_002",
+      "content": "用户将状态敏感 benchmark 的完整结果截止日从第 72 天顺延到第 84 天，原因是还需要补充噪音样例对照。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.94,
+        "deadline_day": 72
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "previous_deadline_day": 72,
+        "deadline_day": 84,
+        "added_requirement": "补充噪音样例对照"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e028",
+      "day": 74,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_sleep_001",
+      "content": "用户设置近期作息约束，晚上 11 点半后不再启动新实验，只记录第二天的待办。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "work_schedule",
+        "valid_until_day": 90
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["main_life_domains", "typical_noise_sources", "primary_goals"]
+    },
+    {
+      "event_id": "e029",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_result_analysis",
+      "content": "用户创建结果分析补充任务，需要解释当前任务、已完成任务和过期计划三类样例的检索差异。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.96,
+        "deadline_day": 88
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e030",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_paper_001",
+      "content": "用户确认论文当前主要缺口转为结果分析和图表说明，方法章节不再是主要阻塞点。",
+      "state_before": {
+        "plan": "plan_paper_001",
+        "main_blocker": "方法章节"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "结果分析和图表说明",
+        "resolved_blocker": "方法章节"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e031",
+      "day": 80,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_noise_contrast_set",
+      "content": "用户创建噪音对照样例整理任务，准备把健康、购物和娱乐记录与论文实验记录分开标注。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.83,
+        "deadline_day": 86
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 82,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_anxiety_001",
+      "content": "用户因论文截止日接近而反复检查旧实验记录，晚间注意力被打断。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.39,
+        "topic": "deadline 焦虑"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "update_priority",
+      "target_id": "task_noise_contrast_set",
+      "content": "用户把噪音对照样例整理提升为高优先级，因为它影响 benchmark 是否能区分真实任务信号和生活插曲。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.83,
+        "deadline_day": 86
+      },
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 86,
+        "priority": "high"
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["dynamic_preferences", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e034",
+      "day": 86,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_noise_contrast_set",
+      "content": "用户完成噪音对照样例整理，明确健康、购物和娱乐记录只作为低优先级干扰来源。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 86
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.9,
+        "deadline_day": 86,
+        "completed_day": 86,
+        "noise_sources_confirmed": ["健康", "购物", "娱乐"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e035",
+      "day": 88,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_result_analysis",
+      "content": "用户未完成完整结果分析，把部分图表解释推迟到第 94 天，但保留当前差异分析任务为最高优先级。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.96,
+        "deadline_day": 88
+      },
+      "state_after": {
+        "status": "active",
+        "importance": 0.97,
+        "previous_deadline_day": 88,
+        "deadline_day": 94,
+        "partial_progress": "三类样例差异已写一半"
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e036",
+      "day": 90,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_figure_caption_cleanup",
+      "content": "用户创建图表说明清理任务，要求把实验条件、主要结论和限制分开写清楚。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.81,
+        "deadline_day": 96
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["stable_preferences", "primary_goals"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_paper_001", "plan_exp_002"],
+    "stale_plans": ["plan_exp_001"],
+    "active_tasks": ["task_result_analysis", "task_figure_caption_cleanup"],
+    "completed_tasks": ["task_related_work_matrix", "task_baseline_run_001", "task_cv_nlp_version", "task_method_section", "task_state_labels", "task_noise_contrast_set"],
+    "cancelled_tasks": ["task_statement_expand"],
+    "postponed_tasks": [],
+    "current_constraints": ["constraint_sleep_001"],
+    "stable_preferences": ["pref_archive_001"],
+    "old_preferences": ["pref_exp_output_format:detailed_explanation"],
+    "updated_preferences": ["pref_exp_output_format:brief_action_list"],
+    "important_not_urgent_tasks": ["task_cv_nlp_version"],
+    "urgent_low_value_tasks": ["noise_shopping_001"],
+    "noise_events": ["noise_headache_001", "noise_shopping_001", "noise_movie_001", "noise_anxiety_001"],
+    "hard_negative_sources": ["plan_exp_001", "task_baseline_run_001", "task_cv_nlp_version", "task_statement_expand", "pref_exp_output_format:detailed_explanation", "noise_shopping_001", "recur_exp_review:day41_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

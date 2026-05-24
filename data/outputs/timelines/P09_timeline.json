@@ -1,0 +1,673 @@
+{
+  "user_id": "P09",
+  "timeline_id": "P09_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 88,
+    "length_days": 88,
+    "reason": "P09 是课程负责人，处在教案交付和课件协作密集期，学生反馈、家长沟通、课程临时调整和行政通知会在数周到数月内反复改变优先级，因此选择 88 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "教案设计与课程目标调整",
+      "domain": "教案",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "课件大纲与课堂活动",
+      "domain": "课件",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "学生反馈与输出格式维护",
+      "domain": "学生反馈 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "家长沟通、临时调课与生活噪音",
+      "domain": "会议沟通 / 家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_teaching_record_style",
+      "content": "用户确立长期课程记录偏好，希望教案、课件、学生反馈、会议沟通和临时调整分开归档，并突出优先级、负责人和下一步动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["教案", "课件", "学生反馈", "会议沟通", "临时调整"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_lesson_001",
+      "content": "用户制定早期教案计划，准备按知识讲解、例题演示、课堂练习和课后反馈四段设计。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 36,
+        "sections": ["知识讲解", "例题演示", "课堂练习", "课后反馈"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 6,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_slides_001",
+      "content": "用户创建早期课件大纲计划，准备先完成概念页、例题页、互动题和总结页。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.85,
+        "deadline_day": 44,
+        "pages": ["概念页", "例题页", "互动题", "总结页"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 9,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_lesson_output_format",
+      "content": "用户记录教案设计输出偏好，初期希望 agent 给详细版教案，包含教学目标、步骤、板书、提问、练习和课后反馈。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_lesson_plan",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 12,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_parent_message_001",
+      "content": "一位家长临时反馈孩子上节课作业压力偏大，用户记录学生姓名、反馈点和是否需要调整作业量。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.36,
+        "topic": "家长沟通"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_lesson_baseline",
+      "content": "用户创建旧版教案基线整理任务，需要把教学目标、课堂流程、例题和课后作业整理到同一份文档。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 28
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e007",
+      "day": 20,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_lesson_review",
+      "content": "用户设置每两周复盘一次教案和课件，把当前教案、旧课件、学生反馈、家长沟通和临时调课分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 34
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_slide_outline_old",
+      "content": "用户创建旧版课件大纲任务，原计划按完整知识点顺序铺开所有概念和例题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 28,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_lesson_baseline",
+      "content": "用户完成旧版教案基线整理，确认例题数量偏多，课堂练习时间被压缩。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 28
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 28,
+        "completed_day": 28,
+        "finding": "例题数量偏多，练习时间被压缩"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 31,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_admin_notice_001",
+      "content": "教务临时通知下周教室调整，用户记录新教室、时间和是否影响投影设备。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.27,
+        "topic": "行政通知"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e011",
+      "day": 34,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_lesson_review",
+      "content": "用户完成第一次教案复盘，确认家长作业反馈需要单独记录，不能直接替代当前教案主线。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 34
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 34,
+        "next_due_day": 48,
+        "finding": "家长反馈不能直接替代教案主线"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_slide_outline_old",
+      "content": "用户没有完成旧版课件大纲，把截止日推迟到第 42 天，但仍保留为当前课件协作任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 36,
+        "deadline_day": 42,
+        "partial_progress": "概念页和例题页已初步整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 38,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_class_adjust_001",
+      "content": "课程协调人通知下周课时缩短，需要把完整知识点讲解改成重点突破和课堂练习优先。",
+      "state_before": {
+        "related_plan": "plan_lesson_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_lesson_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e014",
+      "day": 42,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_slide_outline_old",
+      "content": "用户完成旧版课件大纲，但确认完整知识点顺序过长，不适合缩短后的课时。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 42
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 42,
+        "completed_day": 42,
+        "limitation": "完整知识点顺序过长"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_lesson_001",
+      "content": "用户将四段式完整教案替换为重点突破加课堂练习优先教案，旧完整教案只保留为备课素材。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 36,
+        "sections": ["知识讲解", "例题演示", "课堂练习", "课后反馈"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 45,
+        "replaced_by": "plan_lesson_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_lesson_002",
+      "content": "用户创建新的教案计划，优先设计重点概念、两道核心例题、课堂练习和学生反馈出口。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 78,
+        "replaces": "plan_lesson_001",
+        "sections": ["重点概念", "核心例题", "课堂练习", "学生反馈出口"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 48,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_slides_001",
+      "content": "用户将完整课件大纲计划替换为短课时互动课件计划，旧概念铺开版本不再作为当前课件交付格式。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.85,
+        "deadline_day": 44,
+        "pages": ["概念页", "例题页", "互动题", "总结页"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.45,
+        "stale_day": 48,
+        "replaced_by": "plan_slides_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 48,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_slides_002",
+      "content": "用户创建新的短课时互动课件计划，优先完成重点概念页、课堂练习页、即时反馈页和课后提醒。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 82,
+        "replaces": "plan_slides_001",
+        "pages": ["重点概念页", "课堂练习页", "即时反馈页", "课后提醒"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_lesson_output_format",
+      "content": "用户把教案设计输出偏好从详细版教案改成课堂执行简版，只保留目标、步骤、练习、反馈点和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_lesson_plan",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "classroom_execution_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "课时缩短后需要便于课堂执行"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 56,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_student_case_001",
+      "content": "用户记录一个学生个案，学生上课能答对但课后作业错误率高，准备单独观察不直接改整班教案。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.33,
+        "topic": "学生个案"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 60,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_core_exercise_design",
+      "content": "用户创建核心课堂练习设计任务，需要准备两道基础题、一道变式题和即时反馈话术。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 72
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 64,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_extra_parent_reply_old",
+      "content": "用户创建额外家长沟通模板任务，原本想为所有家长统一发送一版作业说明。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 70
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e023",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_interactive_slides",
+      "content": "用户创建互动课件页任务，需要完成课堂练习页、即时反馈页和课后提醒页。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 84
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e024",
+      "day": 70,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_extra_parent_reply_old",
+      "content": "用户取消统一发送额外家长沟通模板的任务，决定只针对反馈过作业压力的家长单独回复。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.22,
+        "cancelled_day": 70,
+        "reason": "统一模板不适合所有学生情况"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e025",
+      "day": 72,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_core_exercise_design",
+      "content": "用户完成核心课堂练习设计，确认两道基础题、一道变式题和即时反馈话术可直接用于课堂。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 72
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.88,
+        "deadline_day": 72,
+        "completed_day": 72,
+        "outputs": ["两道基础题", "一道变式题", "即时反馈话术"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e026",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_lesson_current",
+      "content": "用户确认当前教案重点不是旧的完整知识点铺开，也不是统一家长模板，而是重点概念、课堂练习和学生反馈出口。",
+      "state_before": {
+        "plan": "plan_lesson_002",
+        "old_reference": "plan_lesson_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "重点概念、课堂练习和学生反馈出口",
+        "not_current": "完整知识点铺开和统一家长模板"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 80,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_lesson_review",
+      "content": "用户完成近期教案复盘，确认当前重点是互动课件页、学生反馈出口和课堂执行简版。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 34,
+        "next_due_day": 48
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 80,
+        "next_due_day": 94,
+        "current_focus": ["互动课件页", "学生反馈出口", "课堂执行简版"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e028",
+      "day": 82,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录连续备课导致晚上休息不足，准备不要把行政通知整理排到周末。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "家庭与个人安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e029",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_interactive_slides",
+      "content": "用户未完成互动课件页，把截止日推迟到第 94 天，但仍保留为当前课件核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 84
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 84,
+        "deadline_day": 94,
+        "partial_progress": "课堂练习页已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e030",
+      "day": 86,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_course_scope",
+      "content": "用户设置近期约束，本轮课件定稿前不再新增额外知识点或统一家长通知，只记录到课后优化池。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "constraint_type": "course_scope_lock",
+        "valid_until_day": 104
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e031",
+      "day": 88,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_lesson_review",
+      "content": "用户完成最近一次教案复盘，确认当前活跃事项是互动课件页、课后反馈表和本轮课件范围锁定。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 80,
+        "next_due_day": 94
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 88,
+        "next_due_day": 102,
+        "current_focus": ["互动课件页", "课后反馈表", "本轮课件范围锁定"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 88,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_feedback_form",
+      "content": "用户创建课后反馈表任务，需要收集学生掌握程度、作业压力和下一节课需要回收的问题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 98
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_lesson_002", "plan_slides_002"],
+    "stale_plans": ["plan_lesson_001", "plan_slides_001"],
+    "active_tasks": ["task_interactive_slides", "task_feedback_form"],
+    "completed_tasks": ["task_lesson_baseline", "task_slide_outline_old", "task_core_exercise_design"],
+    "cancelled_tasks": ["task_extra_parent_reply_old"],
+    "postponed_tasks": ["task_interactive_slides"],
+    "current_constraints": ["constraint_course_scope"],
+    "stable_preferences": ["pref_teaching_record_style"],
+    "old_preferences": ["pref_lesson_output_format:detailed_lesson_plan"],
+    "updated_preferences": ["pref_lesson_output_format:classroom_execution_brief"],
+    "important_not_urgent_tasks": ["task_slide_outline_old", "task_feedback_form"],
+    "urgent_low_value_tasks": ["task_extra_parent_reply_old"],
+    "noise_events": ["noise_parent_message_001", "noise_admin_notice_001", "noise_student_case_001", "noise_personal_schedule_001"],
+    "hard_negative_sources": ["plan_lesson_001", "plan_slides_001", "task_lesson_baseline", "task_slide_outline_old", "task_extra_parent_reply_old", "pref_lesson_output_format:detailed_lesson_plan", "noise_parent_message_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

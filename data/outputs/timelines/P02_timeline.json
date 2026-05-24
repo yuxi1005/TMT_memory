@@ -1,0 +1,689 @@
+{
+  "user_id": "P02",
+  "timeline_id": "P02_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 88,
+    "length_days": 88,
+    "reason": "P02 是后端开发工程师，处在 debug 交付和技术方案协作密集期，版本变化、会议沟通、技术债和临时 bug 会跨数周到数月反复改变优先级，因此选择 88 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "核心 bug 定位与交付",
+      "domain": "debug",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "技术方案比较与替换",
+      "domain": "技术方案",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "代码 review 与输出格式维护",
+      "domain": "代码 review / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "技术债、加班和临时 bug 噪音",
+      "domain": "会议沟通 / 家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_engineering_record_style",
+      "content": "用户确立长期工程记录偏好，希望 debug、技术方案、代码 review、会议沟通和个人安排分开归档，并突出优先级、负责人和下一步动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["debug", "技术方案", "代码 review", "会议沟通", "个人安排"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_debug_001",
+      "content": "用户制定早期 debug 计划，准备先复现线上超时问题，再检查日志、缓存命中和数据库慢查询。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 32,
+        "phase_order": ["复现超时", "检查日志", "缓存命中", "数据库慢查询"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 5,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_arch_001",
+      "content": "用户创建早期技术方案比较计划，准备在同步接口优化、异步队列和缓存预热三种方案之间做取舍。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 44,
+        "options": ["同步接口优化", "异步队列", "缓存预热"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_debug_output_format",
+      "content": "用户记录 debug 辅助输出偏好，初期希望 agent 给详细排查步骤，包含假设、验证命令、预期现象和回滚风险。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_debug_steps",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 10,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_tech_debt_001",
+      "content": "用户临时记录一个旧鉴权模块的技术债，标注影响范围和可能重构点，但暂时不加入当前版本交付。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "技术债"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 14,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_reproduce_timeout",
+      "content": "用户创建线上超时复现任务，需要整理请求参数、压测脚本、日志 trace id 和复现环境。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 24
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e007",
+      "day": 18,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_solution_review",
+      "content": "用户设置每两周复盘一次技术方案比较，把当前 debug、旧方案、代码 review 意见和临时技术债分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 20,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_solution_matrix_old",
+      "content": "用户创建旧版技术方案矩阵任务，原计划一次性比较同步优化、异步队列和缓存预热的全部实现成本。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 34
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 24,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_reproduce_timeout",
+      "content": "用户完成线上超时复现，确认问题只在高并发下触发，并与缓存未命中和慢查询叠加有关。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 24
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.88,
+        "deadline_day": 24,
+        "completed_day": 24,
+        "finding": "高并发下缓存未命中和慢查询叠加"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 28,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_overtime_001",
+      "content": "用户记录连续两晚加班导致排查效率下降，准备把非核心 review 延后到白天处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.32,
+        "topic": "加班"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e011",
+      "day": 32,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_solution_review",
+      "content": "用户完成第一次方案复盘，确认旧鉴权模块技术债和当前超时问题语义相关但不属于本次核心修复。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 32,
+        "next_due_day": 46,
+        "finding": "旧鉴权技术债不进入当前修复范围"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 34,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_solution_matrix_old",
+      "content": "用户没有完成旧版技术方案矩阵，把截止日推迟到第 40 天，但仍保留为当前方案比较任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 34
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 34,
+        "deadline_day": 40,
+        "partial_progress": "同步优化和缓存预热已初步比较"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 36,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_release_001",
+      "content": "版本负责人通知修复窗口缩短，要求先做低风险缓解方案，异步队列改造留到下个迭代评估。",
+      "state_before": {
+        "related_plan": "plan_debug_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_debug_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 40,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_solution_matrix_old",
+      "content": "用户完成旧版技术方案矩阵，但确认一次性比较三种大方案不适合当前修复窗口。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 40
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 40,
+        "completed_day": 40,
+        "limitation": "三种大方案并行比较不适合当前修复窗口"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 42,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_arch_001",
+      "content": "用户将三方案并行比较计划替换为低风险缓存预热和慢查询索引优化优先计划，旧方案矩阵只保留为后续参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 44,
+        "options": ["同步接口优化", "异步队列", "缓存预热"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.45,
+        "stale_day": 42,
+        "replaced_by": "plan_arch_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 42,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_arch_002",
+      "content": "用户创建新的技术方案计划，优先处理缓存预热、慢查询索引、灰度开关和回滚检查项。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 78,
+        "replaces": "plan_arch_001",
+        "scope": ["缓存预热", "慢查询索引", "灰度开关", "回滚检查项"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes", "stable_preferences"]
+    },
+    {
+      "event_id": "e017",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_debug_001",
+      "content": "用户将完整排查链路计划替换为高并发超时低风险缓解计划，旧排查计划不再作为当前交付路径。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 32,
+        "phase_order": ["复现超时", "检查日志", "缓存命中", "数据库慢查询"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 45,
+        "replaced_by": "plan_debug_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_debug_002",
+      "content": "用户创建新的 debug 交付计划，先做缓存预热和慢查询索引，再补灰度验证与回滚记录。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.93,
+        "deadline_day": 76,
+        "replaces": "plan_debug_001",
+        "phase_order": ["缓存预热", "慢查询索引", "灰度验证", "回滚记录"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 50,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_debug_output_format",
+      "content": "用户把 debug 辅助输出偏好从详细排查步骤改成可执行简版，只保留命令、预期结果、负责人、风险和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_debug_steps",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "executable_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "修复窗口缩短，需要直接执行"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 54,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_open_source_001",
+      "content": "用户临时收藏一个开源限流库，记录链接和适用场景，但暂时不纳入当前低风险修复方案。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.29,
+        "topic": "开源收藏"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_cache_warmup_patch",
+      "content": "用户创建缓存预热补丁任务，需要实现预热入口、灰度开关、日志埋点和回滚配置。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 70
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 62,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_temp_bug_001",
+      "content": "测试同事临时提到一个后台列表分页小 bug，用户记录复现路径，但先放入低优先级待评估池。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.33,
+        "topic": "临时 bug"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 66,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_review_risk_table",
+      "content": "用户创建代码 review 风险表任务，需要列出缓存预热、索引变更、灰度开关和回滚路径的负责人。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 82
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e024",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_cache_warmup_patch",
+      "content": "用户完成缓存预热补丁，确认灰度开关和回滚配置已经接入，但索引变更还需要 DBA 确认。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.89,
+        "deadline_day": 70,
+        "completed_day": 70,
+        "remaining_gap": "索引变更待 DBA 确认"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e025",
+      "day": 74,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_refactor_auth_old",
+      "content": "用户创建旧鉴权模块重构任务，原本想顺手在当前版本里一起处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.5,
+        "deadline_day": 80
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e026",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_debug_current",
+      "content": "用户确认当前 debug 重点不是旧的完整排查链路，而是缓存预热、慢查询索引、灰度验证和回滚记录。",
+      "state_before": {
+        "plan": "plan_debug_002",
+        "old_reference": "plan_debug_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "缓存预热、慢查询索引、灰度验证和回滚记录",
+        "not_current": "完整排查链路"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 80,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_refactor_auth_old",
+      "content": "用户取消把旧鉴权模块重构放进当前版本的任务，决定只记录为后续技术债治理项。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.5,
+        "deadline_day": 80
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.25,
+        "cancelled_day": 80,
+        "reason": "不属于当前超时修复范围"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e028",
+      "day": 82,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_solution_review",
+      "content": "用户完成近期方案复盘，确认当前重点是 review 风险表、DBA 索引确认和灰度验证。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 32,
+        "next_due_day": 46
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 82,
+        "next_due_day": 96,
+        "current_focus": ["review 风险表", "DBA 索引确认", "灰度验证"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e029",
+      "day": 82,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_review_risk_table",
+      "content": "用户未完成代码 review 风险表，把截止日推迟到第 90 天，但仍保留为当前技术方案协作的活跃任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 82
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.85,
+        "previous_deadline_day": 82,
+        "deadline_day": 90,
+        "partial_progress": "缓存预热和灰度开关风险已列出"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e030",
+      "day": 84,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录周末个人安排和睡眠不足情况，准备避免把周末默认留给非核心重构。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.24,
+        "topic": "家庭与个人安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 86,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_release_scope",
+      "content": "用户设置近期约束，发布前只处理超时修复相关任务，技术债和低优先级临时 bug 进入后续池。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "constraint_type": "release_scope_freeze",
+        "valid_until_day": 105
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 88,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_solution_review",
+      "content": "用户完成最近一次技术方案复盘，确认当前活跃事项是 review 风险表、发布前范围冻结和 DBA 索引确认。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 82,
+        "next_due_day": 96
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 88,
+        "next_due_day": 102,
+        "current_focus": ["review 风险表", "发布前范围冻结", "DBA 索引确认"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 88,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_dba_index_confirm",
+      "content": "用户创建 DBA 索引确认任务，需要确认索引字段、执行窗口、回滚脚本和监控指标。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 98
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_debug_002", "plan_arch_002"],
+    "stale_plans": ["plan_debug_001", "plan_arch_001"],
+    "active_tasks": ["task_review_risk_table", "task_dba_index_confirm"],
+    "completed_tasks": ["task_reproduce_timeout", "task_solution_matrix_old", "task_cache_warmup_patch"],
+    "cancelled_tasks": ["task_refactor_auth_old"],
+    "postponed_tasks": ["task_review_risk_table"],
+    "current_constraints": ["constraint_release_scope"],
+    "stable_preferences": ["pref_engineering_record_style"],
+    "old_preferences": ["pref_debug_output_format:detailed_debug_steps"],
+    "updated_preferences": ["pref_debug_output_format:executable_brief"],
+    "important_not_urgent_tasks": ["task_solution_matrix_old", "task_dba_index_confirm"],
+    "urgent_low_value_tasks": ["noise_temp_bug_001", "task_refactor_auth_old"],
+    "noise_events": ["noise_tech_debt_001", "noise_overtime_001", "noise_open_source_001", "noise_temp_bug_001", "noise_personal_schedule_001"],
+    "hard_negative_sources": ["plan_debug_001", "plan_arch_001", "task_reproduce_timeout", "task_solution_matrix_old", "task_refactor_auth_old", "pref_debug_output_format:detailed_debug_steps", "noise_tech_debt_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

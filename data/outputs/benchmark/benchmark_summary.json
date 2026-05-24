@@ -1,0 +1,19 @@
+{
+  "mu_dir": "E:\\MyDatum\\小论文\\Codex\\data\\outputs\\mu",
+  "out_dir": "E:\\MyDatum\\小论文\\Codex\\data\\outputs\\benchmark",
+  "users": {
+    "L01": {
+      "query_count": 7,
+      "output": "E:\\MyDatum\\小论文\\Codex\\data\\outputs\\benchmark\\L01_queries.jsonl",
+      "case_types": [
+        "active_todo_currentness",
+        "current_sleep_plan_vs_stale_plan",
+        "completed_result_not_active_todo",
+        "preference_revision",
+        "household_supplies_state",
+        "behavior_constraint_vs_noise",
+        "recurring_review_current_focus"
+      ]
+    }
+  }
+}

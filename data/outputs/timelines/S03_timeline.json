@@ -1,0 +1,767 @@
+{
+  "user_id": "S03",
+  "timeline_id": "S03_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 72,
+    "length_days": 72,
+    "reason": "S03 是小组作业、案例分析和求职准备并行推进的本科商科学生，72 天跨度可以覆盖早期小组分工和案例旧方案、中期反馈替换与任务完成、近期求职材料和面试准备，同时保留社交活动、拖延和小组沟通噪音。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "小组作业推进与返工控制",
+      "domain": "小组作业",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "案例分析方案与材料迭代",
+      "domain": "案例分析",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "求职材料和面试准备",
+      "domain": "求职",
+      "status": "mixed",
+      "derived_from_profile": ["main_life_domains", "agent_usage_style", "stable_preferences", "dynamic_preferences"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "社交活动、拖延和沟通噪音",
+      "domain": "作息与健康 / 情绪压力 / 社交与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_workflow_001",
+      "content": "用户确立长期工作偏好，希望学习、求职和生活事项分开归档，并让建议保留依据、状态和截止时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["小组作业", "案例分析", "求职", "生活事项"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 2,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_group_001",
+      "content": "用户制定小组作业早期计划，准备先确认分工，再完成市场分析，最后整合展示稿。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 40,
+        "phase_order": ["确认分工", "市场分析", "展示稿整合"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 4,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_case_001",
+      "content": "用户创建案例分析早期方案，计划用 SWOT 框架拆解公司问题，再补充行业数据。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.8,
+        "deadline_day": 34,
+        "framework": "SWOT"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e004",
+      "day": 6,
+      "storyline_id": "sl_03",
+      "event_type": "create_plan",
+      "target_id": "plan_job_001",
+      "content": "用户创建求职准备计划，先修改简历，再整理面试回答，最后筛选投递岗位。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.76,
+        "deadline_day": 62,
+        "phase_order": ["简历修改", "面试回答", "岗位筛选"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["main_life_domains", "primary_goals"]
+    },
+    {
+      "event_id": "e005",
+      "day": 8,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_social_dinner_001",
+      "content": "用户记录周五临时多了聚餐安排，担心压缩小组作业资料整理时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "社交活动"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 10,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_group_market_part",
+      "content": "用户创建小组作业市场分析部分任务，需要整理目标用户、竞争对手和初步结论。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 20
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 12,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_resume_output",
+      "content": "用户记录简历修改偏好，初期希望 agent 给详细版修改说明，方便比较措辞和经历排序。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_revision_notes",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e008",
+      "day": 14,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_case_swot_draft",
+      "content": "用户创建案例 SWOT 初稿任务，准备先列出优势、劣势、机会和威胁四个部分。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 24
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_group_sync",
+      "content": "用户设置每周整理一次小组沟通结果，把负责人、截止时间和当前优先级分开记录。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.7,
+        "interval_days": 7,
+        "next_due_day": 23
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e010",
+      "day": 20,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_group_market_part",
+      "content": "用户完成小组作业市场分析部分，并标出还需要队友补充的一页数据图。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 20
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 20,
+        "completed_day": 20,
+        "remaining_gap": "队友补充一页数据图"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e011",
+      "day": 22,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_part_time_001",
+      "content": "用户记录兼职临时加班两小时，导致晚上原计划的案例资料阅读被压缩。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.33,
+        "topic": "兼职"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e012",
+      "day": 23,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_group_sync",
+      "content": "用户完成第一次小组沟通复盘，确认自己的市场分析已完成，队友的数据图仍未交付。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 7,
+        "next_due_day": 23
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 23,
+        "next_due_day": 30,
+        "finding": "队友数据图未交付"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e013",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_case_swot_draft",
+      "content": "用户完成案例 SWOT 初稿，但发现框架过于模板化，难以支撑后续课堂展示。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 24
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.78,
+        "deadline_day": 24,
+        "completed_day": 24,
+        "limitation": "框架过于模板化"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 28,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_case_001",
+      "content": "老师反馈案例分析不应只用 SWOT 罗列，需要改成围绕决策问题和数据证据展开。",
+      "state_before": {
+        "related_plan": "plan_case_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.88,
+        "affects": "plan_case_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 30,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_group_sync",
+      "content": "用户完成第二次小组沟通复盘，把早期分工表标为过期，因为展示稿整合负责人发生变化。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 23,
+        "next_due_day": 30
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 30,
+        "next_due_day": 37,
+        "outdated_reference": "早期分工表"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_case_001",
+      "content": "用户将 SWOT 案例方案替换为决策问题导向方案，旧方案只作为课堂讨论过程记录。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.8,
+        "deadline_day": 34,
+        "framework": "SWOT"
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 32,
+        "replaced_by": "plan_case_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e017",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_case_002",
+      "content": "用户创建新的案例分析方案，决定先明确决策问题，再补数据证据和备选建议。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 55,
+        "replaces": "plan_case_001",
+        "phase_order": ["决策问题", "数据证据", "备选建议"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e018",
+      "day": 35,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_resume_draft",
+      "content": "用户创建求职简历修改任务，准备把小组作业和案例分析经历改写成可量化成果。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.74,
+        "deadline_day": 48
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e019",
+      "day": 38,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_resume_output",
+      "content": "用户把简历修改输出偏好从详细说明临时改为简版行动清单，以便先赶求职材料截止时间。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_revision_notes",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_action_list",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "求职材料截止时间临近"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e020",
+      "day": 40,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_group_001",
+      "content": "用户把小组作业计划拆小，决定先完成展示稿逻辑，再补数据图和口头汇报稿。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 40,
+        "phase_order": ["确认分工", "市场分析", "展示稿整合"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.89,
+        "deadline_day": 58,
+        "priority_order": ["展示稿逻辑", "数据图", "口头汇报稿"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e021",
+      "day": 42,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_group_slides",
+      "content": "用户创建小组展示稿整合任务，需要把市场分析、队友数据图和结论页统一到一套逻辑里。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 54
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e022",
+      "day": 44,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_movie_001",
+      "content": "用户记录周末想和朋友看电影并逛街，担心又把案例分析材料拖到最后一天。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.26,
+        "topic": "社交与娱乐"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_case_data_evidence",
+      "content": "用户创建案例数据证据整理任务，需要找出能支撑决策问题的三组关键数据。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 57
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e024",
+      "day": 48,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_resume_draft",
+      "content": "用户完成简历修改初稿，但发现案例分析经历还不能直接用于求职投递。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.74,
+        "deadline_day": 48
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.74,
+        "deadline_day": 48,
+        "completed_day": 48,
+        "limitation": "案例分析经历表达不足"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e025",
+      "day": 50,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_mock_interview",
+      "content": "用户创建面试准备任务，准备整理商业分析岗位的自我介绍和项目追问回答。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.73,
+        "deadline_day": 64
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e026",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_old_networking_event",
+      "content": "用户创建参加一次求职交流会的任务，原计划借机会询问商业分析岗位要求。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.52,
+        "deadline_day": 56
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["main_life_domains", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e027",
+      "day": 54,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_group_slides",
+      "content": "用户没有完成小组展示稿整合，把截止日推迟到第 59 天，但仍保留为当前最高优先级任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 54
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.92,
+        "previous_deadline_day": 54,
+        "deadline_day": 59,
+        "partial_progress": "主线逻辑已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e028",
+      "day": 55,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_old_networking_event",
+      "content": "用户取消参加求职交流会的任务，决定先完成小组展示稿和案例数据证据。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.52,
+        "deadline_day": 56
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.33,
+        "cancelled_day": 55,
+        "reason": "小组作业和案例分析优先级更高"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["dynamic_preferences", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e029",
+      "day": 57,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_case_data_evidence",
+      "content": "用户把案例数据证据整理推迟到第 63 天，近期先保留两组核心数据和一个备选图表。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 57
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.86,
+        "previous_deadline_day": 57,
+        "deadline_day": 63,
+        "partial_progress": "两组核心数据已找到"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e030",
+      "day": 59,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_group_slides",
+      "content": "用户完成小组展示稿整合，剩下口头汇报稿需要按每个人分配时间。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.92,
+        "deadline_day": 59
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.92,
+        "deadline_day": 59,
+        "completed_day": 59,
+        "remaining_gap": "口头汇报时间分配"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e031",
+      "day": 60,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_social_001",
+      "content": "用户设置近期约束，晚上有小组作业或案例分析截止时不再临时答应社交活动。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "social_limit_before_deadline",
+        "valid_until_day": 72
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e032",
+      "day": 62,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_group_chat_001",
+      "content": "用户记录小组群聊里反复讨论封面颜色和署名顺序，打断了案例分析数据整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.36,
+        "topic": "小组沟通噪音"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e033",
+      "day": 63,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_case_data_evidence",
+      "content": "用户完成案例数据证据整理，确定三组关键数据和一页备选图表。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.86,
+        "deadline_day": 63
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.86,
+        "deadline_day": 63,
+        "completed_day": 63,
+        "outputs": ["三组关键数据", "一页备选图表"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e034",
+      "day": 65,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_case_001",
+      "content": "用户确认案例分析当前缺口从数据证据转为结论页和备选建议表达。",
+      "state_before": {
+        "plan": "plan_case_002",
+        "main_blocker": "数据证据"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "结论页和备选建议表达",
+        "resolved_blocker": "数据证据"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e035",
+      "day": 67,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_mock_interview",
+      "content": "用户把面试准备任务推迟到第 74 天，近期先保留自我介绍和两个项目追问回答。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.73,
+        "deadline_day": 64
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.71,
+        "previous_deadline_day": 64,
+        "deadline_day": 74,
+        "partial_progress": "自我介绍和两个项目追问回答已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e036",
+      "day": 70,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_case_recommendation_slide",
+      "content": "用户创建案例分析结论页任务，需要把决策建议、风险和备选方案压缩到一页展示。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 78
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e037",
+      "day": 72,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_group_speaker_notes",
+      "content": "用户创建小组口头汇报稿分配任务，需要按每位成员负责页面分配讲述时间和过渡句。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 79
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_group_001", "plan_case_002", "plan_job_001"],
+    "stale_plans": ["plan_case_001"],
+    "active_tasks": ["task_mock_interview", "task_case_recommendation_slide", "task_group_speaker_notes"],
+    "completed_tasks": ["task_group_market_part", "task_case_swot_draft", "task_resume_draft", "task_group_slides", "task_case_data_evidence"],
+    "cancelled_tasks": ["task_old_networking_event"],
+    "postponed_tasks": ["task_mock_interview"],
+    "current_constraints": ["constraint_social_001"],
+    "stable_preferences": ["pref_workflow_001"],
+    "old_preferences": ["pref_resume_output:detailed_revision_notes"],
+    "updated_preferences": ["pref_resume_output:brief_action_list"],
+    "important_not_urgent_tasks": ["task_resume_draft", "task_old_networking_event"],
+    "urgent_low_value_tasks": ["noise_movie_001"],
+    "noise_events": ["noise_social_dinner_001", "noise_part_time_001", "noise_movie_001", "noise_group_chat_001"],
+    "hard_negative_sources": ["plan_case_001", "task_case_swot_draft", "task_resume_draft", "task_old_networking_event", "pref_resume_output:detailed_revision_notes", "noise_movie_001", "recur_group_sync:day30_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

@@ -1,0 +1,487 @@
+你正在为一个“长期个人记忆检索 benchmark”生成 dialogue interactions。
+
+请先理解这个 benchmark 的目标：
+
+这个 benchmark 不是测试普通语义相似度，而是测试：
+一条 memory 是否应该被召回，不只取决于它和 query 是否语义相关，还取决于它在当前时间、任务状态、完成状态、计划新旧、偏好稳定性和认知可访问性下，是否仍然应该被取出。
+
+当前阶段任务：
+你只需要把 latent world timeline 中的每个 event，改写成一段自然的用户-AI 对话 interaction。
+
+这个 dialogue layer 的作用是：
+1. 让隐藏世界状态以真实 agent 使用记录的形式出现；
+2. 保留不同用户的说话风格和 agent 使用方式；
+3. 为后续从对话中抽取 MU 提供自然来源；
+4. 保留 active / completed / stale / current / noise 等检索测试所需的信息。
+
+====================
+
+输入
+====================
+
+你会收到两个 JSON：
+
+1. enriched user profile
+
+包含类似字段：
+
+- user_id
+- macro_archetype
+- user_archetype
+- concrete_identity
+- life_stage
+- agent_usage_level
+- agent_usage_style
+- main_life_domains
+- primary_goals
+- stable_preferences
+- dynamic_preferences
+- recurring_tasks
+- typical_noise_sources
+- memory_style
+- likely_task_states
+- likely_plan_changes
+- likely_hard_negatives
+
+2. latent world timeline
+
+包含类似字段：
+
+- user_id
+- timeline_id
+- time_span
+- storylines
+- events
+- final_state_summary
+- quality_check
+
+你必须同时使用 user profile 和 timeline。
+
+profile 决定：
+
+- 用户说话风格；
+- 用户通常怎么使用 AI agent；
+- 用户会不会碎碎念、列清单、焦虑、简洁、正式；
+- 用户会产生哪些生活噪音；
+- 用户会如何表达任务、计划、偏好和压力。
+
+timeline 决定：
+
+- 哪一天发生了什么；
+- 事件属于哪条 storyline；
+- 事件类型是什么；
+- 状态如何变化；
+- 该事件未来可能对应什么 retrieval role。
+
+====================
+
+输出
+====================
+
+请输出一个合法 JSON object，格式如下：
+
+{
+  "user_id": "...",
+  "source_timeline_id": "...",
+  "dialogue_dataset_id": "...",
+  "interactions": [
+    {
+      "interaction_id": "S04_i001",
+      "source_event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_001",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "简短描述该 interaction 使用的风格",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "用户自然说出的话"
+        },
+        {
+          "speaker": "assistant",
+          "text": "AI agent 的自然回复"
+        }
+      ]
+    }
+  ],
+  "quality_check": {
+    "all_events_covered": true,
+    "interaction_count": 0,
+    "dialogues_are_not_memory_units": true,
+    "dialogues_follow_user_profile": true,
+    "metadata_not_leaked_in_dialogue": true,
+    "no_query_generated": true,
+    "no_gold_generated": true,
+    "no_mu_extracted": true
+  }
+}
+
+====================
+
+Interaction 生成规则
+====================
+
+每个 timeline event 必须生成 1 个 interaction。
+不要跳过 event。
+不要合并多个 event。
+不要把一个 event 拆成多个 interaction。
+每个 interaction 是一小段用户和 AI agent 的对话。
+
+对话长度参考：
+
+1. 普通 task / status event：
+   4-6 turns
+2. 重要 plan revision / replace_plan / unexpected_event：
+   6-10 turns
+3. introduce_noise：
+   2-4 turns
+4. preference revision：
+   4-6 turns
+5. recurring task instance：
+   3-5 turns
+6. create_task / create_plan：
+   4-7 turns
+7. complete_task：
+   3-5 turns
+一个 turn 指一条 user 或 assistant 消息。
+不要生成很长的多轮聊天。
+目标是自然、可抽取、可追溯，不是写小说。
+禁止为了变长而加入与 event 无关的新事实。
+====================
+
+Event 类型到对话形态的映射
+====================
+
+请根据 event_type 选择合适的对话方式。
+
+1. create_task
+
+用户表达自己接下来要做什么。
+AI 可以帮忙拆解、提醒优先级、给执行步骤。
+
+例子：
+用户：我这周得先把方法章节搭起来，但我不想一次写太长。
+AI：可以，先搭四个小节：问题定义、记忆角色、可访问性函数、实验设置。
+
+2. complete_task
+
+用户告诉 AI 某件事已经完成。
+AI 可以帮忙总结完成状态、提醒后续事项。
+
+注意：
+completed task 不能在对话中继续被说成“还要做”。
+
+3. postpone_task
+
+用户说明某任务没按时完成，需要延期。
+AI 可以帮助重新安排。
+
+如果延期后仍然要做，要在对话里自然体现“还没完成，但仍是当前任务”。
+
+4. cancel_task
+
+用户说明某任务不做了。
+AI 可以确认取消原因，并提醒不要再按原计划推进。
+
+5. create_plan
+
+用户提出一个计划。
+AI 可以帮助整理计划结构。
+
+6. revise_plan / replace_plan
+
+用户修改旧计划。
+AI 应该自然体现：
+
+- 旧计划还存在；
+- 但当前计划已经变了；
+- 旧计划不能再当成当前计划。
+
+不要直接说“这是 stale plan”。
+
+7. add_preference
+
+用户表达长期偏好。
+AI 可以确认并说明之后会按这个偏好回应。
+
+8. revise_preference
+
+用户改变偏好。
+AI 应该自然体现：
+
+- 以前偏好是什么；
+- 现在偏好变成什么；
+- 新偏好可能是临时的或当前阶段适用的。
+
+9. add_constraint
+
+用户提出约束。
+AI 可以确认这个约束，并用于后续计划安排。
+
+10. add_status_update
+
+用户更新当前状态。
+AI 可以帮助总结当前进展和下一步。
+
+11. introduce_noise
+
+用户随口聊生活、健康、购物、情绪、娱乐、家庭等小插曲。
+AI 简短回应即可，不要过度任务化。
+不要把噪音硬拉回主线项目。
+
+12. unexpected_event
+
+用户遇到意外反馈、变化或阻塞。
+AI 可以帮助调整计划或重新排序任务。
+
+13. create_recurring_task
+
+用户设置重复性任务。
+AI 可以确认周期和下一次处理时间。
+
+14. complete_recurring_task_instance
+
+用户完成一次周期任务。
+AI 可以简短总结本次结果和下一次时间。
+
+15. switch_primary_focus
+
+用户切换当前重点。
+AI 应该体现旧重点被降低、新重点上升。
+
+====================
+
+用户风格规则
+====================
+
+对话必须符合 user profile。
+
+必须使用这些字段：
+
+- memory_style
+- agent_usage_style
+- main_life_domains
+- typical_noise_sources
+- life_stage
+- concrete_identity
+
+不同用户说话应该有差异。
+
+例如：
+
+1. 硕士 NLP 学生
+   可以出现：
+
+- 论文
+- 实验
+- benchmark
+- deadline
+- 方法章节
+- baseline
+- 导师反馈
+
+说话可能是：
+
+- 焦虑
+- 想收敛
+- 不想一次看太多
+- 需要结构化建议
+
+2. 产品经理
+   可以出现：
+
+- 需求
+- PRD
+- 评审
+- 优先级
+- 老板反馈
+- 上线风险
+
+不要写成论文研究语境。
+
+3. 育儿用户
+   可以出现：
+
+- 睡眠
+- 喂养
+- 作息
+- 家庭安排
+- 情绪疲惫
+
+不要写成工作项目语境。
+
+4. 慢病管理用户
+   可以出现：
+
+- 饮食
+- 复诊
+- 指标
+- 运动
+- 药物记录
+
+不要写成论文或产品语境。
+
+====================
+
+Metadata 泄露限制
+====================
+
+以下词语一般不能出现在 user 或 assistant 的自然对话中，除非该用户本身就是研究相关主题的人：
+
+- retrieval_role
+- hard negative
+- stale plan
+- active todo
+- completed todo
+- memory unit
+- gold
+- query
+- benchmark 评测项
+- cognitive accessibility
+
+对于普通用户或非研究用户，这些只能出现在 JSON metadata 中，不能出现在 dialogue text 里。
+
+错误示例：
+用户：这个旧计划应该作为 hard negative。
+AI：好的，我会把它标成 stale plan。
+
+正确示例：
+用户：之前那个方案先别按了，现在已经换成新版。
+AI：明白，那后面以新版方案为准，旧方案只作为参考。
+
+如果用户是 S04 这种 NLP 硕士，且 timeline 本身涉及 benchmark 研究，可以自然出现 benchmark、baseline、实验状态等词。
+但即使是研究用户，也不要在对话里直接说 retrieval_role、gold、metadata。
+
+====================
+
+噪音对话规则
+====================
+
+introduce_noise 类型的 interaction 必须像真实生活小插曲。
+
+不要在 dialogue text 中写：
+
+- 这与论文无关
+- 这是噪音
+- 这是低优先级干扰项
+- 这只是 hard negative
+
+错误示例：
+用户：我想看电影，这件事和论文无关，只是噪音。
+
+正确示例：
+用户：我周末想去看那部新电影，顺便约朋友吃饭。
+AI：可以，放松一下也好。你可以先把时间定在周六晚上，别挤到白天的主要安排。
+
+噪音可以是：
+
+- 健康不适
+- 临时购物
+- 情绪抱怨
+- 电影/游戏/娱乐
+- 家庭琐事
+- 宠物
+- 临时社交安排
+
+AI 回复要自然，不要过度总结成任务。
+
+====================
+
+信息忠实性规则
+====================
+
+对话必须忠实于 timeline event。
+
+不能新增 timeline 中没有的重要事实。
+
+可以自然改写 event content，
+但不能改变：
+
+- 任务是否完成；
+- 计划是否替换；
+- 偏好是否改变；
+- 截止时间；
+- 重要性方向；
+- 约束是否当前有效；
+- 噪音是否只是小插曲。
+
+如果 assistant 给建议，建议不能引入新的长期事实，除非只是对当前 event 的自然回应。
+
+错误示例：
+timeline 只说用户想买耳机，
+assistant 却说“那你明天和导师开会前买”。
+
+正确示例：
+timeline 只说用户想买耳机，
+assistant 可以说“可以先列两个最重要的标准，比如佩戴舒适和降噪效果。”
+
+====================
+
+Interaction metadata 规则
+====================
+
+每个 interaction 必须保留这些字段：
+
+- interaction_id
+- source_event_id
+- day
+- storyline_id
+- event_type
+- target_id
+- retrieval_role
+- dialogue_style
+- dialogue
+
+interaction_id 规则：
+user_id + "_i" + 三位编号
+
+例如：
+S04_i001
+S04_i002
+
+interaction 顺序必须和 events 顺序一致。
+
+source_event_id 必须对应 timeline events 中的 event_id。
+
+====================
+
+Quality check 要求
+====================
+
+输出末尾必须包含 quality_check。
+
+quality_check 至少包含：
+
+{
+  "all_events_covered": true,
+  "interaction_count": 36,
+  "dialogues_are_not_memory_units": true,
+  "dialogues_follow_user_profile": true,
+  "metadata_not_leaked_in_dialogue": true,
+  "noise_dialogues_are_natural": true,
+  "dialogues_preserve_event_state": true,
+  "no_query_generated": true,
+  "no_gold_generated": true,
+  "no_mu_extracted": true
+}
+
+如果 timeline 有 36 个 events，则必须生成 36 个 interactions。
+
+====================
+
+重要限制
+====================
+
+1. 只输出合法 JSON。
+2. 不要输出解释。
+3. 不要把 stale / cancelled / old preference 写成当前有效状态。
+4. 不要把 completed task 说成仍未完成。
+5. 不要把噪音事件写成 benchmark 标注说明。
+6. 不要合并多个 event。
+7. 不要写成日记。
+8. 不要把 event metadata 直接写进自然对话。
+9. 不要让所有用户说话风格一样。
+10. 不要让 AI 回复替用户新增重要事实。
+11. 不要跳过任何 event。

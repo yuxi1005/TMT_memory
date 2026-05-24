@@ -1,0 +1,766 @@
+{
+  "user_id": "S02",
+  "timeline_id": "S02_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 80,
+    "length_days": 80,
+    "reason": "S02 是作品集和课程作业并行推进的本科设计学生，同时还要处理交换申请和审美摇摆带来的反复修改，因此选择 80 天稀疏时间跨度，覆盖早期作品集方案、中期课程作业反馈替换、近期申请材料和最终作品集整理。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "作品集结构与案例打磨",
+      "domain": "作品集",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "课程作业方案迭代",
+      "domain": "课程作业",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "交换申请与文案润色",
+      "domain": "交换申请",
+      "status": "mixed",
+      "derived_from_profile": ["main_life_domains", "agent_usage_style", "stable_preferences", "dynamic_preferences"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "购物、审美摇摆与生活噪音",
+      "domain": "作息与健康 / 情绪压力 / 社交与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_01",
+      "event_type": "add_preference",
+      "target_id": "pref_design_workflow_001",
+      "content": "用户确立长期工作偏好，希望作品集、课程作业、申请和生活事项分开归档，并保留方案选择依据。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["作品集", "课程作业", "交换申请", "生活事项"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 2,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_portfolio_001",
+      "content": "用户制定早期作品集推进计划，准备先筛选项目，再统一视觉风格，最后补充项目文案。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 52,
+        "phase_order": ["项目筛选", "视觉风格统一", "项目文案补充"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 4,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_course_001",
+      "content": "用户创建课程作业早期方案，打算用复古拼贴风完成海报和版式延展。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.78,
+        "deadline_day": 36,
+        "direction": "复古拼贴风"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e004",
+      "day": 6,
+      "storyline_id": "sl_03",
+      "event_type": "create_plan",
+      "target_id": "plan_exchange_001",
+      "content": "用户创建交换申请准备计划，先整理作品集英文说明，再写动机文案和材料清单。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.72,
+        "deadline_day": 70,
+        "phase_order": ["英文说明", "动机文案", "材料清单"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["main_life_domains", "primary_goals"]
+    },
+    {
+      "event_id": "e005",
+      "day": 8,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_bag_001",
+      "content": "用户记录想买一个适合装速写本和电脑的通勤包，并比较了颜色、容量和价格。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.24,
+        "topic": "购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 10,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_portfolio_case_audit",
+      "content": "用户创建作品集项目筛选任务，需要把现有作品按主题、视觉完成度和申请适配度排序。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 20
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 12,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_inspiration_output",
+      "content": "用户记录灵感整理偏好，初期希望 agent 给详细灵感板说明，方便比较旧方案和新方案。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_moodboard_notes",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e008",
+      "day": 14,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_course_poster_sketch",
+      "content": "用户创建课程海报草图任务，准备输出三版复古拼贴方向供课堂讨论。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.77,
+        "deadline_day": 24
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_inspiration_review",
+      "content": "用户设置每两周整理一次灵感碎片和作品集下一步，避免临时审美想法混进当前主线。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.69,
+        "interval_days": 14,
+        "next_due_day": 30
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e010",
+      "day": 20,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_portfolio_case_audit",
+      "content": "用户完成作品集项目筛选，确定三个主项目和两个备选项目，并标出需要重排版的页面。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 20
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.86,
+        "deadline_day": 20,
+        "completed_day": 20,
+        "remaining_gap": "部分页面需要重排版"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e011",
+      "day": 23,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_aesthetic_swing_001",
+      "content": "用户短期迷上高饱和荧光配色，想把几个旧页面都改成更强烈的视觉风格。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.32,
+        "topic": "审美摇摆"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e012",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_course_poster_sketch",
+      "content": "用户完成三版课程海报草图，但其中两版只适合课堂讨论，不适合作品集主线。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.77,
+        "deadline_day": 24
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.77,
+        "deadline_day": 24,
+        "completed_day": 24,
+        "portfolio_fit": "low_for_two_versions"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 28,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_course_001",
+      "content": "老师反馈课程作业不应继续堆叠复古元素，需要转向更清晰的信息层级和网格系统。",
+      "state_before": {
+        "related_plan": "plan_course_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.87,
+        "affects": "plan_course_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 30,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_inspiration_review",
+      "content": "用户完成一次灵感碎片复盘，把荧光配色想法标为临时参考，不纳入当前作品集统一风格。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 30
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 30,
+        "next_due_day": 44,
+        "outdated_reference": "荧光配色临时想法"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e015",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_course_001",
+      "content": "用户将复古拼贴课程方案替换为网格信息层级方案，旧复古方案只保留为过程记录。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.78,
+        "deadline_day": 36,
+        "direction": "复古拼贴风"
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 32,
+        "replaced_by": "plan_course_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 32,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_course_002",
+      "content": "用户创建新的课程作业方案，决定优先重做网格、信息层级和字体系统。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 50,
+        "replaces": "plan_course_001",
+        "phase_order": ["网格重做", "信息层级", "字体系统"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 35,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_course_grid_redesign",
+      "content": "用户创建课程作业网格重做任务，需要把海报和延展物料统一到同一套版式系统。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 46
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e018",
+      "day": 38,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_exchange_statement_old",
+      "content": "用户创建交换申请动机文案初稿任务，准备先用课程作业和作品集经历支撑申请理由。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.63,
+        "deadline_day": 54
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["main_life_domains", "agent_usage_style"]
+    },
+    {
+      "event_id": "e019",
+      "day": 41,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_inspiration_output",
+      "content": "用户把灵感整理输出偏好从详细灵感板说明临时改成简版行动清单，以便先赶课程作业修改。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_moodboard_notes",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_action_list",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "课程作业修改压力"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e020",
+      "day": 44,
+      "storyline_id": "sl_01",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_inspiration_review",
+      "content": "用户完成第二次灵感复盘，把课程作业的网格方案和作品集主视觉分开存放。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 30,
+        "next_due_day": 44
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 44,
+        "next_due_day": 58,
+        "separated_topics": ["课程作业网格方案", "作品集主视觉"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e021",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_course_grid_redesign",
+      "content": "用户没有按原截止日完成全部网格重做，把截止日推迟到第 52 天，但仍保留为当前课程作业核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 46
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "previous_deadline_day": 46,
+        "deadline_day": 52,
+        "partial_progress": "主海报网格已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 48,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_sale_001",
+      "content": "用户被打折活动吸引，临时收藏了几件衣服和配饰，担心影响晚上排版时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.27,
+        "topic": "购物"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e023",
+      "day": 52,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_course_grid_redesign",
+      "content": "用户完成课程作业网格重做，主海报和两件延展物料已经统一到同一套版式系统。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "deadline_day": 52
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.9,
+        "deadline_day": 52,
+        "completed_day": 52
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e024",
+      "day": 54,
+      "storyline_id": "sl_03",
+      "event_type": "complete_task",
+      "target_id": "task_exchange_statement_old",
+      "content": "用户完成交换申请动机文案初稿，但发现内容过多依赖课程作业，缺少作品集主线表达。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.63,
+        "deadline_day": 54
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.63,
+        "deadline_day": 54,
+        "completed_day": 54,
+        "limitation": "缺少作品集主线表达"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "main_life_domains"]
+    },
+    {
+      "event_id": "e025",
+      "day": 56,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_portfolio_001",
+      "content": "用户调整作品集推进计划，决定先统一三个主项目的叙事顺序，再处理视觉细节。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 52,
+        "phase_order": ["项目筛选", "视觉风格统一", "项目文案补充"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 76,
+        "priority_order": ["主项目叙事顺序", "视觉细节统一", "项目文案补充"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences", "primary_goals"]
+    },
+    {
+      "event_id": "e026",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_portfolio_sequence",
+      "content": "用户创建作品集主项目叙事顺序任务，需要确定三个项目的开场、过程页和结尾页关系。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.93,
+        "deadline_day": 70
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e027",
+      "day": 60,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_exchange_statement_rewrite",
+      "content": "用户创建交换申请文案重写任务，准备把作品集主线和学习目标重新组织到申请理由里。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "deadline_day": 73
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["main_life_domains", "primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e028",
+      "day": 62,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_social_gallery_001",
+      "content": "用户记录周末想去看一个小型插画展，并顺便和朋友吃饭。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.23,
+        "topic": "社交与娱乐"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e029",
+      "day": 64,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_print_sample_old",
+      "content": "用户创建作品集纸样打印任务，原计划先测试高饱和封面和厚纸材质。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.58,
+        "deadline_day": 68
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["main_life_domains", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e030",
+      "day": 66,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_print_sample_old",
+      "content": "用户取消高饱和封面纸样打印任务，决定等作品集叙事顺序确定后再统一打样。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.58,
+        "deadline_day": 68
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.34,
+        "cancelled_day": 66,
+        "reason": "作品集叙事顺序尚未确定"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e031",
+      "day": 68,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_shopping_001",
+      "content": "用户设置近期约束，晚上做作品集时不再打开购物应用，只把想买的东西记录到第二天处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "constraint_type": "shopping_limit_during_work",
+        "valid_until_day": 80
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e032",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_portfolio_sequence",
+      "content": "用户没有完成全部作品集叙事顺序调整，把截止日推迟到第 78 天，但继续保留为当前最高优先级任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.93,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.95,
+        "previous_deadline_day": 70,
+        "deadline_day": 78,
+        "partial_progress": "第一个主项目顺序已确定"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e033",
+      "day": 72,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_course_001",
+      "content": "用户确认课程作业当前已完成主要版式调整，剩余问题是终稿说明文字和导出规范。",
+      "state_before": {
+        "plan": "plan_course_002",
+        "main_blocker": "网格重做"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "终稿说明文字和导出规范",
+        "resolved_blocker": "网格重做"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e034",
+      "day": 74,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_exchange_statement_rewrite",
+      "content": "用户把交换申请文案重写推迟到第 82 天，近期先保留作品集主线句子和申请材料清单。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.76,
+        "deadline_day": 73
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.74,
+        "previous_deadline_day": 73,
+        "deadline_day": 82,
+        "partial_progress": "作品集主线句子已写出"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e035",
+      "day": 76,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_course_final_export",
+      "content": "用户创建课程作业终稿导出任务，需要检查尺寸、字体嵌入、说明文字和提交命名。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 83
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e036",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_portfolio_sequence",
+      "content": "用户完成作品集三个主项目的叙事顺序调整，但仍需补充若干页面的短文案。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.95,
+        "deadline_day": 78
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.95,
+        "deadline_day": 78,
+        "completed_day": 78,
+        "remaining_gap": "若干页面短文案"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e037",
+      "day": 80,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_portfolio_microcopy",
+      "content": "用户创建作品集页面短文案润色任务，要求每个项目都写清问题、过程和结果。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 86
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "primary_goals", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_portfolio_001", "plan_course_002", "plan_exchange_001"],
+    "stale_plans": ["plan_course_001"],
+    "active_tasks": ["task_exchange_statement_rewrite", "task_course_final_export", "task_portfolio_microcopy"],
+    "completed_tasks": ["task_portfolio_case_audit", "task_course_poster_sketch", "task_course_grid_redesign", "task_exchange_statement_old", "task_portfolio_sequence"],
+    "cancelled_tasks": ["task_print_sample_old"],
+    "postponed_tasks": ["task_exchange_statement_rewrite"],
+    "current_constraints": ["constraint_shopping_001"],
+    "stable_preferences": ["pref_design_workflow_001"],
+    "old_preferences": ["pref_inspiration_output:detailed_moodboard_notes"],
+    "updated_preferences": ["pref_inspiration_output:brief_action_list"],
+    "important_not_urgent_tasks": ["task_exchange_statement_old", "task_print_sample_old"],
+    "urgent_low_value_tasks": ["noise_shopping_bag_001"],
+    "noise_events": ["noise_shopping_bag_001", "noise_aesthetic_swing_001", "noise_sale_001", "noise_social_gallery_001"],
+    "hard_negative_sources": ["plan_course_001", "task_course_poster_sketch", "task_exchange_statement_old", "task_print_sample_old", "pref_inspiration_output:detailed_moodboard_notes", "noise_shopping_bag_001", "recur_inspiration_review:day30_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

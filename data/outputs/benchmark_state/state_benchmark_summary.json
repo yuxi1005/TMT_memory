@@ -1,0 +1,19 @@
+{
+  "timeline_dir": "E:\\MyDatum\\小论文\\Codex\\data\\outputs\\timelines",
+  "mu_dir": "E:\\MyDatum\\小论文\\Codex\\data\\outputs\\mu",
+  "out_dir": "E:\\MyDatum\\小论文\\Codex\\data\\outputs\\benchmark_state",
+  "users": {
+    "L01": {
+      "query_count": 6,
+      "output": "E:\\MyDatum\\小论文\\Codex\\data\\outputs\\benchmark_state\\L01_state_queries.jsonl",
+      "case_types": [
+        "active_task_currentness",
+        "current_plan_vs_stale_plan",
+        "completed_result_as_evidence",
+        "preference_currentness",
+        "constraint_vs_noise",
+        "recurring_latest_status"
+      ]
+    }
+  }
+}

@@ -1,0 +1,771 @@
+{
+  "user_id": "S08",
+  "timeline_id": "S08_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 150,
+    "length_days": 150,
+    "reason": "S08 是田野调查和理论写作并行推进的社会科学博士生，田野安排、访谈编码、理论写作和基金申请都具有较长周期，因此选择 150 天稀疏时间跨度，覆盖早期田野计划、中期受访者变动和理论方案替换、近期编码与基金申请任务。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "田野调查安排与访谈资料推进",
+      "domain": "田野调查",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "理论写作框架与章节迭代",
+      "domain": "理论写作",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "基金申请与访谈编码输出偏好",
+      "domain": "基金申请 / 访谈编码",
+      "status": "mixed",
+      "derived_from_profile": ["agent_usage_style", "main_life_domains", "stable_preferences", "dynamic_preferences"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "田野变动、家庭和经费噪音",
+      "domain": "作息与健康 / 情绪压力 / 社交与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_fieldwork_archive_001",
+      "content": "用户确立长期归档偏好，希望田野调查、理论写作、基金申请和生活事项分开记录，并保留每项建议的依据和截止时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["田野调查", "理论写作", "基金申请", "生活事项"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_fieldwork_001",
+      "content": "用户制定早期田野调查计划，准备先确认受访者名单，再完成访谈安排，最后整理田野笔记。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 70,
+        "phase_order": ["受访者名单", "访谈安排", "田野笔记整理"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["life_stage", "primary_goals"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_theory_001",
+      "content": "用户创建早期理论写作方案，计划先按制度理论整理文献，再把田野材料嵌入理论讨论。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 82,
+        "framework": "制度理论优先"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_coding_output",
+      "content": "用户记录访谈编码输出偏好，初期希望 agent 给详细版编码树、例句依据和可追溯解释。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_codebook_notes",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 13,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_family_visit_001",
+      "content": "用户记录家里临时安排探望长辈，需要调整原本准备联系受访者的晚间时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.32,
+        "topic": "家庭"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_participant_list",
+      "content": "用户创建受访者名单核对任务，需要确认联系人、场域关系、预约状态和可替代对象。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 32
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 22,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_fieldwork_review",
+      "content": "用户设置每三周复盘一次田野调查和理论写作材料，避免田野变动的临时记录混进当前主线。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.74,
+        "interval_days": 21,
+        "next_due_day": 43
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 26,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_theory_memo_old",
+      "content": "用户创建制度理论文献备忘录任务，准备先按概念、经典作者和可引用段落整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 45
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 31,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_interview_cancel_001",
+      "content": "用户记录一位关键受访者临时取消访谈，需要重新协调下周的田野行程。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.38,
+        "topic": "受访者临时取消"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e010",
+      "day": 32,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_participant_list",
+      "content": "用户完成受访者名单核对，确认六位稳定对象和两位候补对象。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 32
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.86,
+        "deadline_day": 32,
+        "completed_day": 32,
+        "outputs": ["六位稳定对象", "两位候补对象"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e011",
+      "day": 40,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_interview_schedule",
+      "content": "用户创建第一轮访谈排期任务，需要把六位受访者的时间、地点和备选方式列清楚。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 58
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e012",
+      "day": 43,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_fieldwork_review",
+      "content": "用户完成第一次田野复盘，确认受访者名单已稳定，但第一轮访谈排期仍受田野变动影响。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 21,
+        "next_due_day": 43
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 43,
+        "next_due_day": 64,
+        "finding": "访谈排期受田野变动影响"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 45,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_theory_memo_old",
+      "content": "用户完成制度理论文献备忘录，但发现它过于概念化，难以解释近期田野材料里的协商过程。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 45
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 45,
+        "completed_day": 45,
+        "limitation": "过于概念化，难以解释协商过程"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 53,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_budget_001",
+      "content": "用户记录田野交通和住宿经费超出预期，需要重新估算下个月的调研预算。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "经费"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e015",
+      "day": 58,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_interview_schedule",
+      "content": "用户未完成第一轮访谈排期，把截止日推迟到第 70 天，但仍保留为当前田野调查核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 58
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "previous_deadline_day": 58,
+        "deadline_day": 70,
+        "partial_progress": "四位受访者已确认时间"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e016",
+      "day": 62,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_theory_001",
+      "content": "导师反馈早期理论写作过于依赖制度理论，需要转向更能解释田野互动的过程视角。",
+      "state_before": {
+        "related_plan": "plan_theory_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.92,
+        "affects": "plan_theory_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e017",
+      "day": 64,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_fieldwork_review",
+      "content": "用户完成第二次田野复盘，把制度理论备忘录标为旧参考，不再作为当前理论写作主线。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 43,
+        "next_due_day": 64
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 64,
+        "next_due_day": 85,
+        "outdated_reference": "制度理论备忘录"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_theory_001",
+      "content": "用户将制度理论优先方案替换为过程视角理论写作方案，旧方案只保留为背景文献参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 82,
+        "framework": "制度理论优先"
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.48,
+        "stale_day": 68,
+        "replaced_by": "plan_theory_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e019",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_theory_002",
+      "content": "用户创建新的理论写作方案，决定先整理互动过程材料，再重写分析框架和章节顺序。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.94,
+        "deadline_day": 125,
+        "replaces": "plan_theory_001",
+        "phase_order": ["互动过程材料", "分析框架", "章节顺序"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e020",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_interview_schedule",
+      "content": "用户完成第一轮访谈排期，确认五场线下访谈和一场线上备选访谈。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.9,
+        "deadline_day": 70,
+        "completed_day": 70,
+        "outputs": ["五场线下访谈", "一场线上备选访谈"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e021",
+      "day": 74,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_coding_output",
+      "content": "用户把访谈编码输出偏好从详细编码树临时改成简版行动清单，以便先处理田野访谈和基金申请截止。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_codebook_notes",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_action_list",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "访谈和基金申请截止临近"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e022",
+      "day": 80,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_fund_draft_old",
+      "content": "用户创建基金申请初稿任务，原计划沿用旧理论框架说明研究意义。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.68,
+        "deadline_day": 100
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["main_life_domains", "primary_goals"]
+    },
+    {
+      "event_id": "e023",
+      "day": 85,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_fieldwork_review",
+      "content": "用户完成第三次田野复盘，确认旧基金申请初稿使用的理论框架与当前过程视角不一致。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 64,
+        "next_due_day": 85
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 85,
+        "next_due_day": 106,
+        "outdated_reference": "旧基金申请理论框架"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e024",
+      "day": 90,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_fieldwork_001",
+      "content": "用户把田野调查计划拆小，决定先完成第一轮访谈转写，再处理补访和场域笔记整理。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 70,
+        "phase_order": ["受访者名单", "访谈安排", "田野笔记整理"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 132,
+        "priority_order": ["第一轮访谈转写", "补访安排", "场域笔记整理"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences", "primary_goals"]
+    },
+    {
+      "event_id": "e025",
+      "day": 96,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_interview_transcripts",
+      "content": "用户创建第一轮访谈转写任务，需要把六场访谈按对象、主题和关键片段分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.92,
+        "deadline_day": 118
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e026",
+      "day": 100,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_fund_draft_old",
+      "content": "用户取消旧基金申请初稿任务，决定等理论框架按过程视角重写后再生成新版申请文本。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.68,
+        "deadline_day": 100
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.4,
+        "cancelled_day": 100,
+        "reason": "旧理论框架已不适用"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e027",
+      "day": 104,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_family_call_001",
+      "content": "用户记录家人临时需要帮忙处理手续，打乱了原定的访谈转写安排。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.3,
+        "topic": "家庭"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e028",
+      "day": 110,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_fieldwork_noise_001",
+      "content": "用户设置近期约束，处理理论写作时不即时回复田野变动消息，只在固定时间集中更新排期。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "batch_fieldwork_updates",
+        "valid_until_day": 150
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e029",
+      "day": 118,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_interview_transcripts",
+      "content": "用户未完成全部访谈转写，把截止日推迟到第 128 天，但仍保留为当前田野调查核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.92,
+        "deadline_day": 118
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.93,
+        "previous_deadline_day": 118,
+        "deadline_day": 128,
+        "partial_progress": "四场访谈已转写"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e030",
+      "day": 122,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_book_purchase_001",
+      "content": "用户临时记录想买一本方法论新书和一副降噪耳机，准备周末再比较价格。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "临时购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 128,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_interview_transcripts",
+      "content": "用户完成第一轮访谈转写，标出三类互动过程片段和两处需要补访的问题。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.93,
+        "deadline_day": 128
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.93,
+        "deadline_day": 128,
+        "completed_day": 128,
+        "remaining_gap": "两处问题需要补访"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e032",
+      "day": 132,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_fieldwork_001",
+      "content": "用户确认田野调查当前缺口从第一轮转写转为补访安排和场域笔记整合。",
+      "state_before": {
+        "plan": "plan_fieldwork_001",
+        "main_blocker": "第一轮访谈转写"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "补访安排和场域笔记整合",
+        "resolved_blocker": "第一轮访谈转写"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e033",
+      "day": 136,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_process_theory_chapter",
+      "content": "用户创建过程视角理论章节重写任务，需要把互动片段、分析概念和章节顺序重新对应起来。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.91,
+        "deadline_day": 158
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes", "stable_preferences"]
+    },
+    {
+      "event_id": "e034",
+      "day": 140,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_fund_draft_current",
+      "content": "用户创建新版基金申请摘要任务，需要用过程视角说明田野材料、研究问题和预期贡献。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 160
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["main_life_domains", "primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e035",
+      "day": 144,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_followup_interviews",
+      "content": "用户创建补访安排任务，需要联系两位受访者确认补充问题和可访谈时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 162
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e036",
+      "day": 146,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_theory_002",
+      "content": "用户将过程视角理论写作方案的阶段截止日从第 125 天顺延到第 165 天，因为访谈转写完成后还需要补访材料。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.94,
+        "deadline_day": 125
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "previous_deadline_day": 125,
+        "deadline_day": 165,
+        "blocking_items": ["补访材料", "理论章节重写"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e037",
+      "day": 150,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_process_theory_chapter",
+      "content": "用户把过程视角理论章节重写推迟到第 170 天，近期先保留章节骨架和三个核心互动片段。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.91,
+        "deadline_day": 158
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "previous_deadline_day": 158,
+        "deadline_day": 170,
+        "partial_progress": "章节骨架和三个核心互动片段已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_fieldwork_001", "plan_theory_002"],
+    "stale_plans": ["plan_theory_001"],
+    "active_tasks": ["task_process_theory_chapter", "task_fund_draft_current", "task_followup_interviews"],
+    "completed_tasks": ["task_participant_list", "task_theory_memo_old", "task_interview_schedule", "task_interview_transcripts"],
+    "cancelled_tasks": ["task_fund_draft_old"],
+    "postponed_tasks": ["task_process_theory_chapter"],
+    "current_constraints": ["constraint_fieldwork_noise_001"],
+    "stable_preferences": ["pref_fieldwork_archive_001"],
+    "old_preferences": ["pref_coding_output:detailed_codebook_notes"],
+    "updated_preferences": ["pref_coding_output:brief_action_list"],
+    "important_not_urgent_tasks": ["task_fund_draft_old"],
+    "urgent_low_value_tasks": ["noise_book_purchase_001"],
+    "noise_events": ["noise_family_visit_001", "noise_interview_cancel_001", "noise_budget_001", "noise_family_call_001", "noise_book_purchase_001"],
+    "hard_negative_sources": ["plan_theory_001", "task_theory_memo_old", "task_fund_draft_old", "pref_coding_output:detailed_codebook_notes", "noise_book_purchase_001", "recur_fieldwork_review:day64_outdated_status", "recur_fieldwork_review:day85_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

@@ -1,0 +1,727 @@
+{
+  "user_id": "L08",
+  "timeline_id": "L08_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 150,
+    "length_days": 150,
+    "reason": "L08 是理财入门用户，预算、账单、消费控制和冲动消费记录会跨数月持续调整，因此选择 150 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "月度预算与消费控制",
+      "domain": "预算 / 消费控制",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "账单整理与付款提醒",
+      "domain": "账单",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "消费复盘格式与周期维护",
+      "domain": "个人财务 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "冲动消费、优惠信息与生活噪音",
+      "domain": "消费与娱乐 / 健康与情绪",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_finance_record_style",
+      "content": "用户确立长期财务记录偏好，希望预算、账单、消费复盘、购物比较和一次性想法分开归档，并保留时间、对象、金额和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["预算", "账单", "消费复盘", "购物比较", "一次性想法"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_budget_001",
+      "content": "用户制定早期月度预算计划，准备按餐饮、交通、娱乐和购物四类设置固定额度。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 45,
+        "categories": ["餐饮", "交通", "娱乐", "购物"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_bill_001",
+      "content": "用户创建早期账单整理计划，先按信用卡、房租水电、订阅服务和家庭代付款四类拆分。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 60,
+        "categories": ["信用卡", "房租水电", "订阅服务", "家庭代付款"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_budget_output_format",
+      "content": "用户记录月度预算输出偏好，初期希望 agent 给详细版预算表，包含假设、分类额度、实际支出、结论和下一步。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_budget_table",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "memory_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 14,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_impulse_headphone_001",
+      "content": "用户临时想买一副降噪耳机，记录价格、优惠截止时间和是否真的需要升级。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.28,
+        "topic": "冲动消费"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_last_month_spending",
+      "content": "用户创建上月消费分类任务，需要把餐饮、通勤、娱乐、购物和临时账单分开统计。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 31
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e007",
+      "day": 22,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_spending_review",
+      "content": "用户设置每两周复盘一次消费记录，把固定账单、冲动消费、优惠信息和家庭代付款分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 26,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_subscription_old",
+      "content": "用户创建订阅服务核对任务，原计划先整理视频、云盘、音乐和健身 App 的月费。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.72,
+        "deadline_day": 42
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e009",
+      "day": 31,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_last_month_spending",
+      "content": "用户完成上月消费分类，发现娱乐和购物合计超出原预算，但固定账单没有明显异常。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 31
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.82,
+        "deadline_day": 31,
+        "completed_day": 31,
+        "finding": "娱乐和购物超预算，固定账单无明显异常"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 36,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_spending_review",
+      "content": "用户完成第一次消费复盘，确认冲动消费记录需要和固定账单分开，不直接改动所有预算分类。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50,
+        "finding": "冲动消费记录需要和固定账单分开"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e011",
+      "day": 42,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_subscription_old",
+      "content": "用户完成订阅服务核对，发现旧健身 App 订阅已经停用但仍在扣费。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.72,
+        "deadline_day": 42
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.72,
+        "deadline_day": 42,
+        "completed_day": 42,
+        "finding": "旧健身 App 订阅仍在扣费"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e012",
+      "day": 48,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_coupon_001",
+      "content": "用户收到电商满减券，临时记录可用商品和过期时间，准备晚点判断是否真的需要购买。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.24,
+        "topic": "优惠信息"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e013",
+      "day": 55,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_budget_001",
+      "content": "用户发现固定分类额度太粗，购物和娱乐放在一起会掩盖冲动消费，需要改成按必要性分层。",
+      "state_before": {
+        "related_plan": "plan_budget_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.88,
+        "affects": "plan_budget_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 60,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_bill_001",
+      "content": "用户没有完成早期账单整理计划的阶段复盘，把截止日顺延到第 74 天，但仍保留为当前账单整理主线。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 60
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.83,
+        "previous_deadline_day": 60,
+        "deadline_day": 74,
+        "partial_progress": "信用卡和订阅服务已整理"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 66,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_budget_001",
+      "content": "用户将按固定分类额度的月度预算计划替换为必要支出、弹性支出和冲动消费隔离计划，旧计划只保留为早期估算。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 45,
+        "categories": ["餐饮", "交通", "娱乐", "购物"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 66,
+        "replaced_by": "plan_budget_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 66,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_budget_002",
+      "content": "用户创建新的月度预算计划，决定先锁定必要支出，再给弹性支出设周额度，并单独记录冲动消费。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 130,
+        "replaces": "plan_budget_001",
+        "phase_order": ["必要支出锁定", "弹性支出周额度", "冲动消费单独记录"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 72,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_budget_output_format",
+      "content": "用户把月度预算输出偏好从详细预算表改成简版行动清单，只保留本周额度、异常消费、待处理账单和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_budget_table",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_action_checklist",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "近期账单和预算调整较多，需要更容易执行"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "memory_style"]
+    },
+    {
+      "event_id": "e018",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_bill_001",
+      "content": "用户将按账单类型拆分的整理计划替换为按到期日和扣款风险排序的账单计划，旧方案不再作为当前整理方式。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.83,
+        "deadline_day": 74,
+        "categories": ["信用卡", "房租水电", "订阅服务", "家庭代付款"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.45,
+        "stale_day": 74,
+        "replaced_by": "plan_bill_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e019",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_bill_002",
+      "content": "用户创建新的账单整理计划，决定按到期日、自动扣款、待确认和可取消订阅四类排序。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.89,
+        "deadline_day": 135,
+        "replaces": "plan_bill_001",
+        "categories": ["到期日", "自动扣款", "待确认", "可取消订阅"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e020",
+      "day": 82,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_buy_tablet_old",
+      "content": "用户创建购买平板电脑任务，原本想趁促销直接下单一款价格较高的型号。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.47,
+        "deadline_day": 90
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 88,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_bill_alert_001",
+      "content": "用户收到一条临时账单提醒，先记录金额、扣款日期和是否属于家庭代付款。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "临时账单"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e022",
+      "day": 90,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_buy_tablet_old",
+      "content": "用户取消购买平板电脑任务，决定先执行冲动消费隔离计划，不让促销信息打断本月预算。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.47,
+        "deadline_day": 90
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.24,
+        "cancelled_day": 90,
+        "reason": "促销购物低于当前预算执行优先级"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e023",
+      "day": 96,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_due_bill_table",
+      "content": "用户创建到期账单表任务，需要整理未来三周的信用卡、房租水电、订阅和家庭代付款。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 112
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e024",
+      "day": 104,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_weekly_flexible_cap",
+      "content": "用户创建弹性支出周额度任务，需要把餐饮、娱乐、购物和临时交通拆成每周可用额度。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 120
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e025",
+      "day": 110,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_compare_001",
+      "content": "用户临时比较几款咖啡机，记录价格和功能，但暂时不把它加入本月购买计划。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.25,
+        "topic": "购物比较"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e026",
+      "day": 112,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_due_bill_table",
+      "content": "用户未完成到期账单表，把截止日推迟到第 124 天，但仍保留为当前账单整理核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 112
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "previous_deadline_day": 112,
+        "deadline_day": 124,
+        "partial_progress": "信用卡和订阅已录入"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 118,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_spending_review",
+      "content": "用户完成近期消费复盘，确认当前重点是到期账单表、弹性支出周额度和冲动消费隔离。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 36,
+        "next_due_day": 50
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 118,
+        "next_due_day": 132,
+        "current_focus": ["到期账单表", "弹性支出周额度", "冲动消费隔离"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e028",
+      "day": 120,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_weekly_flexible_cap",
+      "content": "用户完成弹性支出周额度任务，确认餐饮和娱乐可以保留小额弹性，购物需要单独审批。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 120
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 120,
+        "completed_day": 120,
+        "finding": "购物需要单独审批"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e029",
+      "day": 124,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_due_bill_table",
+      "content": "用户完成到期账单表，确认房租水电和信用卡需要优先处理，两个订阅可以取消或延后。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.89,
+        "deadline_day": 124
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.89,
+        "deadline_day": 124,
+        "completed_day": 124,
+        "priority_items": ["房租水电", "信用卡"],
+        "can_delay": ["两个订阅"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e030",
+      "day": 130,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_purchase_cooling",
+      "content": "用户设置近期约束，超过固定金额的非必要购物必须冷静 48 小时，并先写入冲动消费清单。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "constraint_type": "purchase_cooling_period",
+        "valid_until_day": 170
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e031",
+      "day": 134,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_bill_current",
+      "content": "用户确认当前账单重点不是旧的按类型整理，而是按到期日、扣款风险和可取消订阅排序。",
+      "state_before": {
+        "plan": "plan_bill_002",
+        "old_reference": "plan_bill_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "到期日、扣款风险和可取消订阅",
+        "not_current": "按账单类型粗分"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e032",
+      "day": 138,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_entertainment_001",
+      "content": "用户临时记录周末想去看演出，标注票价、交通费和是否能放进本周娱乐额度。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "临时娱乐想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e033",
+      "day": 144,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_impulse_review_list",
+      "content": "用户创建冲动消费复盘清单任务，需要回看耳机、平板、咖啡机和演出票的触发原因与最终处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 162
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e034",
+      "day": 150,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_spending_review",
+      "content": "用户完成最近一次消费复盘，确认当前活跃事项是冲动消费复盘清单、账单风险排序和购物冷静期执行。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 118,
+        "next_due_day": 132
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 150,
+        "next_due_day": 164,
+        "current_focus": ["冲动消费复盘清单", "账单风险排序", "购物冷静期执行"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e035",
+      "day": 150,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_cancel_unused_subscription",
+      "content": "用户创建取消闲置订阅任务，需要处理旧健身 App 和一个低频视频会员的取消流程。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.83,
+        "deadline_day": 166
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_budget_002", "plan_bill_002"],
+    "stale_plans": ["plan_budget_001", "plan_bill_001"],
+    "active_tasks": ["task_impulse_review_list", "task_cancel_unused_subscription"],
+    "completed_tasks": ["task_last_month_spending", "task_subscription_old", "task_weekly_flexible_cap", "task_due_bill_table"],
+    "cancelled_tasks": ["task_buy_tablet_old"],
+    "postponed_tasks": [],
+    "current_constraints": ["constraint_purchase_cooling"],
+    "stable_preferences": ["pref_finance_record_style"],
+    "old_preferences": ["pref_budget_output_format:detailed_budget_table"],
+    "updated_preferences": ["pref_budget_output_format:brief_action_checklist"],
+    "important_not_urgent_tasks": ["task_subscription_old", "task_impulse_review_list"],
+    "urgent_low_value_tasks": ["task_buy_tablet_old"],
+    "noise_events": ["noise_impulse_headphone_001", "noise_coupon_001", "noise_bill_alert_001", "noise_shopping_compare_001", "noise_entertainment_001"],
+    "hard_negative_sources": ["plan_budget_001", "plan_bill_001", "task_last_month_spending", "task_subscription_old", "task_buy_tablet_old", "pref_budget_output_format:detailed_budget_table", "noise_impulse_headphone_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

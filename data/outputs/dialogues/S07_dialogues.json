@@ -1,0 +1,1191 @@
+{
+  "user_id": "S07",
+  "source_timeline_id": "S07_latent_world_timeline_v1",
+  "dialogue_dataset_id": "S07_dialogues_v1",
+  "interactions": [
+    {
+      "interaction_id": "S07_i001",
+      "source_event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_lab_workflow_001",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "清单化偏好说明，强调分区归档和状态记录",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "以后帮我记实验、投稿、组会和生活事项时，麻烦分开放。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。我会按实验记录、论文投稿、组会、生活事项分别整理。"
+        },
+        {
+          "speaker": "user",
+          "text": "实验相关的别只写结论，要保留依据、当前状态和截止时间。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，实验条目会保留依据、状态和时间点，避免后面追溯时混在一起。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i002",
+      "source_event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_experiment_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "博士实验记录计划，按阶段拆解",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "实验记录这块我想先定个顺序，到第65天前收一版。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，先把阶段顺序列清楚。你现在更想从哪块开始？"
+        },
+        {
+          "speaker": "user",
+          "text": "先补培养条件记录，再整理 Western blot 结果，最后汇总重复实验差异。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我先按这三个阶段记：培养条件记录、Western blot 结果、重复实验差异；截止第65天。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，别让我一上来就处理所有结果解释，我容易乱。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，先把记录和证据链补齐，再进入解释层。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i003",
+      "source_event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_submission_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "投稿早期计划，简洁列阶段",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "投稿这边我先按现有结果推进吧，目标第82天前有一套材料。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。你想先写正文哪一部分？"
+        },
+        {
+          "speaker": "user",
+          "text": "先写 Discussion 初稿，用现在的阳性结果解释核心机制，然后补图注和投稿信。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我记录为：Discussion 初稿、图注、投稿信，当前按现有结果解释来推进。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，先这样，不要展开太多备用路线。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，先保留这一条主线，后续有反馈再调整。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i004",
+      "source_event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_experiment_plan_output",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "实验方案输出偏好，要求详细可执行",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "最近你帮我写实验计划时，先给详细版，不要只给一个大纲。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "详细版需要包含哪些固定项？"
+        },
+        {
+          "speaker": "user",
+          "text": "步骤、关键试剂、对照组，还有失败后怎么排查，都要写。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。实验计划我会按步骤、试剂、对照、失败排查依据来整理。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i005",
+      "source_event_id": "e005",
+      "day": 12,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_late_lab_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "作息抱怨，轻量回应",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "连续两晚等仪器等到很晚，今天整理记录脑子明显不转。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先别硬啃复杂解释，可以只做低负荷的核对和标记。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，今天最多补几个空，不写结论。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，先保证记录不出错。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i006",
+      "source_event_id": "e006",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_culture_log_cleanup",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "实验记录待办，短句清单",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "待做：培养条件记录清理，最好第30天前弄完。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我按第30天截止记录。需要补哪些字段？"
+        },
+        {
+          "speaker": "user",
+          "text": "批次、传代次数、试剂批号，还有异常情况。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，先按这四列补齐，再单独标出异常。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，异常不要塞进普通备注里。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，异常批次单独列，后面解释结果时能直接追溯。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i007",
+      "source_event_id": "e007",
+      "day": 20,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_result_review",
+      "retrieval_role": "recurring_task",
+      "dialogue_style": "周期复盘设置，强调区分临时记录和当前结论",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "帮我设一个每三周一次的复盘。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "复盘范围是实验结果解释和投稿待办吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "对，尤其别把失败实验的临时记录直接混成当前结论。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已按每21天记录，下一次是第41天，重点检查结果解释和投稿待办。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i008",
+      "source_event_id": "e008",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_discussion_old",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "Discussion 初稿任务，围绕现有阳性结果",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "Discussion 初稿也记一个待做，第45天前。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这版的核心写法还是基于现有阳性结果解释机制吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "是，先把核心机制写出来，别等所有补实验。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，我记录为第45天前完成 Discussion 初稿，主线是现有阳性结果。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i009",
+      "source_event_id": "e009",
+      "day": 28,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_reagent_order_001",
+      "retrieval_role": "urgent_low_value_task",
+      "dialogue_style": "试剂采购小插曲，实用但不展开主线",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "抗体库存不够了，我得临时看两个供应商。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以只比较两个点：到货时间和批号稳定性。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，别让我又陷进一堆网页。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那就按这两个标准快速筛，够用就停。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i010",
+      "source_event_id": "e010",
+      "day": 30,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_culture_log_cleanup",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "完成汇报，保留剩余解释标注",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "已做：培养条件记录清理完成了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "收到，这个任务按完成记录。还有遗留点吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "有两个异常批次，后面做结果解释时要单独标注。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，清理任务已完成；两个异常批次作为后续解释时的单独标注点保留。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i011",
+      "source_event_id": "e011",
+      "day": 37,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_wb_result_table",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "Western blot 表格整理任务，字段明确",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "下一个待做：Western blot 结果表，第55天前尽量整理出来。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "需要统一哪些信息？"
+        },
+        {
+          "speaker": "user",
+          "text": "膜号、曝光时间、归一化方法、重复次数，都放到同一张表。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，这个表以可追溯为主，先统一这四类字段。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，别先写解释，先让表能对齐。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，先整理证据表，再处理解释。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i012",
+      "source_event_id": "e012",
+      "day": 41,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_result_review",
+      "retrieval_role": "status_update",
+      "dialogue_style": "第一次周期复盘，状态清晰",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第41天复盘做完了。培养记录已经补齐。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "收到。Western blot 结果表现在是什么状态？"
+        },
+        {
+          "speaker": "user",
+          "text": "还缺两次重复，不能当完整结果表。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我记录：本次复盘完成；培养记录已补齐；Western blot 表还缺两次重复。下一次复盘第62天。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i013",
+      "source_event_id": "e013",
+      "day": 45,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_discussion_old",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "Discussion 初稿完成，但主动标注局限",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "Discussion 初稿写完了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，这个任务按完成记录。你对这版有什么判断？"
+        },
+        {
+          "speaker": "user",
+          "text": "它太依赖早期阳性结果了，对异常批次和阴性重复解释不够。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，初稿已完成，但局限是对异常批次和阴性重复覆盖不足。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i014",
+      "source_event_id": "e014",
+      "day": 52,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_failed_repeat_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "实验失败压力记录，简短排查安抚",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "今天关键重复实验又失败了，有点烦。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先把怀疑点写下来，避免情绪过去后忘掉。"
+        },
+        {
+          "speaker": "user",
+          "text": "我怀疑细胞状态和试剂批号都影响了结果。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，先记这两个怀疑点，暂时不要急着下结论。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i015",
+      "source_event_id": "e015",
+      "day": 55,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_wb_result_table",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "延期但保持当前核心任务",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "Western blot 结果表今天没整理完，得往后推。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "推到哪一天比较现实？"
+        },
+        {
+          "speaker": "user",
+          "text": "第65天。现在已有三次重复结果，但表还没完全统一。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我把截止改到第65天。它仍然是当前实验记录里的核心任务。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，不能因为延期就先不管。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，状态是延期但继续推进。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i016",
+      "source_event_id": "e016",
+      "day": 60,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_submission_001",
+      "retrieval_role": "current_state_seed",
+      "dialogue_style": "导师反馈触发计划调整，语气焦虑但收敛",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "导师今天说我现在的投稿方案太早写结论了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "他的主要担心是证据链还不够完整吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "对，他要我先补失败重复的解释，还要补关键对照实验。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那当前投稿方案需要暂停直接冲材料，先补解释和对照。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，我不想继续沿着原来的 Discussion 硬写。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我会把这次反馈记为需要行动的状态：先补失败重复解释和关键对照，再回到投稿文本。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i017",
+      "source_event_id": "e017",
+      "day": 62,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_result_review",
+      "retrieval_role": "outdated_status",
+      "dialogue_style": "第二次复盘，明确旧初稿只作参考",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第62天复盘完成。早期 Discussion 初稿先别当投稿主线了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，它现在只保留为写作参考，不再作为当前投稿主线。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，里面有些句子能用，但逻辑不能照搬。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我记录本次复盘完成；下一次复盘第83天；早期 Discussion 初稿降为参考材料。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i018",
+      "source_event_id": "e018",
+      "day": 65,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_wb_result_table",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "延期任务完成，保留补对照缺口",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "Western blot 结果表完成了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "收到，这个整理任务按完成记录。表里还有需要特别标出的内容吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "两次异常重复已经标了，还有一个关键对照需要补做。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，结果表已完成；两次异常重复已标注；关键对照是后续缺口。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i019",
+      "source_event_id": "e019",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_submission_001",
+      "retrieval_role": "stale_plan",
+      "dialogue_style": "替换旧投稿方案，明确旧方案只作参考",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "早期那个投稿方案别继续按了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "是指先写 Discussion、再补图注和投稿信那套吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "对。现在导师反馈后，得改成补实验后再投稿。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，旧方案不再作为当前推进方案，只保留为写作参考。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，旧 Discussion 里能用的句子以后再挑。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，当前后续会以补实验后的方案为准。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i020",
+      "source_event_id": "e020",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_submission_002",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "新投稿计划，突出补实验后的顺序",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "那新投稿计划就按补实验后再推进，截止先放第126天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。新顺序你想怎么排？"
+        },
+        {
+          "speaker": "user",
+          "text": "先完成关键对照，再重写结果解释，最后重写图注。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我记录新计划：关键对照、结果解释、图注重写；第126天前完成一套材料。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，这次不要再从 Discussion 硬推。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，先让实验依据站稳，再回到文本。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i021",
+      "source_event_id": "e021",
+      "day": 72,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_experiment_plan_output",
+      "retrieval_role": "updated_preference",
+      "dialogue_style": "临时输出偏好改变，从详细方案转为简版清单",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "最近实验计划别再给详细大段了，我现在看不动。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "之前你偏好详细步骤、试剂、对照和失败排查。现在要改成什么形式？"
+        },
+        {
+          "speaker": "user",
+          "text": "临时改成简版执行清单，先帮我排关键对照和设备预约。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，当前阶段我会用简版执行清单，优先突出关键对照和设备预约。"
+        },
+        {
+          "speaker": "user",
+          "text": "等这波补实验过了，可能再恢复详细版。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，我把这个偏好记为当前阶段适用。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i022",
+      "source_event_id": "e022",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_experiment_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "实验记录计划拆小并重排优先级",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "实验记录计划也要拆小一点。原来那种培养记录、WB、重复差异的大顺序已经不够用了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "现在的优先级要按补实验后的需求来排吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "对。先补关键对照实验，再处理失败重复解释，最后做组会汇报图。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我把实验记录计划更新为这三个优先级，并把截止调整到第118天。"
+        },
+        {
+          "speaker": "user",
+          "text": "旧顺序不是完全没用，但现在不能按它推进。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，旧顺序保留背景；当前执行按关键对照、失败重复解释、组会图来走。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i023",
+      "source_event_id": "e023",
+      "day": 80,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_control_experiment",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "关键对照实验待办，按简版执行清单",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "待做：关键对照实验，第104天前完成。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "按简版清单记。需要先确认哪些项？"
+        },
+        {
+          "speaker": "user",
+          "text": "细胞状态、抗体批号、阴性对照、设备预约时间。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "记录为四项检查：细胞状态、抗体批号、阴性对照、设备预约。"
+        },
+        {
+          "speaker": "user",
+          "text": "这个现在优先级最高。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，关键对照实验作为当前最高优先级推进。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i024",
+      "source_event_id": "e024",
+      "day": 83,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_result_review",
+      "retrieval_role": "outdated_status",
+      "dialogue_style": "第三次复盘，指出旧图注顺序需要重排",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第83天复盘完成。旧投稿计划里的图注顺序也不能用了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "因为现在要按补实验结果重新组织图注，对吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "对，不能再沿着早期阳性结果那套顺序排。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我记录：本次复盘完成；旧图注顺序只作参考，后续按补实验结果重排。下一次复盘第104天。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i025",
+      "source_event_id": "e025",
+      "day": 88,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_equipment_booking_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "设备预约变动，短促现实",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "显影仪预约被别人占了，只能改到周六上午。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "收到，周六上午处理这次实验时间。"
+        },
+        {
+          "speaker": "user",
+          "text": "有点烦，但也没别的空档。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那先按这个空档走，避免再拖。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i026",
+      "source_event_id": "e026",
+      "day": 94,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_group_meeting_slides_old",
+      "retrieval_role": "important_not_urgent_task",
+      "dialogue_style": "旧版组会图任务，重要但不急",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "组会图先记一个旧版任务，第108天前有空就搭。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这版还是沿用早期阳性结果展示主线吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "是，但它不是最急，关键对照还是更重要。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，我记录为第108天前的组会旧版图稿任务，优先级低于关键对照。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i027",
+      "source_event_id": "e027",
+      "day": 100,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_late_lab_001",
+      "retrieval_role": "current_constraint",
+      "dialogue_style": "作息约束，明确有效期和执行边界",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "最近到第140天前，晚上11点后别再给我安排要长时间等仪器的实验。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。11点后如果想到相关事，只记录次日待办，不安排等待型实验。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我前面熬太多了，后面不能靠硬撑。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，这条作息约束到第140天前有效。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i028",
+      "source_event_id": "e028",
+      "day": 104,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_control_experiment",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "关键任务延期，仍为最高优先级",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "关键对照实验第104天完不成，得推到第114天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "目前已经完成哪些部分？"
+        },
+        {
+          "speaker": "user",
+          "text": "阴性对照和抗体批号已经确认了，但实验还没完整跑完。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我把截止改到第114天，状态是延期但仍在推进。"
+        },
+        {
+          "speaker": "user",
+          "text": "它还是当前最高优先级。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，关键对照实验仍按最高优先级处理。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i029",
+      "source_event_id": "e029",
+      "day": 106,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_group_meeting_slides_old",
+      "retrieval_role": "cancelled_task",
+      "dialogue_style": "取消旧版组会图，避免继续沿旧主线",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "旧版组会图稿取消吧，不做了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "是第108天前那版沿用早期阳性结果的图稿吗？"
+        },
+        {
+          "speaker": "user",
+          "text": "对。现在那条主线不可靠，等关键对照结果出来后再重新组织展示。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，这个旧版图稿任务取消，不再按原主线推进。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i030",
+      "source_event_id": "e030",
+      "day": 110,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_headphones_001",
+      "retrieval_role": "urgent_low_value_task",
+      "dialogue_style": "临时购物想法，轻量筛选",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我周末想看看降噪耳机，实验室戴着舒服一点。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，先只比价格和佩戴舒适度，别花太久。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，别让我又查一晚上参数。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那就周末快速比较，够用就定。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i031",
+      "source_event_id": "e031",
+      "day": 114,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_control_experiment",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "关键对照完成，明确剩余统计图",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "关键对照实验完成了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "收到，这个任务按完成记录。结果判断是什么？"
+        },
+        {
+          "speaker": "user",
+          "text": "阴性对照成立，但还需要补一张重复实验统计图。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，关键对照已完成；阴性对照成立；后续缺口是重复实验统计图。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i032",
+      "source_event_id": "e032",
+      "day": 118,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_experiment_001",
+      "retrieval_role": "status_update",
+      "dialogue_style": "当前状态更新，阻塞点转移",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "实验记录当前缺口变了。关键对照不再是 blocker。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "现在主要卡在哪里？"
+        },
+        {
+          "speaker": "user",
+          "text": "失败重复解释和统计图整理。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我记录当前状态：关键对照已解决，后续重点是失败重复解释和统计图整理。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i033",
+      "source_event_id": "e033",
+      "day": 122,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_result_interpretation_rewrite",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "结果解释重写任务，要求整合证据",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "待做：结果解释重写，第138天前。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这版需要纳入哪些证据？"
+        },
+        {
+          "speaker": "user",
+          "text": "异常批次、失败重复和关键对照，要整成同一套解释。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，目标不是只改文字，而是把三类证据放进同一套解释框架。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，输出还是清单式先给我，别长篇。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，先按简版执行清单推进。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i034",
+      "source_event_id": "e034",
+      "day": 126,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_submission_002",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "投稿计划顺延，说明阻塞项",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "补实验后的投稿材料第126天肯定交不齐了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "需要把完整材料截止顺延到哪一天？"
+        },
+        {
+          "speaker": "user",
+          "text": "第150天吧。结果解释和重复实验统计图都还没完成。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我把新投稿计划的完整材料截止从第126天顺延到第150天。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，计划还有效，只是别假装材料已经齐了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，当前计划继续有效，阻塞项是结果解释重写和统计图。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i035",
+      "source_event_id": "e035",
+      "day": 130,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_group_meeting_slides_current",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "新版组会图任务，围绕当前证据链",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "新版组会汇报图要重新做，第144天前。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这版围绕哪些页面组织？"
+        },
+        {
+          "speaker": "user",
+          "text": "关键对照、失败重复解释、下一步投稿计划。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我记录为新版组会图任务：围绕关键对照、失败重复解释和投稿计划组织页面。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，不要再用旧阳性结果当唯一主线。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，这版按当前证据链来组织。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i036",
+      "source_event_id": "e036",
+      "day": 136,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_repeat_stats_figure",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "统计图整理任务，字段严格",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "还要单独记一个重复实验统计图整理，第148天前。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "需要统一哪些内容？"
+        },
+        {
+          "speaker": "user",
+          "text": "样本量、统计方法、异常批次标注。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，统计图任务按这三项统一，截止第148天。"
+        },
+        {
+          "speaker": "user",
+          "text": "这个会影响投稿材料，别漏。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，它会作为当前投稿材料的关键待办保留。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S07_i037",
+      "source_event_id": "e037",
+      "day": 140,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_result_interpretation_rewrite",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "结果解释重写延期，保留已完成草稿部分",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "结果解释重写没法按第138天完成了，推到第152天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "目前已经完成到哪里？"
+        },
+        {
+          "speaker": "user",
+          "text": "关键对照结论和异常批次解释草稿已经有了，但整合版还没写完。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "我把截止改到第152天，状态是延期但继续推进。"
+        },
+        {
+          "speaker": "user",
+          "text": "近期先保留这两块草稿，不要当完整重写稿。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，关键对照结论和异常批次解释是已有草稿，完整结果解释仍待完成。"
+        }
+      ]
+    }
+  ],
+  "quality_check": {
+    "all_events_covered": true,
+    "interaction_count": 37,
+    "dialogues_are_not_memory_units": true,
+    "dialogues_follow_user_profile": true,
+    "metadata_not_leaked_in_dialogue": true,
+    "noise_dialogues_are_natural": true,
+    "dialogues_preserve_event_state": true,
+    "no_query_generated": true,
+    "no_gold_generated": true,
+    "no_mu_extracted": true
+  }
+}

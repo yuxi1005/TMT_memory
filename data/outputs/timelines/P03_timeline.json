@@ -1,0 +1,728 @@
+{
+  "user_id": "P03",
+  "timeline_id": "P03_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 92,
+    "length_days": 92,
+    "reason": "P03 是电商业务数据分析师，处在 SQL 交付和报表解释协作密集期，指标口径、业务复盘、会议沟通和低优先级报表会跨数周到数月反复变化，因此选择 92 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "SQL 交付与指标口径调整",
+      "domain": "SQL",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "报表解释与业务复盘",
+      "domain": "报表解释 / 业务复盘",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "指标解释格式与会议材料维护",
+      "domain": "会议沟通 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "临时口径、低优先级报表和生活噪音",
+      "domain": "会议沟通 / 家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_analytics_record_style",
+      "content": "用户确立长期数据分析记录偏好，希望 SQL、报表解释、业务复盘、会议沟通和临时口径分开归档，并突出优先级、负责人和下一步动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["SQL", "报表解释", "业务复盘", "会议沟通", "临时口径"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_sql_001",
+      "content": "用户制定早期 SQL 交付计划，准备先生成 GMV、订单数、转化率和退款率四个指标的宽表查询。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 35,
+        "metrics": ["GMV", "订单数", "转化率", "退款率"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 6,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_report_001",
+      "content": "用户创建早期报表解释计划，准备按流量入口、商品类目、促销活动和用户分层解释波动。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 45,
+        "dimensions": ["流量入口", "商品类目", "促销活动", "用户分层"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 9,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_sql_output_format",
+      "content": "用户记录 SQL 生成输出偏好，初期希望 agent 给详细版内容，包含查询逻辑、字段来源、过滤条件、边界情况和验证 SQL。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_sql_explanation",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 12,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_temp_definition_001",
+      "content": "业务方临时提出把退款后订单从 GMV 中剔除，用户先记录提议人、影响指标和需要确认的时间范围。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.36,
+        "topic": "临时口径变化"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 15,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_sql_baseline",
+      "content": "用户创建基础指标 SQL 草稿任务，需要生成 GMV、订单数和转化率的可执行查询并附上验证步骤。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 26
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e007",
+      "day": 18,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_metric_review",
+      "content": "用户设置每两周复盘一次指标解释，把当前 SQL、旧口径、业务反馈、低优先级报表和临时异常分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 21,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_report_outline_old",
+      "content": "用户创建旧版报表解释提纲任务，原计划按所有流量入口和商品类目一次性展开解释。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 34
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 26,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_sql_baseline",
+      "content": "用户完成基础指标 SQL 草稿，确认 GMV 和订单数查询可运行，但退款率仍需口径确认。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 26
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.88,
+        "deadline_day": 26,
+        "completed_day": 26,
+        "remaining_gap": "退款率口径待确认"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 30,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_low_priority_report_001",
+      "content": "运营同事临时要一个低优先级导购点击报表，用户记录字段和使用场景，暂时放入后续池。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.31,
+        "topic": "低优先级报表"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e011",
+      "day": 32,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_metric_review",
+      "content": "用户完成第一次指标解释复盘，确认临时退款口径和当前宽表查询语义相关，但不能直接覆盖已交付 SQL。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 32
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 32,
+        "next_due_day": 46,
+        "finding": "临时退款口径不能直接覆盖已交付 SQL"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 34,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_report_outline_old",
+      "content": "用户没有完成旧版报表解释提纲，把截止日推迟到第 41 天，但仍保留为当前报表解释任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 34
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 34,
+        "deadline_day": 41,
+        "partial_progress": "流量入口和商品类目已初步整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 38,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_metric_scope_001",
+      "content": "业务复盘会议确认本轮只看支付成功口径，退款后剔除口径留到下轮专题分析。",
+      "state_before": {
+        "related_plan": "plan_sql_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_sql_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 41,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_report_outline_old",
+      "content": "用户完成旧版报表解释提纲，但确认全量维度展开会让会议材料过长，不适合本轮业务复盘。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 41
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 41,
+        "completed_day": 41,
+        "limitation": "全量维度展开不适合本轮业务复盘"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 44,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_sql_001",
+      "content": "用户将四指标宽表 SQL 计划替换为支付成功口径优先计划，旧退款剔除口径只保留为下轮专题参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 35,
+        "metrics": ["GMV", "订单数", "转化率", "退款率"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.45,
+        "stale_day": 44,
+        "replaced_by": "plan_sql_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 44,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_sql_002",
+      "content": "用户创建新的 SQL 交付计划，优先产出支付成功 GMV、订单数、转化率和核心类目拆分。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.93,
+        "deadline_day": 78,
+        "replaces": "plan_sql_001",
+        "metrics": ["支付成功 GMV", "订单数", "转化率", "核心类目拆分"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 47,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_report_001",
+      "content": "用户将全维度报表解释计划替换为核心类目和促销活动优先计划，旧全量解释方案不再作为当前会议材料。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 45,
+        "dimensions": ["流量入口", "商品类目", "促销活动", "用户分层"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 47,
+        "replaced_by": "plan_report_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 47,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_report_002",
+      "content": "用户创建新的报表解释计划，优先解释核心类目、促销活动、支付成功口径和异常波动原因。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 82,
+        "replaces": "plan_report_001",
+        "focus": ["核心类目", "促销活动", "支付成功口径", "异常波动原因"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_sql_output_format",
+      "content": "用户把 SQL 生成输出偏好从详细解释改成可执行简版，只保留 SQL、字段口径、验证步骤、负责人和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_sql_explanation",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "executable_sql_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "复盘材料临近，需要更容易复制到文档"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 56,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_data_anomaly_001",
+      "content": "用户发现一个小时级数据异常峰值，先记录表名、时间段和可能延迟原因，暂时不改动日报口径。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.35,
+        "topic": "数据异常"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 60,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_paid_gmv_sql",
+      "content": "用户创建支付成功 GMV SQL 任务，需要确认订单状态、支付时间、退款排除策略和核心类目 join 条件。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 72
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 64,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_business_urge_001",
+      "content": "业务方催促一个临时看板截图，用户记录用途和截止时间，判断它低于支付成功口径 SQL 优先级。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.32,
+        "topic": "业务方催促"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_report_summary",
+      "content": "用户创建业务复盘报表解释摘要任务，需要把核心类目波动、促销活动影响和异常数据说明压缩成会议纪要可用版本。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 84
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e024",
+      "day": 72,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_paid_gmv_sql",
+      "content": "用户完成支付成功 GMV SQL，确认订单状态和支付时间过滤已验证，核心类目 join 仍需复核。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 72
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.9,
+        "deadline_day": 72,
+        "completed_day": 72,
+        "remaining_gap": "核心类目 join 待复核"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e025",
+      "day": 76,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_low_priority_dashboard_old",
+      "content": "用户创建低优先级导购点击看板任务，原本想顺手在本轮复盘前补出截图。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.43,
+        "deadline_day": 81
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e026",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_sql_current",
+      "content": "用户确认当前 SQL 重点不是旧的四指标宽表，而是支付成功 GMV、订单数、转化率和核心类目拆分。",
+      "state_before": {
+        "plan": "plan_sql_002",
+        "old_reference": "plan_sql_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "支付成功 GMV、订单数、转化率和核心类目拆分",
+        "not_current": "四指标宽表和退款剔除口径"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 81,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_low_priority_dashboard_old",
+      "content": "用户取消把低优先级导购点击看板放进本轮复盘的任务，决定留到后续报表池。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.43,
+        "deadline_day": 81
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.21,
+        "cancelled_day": 81,
+        "reason": "不属于本轮核心类目和促销复盘范围"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e028",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_report_summary",
+      "content": "用户未完成业务复盘报表解释摘要，把截止日推迟到第 92 天，但仍保留为当前报表解释核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 84
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 84,
+        "deadline_day": 92,
+        "partial_progress": "核心类目波动已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e029",
+      "day": 86,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_metric_review",
+      "content": "用户完成近期指标解释复盘，确认当前重点是核心类目 join 复核、报表解释摘要和低优先级报表延后。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 32,
+        "next_due_day": 46
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 86,
+        "next_due_day": 100,
+        "current_focus": ["核心类目 join 复核", "报表解释摘要", "低优先级报表延后"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e030",
+      "day": 88,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录周末个人安排和睡眠不足情况，准备避免把非核心报表拖到周末处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "家庭与个人安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 90,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_metric_freeze",
+      "content": "用户设置近期约束，复盘会前不再接收未确认的新口径，临时指标变更只记录到后续确认池。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.85,
+        "constraint_type": "metric_definition_freeze_before_review",
+        "valid_until_day": 108
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 92,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_report_summary",
+      "content": "用户完成业务复盘报表解释摘要，确认促销活动影响和异常数据说明可以直接复制到会议纪要。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "deadline_day": 92
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.87,
+        "deadline_day": 92,
+        "completed_day": 92,
+        "outputs": ["促销活动影响", "异常数据说明"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e033",
+      "day": 92,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_category_join_check",
+      "content": "用户创建核心类目 join 复核任务，需要确认商品维表版本、类目层级和历史变更是否影响当前 SQL。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 102
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e034",
+      "day": 92,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_metric_review",
+      "content": "用户完成最近一次指标解释复盘，确认当前活跃事项是核心类目 join 复核、复盘会口径冻结和后续报表池清理。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 86,
+        "next_due_day": 100
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 92,
+        "next_due_day": 106,
+        "current_focus": ["核心类目 join 复核", "复盘会口径冻结", "后续报表池清理"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e035",
+      "day": 92,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_backlog_report_cleanup",
+      "content": "用户创建后续报表池清理任务，需要把导购点击报表、临时看板截图和待确认口径按优先级重新排序。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 108
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_sql_002", "plan_report_002"],
+    "stale_plans": ["plan_sql_001", "plan_report_001"],
+    "active_tasks": ["task_category_join_check", "task_backlog_report_cleanup"],
+    "completed_tasks": ["task_sql_baseline", "task_report_outline_old", "task_paid_gmv_sql", "task_report_summary"],
+    "cancelled_tasks": ["task_low_priority_dashboard_old"],
+    "postponed_tasks": [],
+    "current_constraints": ["constraint_metric_freeze"],
+    "stable_preferences": ["pref_analytics_record_style"],
+    "old_preferences": ["pref_sql_output_format:detailed_sql_explanation"],
+    "updated_preferences": ["pref_sql_output_format:executable_sql_brief"],
+    "important_not_urgent_tasks": ["task_report_outline_old", "task_category_join_check"],
+    "urgent_low_value_tasks": ["noise_low_priority_report_001", "task_low_priority_dashboard_old"],
+    "noise_events": ["noise_temp_definition_001", "noise_low_priority_report_001", "noise_data_anomaly_001", "noise_business_urge_001", "noise_personal_schedule_001"],
+    "hard_negative_sources": ["plan_sql_001", "plan_report_001", "task_sql_baseline", "task_report_outline_old", "task_low_priority_dashboard_old", "pref_sql_output_format:detailed_sql_explanation", "noise_temp_definition_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

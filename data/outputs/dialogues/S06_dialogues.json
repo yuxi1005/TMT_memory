@@ -1,0 +1,1071 @@
+{
+  "user_id": "S06",
+  "source_timeline_id": "S06_latent_world_timeline_v1",
+  "dialogue_dataset_id": "S06_dialogues_v1",
+  "interactions": [
+    {
+      "interaction_id": "S06_i001",
+      "source_event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_research_archive_001",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "清单化偏好设定，强调分类归档和依据保留",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "以后帮我记东西时，课堂观察、毕业论文、实习、生活事项分开。别混在一个清单里。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，我会按这四类分别整理，并在每条建议里保留依据和截止时间。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我后面很容易被实习表格和导师反馈打断，所以要能一眼看出哪个是论文主线。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。后续我会把研究任务和生活、实习记录区分开，避免临时事项挤掉当前重点。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i002",
+      "source_event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_observation_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "研究计划拆解，偏结构化步骤",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课堂观察先定一个早期计划：第一步观察维度，第二步课堂记录表，最后整理观察反思。截止先看到第52天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，当前顺序是：观察维度、课堂记录表、观察反思。第52天前要至少形成可执行版本。"
+        },
+        {
+          "speaker": "user",
+          "text": "我不想一上来就写很大的理论，先把观察能落地。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "那建议先做维度定义，再让记录表承接这些维度，反思部分放到有资料后补。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i003",
+      "source_event_id": "e003",
+      "day": 5,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_thesis_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "论文早期方案规划，正式但带焦虑感",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "毕业论文早期方案也记一下：先写理论框架，再补课堂观察资料和访谈材料。暂定第60天前有一版。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已按论文线整理：理论框架在前，课堂观察资料和访谈材料在后，目标是第60天前形成初版。"
+        },
+        {
+          "speaker": "user",
+          "text": "这个方案先作为主线吧，但我知道后面可能会被导师反馈改掉。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以先按主线推进，同时保留后续调整空间。当前最先要产出的是理论框架初稿。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i004",
+      "source_event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_interview_outline_output",
+      "retrieval_role": "stable_preference",
+      "dialogue_style": "访谈提纲输出偏好设置，要求详细说明",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "访谈提纲这块，前期你先给我详细版。不要只列问题。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。访谈提纲会包含问题本身、提问目的、可追问方式和适用对象。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，我需要知道每个问题为什么问，不然后面自己也改不动。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "后续我会把每个访谈问题和研究目的对应起来，方便你筛选和改写。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i005",
+      "source_event_id": "e005",
+      "day": 10,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_intern_admin_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "实习琐事插入，简短抱怨式记录",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "实习单位临时要我补交考勤表和指导记录，今晚整理课堂观察资料的时间被压缩了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先把必须提交的表格处理完，今晚的课堂观察资料可以只保留一个最小整理项。"
+        },
+        {
+          "speaker": "user",
+          "text": "记一下就行，我怕我明天忘了为什么进度慢。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：第10天受实习行政材料影响，晚上课堂观察资料整理时间减少。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i006",
+      "source_event_id": "e006",
+      "day": 14,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_observation_dimensions",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "任务导向短句，拆分观察维度",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "新任务：整理课堂观察维度。师生互动、课堂提问、学生参与度，要分开定义。截止第26天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已拆成三块：师生互动、课堂提问、学生参与度。第26天前需要给出各自定义。"
+        },
+        {
+          "speaker": "user",
+          "text": "最好还能指出哪些指标需要试观察验证。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。先完成三类核心维度定义，再标出不确定、需要试观察确认的指标。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i007",
+      "source_event_id": "e007",
+      "day": 16,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_thesis_review",
+      "retrieval_role": "recurring_task",
+      "dialogue_style": "重复复盘设置，强调避免混杂记录",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "设一个重复事项：每两周复盘一次论文框架和课堂观察下一步。下一次第30天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已设为每14天复盘一次，下一次在第30天。"
+        },
+        {
+          "speaker": "user",
+          "text": "重点是别让实习临时记录混进研究任务里。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "复盘时我会单独检查论文框架、课堂观察和实习记录是否混在一起。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i008",
+      "source_event_id": "e008",
+      "day": 18,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_theory_framework_old",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "论文框架初稿任务，偏正式研究语气",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "论文理论框架初稿也开一个任务。先按教学互动理论和课堂参与研究搭结构，截止第33天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：理论框架初稿，依据教学互动理论和课堂参与研究搭建，截止第33天。"
+        },
+        {
+          "speaker": "user",
+          "text": "先不要写太散，结构要能接住后面的课堂观察。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "建议每个理论部分都预留和观察资料对应的位置，这样后面不容易变成纯概念综述。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i009",
+      "source_event_id": "e009",
+      "day": 22,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_class_note_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "课堂临时记录，担心干扰判断",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "今天实习课里有个突发插曲，我有点担心会影响我对正式观察对象的判断。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以先单独记为临时课堂情况，不直接并入正式观察资料。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，先别当成样本结论。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已按临时记录处理，只保留背景信息，不作为当前正式观察判断。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i010",
+      "source_event_id": "e010",
+      "day": 26,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_observation_dimensions",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "完成状态确认，保留剩余缺口",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课堂观察维度整理完成了。三类核心维度确认了，还有两项指标需要试观察验证。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已标记完成：师生互动、课堂提问、学生参与度三类核心维度已确定。"
+        },
+        {
+          "speaker": "user",
+          "text": "剩下不是这个任务没做完，是后面试观察时再验证。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。该任务已完成，剩余缺口是两项指标等待后续试观察验证。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i011",
+      "source_event_id": "e011",
+      "day": 30,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_thesis_review",
+      "retrieval_role": "status_update",
+      "dialogue_style": "周期复盘，半句笔记式进展总结",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第30天复盘做完：观察维度已完成；论文理论框架和课堂资料的连接还是弱。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录本次复盘：观察维度完成，主要缺口是理论框架与课堂资料连接不足。"
+        },
+        {
+          "speaker": "user",
+          "text": "下一次复盘还是按两周后，第44天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，下一次论文和课堂观察复盘安排在第44天。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i012",
+      "source_event_id": "e012",
+      "day": 33,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_theory_framework_old",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "完成但指出局限，研究反思语气",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "理论框架初稿完成了，但问题也很明显：偏概念综述，不能直接支撑后面的课堂观察分析。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录完成状态：理论框架初稿已完成，局限是概念性强、对观察分析支撑不足。"
+        },
+        {
+          "speaker": "user",
+          "text": "所以别再把它当成能直接用的分析框架。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。它是已完成的初稿材料，但后续分析还需要重新建立和课堂观察的对应关系。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i013",
+      "source_event_id": "e013",
+      "day": 38,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_supervisor_feedback_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "导师临时反馈记录，短促压力感",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "导师临时发了一段反馈，让我重新说明课堂观察对象的选择理由。先记一下。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：导师临时反馈集中在课堂观察对象的选择理由。"
+        },
+        {
+          "speaker": "user",
+          "text": "我现在先不展开，等正式反馈一起看。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以，先作为单独反馈保存，暂不打断当前任务结构。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i014",
+      "source_event_id": "e014",
+      "day": 40,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_thesis_001",
+      "retrieval_role": "current_state_seed",
+      "dialogue_style": "正式导师反馈引发计划调整，焦虑但求结构",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "导师正式反馈来了，说论文不能只按理论综述展开，要围绕课堂观察证据重写研究问题。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "这会影响原来的论文方案。当前优先级应从补理论，转到把课堂观察证据和研究问题对齐。"
+        },
+        {
+          "speaker": "user",
+          "text": "对，我有点慌，因为之前先写理论框架的路线可能不适合了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "先别急着重写全部章节。可以先列出观察对象、核心现象和可能的研究问题，再决定框架怎么改。"
+        },
+        {
+          "speaker": "user",
+          "text": "记为需要行动，不是普通反馈。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录为当前需要处理的论文反馈，重点是围绕课堂观察证据重写研究问题。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i015",
+      "source_event_id": "e015",
+      "day": 44,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_thesis_review",
+      "retrieval_role": "outdated_status",
+      "dialogue_style": "周期复盘，标出旧参考不再作为主线",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第44天复盘完成。早期理论框架初稿以后只当文献背景参考，不再作为当前论文主线。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：理论框架初稿保留为背景材料，当前论文主线不再按它展开。"
+        },
+        {
+          "speaker": "user",
+          "text": "下一次复盘第58天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，下一次复盘安排在第58天。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i016",
+      "source_event_id": "e016",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_thesis_001",
+      "retrieval_role": "stale_plan",
+      "dialogue_style": "方案替换，明确旧方案降级为参考",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "论文旧方案要换掉。之前理论综述优先的路线，只保留成文献背景参考。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白，旧路线不再作为当前推进方案，只作为背景材料保留。"
+        },
+        {
+          "speaker": "user",
+          "text": "新的方向要以课堂观察证据为导向，不然导师那关过不了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "后续论文推进会以课堂观察证据为核心，旧的理论综述结构只用于补充依据。"
+        },
+        {
+          "speaker": "user",
+          "text": "帮我记清楚，别后面又按旧顺序提醒我先写理论。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：从第46天起，论文当前方案不再按理论优先路线执行。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i017",
+      "source_event_id": "e017",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_thesis_002",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "新版论文计划创建，强调证据导向",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "新论文方案：先重写研究问题，再整合课堂观察资料，最后做访谈提纲。截止先看第86天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录新版方案：研究问题重写、课堂观察资料整合、访谈提纲，目标第86天前推进到位。"
+        },
+        {
+          "speaker": "user",
+          "text": "这个替代前面那个理论综述优先方案。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。后续以新版证据导向方案为准，旧方案只作为文献背景参考。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i018",
+      "source_event_id": "e018",
+      "day": 50,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_observation_001",
+      "retrieval_role": "current_plan",
+      "dialogue_style": "课堂观察计划拆小，清单式优先级",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课堂观察计划也拆小。先修订观察记录表，再试观察，最后做反思编码。截止推到第82天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已更新当前顺序：观察记录表修订、试观察、反思编码，新的节点是第82天。"
+        },
+        {
+          "speaker": "user",
+          "text": "之前那种大计划有点虚，现在先把表格做实。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以。后续课堂观察主线先看记录表是否可用，再进入试观察和编码。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i019",
+      "source_event_id": "e019",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_interview_outline_output",
+      "retrieval_role": "updated_preference",
+      "dialogue_style": "输出偏好临时改变，说明新旧格式",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "访谈提纲输出先从详细说明改成简版执行清单。现在研究问题重写更急。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。之前是详细版，包含目的、追问和对象；当前阶段先改成简版执行清单。"
+        },
+        {
+          "speaker": "user",
+          "text": "这个是临时的，后面定稿可能还要补详细依据。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录为当前阶段偏好：先用简版清单赶进度，定稿时再补回详细依据。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i020",
+      "source_event_id": "e020",
+      "day": 55,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_research_question_rewrite",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "高优先级论文任务，明确截止时间",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "开一个最高优先级任务：重写研究问题。要把课堂观察对象、核心现象和论文问题重新对应起来。截止第68天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：研究问题重写，核心是观察对象、核心现象、论文问题三者对齐，截止第68天。"
+        },
+        {
+          "speaker": "user",
+          "text": "这件事优先于访谈提纲。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。当前论文主线先处理研究问题重写，访谈提纲后置。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i021",
+      "source_event_id": "e021",
+      "day": 58,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_thesis_review",
+      "retrieval_role": "status_update",
+      "dialogue_style": "复盘短句，确认临时偏好有效",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第58天复盘完成。简版执行清单确实适合现在赶进度，但后面定稿还要补详细依据。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：简版清单适合短期推进，详细依据需要在后续定稿阶段补回。"
+        },
+        {
+          "speaker": "user",
+          "text": "下一次复盘第72天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，下一次论文复盘安排在第72天。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i022",
+      "source_event_id": "e022",
+      "day": 60,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_life_schedule_001",
+      "retrieval_role": "noise",
+      "dialogue_style": "生活安排插入，担心占用论文时间",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "周末还要处理租房维修和生活采购，怕占掉论文重写时间。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以先把这些生活事项集中到固定时段，论文重写只保留最关键的一小段时间。"
+        },
+        {
+          "speaker": "user",
+          "text": "先记一下，不要展开成计划。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已简短记录：周末生活安排可能挤压论文重写时间。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i023",
+      "source_event_id": "e023",
+      "day": 62,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_interview_outline_old",
+      "retrieval_role": "important_not_urgent_task",
+      "dialogue_style": "访谈提纲初版任务，重要但不抢主线",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "访谈提纲初版先开一个任务，原计划围绕教师教学策略和学生课堂反应设计问题。截止第76天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：访谈提纲初版，方向是教师教学策略和学生课堂反应，截止第76天。"
+        },
+        {
+          "speaker": "user",
+          "text": "它重要，但现在不如研究问题重写急。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。访谈提纲先保留为重要任务，当前仍优先推进研究问题重写。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i024",
+      "source_event_id": "e024",
+      "day": 66,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_observation_form_revision",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "课堂观察表修订任务，字段对齐",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "创建任务：修订课堂观察记录表。要把观察维度、记录对象、时间段统一到同一张表。截止第80天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：观察记录表修订，三个字段重点是观察维度、记录对象、时间段，截止第80天。"
+        },
+        {
+          "speaker": "user",
+          "text": "这属于课堂观察核心任务。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。当前课堂观察线先保证记录表能承接后续试观察。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i025",
+      "source_event_id": "e025",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_research_question_rewrite",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "延期但保持最高优先级，带进度说明",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "研究问题重写没能在第68天完成，截止推到第74天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已更新：研究问题重写延期到第74天，任务仍保持当前论文最高优先级。"
+        },
+        {
+          "speaker": "user",
+          "text": "不是完全没动，课堂观察对象和核心现象已经改写了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录部分进展：观察对象和核心现象已改写，剩下是把它们和论文问题完整对齐。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i026",
+      "source_event_id": "e026",
+      "day": 70,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "retrieval_role": "urgent_low_value_task",
+      "dialogue_style": "临时购物念头，轻量记录",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "我突然想买一个录音笔收纳包和新的笔记本，晚点比较价格。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "可以先只列购买项和预算，别花太久比较。"
+        },
+        {
+          "speaker": "user",
+          "text": "嗯，先记一下就行。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：录音笔收纳包、新笔记本，晚点再简单比价。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i027",
+      "source_event_id": "e027",
+      "day": 72,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_thesis_review",
+      "retrieval_role": "outdated_status",
+      "dialogue_style": "周期复盘，旧访谈方向被降级",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "第72天复盘完成。旧访谈提纲方向太宽，不能直接支撑新的研究问题。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：旧访谈方向不再适合直接使用，需要后续围绕新研究问题重写。"
+        },
+        {
+          "speaker": "user",
+          "text": "下一次复盘第86天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "好的，下一次复盘安排在第86天。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i028",
+      "source_event_id": "e028",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_research_question_rewrite",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "关键任务完成确认，关系链清晰",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "研究问题重写完成了。课堂观察对象、核心现象和毕业论文主问题之间的关系已经明确。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已标记完成：研究问题重写在第74天完成，三者关系已经对齐。"
+        },
+        {
+          "speaker": "user",
+          "text": "这个任务后面不要再提醒我没完成。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。研究问题重写已完成，后续重点转向观察资料整合和新版访谈提纲。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i029",
+      "source_event_id": "e029",
+      "day": 76,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_interview_outline_old",
+      "retrieval_role": "cancelled_task",
+      "dialogue_style": "取消旧任务，明确等待新问题稳定",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "旧访谈提纲初版任务取消吧。那个方向围绕教学策略和课堂反应，太宽了。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已取消旧访谈提纲初版，不再按原方向继续推进。"
+        },
+        {
+          "speaker": "user",
+          "text": "等新研究问题稳定后，再重新写访谈问题。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。旧任务停止，后续需要基于新研究问题重新创建访谈提纲任务。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i030",
+      "source_event_id": "e030",
+      "day": 78,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_intern_admin_001",
+      "retrieval_role": "current_constraint",
+      "dialogue_style": "近期约束设置，区分论文与实习行政",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "设个近期约束：晚上写论文时不处理实习行政表格。实习琐事集中到第二天下午。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：晚上论文时间不处理实习行政表格，实习事项集中到次日下午。"
+        },
+        {
+          "speaker": "user",
+          "text": "这个约束先持续到第100天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。到第100天前，我会按这个约束帮你区分论文时间和实习行政时间。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i031",
+      "source_event_id": "e031",
+      "day": 80,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_observation_form_revision",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "课堂观察核心任务延期，保留部分进展",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课堂观察记录表修订没赶上第80天，截止推到第88天，但它还是课堂观察核心任务。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已更新：观察记录表修订延期到第88天，仍是当前课堂观察核心任务。"
+        },
+        {
+          "speaker": "user",
+          "text": "目前观察维度和记录对象已经统一，时间段还要再整理。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录部分进展：观察维度和记录对象已统一，剩余重点是时间段整理。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i032",
+      "source_event_id": "e032",
+      "day": 84,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_interview_outline_current",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "新版访谈提纲任务，围绕新研究问题",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "创建新版访谈提纲任务。要围绕新研究问题设计主问题、追问和适用对象。截止第98天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：新版访谈提纲，包含主问题、追问和适用对象，截止第98天。"
+        },
+        {
+          "speaker": "user",
+          "text": "这次不要沿用旧方向，必须贴着新研究问题。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。新版提纲会基于新研究问题设计，不沿用旧的宽泛访谈方向。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i033",
+      "source_event_id": "e033",
+      "day": 86,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_thesis_001",
+      "retrieval_role": "status_update",
+      "dialogue_style": "当前论文状态更新，明确阻塞点转移",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "现在论文缺口变了。研究问题重写已经解决，主要卡在课堂观察资料整合和新版访谈提纲。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已更新当前状态：研究问题重写不再是阻塞点，新的重点是观察资料整合和新版访谈提纲。"
+        },
+        {
+          "speaker": "user",
+          "text": "后面提醒我时不要再把研究问题当未完成。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。后续论文提醒会围绕资料整合和新版访谈提纲展开。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i034",
+      "source_event_id": "e034",
+      "day": 88,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_observation_form_revision",
+      "retrieval_role": "completed_todo",
+      "dialogue_style": "延期任务完成，指向下一步试观察",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "课堂观察记录表修订完成。观察维度、记录对象、时间段现在能用于下一轮试观察。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已标记完成：记录表修订在第88天完成，可以进入下一轮试观察。"
+        },
+        {
+          "speaker": "user",
+          "text": "这个表格任务不要再算延期未完成。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。记录表修订已完成，后续课堂观察重点转向试观察安排。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i035",
+      "source_event_id": "e035",
+      "day": 92,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_trial_observation",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "试观察安排任务，短句列要素",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "创建试观察安排任务：确认课堂时间、观察对象、记录表试用方式。截止第104天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：试观察安排，三项要素是课堂时间、观察对象、记录表试用方式，截止第104天。"
+        },
+        {
+          "speaker": "user",
+          "text": "这属于当前课堂观察下一步。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。记录表完成后，当前课堂观察线转到试观察安排。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i036",
+      "source_event_id": "e036",
+      "day": 96,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_interview_outline_current",
+      "retrieval_role": "postponed_task",
+      "dialogue_style": "新版访谈任务延期，保留关键进展",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "新版访谈提纲要延期，从第98天推到第106天。近期先保留主问题和两个关键追问。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已更新：新版访谈提纲延期到第106天，任务仍在进行中。"
+        },
+        {
+          "speaker": "user",
+          "text": "主问题和两个关键追问已经有了，不是从零开始。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录部分进展：主问题和两个关键追问已完成，后续继续补完整提纲。"
+        }
+      ]
+    },
+    {
+      "interaction_id": "S06_i037",
+      "source_event_id": "e037",
+      "day": 100,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_thesis_outline_update",
+      "retrieval_role": "active_todo",
+      "dialogue_style": "论文框架更新任务，结构化重排章节",
+      "dialogue": [
+        {
+          "speaker": "user",
+          "text": "创建毕业论文框架更新任务。要把新研究问题、观察资料和访谈提纲位置重新排进章节结构。截止第110天。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "已记录：论文框架更新，重点是重新安排新研究问题、观察资料和访谈提纲的章节位置，截止第110天。"
+        },
+        {
+          "speaker": "user",
+          "text": "这次不要回到旧的理论综述优先结构。"
+        },
+        {
+          "speaker": "assistant",
+          "text": "明白。框架更新会以新版论文方案为准，理论综述只作为必要背景放入合适章节。"
+        }
+      ]
+    }
+  ],
+  "quality_check": {
+    "all_events_covered": true,
+    "interaction_count": 37,
+    "dialogues_are_not_memory_units": true,
+    "dialogues_follow_user_profile": true,
+    "metadata_not_leaked_in_dialogue": true,
+    "noise_dialogues_are_natural": true,
+    "dialogues_preserve_event_state": true,
+    "no_query_generated": true,
+    "no_gold_generated": true,
+    "no_mu_extracted": true
+  }
+}

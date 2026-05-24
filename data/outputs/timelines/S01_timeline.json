@@ -1,0 +1,771 @@
+{
+  "user_id": "S01",
+  "timeline_id": "S01_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 75,
+    "length_days": 75,
+    "reason": "S01 是课程项目和实习准备并行推进的本科计算机学生，75 天跨度可以覆盖早期课程项目计划、中期实习准备替换与任务完成、近期算法学习和 debug 待办，同时保留熬夜、游戏和临时购物等生活噪音。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "课程项目开发与报告返工控制",
+      "domain": "课程项目",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "实习准备计划与材料迭代",
+      "domain": "实习准备",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "算法学习与 debug 输出偏好",
+      "domain": "算法学习 / debug",
+      "status": "mixed",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "作息、游戏和临时生活噪音",
+      "domain": "作息与健康 / 社交与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["main_life_domains", "typical_noise_sources", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_workflow_001",
+      "content": "用户确立长期工作偏好，希望 agent 输出结构化步骤、可执行清单，并标注当前状态和截止时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["课程项目", "实习准备", "算法学习", "生活事项"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 2,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_course_001",
+      "content": "用户制定课程项目早期计划，准备先实现核心功能，再补测试，最后写课程报告。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 38,
+        "phase_order": ["核心功能", "测试补充", "课程报告"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 4,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_intern_001",
+      "content": "用户创建实习准备早期计划，打算先刷算法题，再整理项目经历，最后修改简历。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.74,
+        "deadline_day": 46,
+        "phase_order": ["算法刷题", "项目经历整理", "简历修改"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e004",
+      "day": 6,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_debug_output",
+      "content": "用户记录 debug 时更喜欢详细解释版输出，方便理解报错原因和排查路径。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_explanation",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 8,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_api_module",
+      "content": "用户创建课程项目 API 模块实现任务，要求先列出接口、错误处理和测试入口。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 18
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e006",
+      "day": 10,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_late_sleep_001",
+      "content": "用户记录连续两晚熬夜打游戏，第二天上午调试课程项目时注意力下降。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.35,
+        "topic": "熬夜和游戏"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e007",
+      "day": 12,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_debug_review",
+      "content": "用户设置每周复盘一次 debug 记录，把已解决问题、未解决问题和先不管的问题分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.7,
+        "interval_days": 7,
+        "next_due_day": 19
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 16,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_resume_old",
+      "content": "用户创建旧版简历整理任务，准备按课程项目和算法练习两类经历改写。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.66,
+        "deadline_day": 30
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_api_module",
+      "content": "用户完成课程项目 API 模块的初版实现，并留下两个边界条件测试待补。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 18
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 18,
+        "completed_day": 18,
+        "remaining_gap": "两个边界条件测试"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e010",
+      "day": 19,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_debug_review",
+      "content": "用户完成第一次 debug 复盘，把 API 模块的已解决报错和仍需补测的边界条件分开记录。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 7,
+        "next_due_day": 19
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 19,
+        "next_due_day": 26,
+        "finding": "边界条件测试仍未补齐"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e011",
+      "day": 23,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_keyboard_001",
+      "content": "用户临时记录想换一把机械键盘，比较了轴体、价格和宿舍使用噪声。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "临时购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e012",
+      "day": 26,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_debug_review",
+      "content": "用户完成第二次 debug 复盘，确认部分早期报错记录已过期，不应再作为当前排查入口。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 19,
+        "next_due_day": 26
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 26,
+        "next_due_day": 33,
+        "outdated_reference": "API 模块早期报错"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e013",
+      "day": 29,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_report_draft",
+      "content": "用户创建课程报告草稿任务，要求先按功能实现、测试结果和问题复盘搭出框架。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.81,
+        "deadline_day": 40
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e014",
+      "day": 31,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_resume_old",
+      "content": "用户完成旧版简历初稿，但发现它更偏课程作业描述，不能直接用于后续实习投递。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.66,
+        "deadline_day": 30
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.66,
+        "deadline_day": 30,
+        "completed_day": 31,
+        "late": true,
+        "limitation": "偏课程作业描述"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 34,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_intern_001",
+      "content": "学长反馈实习准备不能只刷题，需要把课程项目包装成可展示的工程经历。",
+      "state_before": {
+        "related_plan": "plan_intern_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.86,
+        "affects": "plan_intern_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e016",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_intern_001",
+      "content": "用户把早期实习准备计划替换为项目展示优先方案，旧刷题优先方案只保留为参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.74,
+        "deadline_day": 46,
+        "phase_order": ["算法刷题", "项目经历整理", "简历修改"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 36,
+        "replaced_by": "plan_intern_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e017",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_intern_002",
+      "content": "用户创建新的实习准备计划，决定先整理课程项目亮点，再补算法题和简历关键词。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 65,
+        "replaces": "plan_intern_001",
+        "phase_order": ["项目亮点整理", "算法题补弱", "简历关键词"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e018",
+      "day": 38,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_course_001",
+      "content": "用户把课程项目大计划拆小，决定先修复展示前的关键 bug，再补测试和报告。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 38,
+        "phase_order": ["核心功能", "测试补充", "课程报告"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 55,
+        "priority_order": ["关键 bug 修复", "测试补充", "课程报告"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e019",
+      "day": 40,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_report_draft",
+      "content": "用户没有按原截止日完成课程报告草稿，把报告推迟到第 50 天，但仍保留为当前待办。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.81,
+        "deadline_day": 40
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.8,
+        "previous_deadline_day": 40,
+        "deadline_day": 50,
+        "partial_progress": "报告框架已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e020",
+      "day": 43,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_debug_output",
+      "content": "用户把 debug 输出偏好从详细解释临时改成简版步骤清单，以便在课程展示前快速定位问题。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_explanation",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_step_list",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "课程展示前时间紧"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e021",
+      "day": 46,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_demo_bugfix",
+      "content": "用户创建课程项目展示 bug 修复任务，重点排查登录状态丢失和接口超时问题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.93,
+        "deadline_day": 54
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e022",
+      "day": 49,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_game_event_001",
+      "content": "用户记录游戏活动限时开放，晚上想留一小时参加，但担心影响第二天调试。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.28,
+        "topic": "游戏"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 50,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_report_draft",
+      "content": "用户完成课程报告草稿，保留了功能说明、测试结果和待改写的小结部分。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.8,
+        "deadline_day": 50
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 50,
+        "completed_day": 50,
+        "remaining_gap": "小结部分待改写"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["recurring_tasks", "agent_usage_style"]
+    },
+    {
+      "event_id": "e024",
+      "day": 54,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_demo_bugfix",
+      "content": "用户完成展示前关键 bug 修复，登录状态丢失问题已解决，接口超时只保留低优先级优化。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.93,
+        "deadline_day": 54
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.93,
+        "deadline_day": 54,
+        "completed_day": 54,
+        "remaining_low_priority": "接口超时优化"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e025",
+      "day": 56,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_project_bullets",
+      "content": "用户创建实习简历项目亮点整理任务，准备把课程项目改写成工程化经历。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.85,
+        "deadline_day": 66
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e026",
+      "day": 57,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_mock_interview_old",
+      "content": "用户创建本周模拟面试任务，原计划用旧版简历和课程项目经历做一次练习。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.55,
+        "deadline_day": 60
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e027",
+      "day": 58,
+      "storyline_id": "sl_02",
+      "event_type": "cancel_task",
+      "target_id": "task_mock_interview_old",
+      "content": "用户取消原本本周做模拟面试的任务，决定先把课程项目经历整理清楚。",
+      "state_before": {
+        "status": "planned",
+        "importance": 0.55,
+        "deadline_day": 60
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.35,
+        "cancelled_day": 58,
+        "reason": "项目经历整理优先"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["dynamic_preferences", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e028",
+      "day": 60,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_sleep_001",
+      "content": "用户设置近期作息约束，凌晨 1 点后不再打游戏或开启新调试，只记录第二天待办。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.79,
+        "constraint_type": "sleep_and_game_limit",
+        "valid_until_day": 75
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "primary_goals"]
+    },
+    {
+      "event_id": "e029",
+      "day": 62,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_algo_dp_review",
+      "content": "用户创建动态规划薄弱题型复盘任务，计划整理状态定义、转移方程和常见错因。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 72
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e030",
+      "day": 64,
+      "storyline_id": "sl_02",
+      "event_type": "update_priority",
+      "target_id": "task_project_bullets",
+      "content": "用户把实习简历项目亮点整理提升为最高优先级，因为下周有一次内推材料提交窗口。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.85,
+        "deadline_day": 66
+      },
+      "state_after": {
+        "status": "active",
+        "importance": 0.94,
+        "deadline_day": 66,
+        "priority": "highest"
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["dynamic_preferences", "primary_goals"]
+    },
+    {
+      "event_id": "e031",
+      "day": 66,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_project_bullets",
+      "content": "用户未完成全部项目亮点整理，把截止日推迟到第 70 天，但仍把它保留为当前最重要实习准备任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.94,
+        "deadline_day": 66
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.95,
+        "previous_deadline_day": 66,
+        "deadline_day": 70,
+        "partial_progress": "项目背景和技术栈已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 68,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_course_complaint_001",
+      "content": "用户记录对一门课程临时改验收规则感到烦躁，担心影响本周实习材料整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.31,
+        "topic": "临时课程吐槽"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e033",
+      "day": 70,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_project_bullets",
+      "content": "用户完成实习简历项目亮点整理，形成课程项目的技术难点、个人贡献和结果说明。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.95,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.95,
+        "deadline_day": 70,
+        "completed_day": 70
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e034",
+      "day": 71,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_intern_001",
+      "content": "用户确认实习准备当前缺口从项目亮点转为简历关键词和投递版本检查。",
+      "state_before": {
+        "plan": "plan_intern_002",
+        "main_blocker": "项目亮点整理"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "简历关键词和投递版本检查",
+        "resolved_blocker": "项目亮点整理"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e035",
+      "day": 72,
+      "storyline_id": "sl_03",
+      "event_type": "postpone_task",
+      "target_id": "task_algo_dp_review",
+      "content": "用户把动态规划复盘推迟到第 78 天，近期只保留两道高频题作为最低限度练习。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 72
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.72,
+        "previous_deadline_day": 72,
+        "deadline_day": 78,
+        "reduced_scope": "两道高频题"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["dynamic_preferences", "likely_task_states"]
+    },
+    {
+      "event_id": "e036",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_resume_keyword_check",
+      "content": "用户创建简历关键词检查任务，准备对照目标岗位补充技术栈、项目指标和实习投递版本。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.88,
+        "deadline_day": 80
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e037",
+      "day": 75,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_final_report_polish",
+      "content": "用户创建课程报告最终润色任务，要求把已完成实现、仍未优化的接口超时和测试限制分开写清楚。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 82
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences", "recurring_tasks"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_course_001", "plan_intern_002"],
+    "stale_plans": ["plan_intern_001"],
+    "active_tasks": ["task_algo_dp_review", "task_resume_keyword_check", "task_final_report_polish"],
+    "completed_tasks": ["task_api_module", "task_resume_old", "task_report_draft", "task_demo_bugfix", "task_project_bullets"],
+    "cancelled_tasks": ["task_mock_interview_old"],
+    "postponed_tasks": ["task_algo_dp_review"],
+    "current_constraints": ["constraint_sleep_001"],
+    "stable_preferences": ["pref_workflow_001"],
+    "old_preferences": ["pref_debug_output:detailed_explanation"],
+    "updated_preferences": ["pref_debug_output:brief_step_list"],
+    "important_not_urgent_tasks": ["task_resume_old"],
+    "urgent_low_value_tasks": ["noise_keyboard_001"],
+    "noise_events": ["noise_late_sleep_001", "noise_keyboard_001", "noise_game_event_001", "noise_course_complaint_001"],
+    "hard_negative_sources": ["plan_intern_001", "task_resume_old", "task_api_module", "task_mock_interview_old", "pref_debug_output:detailed_explanation", "noise_keyboard_001", "recur_debug_review:day26_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

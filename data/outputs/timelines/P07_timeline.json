@@ -1,0 +1,675 @@
+{
+  "user_id": "P07",
+  "timeline_id": "P07_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 84,
+    "length_days": 84,
+    "reason": "P07 是科技公司招聘负责人，处在 JD 交付和面试题协作密集期，临时岗位变化、内部沟通和候选人爽约会在数周到数月内反复改变优先级，因此选择 84 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "JD 改写与岗位范围调整",
+      "domain": "JD",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "面试题与候选人评估",
+      "domain": "面试题 / 候选人评估",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "招聘协作与输出格式维护",
+      "domain": "会议沟通 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "岗位变动、内部沟通和个人安排噪音",
+      "domain": "会议沟通 / 家庭与个人安排 / 健康作息",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_recruiting_record_style",
+      "content": "用户确立长期招聘记录偏好，希望 JD、面试题、候选人评估、会议沟通和个人安排分开归档，并突出优先级、负责人和下一步动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["JD", "面试题", "候选人评估", "会议沟通", "个人安排"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_jd_001",
+      "content": "用户制定早期 JD 改写计划，准备先统一后端、算法和产品三个岗位的公司介绍、职责描述和任职要求。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 34,
+        "roles": ["后端", "算法", "产品"],
+        "sections": ["公司介绍", "职责描述", "任职要求"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 6,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_interview_001",
+      "content": "用户创建早期面试题计划，准备按基础能力、项目经验、岗位专项和文化匹配四类生成题库。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 44,
+        "categories": ["基础能力", "项目经验", "岗位专项", "文化匹配"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 9,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_jd_output_format",
+      "content": "用户记录 JD 改写输出偏好，初期希望 agent 给详细版结构，包含岗位卖点、职责、硬性要求、加分项和筛选风险。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_jd_structure",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 12,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_role_change_001",
+      "content": "业务负责人临时提到可能新增一个前端实习岗位，用户记录岗位来源和预计人数，暂时没有加入当前 JD 批次。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "临时岗位变化"
+      },
+      "retrieval_role": "hard_negative",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e006",
+      "day": 15,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_jd_baseline",
+      "content": "用户创建旧版 JD 基线整理任务，需要把三个岗位的职责、必备技能和招聘优先级整理到同一份表。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 26
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style"]
+    },
+    {
+      "event_id": "e007",
+      "day": 19,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_recruiting_review",
+      "content": "用户设置每两周复盘一次招聘材料，把当前 JD、旧岗位、面试题、候选人评估和临时沟通分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.76,
+        "interval_days": 14,
+        "next_due_day": 33
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 22,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_question_bank_old",
+      "content": "用户创建旧版面试题库任务，原计划给三个岗位共用一套基础题再附少量岗位题。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 26,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_jd_baseline",
+      "content": "用户完成旧版 JD 基线整理，确认后端岗位优先级最高，算法岗位还缺业务侧确认。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 26
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.84,
+        "deadline_day": 26,
+        "completed_day": 26,
+        "finding": "后端岗位优先级最高，算法岗位缺业务确认"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 30,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_internal_chat_001",
+      "content": "内部群里临时讨论候选人沟通话术，用户记录两个表达建议，但没有改动当前面试题计划。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.28,
+        "topic": "内部沟通"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e011",
+      "day": 33,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_recruiting_review",
+      "content": "用户完成第一次招聘材料复盘，确认前端实习岗位与当前后端岗位相似但不属于本批核心招聘。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 33
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 33,
+        "next_due_day": 47,
+        "finding": "前端实习岗位不进入本批核心招聘"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e012",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_question_bank_old",
+      "content": "用户没有完成旧版面试题库，把截止日推迟到第 42 天，但仍保留为当前面试题协作任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 36
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "previous_deadline_day": 36,
+        "deadline_day": 42,
+        "partial_progress": "基础能力题已初步整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 38,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_priority_001",
+      "content": "研发负责人反馈本月只优先招高级后端，算法和产品岗位可以延后。",
+      "state_before": {
+        "related_plan": "plan_jd_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.9,
+        "affects": "plan_jd_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 42,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_question_bank_old",
+      "content": "用户完成旧版面试题库，但确认三个岗位共用基础题会削弱高级后端岗位筛选力度。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.81,
+        "deadline_day": 42
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.81,
+        "deadline_day": 42,
+        "completed_day": 42,
+        "limitation": "共用基础题削弱高级后端筛选"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e015",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_jd_001",
+      "content": "用户将三岗位统一改写计划替换为高级后端 JD 优先计划，旧三岗位计划只保留为后续招聘池参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.88,
+        "deadline_day": 34,
+        "roles": ["后端", "算法", "产品"],
+        "sections": ["公司介绍", "职责描述", "任职要求"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 45,
+        "replaced_by": "plan_jd_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e016",
+      "day": 45,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_jd_002",
+      "content": "用户创建新的高级后端 JD 计划，优先明确分布式系统经验、性能优化能力、团队协作和面试流程。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.93,
+        "deadline_day": 78,
+        "replaces": "plan_jd_001",
+        "focus": ["分布式系统经验", "性能优化能力", "团队协作", "面试流程"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e017",
+      "day": 48,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_interview_001",
+      "content": "用户将多岗位通用题库计划替换为高级后端专项面试题计划，旧题库只保留为基础题参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 44,
+        "categories": ["基础能力", "项目经验", "岗位专项", "文化匹配"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 48,
+        "replaced_by": "plan_interview_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 48,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_interview_002",
+      "content": "用户创建新的高级后端面试题计划，重点覆盖系统设计、性能排查、代码 review 和协作判断。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.91,
+        "deadline_day": 82,
+        "replaces": "plan_interview_001",
+        "categories": ["系统设计", "性能排查", "代码 review", "协作判断"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e019",
+      "day": 52,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_jd_output_format",
+      "content": "用户把 JD 改写输出偏好从详细结构改成招聘协作简版，只保留岗位卖点、硬性要求、筛选风险、负责人和下一步。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_jd_structure",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "recruiting_brief",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "岗位优先级变化后需要快速同步业务方"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e020",
+      "day": 56,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_candidate_no_show_001",
+      "content": "一位候选人临时爽约，用户记录岗位、面试官和是否需要补约，但未改变高级后端 JD 主线。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.33,
+        "topic": "候选人爽约"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 60,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_senior_backend_jd",
+      "content": "用户创建高级后端 JD 定稿任务，需要明确岗位卖点、核心职责、硬性要求、加分项和面试流程。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 72
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 64,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_frontend_intern_old",
+      "content": "用户创建前端实习岗位 JD 快速补充任务，原本想顺手加入当前招聘批次。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 70
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e023",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_backend_interview_questions",
+      "content": "用户创建高级后端专项面试题任务，需要整理系统设计、性能排查、代码 review 和追问标准。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 84
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e024",
+      "day": 70,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_frontend_intern_old",
+      "content": "用户取消把前端实习岗位加入当前招聘批次的任务，决定先专注高级后端岗位。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.22,
+        "cancelled_day": 70,
+        "reason": "不属于本批核心招聘优先级"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e025",
+      "day": 72,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_senior_backend_jd",
+      "content": "用户完成高级后端 JD 定稿，确认岗位卖点、硬性要求和面试流程可以同步给业务方。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 72
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.9,
+        "deadline_day": 72,
+        "completed_day": 72,
+        "outputs": ["岗位卖点", "硬性要求", "面试流程"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e026",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_jd_current",
+      "content": "用户确认当前 JD 重点不是三岗位统一改写，也不是前端实习岗位，而是高级后端岗位的卖点、硬性要求和筛选风险。",
+      "state_before": {
+        "plan": "plan_jd_002",
+        "old_reference": "plan_jd_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "高级后端岗位卖点、硬性要求和筛选风险",
+        "not_current": "三岗位统一改写和前端实习岗位"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e027",
+      "day": 78,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_recruiting_review",
+      "content": "用户完成近期招聘材料复盘，确认当前重点是高级后端专项面试题、候选人评估表和业务方同步。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 33,
+        "next_due_day": 47
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 78,
+        "next_due_day": 92,
+        "current_focus": ["高级后端专项面试题", "候选人评估表", "业务方同步"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e028",
+      "day": 80,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_personal_schedule_001",
+      "content": "用户记录连续面试安排导致晚上休息被压缩，准备不要把低优先级岗位沟通排到周末。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.23,
+        "topic": "家庭与个人安排"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e029",
+      "day": 82,
+      "storyline_id": "sl_01",
+      "event_type": "add_constraint",
+      "target_id": "constraint_role_scope",
+      "content": "用户设置近期约束，本批招聘只处理高级后端岗位，其他临时岗位变化进入后续招聘池。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "constraint_type": "role_scope_lock",
+        "valid_until_day": 102
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e030",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_backend_interview_questions",
+      "content": "用户未完成高级后端专项面试题，把截止日推迟到第 94 天，但仍保留为当前面试题核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 84
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 84,
+        "deadline_day": 94,
+        "partial_progress": "系统设计和性能排查题已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e031",
+      "day": 84,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_candidate_scorecard",
+      "content": "用户创建候选人评估表任务，需要把系统设计、性能排查、协作沟通和风险项映射到评分标准。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 96
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "stable_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 84,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_recruiting_review",
+      "content": "用户完成最近一次招聘复盘，确认当前活跃事项是高级后端面试题、候选人评估表和岗位范围锁定。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 78,
+        "next_due_day": 92
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 84,
+        "next_due_day": 98,
+        "current_focus": ["高级后端面试题", "候选人评估表", "岗位范围锁定"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_jd_002", "plan_interview_002"],
+    "stale_plans": ["plan_jd_001", "plan_interview_001"],
+    "active_tasks": ["task_backend_interview_questions", "task_candidate_scorecard"],
+    "completed_tasks": ["task_jd_baseline", "task_question_bank_old", "task_senior_backend_jd"],
+    "cancelled_tasks": ["task_frontend_intern_old"],
+    "postponed_tasks": ["task_backend_interview_questions"],
+    "current_constraints": ["constraint_role_scope"],
+    "stable_preferences": ["pref_recruiting_record_style"],
+    "old_preferences": ["pref_jd_output_format:detailed_jd_structure"],
+    "updated_preferences": ["pref_jd_output_format:recruiting_brief"],
+    "important_not_urgent_tasks": ["task_question_bank_old", "task_candidate_scorecard"],
+    "urgent_low_value_tasks": ["task_frontend_intern_old"],
+    "noise_events": ["noise_role_change_001", "noise_internal_chat_001", "noise_candidate_no_show_001", "noise_personal_schedule_001"],
+    "hard_negative_sources": ["plan_jd_001", "plan_interview_001", "task_jd_baseline", "task_question_bank_old", "task_frontend_intern_old", "pref_jd_output_format:detailed_jd_structure", "noise_role_change_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

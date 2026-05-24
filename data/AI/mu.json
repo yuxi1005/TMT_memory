@@ -1,0 +1,322 @@
+[
+  {
+    "mu_id": "S01_mu_001",
+    "source_event_id": "e001",
+    "timestamp_day": 1,
+    "domain": "全局 / 风格",
+    "type": "stable_preference",
+    "role": "stable_preference",
+    "content": "用户偏好结构化步骤、可执行清单输出，并要求标注当前状态（待做、已做、先不管）与截止时间。",
+    "importance": 0.85
+  },
+  {
+    "mu_id": "S01_mu_002",
+    "source_event_id": "e002",
+    "timestamp_day": 2,
+    "domain": "课程项目",
+    "type": "plan",
+    "role": "stale_plan",
+    "content": "课程项目早期计划执行顺序：核心功能 -> 测试补充 -> 课程报告（截止第38天）。",
+    "importance": 0.86
+  },
+  {
+    "mu_id": "S01_mu_003",
+    "source_event_id": "e004",
+    "timestamp_day": 6,
+    "domain": "算法学习 / debug",
+    "type": "preference",
+    "role": "stale_preference",
+    "content": "用户 debug 时偏好接收包含报错原因、可能触发点和排查路径的详细解释版输出。",
+    "importance": 0.75
+  },
+  {
+    "mu_id": "S01_mu_004",
+    "source_event_id": "e005",
+    "timestamp_day": 8,
+    "domain": "课程项目",
+    "type": "todo",
+    "role": "completed_todo",
+    "content": "创建课程项目 API 模块初版实现任务（要求包含接口列表、错误处理、测试入口），截止第18天。",
+    "importance": 0.84
+  },
+  {
+    "mu_id": "S01_mu_005",
+    "source_event_id": "e006",
+    "timestamp_day": 10,
+    "domain": "作息与健康",
+    "type": "noise",
+    "role": "noise",
+    "content": "连续两晚熬夜打游戏，导致次日调试课程项目注意力下降，记录为效率评估偏误参考。",
+    "importance": 0.35
+  },
+  {
+    "mu_id": "S01_mu_006",
+    "source_event_id": "e009",
+    "timestamp_day": 18,
+    "domain": "课程项目",
+    "type": "status_update",
+    "role": "completed_todo",
+    "content": "API 模块初版已在第18天按时完成并收住，但遗留“两个边界条件测试”尚未补齐。",
+    "importance": 0.84
+  },
+  {
+    "mu_id": "S01_mu_007",
+    "source_event_id": "e011",
+    "timestamp_day": 23,
+    "domain": "社交与娱乐",
+    "type": "noise",
+    "role": "noise",
+    "content": "临时购物想法：想换一把机械键盘，纠结轴体、价格及宿舍噪声（低价值临时想法）。",
+    "importance": 0.22
+  },
+  {
+    "mu_id": "S01_mu_008",
+    "source_event_id": "e012",
+    "timestamp_day": 26,
+    "domain": "算法学习 / debug",
+    "type": "recurring_task_instance",
+    "role": "outdated_status",
+    "content": "第二次 debug 周复盘确认：API 模块早期报错已过期，排查时不应再作为入口。",
+    "importance": 0.70
+  },
+  {
+    "mu_id": "S01_mu_009",
+    "source_event_id": "e013",
+    "timestamp_day": 29,
+    "domain": "课程项目",
+    "type": "todo",
+    "role": "completed_todo",
+    "content": "创建课程报告草稿任务，要求按功能实现、测试结果、问题复盘搭建框架，原截止第40天。",
+    "importance": 0.81
+  },
+  {
+    "mu_id": "S01_mu_010",
+    "source_event_id": "e014",
+    "timestamp_day": 31,
+    "domain": "实习准备",
+    "type": "todo",
+    "role": "completed_todo",
+    "content": "完成旧版简历初稿（延期一天），此版本偏向课程作业描述，无法直接用于后续实习投递。",
+    "importance": 0.66
+  },
+  {
+    "mu_id": "S01_mu_011",
+    "source_event_id": "e015",
+    "timestamp_day": 34,
+    "domain": "实习准备",
+    "type": "unexpected_event",
+    "role": "status_update",
+    "content": "获得学长关键反馈：实习准备不能只刷题，必须把课程项目包装成可展示的工程经历，避免简历像作业。",
+    "importance": 0.86
+  },
+  {
+    "mu_id": "S01_mu_012",
+    "source_event_id": "e016",
+    "timestamp_day": 36,
+    "domain": "实习准备",
+    "type": "plan",
+    "role": "stale_plan",
+    "content": "废弃第4天创建的旧实习准备方案（原顺序：算法刷题 -> 项目经历整理 -> 简历修改）。",
+    "importance": 0.46
+  },
+  {
+    "mu_id": "S01_mu_013",
+    "source_event_id": "e017",
+    "timestamp_day": 36,
+    "domain": "实习准备",
+    "type": "plan",
+    "role": "current_plan",
+    "content": "启动新实习准备计划（项目展示优先）：项目亮点整理优先 -> 算法题补弱 -> 简历关键词（截止第65天）。",
+    "importance": 0.86
+  },
+  {
+    "mu_id": "S01_mu_014",
+    "source_event_id": "e018",
+    "timestamp_day": 38,
+    "domain": "课程项目",
+    "type": "plan",
+    "role": "current_plan",
+    "content": "调整课程项目计划大方向：关键 bug 修复优先 -> 测试补充 -> 课程报告（截止延至第55天）。",
+    "importance": 0.90
+  },
+  {
+    "mu_id": "S01_mu_015",
+    "source_event_id": "e019",
+    "timestamp_day": 40,
+    "domain": "课程项目",
+    "type": "todo",
+    "role": "completed_todo",
+    "content": "课程报告草稿任务因未能按期完成，延期到第50天，此时框架已完成，任务仍保持有效。",
+    "importance": 0.80
+  },
+  {
+    "mu_id": "S01_mu_016",
+    "source_event_id": "e020",
+    "timestamp_day": 43,
+    "domain": "算法学习 / debug",
+    "type": "preference",
+    "role": "updated_preference",
+    "content": "因临近展示时间紧迫，debug 输出偏好临时切换为“简版步骤清单”以快速定位，覆盖旧的详细版偏好。",
+    "importance": 0.85
+  },
+  {
+    "mu_id": "S01_mu_017",
+    "source_event_id": "e021",
+    "timestamp_day": 46,
+    "domain": "课程项目",
+    "type": "todo",
+    "role": "completed_todo",
+    "content": "创建课程项目展示 bug 修复任务，核心排查登录状态丢失和接口超时，截止第54天。",
+    "importance": 0.93
+  },
+  {
+    "mu_id": "S01_mu_018",
+    "source_event_id": "e022",
+    "timestamp_day": 49,
+    "domain": "社交与娱乐",
+    "type": "noise",
+    "role": "noise",
+    "content": "游戏限时活动开放想法，记录了想留一小时参加但担心影响次日调试的心理冲突。",
+    "importance": 0.28
+  },
+  {
+    "mu_id": "S01_mu_019",
+    "source_event_id": "e023",
+    "timestamp_day": 50,
+    "domain": "课程项目",
+    "type": "todo",
+    "role": "completed_todo",
+    "content": "完成课程报告草稿，包含功能说明、测试结果，剩余“小结部分待改写”作为遗留缺口。",
+    "importance": 0.80
+  },
+  {
+    "mu_id": "S01_mu_020",
+    "source_event_id": "e024",
+    "timestamp_day": 54,
+    "domain": "课程项目",
+    "type": "todo",
+    "role": "completed_todo",
+    "content": "完成展示前关键 bug 修复，其中“登录状态丢失”彻底解决，“接口超时优化”降为低优先级保留。",
+    "importance": 0.93
+  },
+  {
+    "mu_id": "S01_mu_021",
+    "source_event_id": "e025",
+    "timestamp_day": 56,
+    "domain": "实习准备",
+    "type": "todo",
+    "role": "completed_todo",
+    "content": "创建实习简历项目亮点整理任务，要求将课程项目改写为工程经历（技术难点/贡献/结果），截止第66天。",
+    "importance": 0.85
+  },
+  {
+    "mu_id": "S01_mu_022",
+    "source_event_id": "e027",
+    "timestamp_day": 58,
+    "domain": "实习准备",
+    "type": "todo",
+    "role": "cancelled_task",
+    "content": "主动取消原本在第57天计划的本周模拟面试任务，取消理由是“材料不齐，项目经历整理优先”。",
+    "importance": 0.35
+  },
+  {
+    "mu_id": "S01_mu_023",
+    "source_event_id": "e028",
+    "timestamp_day": 60,
+    "domain": "作息与健康",
+    "type": "constraint",
+    "role": "current_constraint",
+    "content": "实施近期硬性作息约束：凌晨 1 点后禁止打游戏或开启新调试，只能记录次日待办（有效至第75天）。",
+    "importance": 0.79
+  },
+  {
+    "mu_id": "S01_mu_024",
+    "source_event_id": "e029",
+    "timestamp_day": 62,
+    "domain": "算法学习 / debug",
+    "type": "todo",
+    "role": "active_todo",
+    "content": "创建动态规划薄弱题型复盘任务，计划理清状态定义、转移方程与常见错因，原截止第72天。",
+    "importance": 0.78
+  },
+  {
+    "mu_id": "S01_mu_025",
+    "source_event_id": "e030",
+    "timestamp_day": 64,
+    "domain": "实习准备",
+    "type": "status_update",
+    "role": "active_todo",
+    "content": "因下周突发内推材料提交窗口期，将“项目亮点整理任务”的优先级紧急上调为最高级别。",
+    "importance": 0.94
+  },
+  {
+    "mu_id": "S01_mu_026",
+    "source_event_id": "e031",
+    "timestamp_day": 66,
+    "domain": "实习准备",
+    "type": "todo",
+    "role": "active_todo",
+    "content": "项目亮点整理任务推迟到第70天，完成度汇报：背景和技术栈已写完，技术难点和贡献待补，仍为最高优先。",
+    "importance": 0.95
+  },
+  {
+    "mu_id": "S01_mu_027",
+    "source_event_id": "e032",
+    "timestamp_day": 68,
+    "domain": "课程项目",
+    "type": "noise",
+    "role": "noise",
+    "content": "临时课程抱怨：吐槽某门课临时更改验收规则引发焦虑，担心其挤占本周实习材料整理注意力。",
+    "importance": 0.31
+  },
+  {
+    "mu_id": "S01_mu_028",
+    "source_event_id": "e033",
+    "timestamp_day": 70,
+    "domain": "实习准备",
+    "type": "todo",
+    "role": "completed_todo",
+    "content": "彻底完成实习简历中的项目亮点整理，成功产出课程项目的技术难点、个人贡献与工程化结果说明。",
+    "importance": 0.95
+  },
+  {
+    "mu_id": "S01_mu_029",
+    "source_event_id": "e034",
+    "timestamp_day": 71,
+    "domain": "实习准备",
+    "type": "status_update",
+    "role": "status_update",
+    "content": "实习准备核心状态更新：项目亮点卡点已解决，当前最大缺口转移至“简历关键词与投递版本检查”。",
+    "importance": 0.88
+  },
+  {
+    "mu_id": "S01_mu_030",
+    "source_event_id": "e035",
+    "timestamp_day": 72,
+    "domain": "算法学习 / debug",
+    "type": "todo",
+    "role": "active_todo",
+    "content": "动态规划复盘任务延期至第78天，同时主动收窄近期考核范围，仅保留“两道高频题”作为低限度练习。",
+    "importance": 0.72
+  },
+  {
+    "mu_id": "S01_mu_031",
+    "source_event_id": "e036",
+    "timestamp_day": 74,
+    "domain": "实习准备",
+    "type": "todo",
+    "role": "active_todo",
+    "content": "创建新任务：简历关键词检查，要求对照目标岗位专门补充技术栈、项目指标以及生成实习投递版本，截止第80天。",
+    "importance": 0.88
+  },
+  {
+    "mu_id": "S01_mu_032",
+    "source_event_id": "e037",
+    "timestamp_day": 75,
+    "domain": "课程项目",
+    "type": "todo",
+    "role": "active_todo",
+    "content": "创建课程报告最终润色任务，硬性要求结构上把已完成实现、未优化的接口超时、测试限制分开陈述，截止第82天。",
+    "importance": 0.82
+  }
+]

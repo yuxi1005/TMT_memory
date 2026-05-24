@@ -1,0 +1,764 @@
+{
+  "user_id": "S05",
+  "timeline_id": "S05_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 96,
+    "length_days": 96,
+    "reason": "S05 是实验设计和问卷并行推进的硕士心理学学生，适合用 96 天稀疏时间跨度覆盖早期实验设计和稳定偏好、中期问卷方案替换与变量设计修正、近期统计分析和招募约束，同时保留情绪记录、人际关系和临时反思等生活噪音。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "实验设计与变量定义",
+      "domain": "实验设计",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "问卷方案与材料迭代",
+      "domain": "问卷",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "文献总结与统计分析准备",
+      "domain": "文献总结 / 统计分析",
+      "status": "mixed",
+      "derived_from_profile": ["agent_usage_style", "main_life_domains", "stable_preferences", "dynamic_preferences"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "情绪、人际关系与招募噪音",
+      "domain": "作息与健康 / 情绪压力 / 社交与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_research_workflow_001",
+      "content": "用户确立长期研究工作偏好，希望实验设计、问卷、统计分析和生活事项分开归档，并保留每项建议的依据和截止时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["实验设计", "问卷", "统计分析", "生活事项"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 3,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_experiment_001",
+      "content": "用户制定早期实验设计计划，准备先明确研究假设，再定义变量，最后设计实验流程。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 50,
+        "phase_order": ["研究假设", "变量定义", "实验流程"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["life_stage", "primary_goals"]
+    },
+    {
+      "event_id": "e003",
+      "day": 5,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_survey_001",
+      "content": "用户创建早期问卷方案，计划先复用旧量表条目，再补充少量自编题项。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 42,
+        "scope": "旧量表条目加少量自编题项"
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e004",
+      "day": 8,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_lit_summary_output",
+      "content": "用户记录文献总结偏好，初期希望 agent 输出详细版理论依据、变量定义和可引用结论。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_theory_notes",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 10,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_emotion_001",
+      "content": "用户记录一次和同学沟通后的低落情绪，担心晚上无法集中整理变量定义。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "情绪记录"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 13,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_hypothesis_matrix",
+      "content": "用户创建研究假设矩阵任务，需要把自变量、中介变量、因变量和预期方向分开列出。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 25
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 16,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_lit_review",
+      "content": "用户设置每两周复盘一次文献总结和变量设计待办，避免情绪记录和研究任务混在同一类条目里。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.72,
+        "interval_days": 14,
+        "next_due_day": 30
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 18,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_old_scale_items",
+      "content": "用户创建旧量表条目整理任务，准备筛出适合当前研究主题的题项并记录来源。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.79,
+        "deadline_day": 31
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 21,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_relationship_001",
+      "content": "用户记录和朋友之间的一次误会，反复整理情绪后推迟了问卷题项检查。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.31,
+        "topic": "人际关系"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e010",
+      "day": 25,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_hypothesis_matrix",
+      "content": "用户完成研究假设矩阵第一版，并标出两个变量关系仍缺少文献依据。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 25
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.87,
+        "deadline_day": 25,
+        "completed_day": 25,
+        "remaining_gap": "两个变量关系缺少文献依据"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e011",
+      "day": 30,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_lit_review",
+      "content": "用户完成第一次文献复盘，确认假设矩阵已完成，但变量操作化说明仍需要补充。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 30
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 30,
+        "next_due_day": 44,
+        "finding": "变量操作化说明不足"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e012",
+      "day": 31,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_old_scale_items",
+      "content": "用户完成旧量表条目整理，但发现部分题项和当前研究变量不完全匹配。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.79,
+        "deadline_day": 31
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.79,
+        "deadline_day": 31,
+        "completed_day": 31,
+        "limitation": "部分题项不匹配当前变量"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 36,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_survey_001",
+      "content": "导师反馈问卷不能简单复用旧量表，需要根据变量操作化重新调整题项和分量表结构。",
+      "state_before": {
+        "related_plan": "plan_survey_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.91,
+        "affects": "plan_survey_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 39,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_survey_001",
+      "content": "用户将旧量表复用方案替换为变量操作化导向问卷方案，旧方案只作为题项来源参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 42,
+        "scope": "旧量表条目加少量自编题项"
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.48,
+        "stale_day": 39,
+        "replaced_by": "plan_survey_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e015",
+      "day": 39,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_survey_002",
+      "content": "用户创建新的问卷方案，决定先按变量操作化重写题项，再安排预测试和信度检查。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.93,
+        "deadline_day": 75,
+        "replaces": "plan_survey_001",
+        "phase_order": ["题项重写", "预测试", "信度检查"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e016",
+      "day": 42,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_experiment_001",
+      "content": "用户把实验设计计划拆小，决定先完成变量操作化说明，再细化实验流程和招募标准。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 50,
+        "phase_order": ["研究假设", "变量定义", "实验流程"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "deadline_day": 82,
+        "priority_order": ["变量操作化说明", "实验流程", "招募标准"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences", "primary_goals"]
+    },
+    {
+      "event_id": "e017",
+      "day": 44,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_lit_review",
+      "content": "用户完成第二次文献复盘，把早期旧量表整理结果标为参考材料，不再作为当前问卷主方案。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 30,
+        "next_due_day": 44
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 44,
+        "next_due_day": 58,
+        "outdated_reference": "旧量表整理结果"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 46,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_survey_item_rewrite",
+      "content": "用户创建问卷题项重写任务，需要把每个题项对应到具体变量和理论依据。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.91,
+        "deadline_day": 61
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes", "stable_preferences"]
+    },
+    {
+      "event_id": "e019",
+      "day": 49,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_lit_summary_output",
+      "content": "用户把文献总结输出偏好从详细理论说明临时改成简版证据清单，以便先处理问卷重写截止时间。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_theory_notes",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_evidence_list",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "问卷重写截止时间临近"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e020",
+      "day": 52,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_reflection_001",
+      "content": "用户记录一次临时反思，觉得自己最近把研究压力和人际情绪混在一起处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.29,
+        "topic": "临时反思"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e021",
+      "day": 55,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_operational_definition",
+      "content": "用户创建变量操作化说明任务，需要把每个变量的定义、测量方式和排除标准写清楚。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 70
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e022",
+      "day": 58,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_lit_review",
+      "content": "用户完成第三次文献复盘，确认简版证据清单适合当前赶进度，但后续论文写作仍需恢复详细依据。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 44,
+        "next_due_day": 58
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 58,
+        "next_due_day": 72,
+        "finding": "简版证据清单适合短期赶进度"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e023",
+      "day": 61,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_survey_item_rewrite",
+      "content": "用户未完成全部问卷题项重写，把截止日推迟到第 68 天，但仍保留为当前问卷主任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.91,
+        "deadline_day": 61
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "previous_deadline_day": 61,
+        "deadline_day": 68,
+        "partial_progress": "核心变量题项已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e024",
+      "day": 63,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_recruitment_anxiety_001",
+      "content": "用户记录担心实验招募人数不够，反复检查群发招募文案和同学回复。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.38,
+        "topic": "实验招募焦虑"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e025",
+      "day": 66,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_stats_plan_old",
+      "content": "用户创建早期统计分析计划任务，原本打算先做描述统计和简单相关分析。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.6,
+        "deadline_day": 74
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["main_life_domains", "primary_goals"]
+    },
+    {
+      "event_id": "e026",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_survey_item_rewrite",
+      "content": "用户完成问卷题项重写，形成按变量分组的题项表和需要预测试验证的条目清单。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "deadline_day": 68
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.9,
+        "deadline_day": 68,
+        "completed_day": 68,
+        "outputs": ["按变量分组题项表", "预测试条目清单"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e027",
+      "day": 70,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_operational_definition",
+      "content": "用户把变量操作化说明推迟到第 78 天，近期先保留核心变量和排除标准草稿。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 70
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.88,
+        "previous_deadline_day": 70,
+        "deadline_day": 78,
+        "partial_progress": "核心变量和排除标准草稿已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e028",
+      "day": 72,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_emotion_log_001",
+      "content": "用户设置近期约束，晚上处理研究任务时不再连续整理情绪记录，只把情绪条目移到第二天单独处理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "separate_emotion_log_from_research_work",
+        "valid_until_day": 96
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e029",
+      "day": 74,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_stats_plan_old",
+      "content": "用户取消早期简单相关分析计划，决定等预测试数据回来后再按变量结构制定统计方案。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.6,
+        "deadline_day": 74
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.36,
+        "cancelled_day": 74,
+        "reason": "预测试数据尚未回来"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e030",
+      "day": 76,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_survey_pilot",
+      "content": "用户创建问卷预测试任务，需要招募少量被试检查题项理解度和答题时长。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 88
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e031",
+      "day": 78,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_operational_definition",
+      "content": "用户完成变量操作化说明，明确每个变量的定义、测量方式和排除标准。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.88,
+        "deadline_day": 78
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.88,
+        "deadline_day": 78,
+        "completed_day": 78
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e032",
+      "day": 82,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_experiment_001",
+      "content": "用户确认实验设计当前缺口从变量定义转为实验流程细节和招募标准。",
+      "state_before": {
+        "plan": "plan_experiment_001",
+        "main_blocker": "变量操作化说明"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "实验流程细节和招募标准",
+        "resolved_blocker": "变量操作化说明"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e033",
+      "day": 84,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_stats_plan_current",
+      "content": "用户创建新的统计分析准备任务，需要根据预测试结果规划信度、效度和回归分析步骤。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 98
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["main_life_domains", "primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e034",
+      "day": 86,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_shopping_001",
+      "content": "用户临时记录想买一本研究方法工具书和一盏台灯，准备周末再比较价格。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.23,
+        "topic": "临时购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e035",
+      "day": 88,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_survey_pilot",
+      "content": "用户未完成问卷预测试招募，把截止日推迟到第 94 天，但仍保留为当前问卷主任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.89,
+        "deadline_day": 88
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.9,
+        "previous_deadline_day": 88,
+        "deadline_day": 94,
+        "partial_progress": "已有部分被试回复"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e036",
+      "day": 92,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_recruitment_criteria",
+      "content": "用户创建实验招募标准细化任务，需要写清纳入标准、排除标准和招募渠道。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 100
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "main_life_domains", "stable_preferences"]
+    },
+    {
+      "event_id": "e037",
+      "day": 96,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_lit_gap_summary",
+      "content": "用户创建文献缺口总结任务，准备把变量操作化、问卷预测试和统计分析计划之间的关系写清楚。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 104
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["agent_usage_style", "primary_goals", "stable_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_experiment_001", "plan_survey_002"],
+    "stale_plans": ["plan_survey_001"],
+    "active_tasks": ["task_survey_pilot", "task_stats_plan_current", "task_recruitment_criteria", "task_lit_gap_summary"],
+    "completed_tasks": ["task_hypothesis_matrix", "task_old_scale_items", "task_survey_item_rewrite", "task_operational_definition"],
+    "cancelled_tasks": ["task_stats_plan_old"],
+    "postponed_tasks": ["task_survey_pilot"],
+    "current_constraints": ["constraint_emotion_log_001"],
+    "stable_preferences": ["pref_research_workflow_001"],
+    "old_preferences": ["pref_lit_summary_output:detailed_theory_notes"],
+    "updated_preferences": ["pref_lit_summary_output:brief_evidence_list"],
+    "important_not_urgent_tasks": ["task_stats_plan_old"],
+    "urgent_low_value_tasks": ["noise_shopping_001"],
+    "noise_events": ["noise_emotion_001", "noise_relationship_001", "noise_reflection_001", "noise_recruitment_anxiety_001", "noise_shopping_001"],
+    "hard_negative_sources": ["plan_survey_001", "task_old_scale_items", "task_stats_plan_old", "pref_lit_summary_output:detailed_theory_notes", "noise_shopping_001", "recur_lit_review:day44_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

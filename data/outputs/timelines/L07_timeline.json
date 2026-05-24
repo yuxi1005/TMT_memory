@@ -1,0 +1,711 @@
+{
+  "user_id": "L07",
+  "timeline_id": "L07_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 140,
+    "length_days": 140,
+    "reason": "L07 是健身减脂用户，饮食、训练、体重复盘和社交聚餐干扰会跨数月持续调整，因此选择 140 天稀疏时间跨度。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "饮食执行与热量策略调整",
+      "domain": "饮食 / 体重",
+      "status": "mixed",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "likely_plan_changes"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "训练计划拆分与替换",
+      "domain": "训练",
+      "status": "active",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "体重复盘与记录格式维护",
+      "domain": "体重 / agent 使用",
+      "status": "active",
+      "derived_from_profile": ["agent_usage_style", "stable_preferences", "dynamic_preferences", "recurring_tasks"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "临时暴食、社交聚餐与生活噪音",
+      "domain": "家庭事务 / 消费与娱乐 / 健康与情绪",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_fitness_record_style",
+      "content": "用户确立长期健身记录偏好，希望饮食、训练、体重、社交聚餐和一次性想法分开归档，并保留时间、地点、对象和当前状态。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["饮食", "训练", "体重", "社交聚餐", "一次性想法"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_diet_001",
+      "content": "用户制定早期饮食计划，准备先执行低碳水晚餐、固定早餐和外卖减半三项策略。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 48,
+        "phase_order": ["低碳水晚餐", "固定早餐", "外卖减半"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "life_stage"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_training_001",
+      "content": "用户创建早期训练计划，决定每周四练，包含两次力量训练、一次有氧和一次核心训练。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 60,
+        "schedule": ["力量训练两次", "有氧一次", "核心训练一次"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_02",
+      "event_type": "add_preference",
+      "target_id": "pref_training_output_format",
+      "content": "用户记录训练计划输出偏好，初期希望 agent 给详细版训练表，包含动作、组数、重量、休息时间和替代动作。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_training_table",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 14,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_binge_001",
+      "content": "用户晚上临时吃了高热量零食，记录发生时间、情绪原因和第二天是否需要恢复正常早餐。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.36,
+        "topic": "临时暴食"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 18,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_meal_baseline",
+      "content": "用户创建饮食基线整理任务，需要连续一周记录早餐、午餐、晚餐、加餐和饥饿感。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 31
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e007",
+      "day": 21,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_weight_diet_review",
+      "content": "用户设置每两周复盘一次体重和饮食记录，把固定任务、暴食记录、训练反馈和临时购物分开整理。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.75,
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 26,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_training_split_old",
+      "content": "用户创建旧版四练拆分任务，原计划把腿、胸背、肩臂和有氧分别安排到四天。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 40
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e009",
+      "day": 31,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_meal_baseline",
+      "content": "用户完成饮食基线整理，发现晚餐碳水过低时第二天训练表现会明显下降。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.82,
+        "deadline_day": 31
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.82,
+        "deadline_day": 31,
+        "completed_day": 31,
+        "finding": "晚餐碳水过低会影响第二天训练表现"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e010",
+      "day": 35,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_weight_diet_review",
+      "content": "用户完成第一次体重饮食复盘，确认临时暴食记录需要和长期饮食计划分开，不直接改动主计划。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 14,
+        "next_due_day": 35
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49,
+        "finding": "暴食记录不直接替代长期饮食计划"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e011",
+      "day": 40,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_training_split_old",
+      "content": "用户完成旧版四练拆分，但确认肩臂单独一天对当前时间安排不现实。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.78,
+        "deadline_day": 40
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.78,
+        "deadline_day": 40,
+        "completed_day": 40,
+        "limitation": "肩臂单独一天不现实"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e012",
+      "day": 45,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_scale_anxiety_001",
+      "content": "用户早上看到体重短期上升，记录睡眠、前一天盐分和是否需要暂停频繁称重。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "体重焦虑"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e013",
+      "day": 50,
+      "storyline_id": "sl_01",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_energy_001",
+      "content": "用户发现低碳水晚餐让训练日精神不足，需要把饮食重点从低碳水改为训练日前后能量稳定。",
+      "state_before": {
+        "related_plan": "plan_diet_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.88,
+        "affects": "plan_diet_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 56,
+      "storyline_id": "sl_01",
+      "event_type": "replace_plan",
+      "target_id": "plan_diet_001",
+      "content": "用户将低碳水优先饮食计划替换为训练日前后能量稳定计划，旧计划只保留为早期尝试记录。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.86,
+        "deadline_day": 48,
+        "phase_order": ["低碳水晚餐", "固定早餐", "外卖减半"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.44,
+        "stale_day": 56,
+        "replaced_by": "plan_diet_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e015",
+      "day": 56,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_diet_002",
+      "content": "用户创建新的饮食计划，决定训练日前后保留主食，非训练日控制零食和外卖频率。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 118,
+        "replaces": "plan_diet_001",
+        "phase_order": ["训练日前后保留主食", "非训练日控制零食", "外卖频率限制"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e016",
+      "day": 60,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_training_001",
+      "content": "用户将旧版四练训练计划复盘截止日顺延到第 74 天，因为近期工作日晚上训练时间不稳定。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 60
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.82,
+        "previous_deadline_day": 60,
+        "deadline_day": 74,
+        "blocking_items": ["工作日晚上训练时间不稳定"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e017",
+      "day": 66,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_social_dinner_001",
+      "content": "用户临时记录周末有社交聚餐，准备提前看菜单并决定是否把当天训练放到上午。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.32,
+        "topic": "社交聚餐"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e018",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_training_001",
+      "content": "用户将每周四练计划替换为三练全身训练加短有氧计划，旧四练方案不再作为当前训练安排。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.82,
+        "deadline_day": 74,
+        "schedule": ["力量训练两次", "有氧一次", "核心训练一次"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.43,
+        "stale_day": 74,
+        "replaced_by": "plan_training_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e019",
+      "day": 74,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_training_002",
+      "content": "用户创建新的训练计划，改为每周三次全身训练，训练后补十五分钟低强度有氧。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 132,
+        "replaces": "plan_training_001",
+        "schedule": ["全身训练三次", "训练后低强度有氧"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e020",
+      "day": 80,
+      "storyline_id": "sl_02",
+      "event_type": "revise_preference",
+      "target_id": "pref_training_output_format",
+      "content": "用户把训练计划输出偏好从详细训练表改成简版行动清单，只保留当天动作、目标重量、完成情况和下一次调整。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_training_table",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_action_checklist",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "训练安排临近，需要更容易执行"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e021",
+      "day": 86,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_training_day_meal_prep",
+      "content": "用户创建训练日备餐任务，需要准备训练前主食、训练后蛋白质和备用低热量加餐。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 104
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e022",
+      "day": 92,
+      "storyline_id": "sl_04",
+      "event_type": "create_task",
+      "target_id": "task_buy_shoes_old",
+      "content": "用户创建购买训练鞋任务，原本想趁促销直接下单一双价格较高的新款训练鞋。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 99
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e023",
+      "day": 99,
+      "storyline_id": "sl_04",
+      "event_type": "cancel_task",
+      "target_id": "task_buy_shoes_old",
+      "content": "用户取消购买新款训练鞋任务，决定先用现有装备完成当前三练计划，不让促销信息打断训练主线。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.46,
+        "deadline_day": 99
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.24,
+        "cancelled_day": 99,
+        "reason": "装备购物低于当前训练执行优先级"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e024",
+      "day": 104,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_training_day_meal_prep",
+      "content": "用户未完成训练日备餐任务，把截止日推迟到第 116 天，但仍保留为当前饮食计划的核心待办。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 104
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "previous_deadline_day": 104,
+        "deadline_day": 116,
+        "partial_progress": "训练后蛋白质方案已整理"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    },
+    {
+      "event_id": "e025",
+      "day": 108,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_weight_diet_review",
+      "content": "用户完成近期体重饮食复盘，确认当前重点是训练日备餐、三练全身训练和减少频繁称重。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 35,
+        "next_due_day": 49
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 108,
+        "next_due_day": 122,
+        "current_focus": ["训练日备餐", "三练全身训练", "减少频繁称重"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e026",
+      "day": 112,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_party_food_001",
+      "content": "用户记录一次家庭聚餐后的体重波动，标注前一天盐分高和睡眠偏少，不把它当成真实增脂。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.33,
+        "topic": "体重焦虑和聚餐"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e027",
+      "day": 116,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_training_day_meal_prep",
+      "content": "用户完成训练日备餐任务，确定训练前主食、训练后蛋白质和低热量加餐的固定组合。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.87,
+        "deadline_day": 116
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.87,
+        "deadline_day": 116,
+        "completed_day": 116,
+        "outputs": ["训练前主食", "训练后蛋白质", "低热量加餐"]
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e028",
+      "day": 120,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_full_body_log",
+      "content": "用户创建三练全身训练记录任务，需要记录每次动作、目标重量、实际完成和疲劳感。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 144
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e029",
+      "day": 124,
+      "storyline_id": "sl_03",
+      "event_type": "add_constraint",
+      "target_id": "constraint_scale_frequency",
+      "content": "用户设置近期约束，每周只看三次体重趋势，不因单日波动临时改变饮食或训练计划。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "limit_scale_check_frequency",
+        "valid_until_day": 160
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e030",
+      "day": 128,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_entertainment_001",
+      "content": "用户临时记录周末想看电影并吃爆米花，准备当天提前安排正餐和步行。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.21,
+        "topic": "临时娱乐想法"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 132,
+      "storyline_id": "sl_02",
+      "event_type": "add_status_update",
+      "target_id": "status_training_current",
+      "content": "用户确认当前训练重点不是旧四练拆分，而是三练全身训练、训练记录和恢复情况。",
+      "state_before": {
+        "plan": "plan_training_002",
+        "old_reference": "plan_training_001"
+      },
+      "state_after": {
+        "status": "current",
+        "main_focus": "三练全身训练、训练记录和恢复情况",
+        "not_current": "旧四练拆分"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e032",
+      "day": 134,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_weekend_meal_plan",
+      "content": "用户创建周末饮食安排任务，需要为聚餐日设置正餐、加餐和第二天恢复方案。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.79,
+        "deadline_day": 148
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e033",
+      "day": 136,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_weight_diet_review",
+      "content": "用户完成最近一次体重饮食复盘，确认当前活跃事项是三练全身训练记录、周末饮食安排和体重查看频率约束。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 108,
+        "next_due_day": 122
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 136,
+        "next_due_day": 150,
+        "current_focus": ["三练全身训练记录", "周末饮食安排", "体重查看频率约束"]
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e034",
+      "day": 140,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_full_body_log",
+      "content": "用户未完成三练全身训练记录，把截止日推迟到第 152 天，但仍保留为当前训练计划的活跃任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.84,
+        "deadline_day": 144
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.85,
+        "previous_deadline_day": 144,
+        "deadline_day": 152,
+        "partial_progress": "已记录 2 次全身训练"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "primary_goals"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_diet_002", "plan_training_002"],
+    "stale_plans": ["plan_diet_001", "plan_training_001"],
+    "active_tasks": ["task_full_body_log", "task_weekend_meal_plan"],
+    "completed_tasks": ["task_meal_baseline", "task_training_split_old", "task_training_day_meal_prep"],
+    "cancelled_tasks": ["task_buy_shoes_old"],
+    "postponed_tasks": ["task_full_body_log"],
+    "current_constraints": ["constraint_scale_frequency"],
+    "stable_preferences": ["pref_fitness_record_style"],
+    "old_preferences": ["pref_training_output_format:detailed_training_table"],
+    "updated_preferences": ["pref_training_output_format:brief_action_checklist"],
+    "important_not_urgent_tasks": ["task_training_split_old", "task_weekend_meal_plan"],
+    "urgent_low_value_tasks": ["task_buy_shoes_old"],
+    "noise_events": ["noise_binge_001", "noise_scale_anxiety_001", "noise_social_dinner_001", "noise_party_food_001", "noise_entertainment_001"],
+    "hard_negative_sources": ["plan_diet_001", "plan_training_001", "task_meal_baseline", "task_training_split_old", "task_buy_shoes_old", "pref_training_output_format:detailed_training_table", "noise_binge_001"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

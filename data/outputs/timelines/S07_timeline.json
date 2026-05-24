@@ -1,0 +1,771 @@
+{
+  "user_id": "S07",
+  "timeline_id": "S07_latent_world_timeline_v1",
+  "time_span": {
+    "start_day": 1,
+    "end_day": 140,
+    "length_days": 140,
+    "reason": "S07 是实验记录和论文投稿并行推进的生物学博士生，实验周期和投稿准备都较长，因此选择 140 天稀疏时间跨度，覆盖早期实验计划、旧投稿方案、中期实验失败与方案替换、近期补实验和投稿材料任务。"
+  },
+  "storylines": [
+    {
+      "storyline_id": "sl_01",
+      "name": "实验记录与补实验推进",
+      "domain": "实验记录",
+      "status": "active",
+      "derived_from_profile": ["life_stage", "primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "storyline_id": "sl_02",
+      "name": "论文投稿方案与结果解释",
+      "domain": "论文投稿",
+      "status": "mixed",
+      "derived_from_profile": ["primary_goals", "dynamic_preferences", "likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "storyline_id": "sl_03",
+      "name": "组会汇报与实验计划输出偏好",
+      "domain": "组会 / 实验计划",
+      "status": "mixed",
+      "derived_from_profile": ["agent_usage_style", "main_life_domains", "stable_preferences", "dynamic_preferences"]
+    },
+    {
+      "storyline_id": "sl_04",
+      "name": "实验失败、设备预约与作息噪音",
+      "domain": "作息与健康 / 情绪压力 / 社交与娱乐",
+      "status": "mixed",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains", "agent_usage_level"]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "e001",
+      "day": 1,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_lab_workflow_001",
+      "content": "用户确立长期工作偏好，希望实验记录、论文投稿、组会和生活事项分开归档，并保留实验依据、当前状态和截止时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "stability": "stable",
+        "currentness": "current",
+        "applies_to": ["实验记录", "论文投稿", "组会", "生活事项"]
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["stable_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e002",
+      "day": 4,
+      "storyline_id": "sl_01",
+      "event_type": "create_plan",
+      "target_id": "plan_experiment_001",
+      "content": "用户制定早期实验记录推进计划，准备先补齐培养条件记录，再整理 Western blot 结果，最后汇总重复实验差异。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 65,
+        "phase_order": ["培养条件记录", "Western blot 结果", "重复实验差异"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["life_stage", "primary_goals"]
+    },
+    {
+      "event_id": "e003",
+      "day": 7,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_submission_001",
+      "content": "用户创建早期论文投稿计划，打算先按现有结果写 Discussion，再补图注和投稿信。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 82,
+        "phase_order": ["Discussion 初稿", "图注", "投稿信"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e004",
+      "day": 10,
+      "storyline_id": "sl_03",
+      "event_type": "add_preference",
+      "target_id": "pref_experiment_plan_output",
+      "content": "用户记录实验计划输出偏好，初期希望 agent 给详细版步骤、关键试剂、对照组和失败排查依据。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "format": "detailed_protocol_notes",
+        "stability": "situational",
+        "currentness": "current"
+      },
+      "retrieval_role": "stable_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e005",
+      "day": 12,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_late_lab_001",
+      "content": "用户记录连续两晚等仪器到很晚，第二天整理实验记录时明显犯困。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.34,
+        "topic": "作息"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e006",
+      "day": 16,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_culture_log_cleanup",
+      "content": "用户创建细胞培养条件记录清理任务，需要把批次、传代次数、试剂批号和异常情况补齐。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 30
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e007",
+      "day": 20,
+      "storyline_id": "sl_03",
+      "event_type": "create_recurring_task",
+      "target_id": "recur_result_review",
+      "content": "用户设置每三周复盘一次实验结果解释和论文投稿待办，避免失败实验的临时记录混入当前结论。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.74,
+        "interval_days": 21,
+        "next_due_day": 41
+      },
+      "retrieval_role": "recurring_task",
+      "derived_from_profile": ["recurring_tasks", "stable_preferences"]
+    },
+    {
+      "event_id": "e008",
+      "day": 24,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_discussion_old",
+      "content": "用户创建 Discussion 初稿任务，准备用现有阳性结果解释核心机制。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 45
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e009",
+      "day": 28,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_reagent_order_001",
+      "content": "用户记录抗体库存不足，需要临时比较两个供应商的到货时间和批号稳定性。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.31,
+        "topic": "试剂采购"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e010",
+      "day": 30,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_culture_log_cleanup",
+      "content": "用户完成培养条件记录清理，确认两个异常批次需要在后续结果解释中单独标注。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 30
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.86,
+        "deadline_day": 30,
+        "completed_day": 30,
+        "remaining_gap": "两个异常批次需单独标注"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e011",
+      "day": 37,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_wb_result_table",
+      "content": "用户创建 Western blot 结果表整理任务，需要把膜号、曝光时间、归一化方法和重复次数统一到同一张表。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 55
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "recurring_tasks"]
+    },
+    {
+      "event_id": "e012",
+      "day": 41,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_result_review",
+      "content": "用户完成第一次结果复盘，确认培养记录已补齐，但 Western blot 结果表仍缺少两次重复。",
+      "state_before": {
+        "status": "active",
+        "interval_days": 21,
+        "next_due_day": 41
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 41,
+        "next_due_day": 62,
+        "finding": "Western blot 结果表缺少两次重复"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["recurring_tasks", "primary_goals"]
+    },
+    {
+      "event_id": "e013",
+      "day": 45,
+      "storyline_id": "sl_02",
+      "event_type": "complete_task",
+      "target_id": "task_discussion_old",
+      "content": "用户完成 Discussion 初稿，但发现它过度依赖早期阳性结果，对异常批次和阴性重复解释不足。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.8,
+        "deadline_day": 45
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.8,
+        "deadline_day": 45,
+        "completed_day": 45,
+        "limitation": "过度依赖早期阳性结果"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["likely_hard_negatives", "primary_goals"]
+    },
+    {
+      "event_id": "e014",
+      "day": 52,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_failed_repeat_001",
+      "content": "用户记录一次关键重复实验失败，怀疑是细胞状态和试剂批号同时影响了结果。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.4,
+        "topic": "实验失败"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e015",
+      "day": 55,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_wb_result_table",
+      "content": "用户没有完成 Western blot 结果表，把截止日推迟到第 65 天，但仍保留为当前实验记录核心任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.87,
+        "deadline_day": 55
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.88,
+        "previous_deadline_day": 55,
+        "deadline_day": 65,
+        "partial_progress": "已有三次重复结果"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e016",
+      "day": 60,
+      "storyline_id": "sl_02",
+      "event_type": "unexpected_event",
+      "target_id": "feedback_submission_001",
+      "content": "导师反馈现有投稿方案过早写结论，需要先补失败重复的解释和关键对照实验。",
+      "state_before": {
+        "related_plan": "plan_submission_001",
+        "status": "current"
+      },
+      "state_after": {
+        "status": "action_required",
+        "importance": 0.92,
+        "affects": "plan_submission_001"
+      },
+      "retrieval_role": "current_state_seed",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e017",
+      "day": 62,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_result_review",
+      "content": "用户完成第二次结果复盘，把早期 Discussion 初稿标为旧参考，不再作为当前投稿主线。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 41,
+        "next_due_day": 62
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 62,
+        "next_due_day": 83,
+        "outdated_reference": "早期 Discussion 初稿"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e018",
+      "day": 65,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_wb_result_table",
+      "content": "用户完成 Western blot 结果表，标出两次异常重复和需要补做的关键对照。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.88,
+        "deadline_day": 65
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.88,
+        "deadline_day": 65,
+        "completed_day": 65,
+        "remaining_gap": "关键对照需补做"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e019",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "replace_plan",
+      "target_id": "plan_submission_001",
+      "content": "用户将早期投稿方案替换为补实验后投稿方案，旧方案只保留为写作参考。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.84,
+        "deadline_day": 82,
+        "phase_order": ["Discussion 初稿", "图注", "投稿信"]
+      },
+      "state_after": {
+        "status": "stale",
+        "importance": 0.46,
+        "stale_day": 68,
+        "replaced_by": "plan_submission_002"
+      },
+      "retrieval_role": "stale_plan",
+      "derived_from_profile": ["likely_plan_changes", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e020",
+      "day": 68,
+      "storyline_id": "sl_02",
+      "event_type": "create_plan",
+      "target_id": "plan_submission_002",
+      "content": "用户创建新的补实验后投稿计划，决定先完成关键对照，再重写结果解释和图注。",
+      "state_before": null,
+      "state_after": {
+        "status": "current",
+        "importance": 0.94,
+        "deadline_day": 126,
+        "replaces": "plan_submission_001",
+        "phase_order": ["关键对照", "结果解释", "图注重写"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes"]
+    },
+    {
+      "event_id": "e021",
+      "day": 72,
+      "storyline_id": "sl_03",
+      "event_type": "revise_preference",
+      "target_id": "pref_experiment_plan_output",
+      "content": "用户把实验计划输出偏好从详细方案临时改为简版执行清单，以便先安排关键对照实验和设备预约。",
+      "state_before": {
+        "status": "active",
+        "format": "detailed_protocol_notes",
+        "currentness": "old",
+        "stability": "situational"
+      },
+      "state_after": {
+        "status": "active",
+        "format": "brief_execution_checklist",
+        "currentness": "current",
+        "stability": "temporary",
+        "reason": "关键对照实验需要快速排期"
+      },
+      "retrieval_role": "updated_preference",
+      "derived_from_profile": ["dynamic_preferences", "agent_usage_style"]
+    },
+    {
+      "event_id": "e022",
+      "day": 76,
+      "storyline_id": "sl_01",
+      "event_type": "revise_plan",
+      "target_id": "plan_experiment_001",
+      "content": "用户把实验记录计划拆小，决定先补关键对照实验，再处理失败重复解释和组会汇报图。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.9,
+        "deadline_day": 65,
+        "phase_order": ["培养条件记录", "Western blot 结果", "重复实验差异"]
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.93,
+        "deadline_day": 118,
+        "priority_order": ["关键对照实验", "失败重复解释", "组会汇报图"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "dynamic_preferences", "primary_goals"]
+    },
+    {
+      "event_id": "e023",
+      "day": 80,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_control_experiment",
+      "content": "用户创建关键对照实验任务，需要确认细胞状态、抗体批号、阴性对照和设备预约时间。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.94,
+        "deadline_day": 104
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "likely_plan_changes", "stable_preferences"]
+    },
+    {
+      "event_id": "e024",
+      "day": 83,
+      "storyline_id": "sl_03",
+      "event_type": "complete_recurring_task_instance",
+      "target_id": "recur_result_review",
+      "content": "用户完成第三次结果复盘，确认旧投稿计划中的图注顺序已过期，需要按补实验结果重排。",
+      "state_before": {
+        "status": "active",
+        "last_completed_day": 62,
+        "next_due_day": 83
+      },
+      "state_after": {
+        "status": "active",
+        "last_completed_day": 83,
+        "next_due_day": 104,
+        "outdated_reference": "旧投稿计划图注顺序"
+      },
+      "retrieval_role": "outdated_status",
+      "derived_from_profile": ["recurring_tasks", "likely_hard_negatives"]
+    },
+    {
+      "event_id": "e025",
+      "day": 88,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_equipment_booking_001",
+      "content": "用户记录显影仪预约被别人占用，只能把实验时间改到周六上午。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.35,
+        "topic": "设备预约"
+      },
+      "retrieval_role": "noise",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e026",
+      "day": 94,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_group_meeting_slides_old",
+      "content": "用户创建组会汇报旧版图稿任务，原计划沿用早期阳性结果展示主线。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 108
+      },
+      "retrieval_role": "important_not_urgent_task",
+      "derived_from_profile": ["main_life_domains", "recurring_tasks"]
+    },
+    {
+      "event_id": "e027",
+      "day": 100,
+      "storyline_id": "sl_04",
+      "event_type": "add_constraint",
+      "target_id": "constraint_late_lab_001",
+      "content": "用户设置近期作息约束，晚上 11 点后不再安排需要长时间等待仪器的实验，只允许记录次日待办。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.8,
+        "constraint_type": "late_lab_limit",
+        "valid_until_day": 140
+      },
+      "retrieval_role": "current_constraint",
+      "derived_from_profile": ["typical_noise_sources", "primary_goals", "main_life_domains"]
+    },
+    {
+      "event_id": "e028",
+      "day": 104,
+      "storyline_id": "sl_01",
+      "event_type": "postpone_task",
+      "target_id": "task_control_experiment",
+      "content": "用户未完成关键对照实验，把截止日推迟到第 114 天，但仍保留为当前最高优先级实验任务。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.94,
+        "deadline_day": 104
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.95,
+        "previous_deadline_day": 104,
+        "deadline_day": 114,
+        "partial_progress": "阴性对照和抗体批号已确认"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "typical_noise_sources"]
+    },
+    {
+      "event_id": "e029",
+      "day": 106,
+      "storyline_id": "sl_03",
+      "event_type": "cancel_task",
+      "target_id": "task_group_meeting_slides_old",
+      "content": "用户取消旧版组会图稿任务，决定等关键对照结果出来后再重新组织展示主线。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.62,
+        "deadline_day": 108
+      },
+      "state_after": {
+        "status": "cancelled",
+        "importance": 0.38,
+        "cancelled_day": 106,
+        "reason": "旧阳性结果主线不再可靠"
+      },
+      "retrieval_role": "cancelled_task",
+      "derived_from_profile": ["likely_hard_negatives", "dynamic_preferences"]
+    },
+    {
+      "event_id": "e030",
+      "day": 110,
+      "storyline_id": "sl_04",
+      "event_type": "introduce_noise",
+      "target_id": "noise_headphones_001",
+      "content": "用户临时记录想买一副降噪耳机，准备周末比较价格和实验室佩戴舒适度。",
+      "state_before": null,
+      "state_after": {
+        "status": "noise",
+        "importance": 0.22,
+        "topic": "临时购物"
+      },
+      "retrieval_role": "urgent_low_value_task",
+      "derived_from_profile": ["typical_noise_sources", "main_life_domains"]
+    },
+    {
+      "event_id": "e031",
+      "day": 114,
+      "storyline_id": "sl_01",
+      "event_type": "complete_task",
+      "target_id": "task_control_experiment",
+      "content": "用户完成关键对照实验，确认阴性对照成立，但仍需要补一张重复实验统计图。",
+      "state_before": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.95,
+        "deadline_day": 114
+      },
+      "state_after": {
+        "status": "completed",
+        "importance": 0.95,
+        "deadline_day": 114,
+        "completed_day": 114,
+        "remaining_gap": "重复实验统计图"
+      },
+      "retrieval_role": "completed_todo",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e032",
+      "day": 118,
+      "storyline_id": "sl_01",
+      "event_type": "add_status_update",
+      "target_id": "status_experiment_001",
+      "content": "用户确认实验记录当前缺口从关键对照转为失败重复解释和统计图整理。",
+      "state_before": {
+        "plan": "plan_experiment_001",
+        "main_blocker": "关键对照实验"
+      },
+      "state_after": {
+        "status": "current",
+        "main_blocker": "失败重复解释和统计图整理",
+        "resolved_blocker": "关键对照实验"
+      },
+      "retrieval_role": "status_update",
+      "derived_from_profile": ["primary_goals", "likely_task_states"]
+    },
+    {
+      "event_id": "e033",
+      "day": 122,
+      "storyline_id": "sl_02",
+      "event_type": "create_task",
+      "target_id": "task_result_interpretation_rewrite",
+      "content": "用户创建结果解释重写任务，需要把异常批次、失败重复和关键对照纳入同一套解释。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.92,
+        "deadline_day": 138
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "agent_usage_style", "stable_preferences"]
+    },
+    {
+      "event_id": "e034",
+      "day": 126,
+      "storyline_id": "sl_02",
+      "event_type": "revise_deadline",
+      "target_id": "plan_submission_002",
+      "content": "用户将补实验后投稿计划的完整材料截止日从第 126 天顺延到第 150 天，因为结果解释和统计图还未完成。",
+      "state_before": {
+        "status": "current",
+        "importance": 0.94,
+        "deadline_day": 126
+      },
+      "state_after": {
+        "status": "current",
+        "importance": 0.92,
+        "previous_deadline_day": 126,
+        "deadline_day": 150,
+        "blocking_items": ["结果解释重写", "重复实验统计图"]
+      },
+      "retrieval_role": "current_plan",
+      "derived_from_profile": ["likely_plan_changes", "primary_goals"]
+    },
+    {
+      "event_id": "e035",
+      "day": 130,
+      "storyline_id": "sl_03",
+      "event_type": "create_task",
+      "target_id": "task_group_meeting_slides_current",
+      "content": "用户创建新版组会汇报图任务，需要围绕关键对照、失败重复解释和下一步投稿计划组织页面。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.86,
+        "deadline_day": 144
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["main_life_domains", "primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e036",
+      "day": 136,
+      "storyline_id": "sl_01",
+      "event_type": "create_task",
+      "target_id": "task_repeat_stats_figure",
+      "content": "用户创建重复实验统计图整理任务，需要统一样本量、统计方法和异常批次标注。",
+      "state_before": null,
+      "state_after": {
+        "status": "active",
+        "importance": 0.9,
+        "deadline_day": 148
+      },
+      "retrieval_role": "active_todo",
+      "derived_from_profile": ["primary_goals", "stable_preferences"]
+    },
+    {
+      "event_id": "e037",
+      "day": 140,
+      "storyline_id": "sl_02",
+      "event_type": "postpone_task",
+      "target_id": "task_result_interpretation_rewrite",
+      "content": "用户把结果解释重写推迟到第 152 天，近期先保留关键对照结论和异常批次解释草稿。",
+      "state_before": {
+        "status": "active",
+        "importance": 0.92,
+        "deadline_day": 138
+      },
+      "state_after": {
+        "status": "active",
+        "task_state": "postponed_active",
+        "importance": 0.91,
+        "previous_deadline_day": 138,
+        "deadline_day": 152,
+        "partial_progress": "关键对照结论和异常批次解释草稿已完成"
+      },
+      "retrieval_role": "postponed_task",
+      "derived_from_profile": ["likely_task_states", "dynamic_preferences"]
+    }
+  ],
+  "final_state_summary": {
+    "current_plans": ["plan_experiment_001", "plan_submission_002"],
+    "stale_plans": ["plan_submission_001"],
+    "active_tasks": ["task_result_interpretation_rewrite", "task_group_meeting_slides_current", "task_repeat_stats_figure"],
+    "completed_tasks": ["task_culture_log_cleanup", "task_discussion_old", "task_wb_result_table", "task_control_experiment"],
+    "cancelled_tasks": ["task_group_meeting_slides_old"],
+    "postponed_tasks": ["task_result_interpretation_rewrite"],
+    "current_constraints": ["constraint_late_lab_001"],
+    "stable_preferences": ["pref_lab_workflow_001"],
+    "old_preferences": ["pref_experiment_plan_output:detailed_protocol_notes"],
+    "updated_preferences": ["pref_experiment_plan_output:brief_execution_checklist"],
+    "important_not_urgent_tasks": ["task_group_meeting_slides_old"],
+    "urgent_low_value_tasks": ["noise_reagent_order_001", "noise_headphones_001"],
+    "noise_events": ["noise_late_lab_001", "noise_reagent_order_001", "noise_failed_repeat_001", "noise_equipment_booking_001", "noise_headphones_001"],
+    "hard_negative_sources": ["plan_submission_001", "task_discussion_old", "task_group_meeting_slides_old", "pref_experiment_plan_output:detailed_protocol_notes", "noise_reagent_order_001", "recur_result_review:day62_outdated_status", "recur_result_review:day83_outdated_status"]
+  },
+  "quality_check": {
+    "has_2_to_4_storylines": true,
+    "has_active_tasks": true,
+    "has_completed_tasks": true,
+    "has_current_plan": true,
+    "has_stale_plan": true,
+    "has_plan_revision": true,
+    "has_constraint": true,
+    "has_stable_preference": true,
+    "has_dynamic_preference_revision": true,
+    "has_noise_events": true,
+    "has_hard_negatives": true,
+    "events_have_state_links": true,
+    "noise_ratio_under_30_percent": true
+  }
+}

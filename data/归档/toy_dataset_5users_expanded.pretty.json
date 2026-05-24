@@ -1,0 +1,2917 @@
+[
+  {
+    "user_id": "u001",
+    "user_profile": {
+      "background": "Computer science master's student preparing coursework and research demos.",
+      "main_task_scenario": "Course project planning, experiment reporting, and personal fitness routine.",
+      "preferences": [
+        "prefers concise slide decks",
+        "likes checklist-style planning",
+        "usually works best in the morning"
+      ]
+    },
+    "now": "2026-05-06T09:00:00+08:00",
+    "events": [
+      {
+        "event_id": "u001_e001",
+        "title": "Course Project Presentation Prep",
+        "time_range": {
+          "start": "2026-05-01T10:00:00+08:00",
+          "end": "2026-05-01T10:45:00+08:00"
+        },
+        "event_text": "User discussed preparing a course project presentation, including slides, experiment results, and a concise visual style.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u001_m001",
+          "u001_m002",
+          "u001_m003",
+          "u001_m004"
+        ],
+        "event_value": 0.88,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u001_e002",
+        "title": "Research Demo Cleanup",
+        "time_range": {
+          "start": "2026-04-28T16:20:00+08:00",
+          "end": "2026-04-28T17:05:00+08:00"
+        },
+        "event_text": "User planned to clean a research demo repository and document reproducible experiment steps.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u001_m005",
+          "u001_m006",
+          "u001_m007",
+          "u001_m008"
+        ],
+        "event_value": 0.74,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u001_e003",
+        "title": "Morning Fitness Routine",
+        "time_range": {
+          "start": "2026-04-23T08:00:00+08:00",
+          "end": "2026-04-23T08:18:00+08:00"
+        },
+        "event_text": "User talked about restarting a light morning fitness routine and preferring short exercises before study sessions.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u001_m009",
+          "u001_m010",
+          "u001_m011",
+          "u001_m012"
+        ],
+        "event_value": 0.52,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u001_e004",
+        "title": "Library Book Return",
+        "time_range": {
+          "start": "2026-04-19T10:00:00+08:00",
+          "end": "2026-04-19T10:25:00+08:00"
+        },
+        "event_text": "User discussed returning library books and renewing a campus library card.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u001_d004_m001",
+          "u001_d004_m002",
+          "u001_d004_m003"
+        ],
+        "event_value": 0.28,
+        "event_status": "closed"
+      },
+      {
+        "event_id": "u001_e005",
+        "title": "Coffee Chat Scheduling",
+        "time_range": {
+          "start": "2026-04-20T10:00:00+08:00",
+          "end": "2026-04-20T10:25:00+08:00"
+        },
+        "event_text": "User planned a casual coffee chat with a classmate about weekend plans.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u001_d005_m001",
+          "u001_d005_m002",
+          "u001_d005_m003"
+        ],
+        "event_value": 0.24,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u001_e006",
+        "title": "Phone Storage Cleanup",
+        "time_range": {
+          "start": "2026-04-21T10:00:00+08:00",
+          "end": "2026-04-21T10:25:00+08:00"
+        },
+        "event_text": "User talked about deleting duplicate photos and organizing phone storage.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u001_d006_m001",
+          "u001_d006_m002",
+          "u001_d006_m003"
+        ],
+        "event_value": 0.22,
+        "event_status": "closed"
+      },
+      {
+        "event_id": "u001_e007",
+        "title": "Apartment Utility Bill",
+        "time_range": {
+          "start": "2026-04-22T10:00:00+08:00",
+          "end": "2026-04-22T10:25:00+08:00"
+        },
+        "event_text": "User planned to check an apartment utility bill and split payment with roommates.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u001_d007_m001",
+          "u001_d007_m002",
+          "u001_d007_m003"
+        ],
+        "event_value": 0.35,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u001_e008",
+        "title": "Movie Watchlist",
+        "time_range": {
+          "start": "2026-04-23T10:00:00+08:00",
+          "end": "2026-04-23T10:25:00+08:00"
+        },
+        "event_text": "User mentioned several science fiction movies to watch after finals.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u001_d008_m001",
+          "u001_d008_m002",
+          "u001_d008_m003"
+        ],
+        "event_value": 0.18,
+        "event_status": "dormant"
+      }
+    ],
+    "memories": [
+      {
+        "memory_id": "u001_m001",
+        "content": "User needs to finish the course project presentation slides before 2026-05-08.",
+        "timestamp": "2026-05-01T10:05:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-08T23:59:00+08:00",
+        "importance": 0.92,
+        "accessible_score": 0.76,
+        "is_done": false
+      },
+      {
+        "memory_id": "u001_m002",
+        "content": "User should add experiment result charts to the course project slides.",
+        "timestamp": "2026-05-01T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-07T18:00:00+08:00",
+        "importance": 0.86,
+        "accessible_score": 0.81,
+        "is_done": false
+      },
+      {
+        "memory_id": "u001_m003",
+        "content": "User prefers presentation slides to be concise and visual, with minimal dense text.",
+        "timestamp": "2026-05-01T10:18:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e001",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.79,
+        "accessible_score": 0.66,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_m004",
+        "content": "The course project presentation is for a machine learning systems class.",
+        "timestamp": "2026-05-01T10:25:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e001",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.55,
+        "accessible_score": 0.52,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_m005",
+        "content": "User needs to clean the research demo repository before the lab meeting on 2026-05-10.",
+        "timestamp": "2026-04-28T16:25:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-10T12:00:00+08:00",
+        "importance": 0.77,
+        "accessible_score": 0.62,
+        "is_done": false
+      },
+      {
+        "memory_id": "u001_m006",
+        "content": "User completed drafting the demo README outline.",
+        "timestamp": "2026-04-28T16:33:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-03T20:00:00+08:00",
+        "importance": 0.64,
+        "accessible_score": 0.31,
+        "is_done": true
+      },
+      {
+        "memory_id": "u001_m007",
+        "content": "User wants reproducible commands documented for the research demo.",
+        "timestamp": "2026-04-28T16:40:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e002",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.72,
+        "accessible_score": 0.57,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_m008",
+        "content": "The research demo uses a small event-memory prototype.",
+        "timestamp": "2026-04-28T16:52:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e002",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.58,
+        "accessible_score": 0.48,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_m009",
+        "content": "User wants to do a 15-minute morning workout at least three times this week.",
+        "timestamp": "2026-04-23T08:03:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e003",
+        "memory_type": "todo",
+        "ddl": "2026-05-06T23:59:00+08:00",
+        "importance": 0.6,
+        "accessible_score": 0.58,
+        "is_done": false
+      },
+      {
+        "memory_id": "u001_m010",
+        "content": "User prefers short bodyweight exercises before study sessions.",
+        "timestamp": "2026-04-23T08:07:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e003",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.5,
+        "accessible_score": 0.42,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_m011",
+        "content": "User said long evening workouts are hard to maintain during project weeks.",
+        "timestamp": "2026-04-23T08:12:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e003",
+        "memory_type": "habit",
+        "ddl": null,
+        "importance": 0.47,
+        "accessible_score": 0.37,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_m012",
+        "content": "User usually works best on cognitively demanding tasks in the morning.",
+        "timestamp": "2026-04-23T08:15:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e003",
+        "memory_type": "habit",
+        "ddl": null,
+        "importance": 0.68,
+        "accessible_score": 0.51,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d004_m001",
+        "content": "User mentioned: library book return.",
+        "timestamp": "2026-04-22T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e004",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.36,
+        "accessible_score": 0.31,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d004_m002",
+        "content": "User treated library book return as a low-priority side matter.",
+        "timestamp": "2026-04-22T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e004",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.28,
+        "accessible_score": 0.26,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d004_m003",
+        "content": "User completed the side task about library book return.",
+        "timestamp": "2026-04-22T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e004",
+        "memory_type": "todo",
+        "ddl": "2026-04-28T18:00:00+08:00",
+        "importance": 0.32,
+        "accessible_score": 0.28,
+        "is_done": true
+      },
+      {
+        "memory_id": "u001_d005_m001",
+        "content": "User mentioned: coffee chat scheduling.",
+        "timestamp": "2026-04-23T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e005",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.32,
+        "accessible_score": 0.27,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d005_m002",
+        "content": "User treated coffee chat scheduling as a low-priority side matter.",
+        "timestamp": "2026-04-23T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e005",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.24,
+        "accessible_score": 0.22,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d005_m003",
+        "content": "User may later revisit the side task about coffee chat scheduling.",
+        "timestamp": "2026-04-23T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e005",
+        "memory_type": "todo",
+        "ddl": "2026-05-15T18:00:00+08:00",
+        "importance": 0.28,
+        "accessible_score": 0.24,
+        "is_done": false
+      },
+      {
+        "memory_id": "u001_d006_m001",
+        "content": "User mentioned: phone storage cleanup.",
+        "timestamp": "2026-04-24T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e006",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.3,
+        "accessible_score": 0.25,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d006_m002",
+        "content": "User treated phone storage cleanup as a low-priority side matter.",
+        "timestamp": "2026-04-24T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e006",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.22,
+        "accessible_score": 0.2,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d006_m003",
+        "content": "User completed the side task about phone storage cleanup.",
+        "timestamp": "2026-04-24T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e006",
+        "memory_type": "todo",
+        "ddl": "2026-04-30T18:00:00+08:00",
+        "importance": 0.26,
+        "accessible_score": 0.22,
+        "is_done": true
+      },
+      {
+        "memory_id": "u001_d007_m001",
+        "content": "User mentioned: apartment utility bill.",
+        "timestamp": "2026-04-25T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e007",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.43,
+        "accessible_score": 0.38,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d007_m002",
+        "content": "User treated apartment utility bill as a low-priority side matter.",
+        "timestamp": "2026-04-25T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e007",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.35,
+        "accessible_score": 0.33,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d007_m003",
+        "content": "User may later revisit the side task about apartment utility bill.",
+        "timestamp": "2026-04-25T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e007",
+        "memory_type": "todo",
+        "ddl": "2026-05-17T18:00:00+08:00",
+        "importance": 0.39,
+        "accessible_score": 0.35,
+        "is_done": false
+      },
+      {
+        "memory_id": "u001_d008_m001",
+        "content": "User mentioned: movie watchlist.",
+        "timestamp": "2026-04-26T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e008",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.26,
+        "accessible_score": 0.21,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d008_m002",
+        "content": "User treated movie watchlist as a low-priority side matter.",
+        "timestamp": "2026-04-26T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e008",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.18,
+        "accessible_score": 0.16,
+        "is_done": null
+      },
+      {
+        "memory_id": "u001_d008_m003",
+        "content": "User may later revisit the side task about movie watchlist.",
+        "timestamp": "2026-04-26T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u001_e008",
+        "memory_type": "todo",
+        "ddl": "2026-05-18T18:00:00+08:00",
+        "importance": 0.22,
+        "accessible_score": 0.18,
+        "is_done": false
+      }
+    ],
+    "queries": [
+      {
+        "query_id": "u001_q001",
+        "query": "我今天最该先补哪个项目任务？",
+        "query_mode": "task",
+        "query_subtype": "task_priority",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u001_m002",
+            "relevance": 3,
+            "reason": "Experiment charts are high importance and due soon."
+          },
+          {
+            "memory_id": "u001_m001",
+            "relevance": 3,
+            "reason": "Course slides are high importance and near deadline."
+          },
+          {
+            "memory_id": "u001_m005",
+            "relevance": 2,
+            "reason": "Repository cleanup is active but less urgent."
+          }
+        ],
+        "gold_event_ids": [
+          "u001_e001",
+          "u001_e002"
+        ]
+      },
+      {
+        "query_id": "u001_q002",
+        "query": "有哪些未完成且快到 ddl 的事情？",
+        "query_mode": "task",
+        "query_subtype": "task_due",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u001_m002",
+            "relevance": 3,
+            "reason": "Unfinished and due on 2026-05-07."
+          },
+          {
+            "memory_id": "u001_m001",
+            "relevance": 3,
+            "reason": "Unfinished and due on 2026-05-08."
+          },
+          {
+            "memory_id": "u001_m009",
+            "relevance": 2,
+            "reason": "Unfinished weekly workout goal due today."
+          }
+        ],
+        "gold_event_ids": [
+          "u001_e001",
+          "u001_e003"
+        ]
+      },
+      {
+        "query_id": "u001_q003",
+        "query": "我做 slides 的风格偏好是什么？",
+        "query_mode": "chat",
+        "query_subtype": "chat_preference",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u001_m003",
+            "relevance": 3,
+            "reason": "Directly states slide style preference."
+          },
+          {
+            "memory_id": "u001_m007",
+            "relevance": 1,
+            "reason": "Related preference for documentation clarity."
+          }
+        ],
+        "gold_event_ids": [
+          "u001_e001",
+          "u001_e002"
+        ]
+      },
+      {
+        "query_id": "u001_q004",
+        "query": "帮我结合时间和个人习惯安排今天上午的任务。",
+        "query_mode": "chat",
+        "query_subtype": "mixed",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u001_m012",
+            "relevance": 3,
+            "reason": "Morning work habit is directly useful."
+          },
+          {
+            "memory_id": "u001_m002",
+            "relevance": 3,
+            "reason": "Urgent task suitable for morning scheduling."
+          },
+          {
+            "memory_id": "u001_m001",
+            "relevance": 2,
+            "reason": "Important near-deadline task."
+          }
+        ],
+        "gold_event_ids": [
+          "u001_e001",
+          "u001_e003"
+        ]
+      }
+    ]
+  },
+  {
+    "user_id": "u002",
+    "user_profile": {
+      "background": "Product manager at a small SaaS startup coordinating launch work.",
+      "main_task_scenario": "Release planning, customer interviews, and stakeholder updates.",
+      "preferences": [
+        "prefers concise status summaries",
+        "likes risk lists before meetings",
+        "tracks customer quotes carefully"
+      ]
+    },
+    "now": "2026-05-06T09:00:00+08:00",
+    "events": [
+      {
+        "event_id": "u002_e001",
+        "title": "Beta Launch Checklist",
+        "time_range": {
+          "start": "2026-05-02T14:00:00+08:00",
+          "end": "2026-05-02T14:50:00+08:00"
+        },
+        "event_text": "User planned a beta launch checklist for a SaaS feature, including release notes, QA signoff, and stakeholder updates.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u002_m001",
+          "u002_m002",
+          "u002_m003",
+          "u002_m004"
+        ],
+        "event_value": 0.91,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u002_e002",
+        "title": "Customer Interview Notes",
+        "time_range": {
+          "start": "2026-04-29T11:00:00+08:00",
+          "end": "2026-04-29T11:40:00+08:00"
+        },
+        "event_text": "User summarized customer interviews and wanted to preserve quotes and pain points for product decisions.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u002_m005",
+          "u002_m006",
+          "u002_m007",
+          "u002_m008"
+        ],
+        "event_value": 0.69,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u002_e003",
+        "title": "Weekly Stakeholder Update",
+        "time_range": {
+          "start": "2026-04-25T17:00:00+08:00",
+          "end": "2026-04-25T17:35:00+08:00"
+        },
+        "event_text": "User discussed preparing weekly stakeholder updates with concise progress, risks, and asks.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u002_m009",
+          "u002_m010",
+          "u002_m011",
+          "u002_m012"
+        ],
+        "event_value": 0.63,
+        "event_status": "closed"
+      },
+      {
+        "event_id": "u002_e004",
+        "title": "Office Snack Order",
+        "time_range": {
+          "start": "2026-04-19T10:00:00+08:00",
+          "end": "2026-04-19T10:25:00+08:00"
+        },
+        "event_text": "User discussed ordering snacks for the office pantry and comparing delivery options.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u002_d004_m001",
+          "u002_d004_m002",
+          "u002_d004_m003"
+        ],
+        "event_value": 0.25,
+        "event_status": "closed"
+      },
+      {
+        "event_id": "u002_e005",
+        "title": "Team Birthday Card",
+        "time_range": {
+          "start": "2026-04-20T10:00:00+08:00",
+          "end": "2026-04-20T10:25:00+08:00"
+        },
+        "event_text": "User planned a birthday card message for a teammate.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u002_d005_m001",
+          "u002_d005_m002",
+          "u002_d005_m003"
+        ],
+        "event_value": 0.2,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u002_e006",
+        "title": "Laptop Replacement Notes",
+        "time_range": {
+          "start": "2026-04-21T10:00:00+08:00",
+          "end": "2026-04-21T10:25:00+08:00"
+        },
+        "event_text": "User considered replacing an old laptop and comparing hardware specs.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u002_d006_m001",
+          "u002_d006_m002",
+          "u002_d006_m003"
+        ],
+        "event_value": 0.33,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u002_e007",
+        "title": "Conference Hotel Ideas",
+        "time_range": {
+          "start": "2026-04-22T10:00:00+08:00",
+          "end": "2026-04-22T10:25:00+08:00"
+        },
+        "event_text": "User browsed hotel ideas for a future product conference.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u002_d007_m001",
+          "u002_d007_m002",
+          "u002_d007_m003"
+        ],
+        "event_value": 0.22,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u002_e008",
+        "title": "Expense Receipt Cleanup",
+        "time_range": {
+          "start": "2026-04-23T10:00:00+08:00",
+          "end": "2026-04-23T10:25:00+08:00"
+        },
+        "event_text": "User planned to organize old taxi and meal receipts.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u002_d008_m001",
+          "u002_d008_m002",
+          "u002_d008_m003"
+        ],
+        "event_value": 0.27,
+        "event_status": "closed"
+      }
+    ],
+    "memories": [
+      {
+        "memory_id": "u002_m001",
+        "content": "User needs to finalize beta launch release notes by 2026-05-07.",
+        "timestamp": "2026-05-02T14:05:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-07T17:00:00+08:00",
+        "importance": 0.9,
+        "accessible_score": 0.82,
+        "is_done": false
+      },
+      {
+        "memory_id": "u002_m002",
+        "content": "User needs QA signoff before the beta launch on 2026-05-09.",
+        "timestamp": "2026-05-02T14:12:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-08T16:00:00+08:00",
+        "importance": 0.95,
+        "accessible_score": 0.86,
+        "is_done": false
+      },
+      {
+        "memory_id": "u002_m003",
+        "content": "User prefers launch updates to include risks before achievements.",
+        "timestamp": "2026-05-02T14:20:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e001",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.71,
+        "accessible_score": 0.61,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_m004",
+        "content": "The beta launch is for the team analytics dashboard feature.",
+        "timestamp": "2026-05-02T14:33:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e001",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.62,
+        "accessible_score": 0.55,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_m005",
+        "content": "User should tag three customer interview clips for the launch narrative by 2026-05-06.",
+        "timestamp": "2026-04-29T11:05:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-06T18:00:00+08:00",
+        "importance": 0.74,
+        "accessible_score": 0.79,
+        "is_done": false
+      },
+      {
+        "memory_id": "u002_m006",
+        "content": "User completed summarizing the first two customer interviews.",
+        "timestamp": "2026-04-29T11:14:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-02T18:00:00+08:00",
+        "importance": 0.56,
+        "accessible_score": 0.28,
+        "is_done": true
+      },
+      {
+        "memory_id": "u002_m007",
+        "content": "User wants exact customer quotes preserved when summarizing feedback.",
+        "timestamp": "2026-04-29T11:22:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e002",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.76,
+        "accessible_score": 0.58,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_m008",
+        "content": "Several customers said dashboard setup feels too slow during onboarding.",
+        "timestamp": "2026-04-29T11:30:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e002",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.7,
+        "accessible_score": 0.53,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_m009",
+        "content": "User needed to send last week's stakeholder update by 2026-04-26.",
+        "timestamp": "2026-04-25T17:05:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e003",
+        "memory_type": "todo",
+        "ddl": "2026-04-26T12:00:00+08:00",
+        "importance": 0.65,
+        "accessible_score": 0.22,
+        "is_done": true
+      },
+      {
+        "memory_id": "u002_m010",
+        "content": "User prefers stakeholder updates to be concise, with bullets for progress, risks, and asks.",
+        "timestamp": "2026-04-25T17:12:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e003",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.8,
+        "accessible_score": 0.6,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_m011",
+        "content": "User usually prepares meeting risk lists the evening before important reviews.",
+        "timestamp": "2026-04-25T17:19:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e003",
+        "memory_type": "habit",
+        "ddl": null,
+        "importance": 0.6,
+        "accessible_score": 0.45,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_m012",
+        "content": "The VP of Sales is a key stakeholder for the beta launch.",
+        "timestamp": "2026-04-25T17:26:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e003",
+        "memory_type": "profile",
+        "ddl": null,
+        "importance": 0.57,
+        "accessible_score": 0.44,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d004_m001",
+        "content": "User mentioned: office snack order.",
+        "timestamp": "2026-04-22T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e004",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.33,
+        "accessible_score": 0.28,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d004_m002",
+        "content": "User treated office snack order as a low-priority side matter.",
+        "timestamp": "2026-04-22T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e004",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.25,
+        "accessible_score": 0.23,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d004_m003",
+        "content": "User completed the side task about office snack order.",
+        "timestamp": "2026-04-22T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e004",
+        "memory_type": "todo",
+        "ddl": "2026-04-28T18:00:00+08:00",
+        "importance": 0.29,
+        "accessible_score": 0.25,
+        "is_done": true
+      },
+      {
+        "memory_id": "u002_d005_m001",
+        "content": "User mentioned: team birthday card.",
+        "timestamp": "2026-04-23T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e005",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.28,
+        "accessible_score": 0.23,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d005_m002",
+        "content": "User treated team birthday card as a low-priority side matter.",
+        "timestamp": "2026-04-23T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e005",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.2,
+        "accessible_score": 0.18,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d005_m003",
+        "content": "User may later revisit the side task about team birthday card.",
+        "timestamp": "2026-04-23T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e005",
+        "memory_type": "todo",
+        "ddl": "2026-05-15T18:00:00+08:00",
+        "importance": 0.24,
+        "accessible_score": 0.2,
+        "is_done": false
+      },
+      {
+        "memory_id": "u002_d006_m001",
+        "content": "User mentioned: laptop replacement notes.",
+        "timestamp": "2026-04-24T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e006",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.41,
+        "accessible_score": 0.36,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d006_m002",
+        "content": "User treated laptop replacement notes as a low-priority side matter.",
+        "timestamp": "2026-04-24T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e006",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.33,
+        "accessible_score": 0.31,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d006_m003",
+        "content": "User may later revisit the side task about laptop replacement notes.",
+        "timestamp": "2026-04-24T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e006",
+        "memory_type": "todo",
+        "ddl": "2026-05-16T18:00:00+08:00",
+        "importance": 0.37,
+        "accessible_score": 0.33,
+        "is_done": false
+      },
+      {
+        "memory_id": "u002_d007_m001",
+        "content": "User mentioned: conference hotel ideas.",
+        "timestamp": "2026-04-25T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e007",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.3,
+        "accessible_score": 0.25,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d007_m002",
+        "content": "User treated conference hotel ideas as a low-priority side matter.",
+        "timestamp": "2026-04-25T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e007",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.22,
+        "accessible_score": 0.2,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d007_m003",
+        "content": "User may later revisit the side task about conference hotel ideas.",
+        "timestamp": "2026-04-25T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e007",
+        "memory_type": "todo",
+        "ddl": "2026-05-17T18:00:00+08:00",
+        "importance": 0.26,
+        "accessible_score": 0.22,
+        "is_done": false
+      },
+      {
+        "memory_id": "u002_d008_m001",
+        "content": "User mentioned: expense receipt cleanup.",
+        "timestamp": "2026-04-26T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e008",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.35,
+        "accessible_score": 0.3,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d008_m002",
+        "content": "User treated expense receipt cleanup as a low-priority side matter.",
+        "timestamp": "2026-04-26T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e008",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.27,
+        "accessible_score": 0.25,
+        "is_done": null
+      },
+      {
+        "memory_id": "u002_d008_m003",
+        "content": "User completed the side task about expense receipt cleanup.",
+        "timestamp": "2026-04-26T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u002_e008",
+        "memory_type": "todo",
+        "ddl": "2026-04-32T18:00:00+08:00",
+        "importance": 0.31,
+        "accessible_score": 0.27,
+        "is_done": true
+      }
+    ],
+    "queries": [
+      {
+        "query_id": "u002_q001",
+        "query": "今天上线前我最该盯住什么？",
+        "query_mode": "task",
+        "query_subtype": "task_priority",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u002_m005",
+            "relevance": 3,
+            "reason": "Due today and supports launch narrative."
+          },
+          {
+            "memory_id": "u002_m001",
+            "relevance": 3,
+            "reason": "Release notes are due tomorrow."
+          },
+          {
+            "memory_id": "u002_m002",
+            "relevance": 2,
+            "reason": "QA signoff is highly important and due soon."
+          }
+        ],
+        "gold_event_ids": [
+          "u002_e001",
+          "u002_e002"
+        ]
+      },
+      {
+        "query_id": "u002_q002",
+        "query": "哪些 beta launch 任务还没完成？",
+        "query_mode": "task",
+        "query_subtype": "task_status",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u002_m001",
+            "relevance": 3,
+            "reason": "Unfinished beta launch release notes."
+          },
+          {
+            "memory_id": "u002_m002",
+            "relevance": 3,
+            "reason": "Unfinished QA signoff for launch."
+          },
+          {
+            "memory_id": "u002_m005",
+            "relevance": 2,
+            "reason": "Related unfinished launch narrative task."
+          }
+        ],
+        "gold_event_ids": [
+          "u002_e001",
+          "u002_e002"
+        ]
+      },
+      {
+        "query_id": "u002_q003",
+        "query": "我写 stakeholder update 时有什么格式偏好？",
+        "query_mode": "chat",
+        "query_subtype": "chat_preference",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u002_m010",
+            "relevance": 3,
+            "reason": "Direct format preference for stakeholder updates."
+          },
+          {
+            "memory_id": "u002_m003",
+            "relevance": 2,
+            "reason": "Related preference about ordering risks before achievements."
+          }
+        ],
+        "gold_event_ids": [
+          "u002_e003",
+          "u002_e001"
+        ]
+      },
+      {
+        "query_id": "u002_q004",
+        "query": "帮我准备一个今天的 launch update，要结合客户反馈和风险。",
+        "query_mode": "chat",
+        "query_subtype": "mixed",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u002_m008",
+            "relevance": 3,
+            "reason": "Customer feedback fact is needed."
+          },
+          {
+            "memory_id": "u002_m010",
+            "relevance": 3,
+            "reason": "Update format preference is needed."
+          },
+          {
+            "memory_id": "u002_m002",
+            "relevance": 2,
+            "reason": "QA signoff is a current launch risk."
+          }
+        ],
+        "gold_event_ids": [
+          "u002_e001",
+          "u002_e002",
+          "u002_e003"
+        ]
+      }
+    ]
+  },
+  {
+    "user_id": "u003",
+    "user_profile": {
+      "background": "Freelance illustrator managing client commissions and personal learning.",
+      "main_task_scenario": "Client artwork deadlines, portfolio updates, and skill practice.",
+      "preferences": [
+        "prefers visual moodboards",
+        "likes afternoon creative blocks",
+        "avoids overly formal client language"
+      ]
+    },
+    "now": "2026-05-06T09:00:00+08:00",
+    "events": [
+      {
+        "event_id": "u003_e001",
+        "title": "Book Cover Commission",
+        "time_range": {
+          "start": "2026-05-03T13:30:00+08:00",
+          "end": "2026-05-03T14:20:00+08:00"
+        },
+        "event_text": "User planned a fantasy book cover commission, including sketch delivery, color palette, and client communication.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u003_m001",
+          "u003_m002",
+          "u003_m003",
+          "u003_m004"
+        ],
+        "event_value": 0.9,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u003_e002",
+        "title": "Portfolio Refresh",
+        "time_range": {
+          "start": "2026-04-27T15:10:00+08:00",
+          "end": "2026-04-27T15:50:00+08:00"
+        },
+        "event_text": "User discussed refreshing an online portfolio with recent illustrations and clearer project captions.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u003_m005",
+          "u003_m006",
+          "u003_m007",
+          "u003_m008"
+        ],
+        "event_value": 0.66,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u003_e003",
+        "title": "Color Study Habit",
+        "time_range": {
+          "start": "2026-04-21T19:00:00+08:00",
+          "end": "2026-04-21T19:25:00+08:00"
+        },
+        "event_text": "User talked about maintaining a color study habit and preferring small daily exercises over long sessions.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u003_m009",
+          "u003_m010",
+          "u003_m011",
+          "u003_m012"
+        ],
+        "event_value": 0.5,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u003_e004",
+        "title": "Desk Plant Care",
+        "time_range": {
+          "start": "2026-04-19T10:00:00+08:00",
+          "end": "2026-04-19T10:25:00+08:00"
+        },
+        "event_text": "User talked about watering desk plants and moving them away from direct sun.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u003_d004_m001",
+          "u003_d004_m002",
+          "u003_d004_m003"
+        ],
+        "event_value": 0.19,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u003_e005",
+        "title": "Brush Pack Trial",
+        "time_range": {
+          "start": "2026-04-20T10:00:00+08:00",
+          "end": "2026-04-20T10:25:00+08:00"
+        },
+        "event_text": "User tried a new digital brush pack and noted some texture preferences.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u003_d005_m001",
+          "u003_d005_m002",
+          "u003_d005_m003"
+        ],
+        "event_value": 0.36,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u003_e006",
+        "title": "Old Invoice Archive",
+        "time_range": {
+          "start": "2026-04-21T10:00:00+08:00",
+          "end": "2026-04-21T10:25:00+08:00"
+        },
+        "event_text": "User planned to archive old invoices from completed client projects.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u003_d006_m001",
+          "u003_d006_m002",
+          "u003_d006_m003"
+        ],
+        "event_value": 0.3,
+        "event_status": "closed"
+      },
+      {
+        "event_id": "u003_e007",
+        "title": "Friend's Party Poster",
+        "time_range": {
+          "start": "2026-04-22T10:00:00+08:00",
+          "end": "2026-04-22T10:25:00+08:00"
+        },
+        "event_text": "User casually discussed making a poster for a friend's small party.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u003_d007_m001",
+          "u003_d007_m002",
+          "u003_d007_m003"
+        ],
+        "event_value": 0.26,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u003_e008",
+        "title": "Recipe Sketch Idea",
+        "time_range": {
+          "start": "2026-04-23T10:00:00+08:00",
+          "end": "2026-04-23T10:25:00+08:00"
+        },
+        "event_text": "User mentioned sketching ingredients from a pasta recipe for fun.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u003_d008_m001",
+          "u003_d008_m002",
+          "u003_d008_m003"
+        ],
+        "event_value": 0.17,
+        "event_status": "dormant"
+      }
+    ],
+    "memories": [
+      {
+        "memory_id": "u003_m001",
+        "content": "User needs to send the first fantasy book cover sketch to the client by 2026-05-07.",
+        "timestamp": "2026-05-03T13:35:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-07T20:00:00+08:00",
+        "importance": 0.93,
+        "accessible_score": 0.85,
+        "is_done": false
+      },
+      {
+        "memory_id": "u003_m002",
+        "content": "User needs to prepare three color palette options for the book cover by 2026-05-08.",
+        "timestamp": "2026-05-03T13:43:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-08T18:00:00+08:00",
+        "importance": 0.82,
+        "accessible_score": 0.74,
+        "is_done": false
+      },
+      {
+        "memory_id": "u003_m003",
+        "content": "User prefers client messages to sound warm and not overly formal.",
+        "timestamp": "2026-05-03T13:52:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e001",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.72,
+        "accessible_score": 0.61,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_m004",
+        "content": "The book cover client wants a moody forest atmosphere with a bright central figure.",
+        "timestamp": "2026-05-03T14:03:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e001",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.78,
+        "accessible_score": 0.67,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_m005",
+        "content": "User needs to upload four recent illustrations to the portfolio by 2026-05-12.",
+        "timestamp": "2026-04-27T15:15:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-12T21:00:00+08:00",
+        "importance": 0.65,
+        "accessible_score": 0.49,
+        "is_done": false
+      },
+      {
+        "memory_id": "u003_m006",
+        "content": "User completed rewriting the bio section of the portfolio.",
+        "timestamp": "2026-04-27T15:22:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-01T18:00:00+08:00",
+        "importance": 0.52,
+        "accessible_score": 0.25,
+        "is_done": true
+      },
+      {
+        "memory_id": "u003_m007",
+        "content": "User wants portfolio captions to explain process, not just final images.",
+        "timestamp": "2026-04-27T15:30:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e002",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.7,
+        "accessible_score": 0.52,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_m008",
+        "content": "User's portfolio is aimed at editorial and fantasy illustration clients.",
+        "timestamp": "2026-04-27T15:40:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e002",
+        "memory_type": "profile",
+        "ddl": null,
+        "importance": 0.6,
+        "accessible_score": 0.46,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_m009",
+        "content": "User wants to complete five 20-minute color studies before 2026-05-06.",
+        "timestamp": "2026-04-21T19:05:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e003",
+        "memory_type": "todo",
+        "ddl": "2026-05-06T23:00:00+08:00",
+        "importance": 0.48,
+        "accessible_score": 0.5,
+        "is_done": false
+      },
+      {
+        "memory_id": "u003_m010",
+        "content": "User prefers visual moodboards before starting major illustration work.",
+        "timestamp": "2026-04-21T19:09:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e003",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.73,
+        "accessible_score": 0.56,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_m011",
+        "content": "User is most creative during afternoon work blocks.",
+        "timestamp": "2026-04-21T19:15:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e003",
+        "memory_type": "habit",
+        "ddl": null,
+        "importance": 0.62,
+        "accessible_score": 0.43,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_m012",
+        "content": "User is practicing color harmony and value grouping this month.",
+        "timestamp": "2026-04-21T19:20:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e003",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.49,
+        "accessible_score": 0.35,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d004_m001",
+        "content": "User mentioned: desk plant care.",
+        "timestamp": "2026-04-22T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e004",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.27,
+        "accessible_score": 0.22,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d004_m002",
+        "content": "User treated desk plant care as a low-priority side matter.",
+        "timestamp": "2026-04-22T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e004",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.19,
+        "accessible_score": 0.17,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d004_m003",
+        "content": "User may later revisit the side task about desk plant care.",
+        "timestamp": "2026-04-22T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e004",
+        "memory_type": "todo",
+        "ddl": "2026-05-14T18:00:00+08:00",
+        "importance": 0.23,
+        "accessible_score": 0.19,
+        "is_done": false
+      },
+      {
+        "memory_id": "u003_d005_m001",
+        "content": "User mentioned: brush pack trial.",
+        "timestamp": "2026-04-23T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e005",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.44,
+        "accessible_score": 0.39,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d005_m002",
+        "content": "User treated brush pack trial as a low-priority side matter.",
+        "timestamp": "2026-04-23T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e005",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.36,
+        "accessible_score": 0.34,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d005_m003",
+        "content": "User may later revisit the side task about brush pack trial.",
+        "timestamp": "2026-04-23T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e005",
+        "memory_type": "todo",
+        "ddl": "2026-05-15T18:00:00+08:00",
+        "importance": 0.4,
+        "accessible_score": 0.36,
+        "is_done": false
+      },
+      {
+        "memory_id": "u003_d006_m001",
+        "content": "User mentioned: old invoice archive.",
+        "timestamp": "2026-04-24T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e006",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.38,
+        "accessible_score": 0.33,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d006_m002",
+        "content": "User treated old invoice archive as a low-priority side matter.",
+        "timestamp": "2026-04-24T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e006",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.3,
+        "accessible_score": 0.28,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d006_m003",
+        "content": "User completed the side task about old invoice archive.",
+        "timestamp": "2026-04-24T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e006",
+        "memory_type": "todo",
+        "ddl": "2026-04-30T18:00:00+08:00",
+        "importance": 0.34,
+        "accessible_score": 0.3,
+        "is_done": true
+      },
+      {
+        "memory_id": "u003_d007_m001",
+        "content": "User mentioned: friend's party poster.",
+        "timestamp": "2026-04-25T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e007",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.34,
+        "accessible_score": 0.29,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d007_m002",
+        "content": "User treated friend's party poster as a low-priority side matter.",
+        "timestamp": "2026-04-25T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e007",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.26,
+        "accessible_score": 0.24,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d007_m003",
+        "content": "User may later revisit the side task about friend's party poster.",
+        "timestamp": "2026-04-25T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e007",
+        "memory_type": "todo",
+        "ddl": "2026-05-17T18:00:00+08:00",
+        "importance": 0.3,
+        "accessible_score": 0.26,
+        "is_done": false
+      },
+      {
+        "memory_id": "u003_d008_m001",
+        "content": "User mentioned: recipe sketch idea.",
+        "timestamp": "2026-04-26T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e008",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.25,
+        "accessible_score": 0.2,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d008_m002",
+        "content": "User treated recipe sketch idea as a low-priority side matter.",
+        "timestamp": "2026-04-26T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e008",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.17,
+        "accessible_score": 0.15,
+        "is_done": null
+      },
+      {
+        "memory_id": "u003_d008_m003",
+        "content": "User may later revisit the side task about recipe sketch idea.",
+        "timestamp": "2026-04-26T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u003_e008",
+        "memory_type": "todo",
+        "ddl": "2026-05-18T18:00:00+08:00",
+        "importance": 0.21,
+        "accessible_score": 0.17,
+        "is_done": false
+      }
+    ],
+    "queries": [
+      {
+        "query_id": "u003_q001",
+        "query": "哪个客户稿件任务最急？",
+        "query_mode": "task",
+        "query_subtype": "task_due",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u003_m001",
+            "relevance": 3,
+            "reason": "Client sketch is high importance and due tomorrow."
+          },
+          {
+            "memory_id": "u003_m002",
+            "relevance": 2,
+            "reason": "Color palettes are client-related and due soon."
+          }
+        ],
+        "gold_event_ids": [
+          "u003_e001"
+        ]
+      },
+      {
+        "query_id": "u003_q002",
+        "query": "我还有哪些作品集相关任务没做完？",
+        "query_mode": "task",
+        "query_subtype": "task_status",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u003_m005",
+            "relevance": 3,
+            "reason": "Unfinished portfolio upload task."
+          },
+          {
+            "memory_id": "u003_m006",
+            "relevance": 1,
+            "reason": "Completed portfolio task, useful for status contrast."
+          }
+        ],
+        "gold_event_ids": [
+          "u003_e002"
+        ]
+      },
+      {
+        "query_id": "u003_q003",
+        "query": "我给客户发消息时语气应该怎样？",
+        "query_mode": "chat",
+        "query_subtype": "chat_preference",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u003_m003",
+            "relevance": 3,
+            "reason": "Direct communication tone preference."
+          }
+        ],
+        "gold_event_ids": [
+          "u003_e001"
+        ]
+      },
+      {
+        "query_id": "u003_q004",
+        "query": "今天下午安排画稿时，帮我考虑创作习惯和马上到期的任务。",
+        "query_mode": "chat",
+        "query_subtype": "mixed",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u003_m011",
+            "relevance": 3,
+            "reason": "Afternoon creative habit is directly relevant."
+          },
+          {
+            "memory_id": "u003_m001",
+            "relevance": 3,
+            "reason": "Urgent client sketch task."
+          },
+          {
+            "memory_id": "u003_m010",
+            "relevance": 2,
+            "reason": "Moodboard preference can shape workflow."
+          }
+        ],
+        "gold_event_ids": [
+          "u003_e001",
+          "u003_e003"
+        ]
+      }
+    ]
+  },
+  {
+    "user_id": "u004",
+    "user_profile": {
+      "background": "Junior doctor balancing hospital shifts, exam prep, and family tasks.",
+      "main_task_scenario": "Medical exam study planning, shift admin, and family logistics.",
+      "preferences": [
+        "prefers compact study blocks",
+        "wants reminders before shift-related deadlines",
+        "likes practical summaries"
+      ]
+    },
+    "now": "2026-05-06T09:00:00+08:00",
+    "events": [
+      {
+        "event_id": "u004_e001",
+        "title": "Board Exam Study Plan",
+        "time_range": {
+          "start": "2026-05-01T21:00:00+08:00",
+          "end": "2026-05-01T21:40:00+08:00"
+        },
+        "event_text": "User planned board exam study sessions around hospital shifts, focusing on cardiology and infectious disease review.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u004_m001",
+          "u004_m002",
+          "u004_m003",
+          "u004_m004"
+        ],
+        "event_value": 0.86,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u004_e002",
+        "title": "Hospital Shift Admin",
+        "time_range": {
+          "start": "2026-04-30T07:40:00+08:00",
+          "end": "2026-04-30T08:05:00+08:00"
+        },
+        "event_text": "User discussed hospital shift admin tasks, including submitting a schedule swap form and checking required training.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u004_m005",
+          "u004_m006",
+          "u004_m007",
+          "u004_m008"
+        ],
+        "event_value": 0.73,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u004_e003",
+        "title": "Family Weekend Logistics",
+        "time_range": {
+          "start": "2026-04-24T20:10:00+08:00",
+          "end": "2026-04-24T20:35:00+08:00"
+        },
+        "event_text": "User planned family weekend logistics, including buying medicine for a parent and arranging a dinner reservation.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u004_m009",
+          "u004_m010",
+          "u004_m011",
+          "u004_m012"
+        ],
+        "event_value": 0.55,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u004_e004",
+        "title": "Laundry Pickup",
+        "time_range": {
+          "start": "2026-04-19T10:00:00+08:00",
+          "end": "2026-04-19T10:25:00+08:00"
+        },
+        "event_text": "User talked about picking up laundry after a long hospital shift.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u004_d004_m001",
+          "u004_d004_m002",
+          "u004_d004_m003"
+        ],
+        "event_value": 0.18,
+        "event_status": "closed"
+      },
+      {
+        "event_id": "u004_e005",
+        "title": "Podcast Queue",
+        "time_range": {
+          "start": "2026-04-20T10:00:00+08:00",
+          "end": "2026-04-20T10:25:00+08:00"
+        },
+        "event_text": "User mentioned medical podcasts to listen to during commuting.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u004_d005_m001",
+          "u004_d005_m002",
+          "u004_d005_m003"
+        ],
+        "event_value": 0.21,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u004_e006",
+        "title": "Phone Plan Renewal",
+        "time_range": {
+          "start": "2026-04-21T10:00:00+08:00",
+          "end": "2026-04-21T10:25:00+08:00"
+        },
+        "event_text": "User discussed renewing a phone plan and checking data usage.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u004_d006_m001",
+          "u004_d006_m002",
+          "u004_d006_m003"
+        ],
+        "event_value": 0.3,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u004_e007",
+        "title": "Old Notes Archive",
+        "time_range": {
+          "start": "2026-04-22T10:00:00+08:00",
+          "end": "2026-04-22T10:25:00+08:00"
+        },
+        "event_text": "User planned to archive old lecture notes that are not part of current exam prep.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u004_d007_m001",
+          "u004_d007_m002",
+          "u004_d007_m003"
+        ],
+        "event_value": 0.24,
+        "event_status": "closed"
+      },
+      {
+        "event_id": "u004_e008",
+        "title": "Kitchen Supplies",
+        "time_range": {
+          "start": "2026-04-23T10:00:00+08:00",
+          "end": "2026-04-23T10:25:00+08:00"
+        },
+        "event_text": "User listed kitchen supplies to buy sometime this month.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u004_d008_m001",
+          "u004_d008_m002",
+          "u004_d008_m003"
+        ],
+        "event_value": 0.2,
+        "event_status": "dormant"
+      }
+    ],
+    "memories": [
+      {
+        "memory_id": "u004_m001",
+        "content": "User needs to review cardiology flashcards before 2026-05-09.",
+        "timestamp": "2026-05-01T21:05:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-09T22:00:00+08:00",
+        "importance": 0.84,
+        "accessible_score": 0.67,
+        "is_done": false
+      },
+      {
+        "memory_id": "u004_m002",
+        "content": "User needs to finish infectious disease practice questions by 2026-05-07.",
+        "timestamp": "2026-05-01T21:14:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-07T23:00:00+08:00",
+        "importance": 0.88,
+        "accessible_score": 0.8,
+        "is_done": false
+      },
+      {
+        "memory_id": "u004_m003",
+        "content": "User prefers compact 30-minute study blocks between shifts.",
+        "timestamp": "2026-05-01T21:21:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e001",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.77,
+        "accessible_score": 0.63,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_m004",
+        "content": "User's board exam prep currently focuses on cardiology and infectious disease.",
+        "timestamp": "2026-05-01T21:28:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e001",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.68,
+        "accessible_score": 0.56,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_m005",
+        "content": "User needs to submit the hospital schedule swap form by 2026-05-06.",
+        "timestamp": "2026-04-30T07:45:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-06T17:00:00+08:00",
+        "importance": 0.82,
+        "accessible_score": 0.88,
+        "is_done": false
+      },
+      {
+        "memory_id": "u004_m006",
+        "content": "User completed checking the mandatory training portal.",
+        "timestamp": "2026-04-30T07:51:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-03T10:00:00+08:00",
+        "importance": 0.58,
+        "accessible_score": 0.27,
+        "is_done": true
+      },
+      {
+        "memory_id": "u004_m007",
+        "content": "User wants reminders before shift-related administrative deadlines.",
+        "timestamp": "2026-04-30T07:56:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e002",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.72,
+        "accessible_score": 0.61,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_m008",
+        "content": "The schedule swap is for a night shift originally assigned on 2026-05-12.",
+        "timestamp": "2026-04-30T08:00:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e002",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.55,
+        "accessible_score": 0.47,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_m009",
+        "content": "User needs to buy blood pressure medicine for their father before 2026-05-05.",
+        "timestamp": "2026-04-24T20:14:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e003",
+        "memory_type": "todo",
+        "ddl": "2026-05-05T20:00:00+08:00",
+        "importance": 0.7,
+        "accessible_score": 0.64,
+        "is_done": false
+      },
+      {
+        "memory_id": "u004_m010",
+        "content": "User booked a family dinner reservation for Sunday evening.",
+        "timestamp": "2026-04-24T20:20:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e003",
+        "memory_type": "todo",
+        "ddl": "2026-04-27T18:00:00+08:00",
+        "importance": 0.45,
+        "accessible_score": 0.2,
+        "is_done": true
+      },
+      {
+        "memory_id": "u004_m011",
+        "content": "User prefers practical summaries over long theoretical explanations when tired after shifts.",
+        "timestamp": "2026-04-24T20:27:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e003",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.67,
+        "accessible_score": 0.49,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_m012",
+        "content": "User often has low energy after night shifts and avoids dense reading then.",
+        "timestamp": "2026-04-24T20:31:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e003",
+        "memory_type": "habit",
+        "ddl": null,
+        "importance": 0.65,
+        "accessible_score": 0.46,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d004_m001",
+        "content": "User mentioned: laundry pickup.",
+        "timestamp": "2026-04-22T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e004",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.26,
+        "accessible_score": 0.21,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d004_m002",
+        "content": "User treated laundry pickup as a low-priority side matter.",
+        "timestamp": "2026-04-22T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e004",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.18,
+        "accessible_score": 0.16,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d004_m003",
+        "content": "User completed the side task about laundry pickup.",
+        "timestamp": "2026-04-22T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e004",
+        "memory_type": "todo",
+        "ddl": "2026-04-28T18:00:00+08:00",
+        "importance": 0.22,
+        "accessible_score": 0.18,
+        "is_done": true
+      },
+      {
+        "memory_id": "u004_d005_m001",
+        "content": "User mentioned: podcast queue.",
+        "timestamp": "2026-04-23T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e005",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.29,
+        "accessible_score": 0.24,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d005_m002",
+        "content": "User treated podcast queue as a low-priority side matter.",
+        "timestamp": "2026-04-23T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e005",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.21,
+        "accessible_score": 0.19,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d005_m003",
+        "content": "User may later revisit the side task about podcast queue.",
+        "timestamp": "2026-04-23T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e005",
+        "memory_type": "todo",
+        "ddl": "2026-05-15T18:00:00+08:00",
+        "importance": 0.25,
+        "accessible_score": 0.21,
+        "is_done": false
+      },
+      {
+        "memory_id": "u004_d006_m001",
+        "content": "User mentioned: phone plan renewal.",
+        "timestamp": "2026-04-24T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e006",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.38,
+        "accessible_score": 0.33,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d006_m002",
+        "content": "User treated phone plan renewal as a low-priority side matter.",
+        "timestamp": "2026-04-24T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e006",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.3,
+        "accessible_score": 0.28,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d006_m003",
+        "content": "User may later revisit the side task about phone plan renewal.",
+        "timestamp": "2026-04-24T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e006",
+        "memory_type": "todo",
+        "ddl": "2026-05-16T18:00:00+08:00",
+        "importance": 0.34,
+        "accessible_score": 0.3,
+        "is_done": false
+      },
+      {
+        "memory_id": "u004_d007_m001",
+        "content": "User mentioned: old notes archive.",
+        "timestamp": "2026-04-25T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e007",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.32,
+        "accessible_score": 0.27,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d007_m002",
+        "content": "User treated old notes archive as a low-priority side matter.",
+        "timestamp": "2026-04-25T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e007",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.24,
+        "accessible_score": 0.22,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d007_m003",
+        "content": "User completed the side task about old notes archive.",
+        "timestamp": "2026-04-25T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e007",
+        "memory_type": "todo",
+        "ddl": "2026-04-31T18:00:00+08:00",
+        "importance": 0.28,
+        "accessible_score": 0.24,
+        "is_done": true
+      },
+      {
+        "memory_id": "u004_d008_m001",
+        "content": "User mentioned: kitchen supplies.",
+        "timestamp": "2026-04-26T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e008",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.28,
+        "accessible_score": 0.23,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d008_m002",
+        "content": "User treated kitchen supplies as a low-priority side matter.",
+        "timestamp": "2026-04-26T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e008",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.2,
+        "accessible_score": 0.18,
+        "is_done": null
+      },
+      {
+        "memory_id": "u004_d008_m003",
+        "content": "User may later revisit the side task about kitchen supplies.",
+        "timestamp": "2026-04-26T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u004_e008",
+        "memory_type": "todo",
+        "ddl": "2026-05-18T18:00:00+08:00",
+        "importance": 0.24,
+        "accessible_score": 0.2,
+        "is_done": false
+      }
+    ],
+    "queries": [
+      {
+        "query_id": "u004_q001",
+        "query": "今天必须处理的医院相关事项是什么？",
+        "query_mode": "task",
+        "query_subtype": "task_due",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u004_m005",
+            "relevance": 3,
+            "reason": "Hospital admin task due today."
+          },
+          {
+            "memory_id": "u004_m007",
+            "relevance": 2,
+            "reason": "Reminder preference for shift admin deadlines."
+          }
+        ],
+        "gold_event_ids": [
+          "u004_e002"
+        ]
+      },
+      {
+        "query_id": "u004_q002",
+        "query": "考试复习里哪个任务更紧急？",
+        "query_mode": "task",
+        "query_subtype": "task_priority",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u004_m002",
+            "relevance": 3,
+            "reason": "Practice questions are due tomorrow and high importance."
+          },
+          {
+            "memory_id": "u004_m001",
+            "relevance": 2,
+            "reason": "Cardiology flashcards are also important but less urgent."
+          }
+        ],
+        "gold_event_ids": [
+          "u004_e001"
+        ]
+      },
+      {
+        "query_id": "u004_q003",
+        "query": "我累的时候喜欢什么样的解释？",
+        "query_mode": "chat",
+        "query_subtype": "chat_preference",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u004_m011",
+            "relevance": 3,
+            "reason": "Direct preference for practical summaries when tired."
+          },
+          {
+            "memory_id": "u004_m012",
+            "relevance": 2,
+            "reason": "Related habit about low energy after night shifts."
+          }
+        ],
+        "gold_event_ids": [
+          "u004_e003"
+        ]
+      },
+      {
+        "query_id": "u004_q004",
+        "query": "帮我安排一个下班后的复习计划，同时别忘了临近截止的行政事项。",
+        "query_mode": "chat",
+        "query_subtype": "mixed",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u004_m003",
+            "relevance": 3,
+            "reason": "Compact study blocks are needed for planning."
+          },
+          {
+            "memory_id": "u004_m002",
+            "relevance": 3,
+            "reason": "Urgent exam task."
+          },
+          {
+            "memory_id": "u004_m005",
+            "relevance": 3,
+            "reason": "Administrative deadline due today."
+          }
+        ],
+        "gold_event_ids": [
+          "u004_e001",
+          "u004_e002"
+        ]
+      }
+    ]
+  },
+  {
+    "user_id": "u005",
+    "user_profile": {
+      "background": "Operations lead organizing office relocation and personal travel.",
+      "main_task_scenario": "Move logistics, vendor coordination, travel planning, and recurring admin.",
+      "preferences": [
+        "prefers vendor comparisons in tables",
+        "likes early reminders for logistics",
+        "keeps packing lists detailed"
+      ]
+    },
+    "now": "2026-05-06T09:00:00+08:00",
+    "events": [
+      {
+        "event_id": "u005_e001",
+        "title": "Office Relocation Logistics",
+        "time_range": {
+          "start": "2026-05-02T09:30:00+08:00",
+          "end": "2026-05-02T10:20:00+08:00"
+        },
+        "event_text": "User planned office relocation logistics, including movers, internet transfer, inventory labels, and vendor comparison.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u005_m001",
+          "u005_m002",
+          "u005_m003",
+          "u005_m004"
+        ],
+        "event_value": 0.89,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u005_e002",
+        "title": "Vendor Contract Review",
+        "time_range": {
+          "start": "2026-04-30T15:00:00+08:00",
+          "end": "2026-04-30T15:35:00+08:00"
+        },
+        "event_text": "User discussed reviewing vendor contracts and comparing service levels before confirming the relocation provider.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u005_m005",
+          "u005_m006",
+          "u005_m007",
+          "u005_m008"
+        ],
+        "event_value": 0.78,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u005_e003",
+        "title": "Weekend Travel Packing",
+        "time_range": {
+          "start": "2026-04-22T22:00:00+08:00",
+          "end": "2026-04-22T22:30:00+08:00"
+        },
+        "event_text": "User planned weekend travel packing and wanted detailed packing lists and early reminders for tickets.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u005_m009",
+          "u005_m010",
+          "u005_m011",
+          "u005_m012"
+        ],
+        "event_value": 0.48,
+        "event_status": "closed"
+      },
+      {
+        "event_id": "u005_e004",
+        "title": "Gym Membership Renewal",
+        "time_range": {
+          "start": "2026-04-19T10:00:00+08:00",
+          "end": "2026-04-19T10:25:00+08:00"
+        },
+        "event_text": "User discussed whether to renew a gym membership after the office move.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u005_d004_m001",
+          "u005_d004_m002",
+          "u005_d004_m003"
+        ],
+        "event_value": 0.31,
+        "event_status": "active"
+      },
+      {
+        "event_id": "u005_e005",
+        "title": "Personal Photo Backup",
+        "time_range": {
+          "start": "2026-04-20T10:00:00+08:00",
+          "end": "2026-04-20T10:25:00+08:00"
+        },
+        "event_text": "User planned to back up personal travel photos to an external drive.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u005_d005_m001",
+          "u005_d005_m002",
+          "u005_d005_m003"
+        ],
+        "event_value": 0.23,
+        "event_status": "closed"
+      },
+      {
+        "event_id": "u005_e006",
+        "title": "Team Lunch Poll",
+        "time_range": {
+          "start": "2026-04-21T10:00:00+08:00",
+          "end": "2026-04-21T10:25:00+08:00"
+        },
+        "event_text": "User mentioned creating a poll for a casual team lunch.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u005_d006_m001",
+          "u005_d006_m002",
+          "u005_d006_m003"
+        ],
+        "event_value": 0.2,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u005_e007",
+        "title": "Old Desk Donation",
+        "time_range": {
+          "start": "2026-04-22T10:00:00+08:00",
+          "end": "2026-04-22T10:25:00+08:00"
+        },
+        "event_text": "User considered donating an old desk but did not set a firm deadline.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u005_d007_m001",
+          "u005_d007_m002",
+          "u005_d007_m003"
+        ],
+        "event_value": 0.28,
+        "event_status": "dormant"
+      },
+      {
+        "event_id": "u005_e008",
+        "title": "Newsletter Cleanup",
+        "time_range": {
+          "start": "2026-04-23T10:00:00+08:00",
+          "end": "2026-04-23T10:25:00+08:00"
+        },
+        "event_text": "User talked about unsubscribing from old vendor newsletters.",
+        "event_embedding": null,
+        "memory_ids": [
+          "u005_d008_m001",
+          "u005_d008_m002",
+          "u005_d008_m003"
+        ],
+        "event_value": 0.19,
+        "event_status": "closed"
+      }
+    ],
+    "memories": [
+      {
+        "memory_id": "u005_m001",
+        "content": "User needs to confirm the office moving company by 2026-05-07.",
+        "timestamp": "2026-05-02T09:35:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-07T12:00:00+08:00",
+        "importance": 0.91,
+        "accessible_score": 0.84,
+        "is_done": false
+      },
+      {
+        "memory_id": "u005_m002",
+        "content": "User needs to submit the internet transfer request by 2026-05-09.",
+        "timestamp": "2026-05-02T09:44:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e001",
+        "memory_type": "todo",
+        "ddl": "2026-05-09T18:00:00+08:00",
+        "importance": 0.83,
+        "accessible_score": 0.69,
+        "is_done": false
+      },
+      {
+        "memory_id": "u005_m003",
+        "content": "User prefers vendor comparisons to be shown in tables with price, reliability, and support columns.",
+        "timestamp": "2026-05-02T09:55:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e001",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.76,
+        "accessible_score": 0.62,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_m004",
+        "content": "The office relocation target move date is 2026-05-16.",
+        "timestamp": "2026-05-02T10:05:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e001",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.72,
+        "accessible_score": 0.59,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_m005",
+        "content": "User needs to review the mover contract cancellation clause by 2026-05-06.",
+        "timestamp": "2026-04-30T15:05:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-06T16:00:00+08:00",
+        "importance": 0.86,
+        "accessible_score": 0.9,
+        "is_done": false
+      },
+      {
+        "memory_id": "u005_m006",
+        "content": "User completed collecting quotes from three relocation vendors.",
+        "timestamp": "2026-04-30T15:12:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e002",
+        "memory_type": "todo",
+        "ddl": "2026-05-03T17:00:00+08:00",
+        "importance": 0.66,
+        "accessible_score": 0.29,
+        "is_done": true
+      },
+      {
+        "memory_id": "u005_m007",
+        "content": "User wants relocation vendors evaluated on reliability, weekend availability, and support responsiveness.",
+        "timestamp": "2026-04-30T15:20:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e002",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.74,
+        "accessible_score": 0.58,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_m008",
+        "content": "One relocation vendor offers weekend support but charges a higher base fee.",
+        "timestamp": "2026-04-30T15:27:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e002",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.59,
+        "accessible_score": 0.47,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_m009",
+        "content": "User needed to check train tickets before the weekend trip on 2026-04-25.",
+        "timestamp": "2026-04-22T22:05:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e003",
+        "memory_type": "todo",
+        "ddl": "2026-04-24T12:00:00+08:00",
+        "importance": 0.5,
+        "accessible_score": 0.18,
+        "is_done": true
+      },
+      {
+        "memory_id": "u005_m010",
+        "content": "User prefers detailed packing lists split by documents, electronics, clothes, and medicine.",
+        "timestamp": "2026-04-22T22:12:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e003",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.64,
+        "accessible_score": 0.43,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_m011",
+        "content": "User likes early reminders for logistics tasks, especially travel and relocation deadlines.",
+        "timestamp": "2026-04-22T22:18:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e003",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.7,
+        "accessible_score": 0.5,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_m012",
+        "content": "User tends to batch personal travel planning late at night.",
+        "timestamp": "2026-04-22T22:24:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e003",
+        "memory_type": "habit",
+        "ddl": null,
+        "importance": 0.45,
+        "accessible_score": 0.32,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d004_m001",
+        "content": "User mentioned: gym membership renewal.",
+        "timestamp": "2026-04-22T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e004",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.39,
+        "accessible_score": 0.34,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d004_m002",
+        "content": "User treated gym membership renewal as a low-priority side matter.",
+        "timestamp": "2026-04-22T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e004",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.31,
+        "accessible_score": 0.29,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d004_m003",
+        "content": "User may later revisit the side task about gym membership renewal.",
+        "timestamp": "2026-04-22T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e004",
+        "memory_type": "todo",
+        "ddl": "2026-05-14T18:00:00+08:00",
+        "importance": 0.35,
+        "accessible_score": 0.31,
+        "is_done": false
+      },
+      {
+        "memory_id": "u005_d005_m001",
+        "content": "User mentioned: personal photo backup.",
+        "timestamp": "2026-04-23T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e005",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.31,
+        "accessible_score": 0.26,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d005_m002",
+        "content": "User treated personal photo backup as a low-priority side matter.",
+        "timestamp": "2026-04-23T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e005",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.23,
+        "accessible_score": 0.21,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d005_m003",
+        "content": "User completed the side task about personal photo backup.",
+        "timestamp": "2026-04-23T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e005",
+        "memory_type": "todo",
+        "ddl": "2026-04-29T18:00:00+08:00",
+        "importance": 0.27,
+        "accessible_score": 0.23,
+        "is_done": true
+      },
+      {
+        "memory_id": "u005_d006_m001",
+        "content": "User mentioned: team lunch poll.",
+        "timestamp": "2026-04-24T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e006",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.28,
+        "accessible_score": 0.23,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d006_m002",
+        "content": "User treated team lunch poll as a low-priority side matter.",
+        "timestamp": "2026-04-24T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e006",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.2,
+        "accessible_score": 0.18,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d006_m003",
+        "content": "User may later revisit the side task about team lunch poll.",
+        "timestamp": "2026-04-24T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e006",
+        "memory_type": "todo",
+        "ddl": "2026-05-16T18:00:00+08:00",
+        "importance": 0.24,
+        "accessible_score": 0.2,
+        "is_done": false
+      },
+      {
+        "memory_id": "u005_d007_m001",
+        "content": "User mentioned: old desk donation.",
+        "timestamp": "2026-04-25T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e007",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.36,
+        "accessible_score": 0.31,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d007_m002",
+        "content": "User treated old desk donation as a low-priority side matter.",
+        "timestamp": "2026-04-25T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e007",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.28,
+        "accessible_score": 0.26,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d007_m003",
+        "content": "User may later revisit the side task about old desk donation.",
+        "timestamp": "2026-04-25T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e007",
+        "memory_type": "todo",
+        "ddl": "2026-05-17T18:00:00+08:00",
+        "importance": 0.32,
+        "accessible_score": 0.28,
+        "is_done": false
+      },
+      {
+        "memory_id": "u005_d008_m001",
+        "content": "User mentioned: newsletter cleanup.",
+        "timestamp": "2026-04-26T10:00:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e008",
+        "memory_type": "fact",
+        "ddl": null,
+        "importance": 0.27,
+        "accessible_score": 0.22,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d008_m002",
+        "content": "User treated newsletter cleanup as a low-priority side matter.",
+        "timestamp": "2026-04-26T10:06:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e008",
+        "memory_type": "preference",
+        "ddl": null,
+        "importance": 0.19,
+        "accessible_score": 0.17,
+        "is_done": null
+      },
+      {
+        "memory_id": "u005_d008_m003",
+        "content": "User completed the side task about newsletter cleanup.",
+        "timestamp": "2026-04-26T10:12:00+08:00",
+        "embedding": null,
+        "event_id": "u005_e008",
+        "memory_type": "todo",
+        "ddl": "2026-04-32T18:00:00+08:00",
+        "importance": 0.23,
+        "accessible_score": 0.19,
+        "is_done": true
+      }
+    ],
+    "queries": [
+      {
+        "query_id": "u005_q001",
+        "query": "办公室搬迁今天最紧急的事是什么？",
+        "query_mode": "task",
+        "query_subtype": "task_due",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u005_m005",
+            "relevance": 3,
+            "reason": "Contract cancellation clause review is due today."
+          },
+          {
+            "memory_id": "u005_m001",
+            "relevance": 3,
+            "reason": "Mover confirmation is due tomorrow."
+          },
+          {
+            "memory_id": "u005_m002",
+            "relevance": 2,
+            "reason": "Internet transfer is important but less immediate."
+          }
+        ],
+        "gold_event_ids": [
+          "u005_e001",
+          "u005_e002"
+        ]
+      },
+      {
+        "query_id": "u005_q002",
+        "query": "哪些 vendor 相关任务还没完成？",
+        "query_mode": "task",
+        "query_subtype": "task_status",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u005_m001",
+            "relevance": 3,
+            "reason": "Unfinished vendor confirmation task."
+          },
+          {
+            "memory_id": "u005_m005",
+            "relevance": 3,
+            "reason": "Unfinished contract review task."
+          },
+          {
+            "memory_id": "u005_m006",
+            "relevance": 1,
+            "reason": "Completed vendor quote collection helps status contrast."
+          }
+        ],
+        "gold_event_ids": [
+          "u005_e001",
+          "u005_e002"
+        ]
+      },
+      {
+        "query_id": "u005_q003",
+        "query": "我比较供应商时喜欢什么格式？",
+        "query_mode": "chat",
+        "query_subtype": "chat_preference",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u005_m003",
+            "relevance": 3,
+            "reason": "Direct table format preference."
+          },
+          {
+            "memory_id": "u005_m007",
+            "relevance": 2,
+            "reason": "Related evaluation criteria preference."
+          }
+        ],
+        "gold_event_ids": [
+          "u005_e001",
+          "u005_e002"
+        ]
+      },
+      {
+        "query_id": "u005_q004",
+        "query": "帮我做今天的搬迁决策提醒，结合供应商偏好和快到期任务。",
+        "query_mode": "chat",
+        "query_subtype": "mixed",
+        "now": "2026-05-06T09:00:00+08:00",
+        "gold": [
+          {
+            "memory_id": "u005_m005",
+            "relevance": 3,
+            "reason": "Urgent contract review due today."
+          },
+          {
+            "memory_id": "u005_m003",
+            "relevance": 3,
+            "reason": "Preferred comparison format."
+          },
+          {
+            "memory_id": "u005_m007",
+            "relevance": 2,
+            "reason": "Vendor evaluation criteria."
+          }
+        ],
+        "gold_event_ids": [
+          "u005_e001",
+          "u005_e002"
+        ]
+      }
+    ]
+  }
+]
